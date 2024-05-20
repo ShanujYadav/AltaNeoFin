@@ -1,0 +1,40 @@
+/* InvoiceDiscountingPage.css */
+
+.invoice-discounting-container {
+    /* padding: 20px; */
+  }
+  
+  .invoice-discounting-card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    transition: box-shadow 0.3s ease;
+  }
+  
+  .invoice-discounting-card:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+  
+  .card-body {
+    padding: 20px;
+  }
+  
+  .card-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .card-text {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+  
+  /* InvoiceDiscountingPage.css */
+
+/* Add this media query to hide BothScreens component on mobile screens */
+
+
+ 
+  

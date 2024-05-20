@@ -1,0 +1,28 @@
+
+.App {
+    margin-top: 50px;
+    text-align: center;
+  }
+  
+  .title {
+    margin-bottom: 50px;
+  }
+  
+  .image_wrapper {
+    margin: 0px 30px;
+  }
+  
+  .image_wrapper img {
+    width: 80%;
+
+  }
+  @media (max-width: 768px) {
+    .image_wrapper {
+      margin: 0px 20px; /* Further adjusted margin for smaller screens */
+    }
+  
+    .image_wrapper img {
+      max-width: 250px; /* Adjust maximum width for smaller screens */
+    }
+  
+    }

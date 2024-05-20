@@ -1,0 +1,6 @@
+/* MainComponent.css */
+.screens-container {
+    display: flex;
+    justify-content: space-around;
+  }
+  

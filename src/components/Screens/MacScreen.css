@@ -1,0 +1,67 @@
+/* MacScreen.css */
+.wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+  
+  .device {
+    max-height: 80vh;
+    width: auto;
+  }
+  
+  .image-container {
+    transition: 0.2s transform ease;
+    max-width: 100%;
+  }
+  
+  .hover {
+    transition: 1s transform ease;
+    position: relative;
+  }
+  
+  .screen {
+    position: absolute;
+    top: 6%;
+    left: 10%;
+    z-index: 2;
+    width: 80%;
+    height: auto;
+    max-width: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+  
+  .hover:hover {
+    transform: translateY(-10px);
+    transition: 1s transform ease;
+  }
+  
+  /* Responsive adjustments */
+  @media screen and (max-width: 768px) {
+    .screen {
+      width: 90%;
+      left: 5%;
+    }
+  }
+/* MacScreen.css */
+
+/* Existing styles */
+
+/* Responsive adjustments for tablets */
+@media screen and (max-width: 768px) {
+    .screen {
+      width: 90%;
+      left: 5%;
+    }
+  }
+  
+  /* Responsive adjustments for phones */
+  @media screen and (max-width: 480px) {
+    .screen {
+      width: 70%; /* Adjust width for smaller screens */
+      left: 15%; /* Adjust position for smaller screens */
+    }
+  }
+    

@@ -1,0 +1,76 @@
+/* VendorFinancing.css */
+
+/* Target only elements within the VendorServices component */
+.vendor-services-container {
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.vendor-section-heading {
+  color: #060441; /* Blue color */
+  font-size: 28px;
+  margin-bottom: 40px;
+}
+
+.vendor-services-grid {
+  display: grid;
+  gap: 20px;
+}
+
+.vendor-service-card {
+  background-color: #333;
+  padding: 20px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+  animation: slideIn 1s forwards ease-in-out;
+}
+
+@media screen and (max-width: 768px) {
+  .vendor-services-grid {
+    grid-template-columns: repeat(1, 1fr); /* Display 1 card per row on smaller screens */
+  }
+}
+
+@keyframes slideIn {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.vendor-service-icon {
+  color: white; /* Change icon color to white */
+  font-size: 48px; /* Adjust icon size */
+  height: 100px;
+  width: 100px;
+  background-size: cover;
+  transition: transform 0.3s ease-in-out;
+}
+
+.vendor-service-card:hover .vendor-service-icon {
+  transform: rotate(360deg);
+}
+
+.vendor-service-content {
+  margin-top: 20px;
+}
+
+.vendor-service-title {
+  color: #fff;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.vendor-service-description {
+  color: #ccc;
+  font-size: 16px;
+  transition: color 0.3s ease-in-out;
+}
+
+.vendor-service-card:hover .vendor-service-description {
+  color: #fff;
+}

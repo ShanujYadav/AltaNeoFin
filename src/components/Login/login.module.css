@@ -1,0 +1,125 @@
+/* login.module.css */
+
+/* Login component styles */
+.loginContainer {
+  display: flex;
+  height: 100vh; /* Set height to full viewport height */
+  background: linear-gradient(135deg, #1a237e, #3949ab); 
+}
+
+.videoContainer,
+.loginFormContainer {
+  flex: 1; /* Each container takes half of the available space */
+  display: flex;
+  justify-content: center; /* Center items horizontally */
+  align-items: center; /* Center items vertically */
+  padding: 20px; /* Add padding as needed */
+  box-sizing: border-box; /* Include padding in width calculation */
+}
+
+.videoContainer {
+  background-color: #fffdfd; /* Set background color for video container */
+  position: sticky; /* Ensure video is positioned relative to this container */
+  top: 0;
+  height: 100vh;
+}
+
+.videoContainer video {
+  width: 100%; /* Ensure video covers entire container */
+  height: 100%;
+  object-fit: cover; /* Maintain aspect ratio and cover entire container */
+}
+
+.loginFormContainer {
+  background-color: #fff; /* Set background color for form container */
+  display: flex;
+  flex-direction: column; /* Align form elements vertically */
+  align-items: center; /* Center form elements horizontally */
+}
+
+.loginFormContainer h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.loginTypeButtons {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.loginTypeButtons button {
+  margin: 0 10px;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  transition: background-color 0.3s;
+  background-color: #3f51b5;
+  color: #fff;
+}
+
+.loginTypeButtons button.active {
+  background-color: #303f9f;
+}
+
+.loginForm {
+  width: 100%;
+  max-width: 300px; /* Limit form width for better alignment */
+}
+
+.loginForm input {
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 12px;
+  border: none;
+  border-radius: 25px;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #090a13;
+  font-size: 16px;
+  transition: box-shadow 0.3s;
+}
+
+.loginForm input:focus {
+  outline: none;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.loginForm button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 25px;
+  background-color: #303f9f;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.loginForm button:hover {
+  background-color: #1a237e;
+}
+
+/* Media queries for responsiveness */
+
+@media (max-width: 768px) {
+  .loginContainer {
+    flex-direction: column; /* Stack containers vertically on smaller screens */
+  }
+
+  .videoContainer,
+  .loginFormContainer {
+    flex: none; /* Reset flex value to prevent containers from occupying half of the screen */
+    width: 100%; /* Set width to full for smaller screens */
+    padding: 10px; /* Adjust padding for smaller screens */
+    text-align: center; /* Center content on smaller screens */
+  }
+
+  .loginFormContainer {
+    max-width: 100%; /* Allow form to take full width on smaller screens */
+  }
+}

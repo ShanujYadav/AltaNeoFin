@@ -1,0 +1,42 @@
+.privacy-policy-container {
+  /* Remove display: flex; to stack cards vertically */
+  overflow-x: auto; /* Enable horizontal scrolling */
+  padding: 20px;
+}
+
+.privacy-policy-card {
+  /* Remove flex properties */
+ 
+  margin-bottom: 20px; /* Add space between cards */
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+.privacy-policy-card:last-child {
+  margin-bottom: 0; /* Remove margin for the last card */
+}
+
+.privacy-policy-card:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.card-body {
+  padding: 20px;
+}
+
+.card-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.card-text {
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.card-text li {
+  margin-bottom: 10px;
+}

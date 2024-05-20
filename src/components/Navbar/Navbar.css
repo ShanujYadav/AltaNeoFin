@@ -1,0 +1,109 @@
+nav{
+  width:100%;
+  height:60px;
+  color:#4365e1;
+  padding:5px 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 10;
+}
+
+.logo{
+  width: 180px;
+}
+nav ul li{
+  display: inline-block;
+  list-style: none;
+  padding-top: 20px;
+  margin: 5px 20px;    
+  font-size: 16px;
+}
+nav ul li:hover {
+}
+
+.dark-nav{
+  background: #091372;
+  background: linear-gradient(to right, #2b3c62, #0a0d27);
+  
+}
+.container {
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #68667a;
+  min-width: 160px;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.dropdown-trigger:hover .dropdown-content {
+  display: block;
+}
+
+.show {
+  display: block;
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #091372;
+  min-width: 200px; /* Increase width for better spacing */
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  padding: 10px 0; /* Add padding for better spacing */
+  border-radius: 5px; /* Add border radius for smoother appearance */
+}
+
+.dropdown-content a {
+  display: block;
+  padding: 10px 20px; /* Adjust padding for better spacing */
+  color: #ffffff; /* Set text color */
+  text-decoration: none;
+  transition: background-color 0.3s; /* Add transition for smoother hover effect */
+}
+
+.dropdown-content a:hover {
+  background-color: #1b155d; /* Change background color on hover */
+}
+.menu-icon{
+  display: none;
+}
+
+/* media css
+ */
+
+ @media(max-width:840px){
+  nav{
+    padding: 15px 0; 
+  }
+  
+  nav ul{
+    position:fixed;
+    top:0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to right, #2b3c62, #0a0d27);
+    z-index: -1;
+    width: 200px;
+    padding-top: 70px;
+    transition: 0.5s;
+ }
+ nav ul li{
+  display: block;
+  margin: 25px 40px;
+ }
+ .menu-icon{
+  display: block;
+  width: 30px;
+  cursor: pointer;
+ }
+ .hide-mobile-menu{
+  right: -200px;
+ }
+}

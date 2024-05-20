@@ -1,0 +1,28 @@
+.terms-container {
+    margin-top: 20px; /* Add margin from the top */
+  
+  }
+  
+  h2 {
+    font-size: 24px; /* Adjust heading font size */
+    margin-top: 20px; /* Add margin from the top */
+    margin-bottom: 10px; /* Add margin from the bottom */
+  }
+  
+  ul {
+    list-style-type: none; /* Remove default bullet points */
+  }
+  
+  ul li {
+    margin-bottom: 10px; /* Add margin between list items */
+  }
+  .terms-card{
+    margin-bottom: 20px; 
+    border: 1px solid rgba(0, 0, 0, 0.125); /* Add border to mimic Bootstrap card border */
+    border-radius: 0.25rem; /* Add border radius to mimic Bootstrap card */
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  }
+  .card-body {
+    padding: 1.25rem; /* Add padding to mimic Bootstrap card body padding */
+  }
+  

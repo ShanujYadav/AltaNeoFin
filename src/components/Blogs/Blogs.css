@@ -1,0 +1,23 @@
+
+
+.blog-container{
+    max-width: 1145px;
+    width: 95%;
+    margin: 0 auto;
+    padding: 01rem 0;
+}
+
+*,*::after,*::before{
+    margin: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Montserrat','sans-serif';
+
+}
+
+    
+.centered-text {
+    text-align: center;
+  }
+  

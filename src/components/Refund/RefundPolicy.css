@@ -1,0 +1,11 @@
+.refund-policy-card {
+    margin-bottom: 20px; /* Adjust margin between cards as needed */
+    border: 1px solid rgba(0, 0, 0, 0.125); /* Add border to mimic Bootstrap card border */
+    border-radius: 0.25rem; /* Add border radius to mimic Bootstrap card */
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15); /* Add box shadow to mimic Bootstrap card shadow */
+  }
+  
+  .card-body {
+    padding: 1.25rem; /* Add padding to mimic Bootstrap card body padding */
+  }
+  

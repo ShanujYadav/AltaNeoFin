@@ -1,0 +1,21 @@
+.dual-pane-container {
+    display: flex;
+    flex-wrap: wrap; /* Allow the containers to wrap on smaller screens */
+    justify-content: space-between;
+    margin: 20px;
+  }
+  
+  .left-pane,
+  .right-pane {
+    width: calc(50% - 10px);
+    margin-bottom: 20px; /* Add some spacing between the panes */
+  }
+  
+  /* Adjust layout for smaller screens */
+  @media (max-width: 768px) {
+    .left-pane,
+    .right-pane {
+      width: 100%; /* Take up full width on smaller screens */
+    }
+  }
+  
