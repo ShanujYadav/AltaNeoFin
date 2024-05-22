@@ -26,23 +26,21 @@ import Dashboard from './components/Dashboard/Dashboard';
 import subBlog from './components/Blogs/subBlog';
 import TeamPage from './components/Team/TeamPage';
 import Admin from './components/Admin/Admin';
-
 import 'bootstrap/dist/css/bootstrap.min.css';
-
 import Faqs from './components/faq\'s/Faqs';
+
 
 const App = () => {
   return (
     <Router>
-      <div>
         <Switch>
           {/* Routes for pages without Navbar */}
           <Route path={['/login', '/register']} component={Login} />
+          {/* <Route path={['/Dashboard']} component={Navigation} /> */}
           <Route path={['/Dashboard']} component={Dashboard} />
           <Route path={['/admin']} component={Admin} />
 
           {/* Routes for pages with Navbar */}
-
           <Route>
             <Navbar />
             <Switch>
@@ -55,12 +53,11 @@ const App = () => {
               <Route exact path='/Refundpolicy' component={RefundPolicy} />
               <Route exact path='/Terms' component={Terms} />
               <Route exact path='/Blogs' component={Blogs} />
-              <Route exact path='/blog/:id' component={subBlog} />
+              {/* <Route exact path='/blog/:id' component={subBlog} /> */}
               <Route exact path='/TeamPage' component={TeamPage} />
             </Switch>
           </Route>
         </Switch>
-      </div>
     </Router>
   );
 };
