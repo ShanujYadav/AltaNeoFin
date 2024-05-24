@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -7,65 +7,233 @@ import ProgressBar from 'react-bootstrap/ProgressBar';
 import 'react-responsive-modal/styles.css';
 import { Modal } from 'react-responsive-modal';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { useHistory } from 'react-router-dom';
 
-// import { useHistory } from 'react-router-dom';
-
-import {useNavigate} from 'react-router-dom';
-
+let baseUrl = import.meta.env.VITE_SOME_KEY
 
 const VendorFinancingForm = () => {
-  // const history = useHistory()
-  const navigate = useNavigate();
-
-  const [open, setOpen] = useState(true)
-  const onOpenModal = () => setOpen(true);
-
-  const onCloseModal = () => {
-    console.log('dkjj');
-    setOpen(false);
-    // history.push("/");
-  }
-
+  const history = useHistory()
   const dispatch = useDispatch()
+  const profileDetails = useSelector((state) => state.profile)
+  const [openSuccessModal, setOpenSuccessModal] = useState(false)
   const [step, setStep] = useState(1)
   const [date, setDate] = useState(Date.now())
+  let uuid = profileDetails.userInfo.uuid
+
+  const [showError, setShowError] = useState({
+    annualTurnover: false,
+    panNo: false,
+    name: false,
+    email: false,
+    dob: false,
+    gender: false,
+    pinCode: false,
+
+    gstRegistered: false,
+    gstNo: false,
+    businessType: false,
+    businessAge: false,
+    businessPinCode: false,
+    yearlySales: false,
+
+    bankStatement: false,
+    auditedFinancials: false,
+    purchaseOrder: false,
+    copyOfAgreement: false,
+  })
 
   const [data, setData] = useState({
-    fname: '',
-    lname: '',
-    turnOver: '',
-    mobile: '',
+    annualTurnover: '',
     panNo: "",
-    gender: "",
+    name: "",
+    email: '',
+
     dob: date,
+    gender: "",
+    pinCode: "",
+
+    gstRegistered: '',
+    gstNo: '',
+    businessType: '',
+    businessAge: '',
+    businessPinCode: '',
+    yearlySales: "",
+
+    bankStatement: "",
+    auditedFinancials: "",
+    purchaseOrder: "",
+    copyOfAgreement: "",
   })
 
 
+  const onChangeHandelar = (value, name) => {
+    setShowError(false)
+    setData({ ...data, [name]: value })
+  }
 
 
-  const onFetchDetails = () => {
-    // dispatch(getUserDetails(data))
-    // navigate('/');
 
-    // setStep(2)
+  const onFetchDetails = async () => {
+    if (!data.annualTurnover) {
+      setShowError({ ...showError, annualTurnover: true })
+      return
+    }
+    if (!data.panNo) {
+      setShowError({ ...showError, panNo: true })
+      return
+    }
+    if (!data.name) {
+      setShowError({ ...showError, name: true })
+      return
+    }
+    if (!data.email) {
+      setShowError({ ...showError, email: true })
+      return
+    }
+    else {
+      let body = {
+        turnover: data.annualTurnover,
+        panNo: data.panNo,
+        name: data.name,
+        email: data.email,
+      }
+      const response = await fetch(`${baseUrl}/saveUserDetails?uuid=${uuid}`, {
+        method: 'POST',
+        body: JSON.stringify(body),
+        headers: { 'Content-type': 'application/json' }
+      })
+      const res = await response.json()
+      console.log('res---', res)
+      if (res.statusCode === 200) {
+        setStep(2)
+      }
+    }
   }
 
   const onSubmitSecondForm = () => {
     setStep(3)
   }
-  const onSubmitThirdForm = () => {
-    setStep(4)
+
+  const onSubmitThirdForm = async () => {
+    if (!data.gstRegistered) {
+      setShowError({ ...showError, gstRegistered: true })
+      return
+    }
+    if (!data.gstNo) {
+      setShowError({ ...showError, gstNo: true })
+      return
+    }
+    if (!data.businessType) {
+      setShowError({ ...showError, businessType: true })
+      return
+    }
+    if (!data.businessAge) {
+      setShowError({ ...showError, businessAge: true })
+      return
+    }
+    if (!data.businessPinCode) {
+      setShowError({ ...showError, businessPinCode: true })
+      return
+    }
+    if (!data.yearlySales) {
+      setShowError({ ...showError, yearlySales: true })
+      return
+    }
+    else {
+      let gstReg
+      if (data.gstRegistered == 'true') {
+        gstReg = true
+      }
+      else if (data.gstRegistered == 'false') {
+        gstReg = false
+      }
+      let body = {
+        gstRegistered: gstReg,
+        businessAge: Number(data.businessAge),
+        yearlySales: Number(data.yearlySales),
+        gstNumber: data.gstNo.toString(),
+        businessType: "Retail",
+        businessPincode: data.businessPinCode.toString(),
+      }
+      console.log('body---', body)
+      const response = await fetch(`${baseUrl}/createBusinessVerification?uuid=${uuid}`, {
+        method: 'POST',
+        body: JSON.stringify(body),
+        headers: { 'Content-type': 'application/json' }
+      })
+      const res = await response.json()
+      console.log('res---', res)
+      if (res.statusCode === 200) {
+        setStep(4)
+      }
+    }
   }
 
-  const onClickSubmit = () => {
-    console.log('submit ');
-    setStep(5)
+
+
+  const [copyOfAgreementFile, setCopyOfAgreementFile] = useState(null);
+  const [purchaseOrderFile, setPurchaseOrderFile] = useState(null);
+  const [auditedFinancialsFile, setAuditedFinancialsFile] = useState(null);
+  const [bankStatementFile, setBankStatementFile] = useState(null);
+
+
+  const uploadFiles = (event) => {
+    setFile(event.target.files[0])
   }
+
+
+
+  const onClickSubmit = async (e) => {
+    // if (!data.bankStatement && !data.bankStatement == 'bankStatement.pdf') {
+    //   setShowError({ ...showError, bankStatement: true })
+    // }
+    // if (!data.finincialStatement && !data.finincialStatement == 'finincialStatement.pdf') {
+    //   setShowError({ ...showError, finincialStatement: true })
+    // }
+    // if (!data.purchesAgreement && !data.purchesAgreement == 'purchesAgreement.pdf') {
+    //   setShowError({ ...showError, purchesAgreement: true })
+    // } else {
+    const formData = new FormData()
+    formData.append('copyOfAgreement', copyOfAgreementFile);
+    formData.append('purchaseOrder', purchaseOrderFile);
+    formData.append('auditedFinancials', auditedFinancialsFile);
+    formData.append('bankStatement', bankStatementFile);
+
+
+
+    console.log([...formData])
+    console.log('file---', copyOfAgreementFile)
+
+    const response = await fetch(`${baseUrl}/documents/upload?uuid=${uuid}`, {
+      method: "POST",
+      body: formData,
+      headers: {
+        'Cache-Control': 'no-cache',
+        'Content-Type': 'multipart/form-data',  // Boundary is automatically calculated
+        'Accept': '*/*',
+        'Accept-Encoding': 'gzip, deflate, br',
+        'Connection': 'keep-alive',
+        'Content-Type': `multipart/form-data; boundary=9999999999`
+      }
+    });
+
+    const res = await response.json();
+    console.log('res---', res);
+
+  }
+
+
+  const onCloseSuccessModal = () => {
+    history.push("/");
+    setOpen(false)
+  }
+
+
+
 
   return (
     <>
-      <div class="bg-white shadow rounded-lg p-4 sm:p-6 xl:p-8  2xl:col-span-2">
-
+      <div class="bg-white min-h-[80vh] shadow rounded-lg p-4 sm:p-6 xl:p-8  2xl:col-span-2">
         {step == 1 && (<>
           <ProgressBar now={0} />
           <div class="isolate bg-white px-6 lg:px-8">
@@ -76,48 +244,61 @@ const VendorFinancingForm = () => {
             <div class="ml-3 mt-5 max-w-2xl sm:mt-20">
               <div class="grid grid-cols-1 gap-x-8 gap-y-10 sm:grid-cols-2">
                 <div >
-                  <label for="first-name" class="block text-sm font-semibold leading-6 text-black">Annual Turnover</label>
+                  <label for="annual-Turnover" class="block text-sm font-semibold leading-6 text-black">ANNUAL TURNOVER</label>
                   <div class="mt-2.5">
                     <select
-                      className='form-select  text-gray-400 shadow-sm placeholder:text-gray-400'
-                    // className={showError.category ? 'form-select is-invalid' : 'form-select'}
-                    // onChange={(e) =>
-                    //   setData({ ...data, category: e.target.value })
-                    // }
-                    // value={data.category}
+                      // className='form-select  text-gray-400 shadow-sm placeholder:text-gray-400'
+                      // {`${colSpan ? 'col-span-2' : ''} ${rowSpan ? 'row-span-2' : ''} bg-white p-3 rounded`}
+                      className={`${showError.annualTurnover ? 'form-select is-invalid' : 'form-select'} text-gray-600 shadow-sm placeholder:text-gray-400`}
+                      value={data.annualTurnover}
+                      onChange={(e) => onChangeHandelar(e.target.value, 'annualTurnover')}
+                      name="annualTurnover"
                     >
-                      <option value="">Annual Turnover</option>
-                      <option value="">1 cr-50 cr</option>
-                      <option value="">50-250 cr</option>
-                      <option value="">250-500 cr</option>
-                      <option value="">500-1000 cr</option>
-                      <option value="">1000 cr & above</option>
+                      <option value="">Select Annual Turnover</option>
+                      <option value="1 cr-50 cr">1 cr-50 cr</option>
+                      <option value="50-250 cr">50-250 cr</option>
+                      <option value="250-500 cr">250-500 cr</option>
+                      <option value="500-1000 cr">500-1000 cr</option>
+                      <option value="1000 cr & above">1000 cr & above</option>
                     </select>
                   </div>
                 </div>
                 <div >
-                  <label for="last-name" class="block text-sm font-semibold leading-6 text-black">PAN CARD</label>
+                  <label for="pan-card" class="block text-sm font-semibold leading-6 text-black">PAN CARD</label>
                   <div class="mt-2.5">
-                    <input type="text" className='form-control text-muted shadow-sm placeholder:text-gray-400' placeholder='Enter Pan No.' />
+                    <input
+                      type="text"
+                      placeholder='Enter Pan No.'
+                      className={`${showError.panNo ? 'form-control is-invalid' : 'form-control'} text-gray-600 shadow-sm placeholder:text-gray-400`}
+                      value={data.panNo}
+                      onChange={(e) => onChangeHandelar(e.target.value, 'panNo')}
+                      name="panNo"
+                    />
                   </div>
                 </div>
                 <div>
-                  <label for="first-name" class="block text-sm font-semibold leading-6 text-black">PIN CODE</label>
+                  <label for="full-name" class="block text-sm font-semibold leading-6 text-black">FULL NAME</label>
                   <div class="mt-2.5">
-                    <input type="text" className='form-control text-muted shadow-sm placeholder:text-gray-400' placeholder='Enter First Name' />
+                    <input
+                      type="text"
+                      placeholder='Enter Full Name'
+                      className={`${showError.name ? 'form-control is-invalid' : 'form-control'} text-gray-600 shadow-sm placeholder:text-gray-400`}
+                      value={data.name}
+                      onChange={(e) => onChangeHandelar(e.target.value, 'name')}
+                      name="name"
+                    />
                   </div>
                 </div>
-
                 <div>
-                  <label for="last-name" class="block text-sm font-semibold leading-6 text-black">LAST NAME</label>
+                  <label for="email" class="block text-sm font-semibold leading-6 text-black">EMAIL</label>
                   <div class="mt-2.5">
-                    <input type="text" className='form-control text-muted shadow-sm placeholder:text-gray-400' placeholder='Enter Last Name' />
-                  </div>
-                </div>
-                <div>
-                  <label for="first-name" class="block text-sm font-semibold leading-6 text-black">EMAIL</label>
-                  <div class="mt-2.5">
-                    <input type="email" className='form-control text-muted shadow-sm placeholder:text-gray-400' placeholder='Enter Email' />
+                    <input type="email"
+                      placeholder='Enter Email'
+                      className={`${showError.email ? 'form-control is-invalid' : 'form-control'} text-gray-600 shadow-sm placeholder:text-gray-400`}
+                      value={data.email}
+                      onChange={(e) => onChangeHandelar(e.target.value, 'email')}
+                      name="email"
+                    />
                   </div>
                 </div>
 
@@ -142,7 +323,6 @@ const VendorFinancingForm = () => {
           </div>
         </>
         )}
-
 
         {step == 2 && (<>
           <ProgressBar now={25} />
@@ -224,23 +404,28 @@ const VendorFinancingForm = () => {
                   <label for="first-name" class="block text-sm font-semibold leading-6 text-black">GST REGISTERED</label>
                   <div class="mt-2.5">
                     <select
-                      className='form-select  text-gray-400 shadow-sm placeholder:text-gray-400'
-                    // className={showError.category ? 'form-select is-invalid' : 'form-select'}
-                    // onChange={(e) =>
-                    //   setData({ ...data, category: e.target.value })
-                    // }
-                    // value={data.category}
+                      className={`${showError.gstRegistered ? 'form-select is-invalid' : 'form-select'} text-gray-600 shadow-sm placeholder:text-gray-400`}
+                      value={data.gstRegistered}
+                      onChange={(e) => onChangeHandelar(e.target.value, 'gstRegistered')}
+                      name="gstRegistered"
                     >
-                      <option value="">GST Reg. </option>
-                      <option value="">Yes</option>
-                      <option value="">No</option>
+                      <option value="">GST Reg.</option>
+                      <option value="true">Yes</option>
+                      <option value="false">No</option>
                     </select>
                   </div>
                 </div>
                 <div>
                   <label for="first-name" class="block text-sm font-semibold leading-6 text-black">GST No.</label>
                   <div class="mt-2.5">
-                    <input type="text" className='form-control text-muted shadow-sm placeholder:text-gray-400' placeholder='Enter GST No.' />
+                    <input
+                      type="text"
+                      placeholder='Enter GST No.'
+                      className={`${showError.gstNo ? 'form-control is-invalid' : 'form-control'} text-gray-600 shadow-sm placeholder:text-gray-400`}
+                      value={data.gstNo}
+                      onChange={(e) => onChangeHandelar(e.target.value, 'gstNo')}
+                      name="gstNo"
+                    />
                   </div>
                 </div>
 
@@ -248,39 +433,57 @@ const VendorFinancingForm = () => {
                   <label for="first-name" class="block text-sm font-semibold leading-6 text-black">BUSINESS TYPE</label>
                   <div class="mt-2.5">
                     <select
-                      className='form-select  text-gray-400 shadow-sm placeholder:text-gray-400'
-                    // className={showError.category ? 'form-select is-invalid' : 'form-select'}
-                    // onChange={(e) =>
-                    //   setData({ ...data, category: e.target.value })
-                    // }
-                    // value={data.category}
+                      className={`${showError.businessType ? 'form-select is-invalid' : 'form-select'} text-gray-600 shadow-sm placeholder:text-gray-400`}
+                      value={data.businessType}
+                      onChange={(e) => onChangeHandelar(e.target.value, 'businessType')}
+                      name="businessType"
                     >
                       <option value="">Select Type</option>
-                      <option value="">Partner Firm</option>
-                      <option value="">Proprietorship</option>
-                      <option value="">Pvt. Ltd. Company</option>
+                      <option value="Partner Firm">Partner Firm</option>
+                      <option value="Proprietorship">Proprietorship</option>
+                      <option value="Pvt. Ltd. Company">Pvt. Ltd. Company</option>
                     </select>
                   </div>
                 </div>
                 <div >
                   <label for="last-name" class="block text-sm font-semibold leading-6 text-black">BUSINESS AGE</label>
                   <div class="mt-2.5">
-                    <input type="text" className='form-control text-muted shadow-sm placeholder:text-gray-400' placeholder='Enter Business Age' />
+                    <input
+                      type="text"
+                      className={`${showError.businessAge ? 'form-control is-invalid' : 'form-control'} text-gray-600 shadow-sm placeholder:text-gray-400`}
+                      value={data.businessAge}
+                      onChange={(e) => onChangeHandelar(e.target.value, 'businessAge')}
+                      name="businessAge"
+                      placeholder="Enter business Age"
+                    />
                   </div>
                 </div>
                 <div>
                   <label for="first-name" class="block text-sm font-semibold leading-6 text-black">BUSINESS PINCODE</label>
                   <div class="mt-2.5">
-                    <input type="text" className='form-control text-muted shadow-sm placeholder:text-gray-400' placeholder='Enter Business PinCode ' />
+                    <input
+                      type="text"
+                      placeholder='Enter Business PinCode'
+                      className={`${showError.businessPinCode ? 'form-control is-invalid' : 'form-control'} text-gray-600 shadow-sm placeholder:text-gray-400`}
+                      value={data.businessPinCode}
+                      onChange={(e) => onChangeHandelar(e.target.value, 'businessPinCode')}
+                      name="businessPinCode"
+                    />
                   </div>
                 </div>
                 <div>
                   <label for="first-name" class="block text-sm font-semibold leading-6 text-black">YEARLY SALES</label>
                   <div class="mt-2.5">
-                    <input type="text" className='form-control text-muted shadow-sm placeholder:text-gray-400' placeholder='Enter Yearly Sales ' />
+                    <input
+                      type="text"
+                      placeholder='Enter Yearly Sales'
+                      className={`${showError.yearlySales ? 'form-control is-invalid' : 'form-control'} text-gray-600 shadow-sm placeholder:text-gray-400`}
+                      value={data.yearlySales}
+                      onChange={(e) => onChangeHandelar(e.target.value, 'yearlySales')}
+                      name="yearlySales"
+                    />
                   </div>
                 </div>
-
               </div>
 
               <div class="flex flex-row space-x-auto mt-5 items-center justify-between min-w-screen sm:mt-10">
@@ -304,7 +507,6 @@ const VendorFinancingForm = () => {
         </>
         )}
 
-
         {step == 4 && (<>
           <ProgressBar now={100} />
           <div class="isolate bg-white px-6 lg:px-8">
@@ -313,23 +515,60 @@ const VendorFinancingForm = () => {
                 <div >
                   <label for="first-name" class="block text-sm font-semibold leading-6 text-black">Bank Statement (Past 12 Month's) </label>
                   <div class="mt-2.5">
-                    <input type="file" id="myFile" name="filename" className='form-control text-muted shadow-sm placeholder:text-gray-400' />
+                    <input type="file"
+                      id="myFile"
+                      className={`${showError.bankStatement ? 'form-control is-invalid' : 'form-control'} text-gray-600 shadow-sm placeholder:text-gray-400`}
+                      // value={file}
+                      // onChange={(e) => onChangeHandelar(e.target.value, 'bankStatement')}
+
+                      onChange={(e) => setBankStatementFile(e.target.files[0])}
+                      name="bankStatement"
+                    />
                     <span className='text-xs text-red-600'>* File must be Named as Bank Statement.pdf</span>
                   </div>
                 </div>
                 <div>
-                  <label for="first-name" class="block text-sm font-semibold leading-6 text-black">Finincial Statement (Audited Past 3 Year's)</label>
+                  <label for="first-name" class="block text-sm font-semibold leading-6 text-black">Audit Finincial</label>
                   <div class="mt-2.5">
-                    <input type="file" id="myFile" name="filename" className='form-control text-muted shadow-sm placeholder:text-gray-400' />
-                    <span className='text-xs text-red-600'>* File must be Named as Finincial Statement.pdf</span>
+                    <input type="file"
+                      id="myFile"
+                      className={`${showError.auditedFinancials ? 'form-control is-invalid' : 'form-control'} text-gray-600 shadow-sm placeholder:text-gray-400`}
+                      value={data.auditedFinancials}
+                      // onChange={(e) => onChangeHandelar(e.target.value, 'auditedFinancials')}
+                      onChange={(e) => setAuditedFinancialsFile(e.target.files[0])}
+                      name="auditedFinancials"
+                    />
+                    <span className='text-xs text-red-600'>* File must be Named as auditedFinancials.pdf</span>
                   </div>
                 </div>
-
                 <div>
-                  <label for="first-name" class="block text-sm font-semibold leading-6 text-black">Purches Agreement</label>
+                  <label for="first-name" class="block text-sm font-semibold leading-6 text-black">Purches Order</label>
                   <div class="mt-2.5">
-                    <input type="file" id="myFile" name="filename" className='form-control text-muted shadow-sm placeholder:text-gray-400' />
-                    <span className='text-xs text-red-600'>* File must be Named as Purches Agreement.pdf</span>
+                    <input
+                      type="file"
+                      id="myFile"
+                      className={`${showError.purchaseOrder ? 'form-control is-invalid' : 'form-control'} text-gray-600 shadow-sm placeholder:text-gray-400`}
+                      value={data.purchaseOrder}
+                      // onChange={(e) => onChangeHandelar(e.target.value, 'purchaseOrder')}
+                      onChange={(e) => setPurchaseOrderFile(e.target.files[0])}
+                      name="purchaseOrder"
+                    />
+                    <span className='text-xs text-red-600'>* File must be Named as purchaseOrder.pdf</span>
+                  </div>
+                </div>
+                <div>
+                  <label for="first-name" class="block text-sm font-semibold leading-6 text-black">Copy Of Agreement</label>
+                  <div class="mt-2.5">
+                    <input
+                      type="file"
+                      id="file"
+                      className={`${showError.copyOfAgreement ? 'form-control is-invalid' : 'form-control'} text-gray-600 shadow-sm placeholder:text-gray-400`}
+                      value={data.copyOfAgreement}
+                      // onChange={(e) => onChangeHandelar(e.target.value, 'copyOfAgreement')}
+                      onChange={(e) => setCopyOfAgreementFile(e.target.files[0])}
+                      name="copyOfAgreement"
+                    />
+                    <span className='text-xs text-red-600'>* File must be Named as agreement.pdf</span>
                   </div>
                 </div>
               </div>
@@ -354,18 +593,29 @@ const VendorFinancingForm = () => {
           </div>
         </>
         )}
-        {step == 5 && (
-          <div>
-            <Modal open={open} onClose={onCloseModal} center>
-              <h2>Simple centered modal</h2>
-              <p>
-                ipsum dolor sit amet, consectetur adipiscing elit. Nullam
-                pulvinar risus non risus hendrerit venenatis. Pellentesque sit amet
-                hendrerit risus, sed porttitor quam.
-              </p>
-            </Modal>
-          </div>
-        )}
+
+        <div>
+          <Modal open={openSuccessModal} onClose={onCloseSuccessModal} center classNames=''>
+            <div class="text-center p-6 bg-white rounded-lg shadow-md">
+              <div class="flex items-center justify-center mb-4">
+                <svg class="w-24 h-24 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2l4-4m5 4a9 9 0 1 1-18 0a9 9 0 0 1 18 0z"></path>
+                </svg>
+              </div>
+              <div>
+                <h1 class="text-2xl font-bold text-gray-800">Thank you!</h1>
+                <p class="text-gray-600 mb-4">Your submission has been sent.</p>
+              </div>
+              <button class="bg-blue-500 text-white px-4 py-0.5 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+                onClick={onCloseSuccessModal}
+              >
+                OK
+              </button>
+            </div>
+
+          </Modal>
+        </div>
+
       </div>
     </>
   )

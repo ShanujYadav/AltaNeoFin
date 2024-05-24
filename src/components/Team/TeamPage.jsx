@@ -2,16 +2,19 @@ import React from 'react';
 import './TeamPage.css';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import ceoImg from './img/ceoImg.png'
-import ctaImg from './img/ctaImg.png'
-import dirImg from './img/directorImg.png'
-import dhiren from './img/dhiren.png'
-import shanuj from './img/shanuj.png'
-import himanshu from './img/himanshu.png'
+import ceoImg from '../../assets/img/ceoImg.png'
+import ctaImg from '../../assets/img/ctaImg.png'
+import dirImg from '../../assets/img/directorImg.png'
+
+import dhiren from '../../assets/img/dhiren.png'
+import shanuj from '../../assets/img/shanuj.png'
+import himanshu from '../../assets/img/himanshu.png'
+import ayushi from '../../assets/img/ayushi.png'
+import prerna from '../../assets/img/prerna.png'
 
 
 const TeamPage = () => {
-
+  
   const teamMembers = [
     {
       name: 'Meenakshi Pawar',
@@ -44,11 +47,23 @@ const TeamPage = () => {
       description: 'Excellent in building user interfaces using React, a popular JavaScript library for building interactive UI components. You leverage React component-based architecture to create reusable and modular UI elements, enhancing code maintainability and scalability.'
     },
     {
+      name: 'Ayushi Bansal',
+      role: 'Digital Marketing Executive',
+      photo: ayushi,
+      description: 'A dynamic digital marketing expert with over two years of experience in creating impactful marketing strategies. I have Completed MBA with a dual specialization in Marketing and Finance, equipping with a robust understanding of market analytics and financial insights. I have successfully executed a range of digital campaigns, from social media marketing to content creation and email marketing.'
+    },
+    {
+      name: 'Prerna Goyal',
+      role: 'Finance Intern',
+      photo: prerna,
+      description: 'As a Finance Intern, I have the opportunity to learn and grow my career in the finance field. I am pursuing MBA with a dual specialization in the Finance and Marketing domain. My passion for finance, coupled with marketing acumen, positions me well for a promising career in the fintech industry.'
+    },
+    {
       name: 'Himanshu Narwal',
       role: 'Software Intern',
       photo: himanshu,
       description: 'As an intern, i have the opportunity to gain valuable skills, practical experience, and industry exposure that will serve as a solid foundation for my career as a software developer.'
-    },
+    }
   ]
   
   return (

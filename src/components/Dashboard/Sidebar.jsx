@@ -7,38 +7,39 @@ const Sidebar = (props) => {
 
   const onSelectType = (key) => {
     if (key == 1) {
-      props.setSelectedService('Invoice Discounting')
+      props.setSelectedService('Vendor Financing')
+    }
+    if (key == 2) {
+      props.setSelectedService('Vendor Financing')
     }
     if (key == 3) {
-      props.setSelectedService('Vendor Financing')
+      props.setSelectedService('Vendor')
     }
     // else {
     //   props.setItem(null)
     // }
-
   }
 
   return (
-    <aside id="logo-sidebar" aria-label="Sidebar" className='fixed top-0 left-0 z-40 w-64 h-screen pt-20 transition-transform -translate-x-full bg-white border-r border-gray-200 sm:translate-x-0' >
+    <aside id="logo-sidebar" aria-label="Sidebar" className='fixed min-h-[80vh] top-0 left-0 z-40 w-64 h-screen pt-20 transition-transform -translate-x-full bg-white border-r border-gray-200 sm:translate-x-0' >
       <div className='h-full px-3 pb-4 overflow-y-auto bg-white'>
         <ul className="space-y-2 font-medium">
-          <Menu theme="light" mode="inline" defaultSelectedKeys={['3']} className="menu-bar" onClick={({ key }) => onSelectType(key)} items={[
+          <Menu theme="light" mode="inline" defaultSelectedKeys={['1']} className="menu-bar" onClick={({ key }) => onSelectType(key)} items={[
+            // {
+            //   key: '1',
+            //   icon: <UserOutlined />,
+            //   label: 'Invoice Discounting',
+            // },
+            // {
+            //   key: '2',
+            //   icon: <OrderedListOutlined />,
+            //   label: 'Bonds',
+            // },
             {
               key: '1',
-              icon: <UserOutlined />,
-              label: 'Invoice Discounting',
-            },
-            {
-              key: '2',
-              icon: <OrderedListOutlined />,
-              label: 'Bonds',
-            },
-            {
-              key: '3',
               icon: <ClockCircleOutlined />,
               label: 'Vendor Financing',
             }
-
           ]} />
 
 

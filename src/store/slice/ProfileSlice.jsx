@@ -1,20 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getUserDetails } from "../action/ProfileAction";
+import { getLogin } from "../action/ProfileAction";
 
 
 const initialState = {
     userInfo:{
-        name:'' ,
-        panNo: '',
-        annualTurnover: '',
-        mobile: '',
+        phone: '',
+        uuid: '',
     }
 }
 
 export const profileSlice = createSlice({
     name: 'profile',
     initialState,
-
     reducers: {
         increment: (state) => {
             state.value += 1
@@ -28,8 +25,10 @@ export const profileSlice = createSlice({
     },
 
     extraReducers: (builder) => {
-        builder.addCase(getUserDetails.fulfilled, (state, action) => {
-            state.userInfo.name=action.payload
+        builder.addCase(getLogin.fulfilled, (state, action) => {
+            console.log('action.payload---',action.payload)
+            state.userInfo.phone=action.payload.mobileNumber
+            state.userInfo.uuid=action.payload.uuid
         })
     }
 })

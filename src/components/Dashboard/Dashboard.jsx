@@ -8,14 +8,10 @@ import RightContent from './RightContent';
 import InvoiceDescounting from './Invoice/InvoiceDescounting';
 import LoanForm1 from './VendorFinancing/VendorFinancingForm';
 import 'react-responsive-modal/styles.css';
-import { Modal } from 'react-responsive-modal';
 
 const Dashboard = () => {
   const [open, setOpen] = useState(false);
-
-  const onOpenModal = () => setOpen(true);
-  const onCloseModal = () => setOpen(false);
-  const [selectedService, setSelectedService] = useState('Invoice Discounting')
+  const [selectedService, setSelectedService] = useState('Vendor Financing')
 
   //   useEffect(() => {
   //     initFlowbite
@@ -28,18 +24,15 @@ const Dashboard = () => {
       <DashboardNav />
       <div class="flex overflow-hidden bg-white pt-16">
         <Sidebar selectedService={selectedService} setSelectedService={setSelectedService} />
-        <div class="bg-gray-900 opacity-50 hidden fixed inset-0 z-10" id="sidebarBackdrop"></div>
         <div id="main-content" class="h-full w-full bg-gray-50 relative overflow-y-auto lg:ml-64">
           <main >
-
             <div class="w-full text-end">
               <a href="/" className='cursor-pointer hover:text-blue-500 text-sm text-gray-500'>Home </a>
               <span className='mx-1'>/</span>
               <span className='text-gray-500 text-sm'> {selectedService}</span>
             </div>
-
             <div class="pt-4 px-4">
-              <div class="w-full grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 gap-4">
+              <div class="w-full grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 gap-3">
                 {selectedService === 'Invoice Discounting' ? (
                   <InvoiceDescounting />
                 ) : selectedService === 'Vendor Financing' ? (
@@ -48,11 +41,11 @@ const Dashboard = () => {
                   <>
                     <InvoiceDescounting />
                   </>
-                )}
+                )} 
                 <RightContent />
               </div>
 
-              <div class="mt-4 w-full grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+              {/* <div class="mt-4 w-full grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
                 <div class="bg-white shadow rounded-lg p-4 sm:p-6 xl:p-8 ">
                   <div class="flex items-center">
                     <div class="flex-shrink-0">
@@ -95,7 +88,7 @@ const Dashboard = () => {
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> */}
 
               {/* <BottomTables/> */}
             </div>
@@ -104,7 +97,7 @@ const Dashboard = () => {
       </div>
 
       <div>
-      {/* <button onClick={onOpenModal}>Open modal</button>
+        {/* <button onClick={onOpenModal}>Open modal</button>
       <Modal open={open} onClose={onCloseModal} center>
         <h2>Simple centered modal</h2>
         <p>
@@ -113,7 +106,7 @@ const Dashboard = () => {
           hendrerit risus, sed porttitor quam.
         </p>
       </Modal> */}
-    </div>
+      </div>
     </div>
   )
 
