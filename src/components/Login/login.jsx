@@ -35,7 +35,6 @@ const Login = () => {
     setData({ ...data, otp: enteredOtp })
   }
 
-
   const onSendOTP = async (e) => {
     e.preventDefault()
     if (data.mobile.length < 10) {
@@ -65,17 +64,18 @@ const Login = () => {
         method: 'POST',
         headers: { 'Content-type': 'application/json' }
       })
-      const res = await response.json();
+      const res = await response.json()
       if (res.statusCode === 200) {
-        history.push("/Dashboard")
         dispatch(getLogin(res))
+        // history.push("/Dashboard")
+        let id=res.uuid
+        history.push(`/Dashboard/?agentId=${id}`)
       }
       else{
         setShowError({ ...showError, warning: true })
       }
     }
   }
-
 
   return (
     <div className={styles.loginContainer}>
@@ -116,7 +116,6 @@ const Login = () => {
               </div>
             )}
             <button type="submit">Verify OTP</button>
-           
           </form>
         )}
       </div>

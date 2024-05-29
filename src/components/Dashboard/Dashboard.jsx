@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { initFlowbite } from 'flowbite';
 import Sidebar from './Sidebar';
 import './Dashboard.css';
@@ -8,16 +8,32 @@ import RightContent from './RightContent';
 import InvoiceDescounting from './Invoice/InvoiceDescounting';
 import LoanForm1 from './VendorFinancing/VendorFinancingForm';
 import 'react-responsive-modal/styles.css';
+import { useHistory, useLocation } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import Profile from './profile/Profile';
+import CompletedKyc from './VendorFinancing/CompletedKyc';
+
 
 const Dashboard = () => {
   const [open, setOpen] = useState(false);
+  const [completeKyc, setcompleteKyc] = useState(true)
   const [selectedService, setSelectedService] = useState('Vendor Financing')
+  const history = useHistory()
+  const location = useLocation()
+  const queryParams = new URLSearchParams(location.search)
+  let agentId = queryParams.get("agentId")
+  const profileDetails = useSelector((state) => state.profile)
+  // let uuid = profileDetails.userInfo.uuid
+  let uuid = 123456
 
   //   useEffect(() => {
-  //     initFlowbite
-  //  }, []);
+  //     console.log('agentId----',agentId)
+  //     console.log('uuid----',uuid)
+  //     if(agentId!=uuid){
+  //       history.push('/')
+  //     }
+  //  }, [])
 
-  // console.log("selectedService----", selectedService)
 
   return (
     <div>
@@ -27,74 +43,38 @@ const Dashboard = () => {
         <div id="main-content" class="h-full w-full bg-gray-50 relative overflow-y-auto lg:ml-64">
           <main >
             <div class="w-full text-end">
-              <a href="/" className='cursor-pointer hover:text-blue-500 text-sm text-gray-500'>Home </a>
+              <a href="/" className='cursor-pointer hover:text-blue-500 text-sm text-gray-500'>Home</a>
               <span className='mx-1'>/</span>
-              <span className='text-gray-500 text-sm'> {selectedService}</span>
+              <span className='text-gray-500 text-sm pr-3'>{selectedService}</span>
             </div>
-            <div class="pt-4 px-4">
-              <div class="w-full grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 gap-3">
-                {selectedService === 'Invoice Discounting' ? (
-                  <InvoiceDescounting />
-                ) : selectedService === 'Vendor Financing' ? (
-                  <LoanForm1 />
-                ) : (
-                  <>
-                    <InvoiceDescounting />
-                  </>
-                )} 
-                <RightContent />
-              </div>
+            <div class="px-3 pt-2">
+              {selectedService == 'Vendor Financing' && !completeKyc? (
+                <LoanForm1 />
+              ) :selectedService=='Vendor Financing' && completeKyc ?(
+                <CompletedKyc/>
+              ): selectedService == 'Profile' ? (
+                <Profile />
+              ) : (
+                <InvoiceDescounting />
+              )
 
-              {/* <div class="mt-4 w-full grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
-                <div class="bg-white shadow rounded-lg p-4 sm:p-6 xl:p-8 ">
-                  <div class="flex items-center">
-                    <div class="flex-shrink-0">
-                      <span class="text-2xl sm:text-3xl leading-none font-bold text-gray-900">2,340</span>
-                      <h3 class="text-base font-normal text-gray-500">New products this week</h3>
-                    </div>
-                    <div class="ml-5 w-0 flex items-center justify-end flex-1 text-green-500 text-base font-bold">
-                      14.6%
-                      <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" d="M5.293 7.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 5.414V17a1 1 0 11-2 0V5.414L6.707 7.707a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
-                      </svg>
-                    </div>
-                  </div>
-                </div>
-                <div class="bg-white shadow rounded-lg p-4 sm:p-6 xl:p-8 ">
-                  <div class="flex items-center">
-                    <div class="flex-shrink-0">
-                      <span class="text-2xl sm:text-3xl leading-none font-bold text-gray-900">5,355</span>
-                      <h3 class="text-base font-normal text-gray-500">Visitors this week</h3>
-                    </div>
-                    <div class="ml-5 w-0 flex items-center justify-end flex-1 text-green-500 text-base font-bold">
-                      32.9%
-                      <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" d="M5.293 7.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 5.414V17a1 1 0 11-2 0V5.414L6.707 7.707a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
-                      </svg>
-                    </div>
-                  </div>
-                </div>
-                <div class="bg-white shadow rounded-lg p-4 sm:p-6 xl:p-8 ">
-                  <div class="flex items-center">
-                    <div class="flex-shrink-0">
-                      <span class="text-2xl sm:text-3xl leading-none font-bold text-gray-900">385</span>
-                      <h3 class="text-base font-normal text-gray-500">User signups this week</h3>
-                    </div>
-                    <div class="ml-5 w-0 flex items-center justify-end flex-1 text-red-500 text-base font-bold">
-                      -2.7%
-                      <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" d="M14.707 12.293a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L9 14.586V3a1 1 0 012 0v11.586l2.293-2.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                      </svg>
-                    </div>
-                  </div>
-                </div>
-              </div> */}
-
-              {/* <BottomTables/> */}
+                //   < div class="w-full grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 gap-3">
+                //   {selectedService === 'Invoice Discounting' ? (
+                //     <InvoiceDescounting />
+                //   ) : selectedService === 'Vendor Financing' ? (
+                //     <LoanForm1 />
+                //   ) : (
+                //     <>
+                //       <InvoiceDescounting />
+                //     </>
+                //   )}
+                //   <RightContent />
+                // </div>
+              }
             </div>
           </main>
         </div>
-      </div>
+      </div >
 
       <div>
         {/* <button onClick={onOpenModal}>Open modal</button>
@@ -107,7 +87,7 @@ const Dashboard = () => {
         </p>
       </Modal> */}
       </div>
-    </div>
+    </div >
   )
 
 
@@ -674,7 +654,6 @@ const Dashboard = () => {
   //   //   <script src="https://demo.themesberg.com/windster/app.bundle.js"></script>
   //   // </div>
   // )
-
 
 };
 export default Dashboard;

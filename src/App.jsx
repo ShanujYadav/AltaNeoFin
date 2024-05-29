@@ -37,9 +37,9 @@ const App = () => {
           {/* Routes for pages without Navbar */}
           <Route path={['/login', '/register']} component={Login} />
           {/* <Route path={['/Dashboard']} component={Navigation} /> */}
-          <Route path={['/Dashboard']} component={Dashboard} />
+          <Route path='/Dashboard' component={Dashboard} />
           <Route path={['/admin']} component={Admin} />
-
+           
           {/* Routes for pages with Navbar */}
           <Route>
             <Navbar />

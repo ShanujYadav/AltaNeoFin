@@ -3,18 +3,20 @@ import { UserOutlined, OrderedListOutlined, ClockCircleOutlined } from '@ant-des
 import { Menu } from 'antd';
 
 
-const Sidebar = (props) => {
 
+const Sidebar = (props) => {
+  
   const onSelectType = (key) => {
     if (key == 1) {
       props.setSelectedService('Vendor Financing')
     }
     if (key == 2) {
-      props.setSelectedService('Vendor Financing')
+      props.setSelectedService('Profile')
     }
-    if (key == 3) {
-      props.setSelectedService('Vendor')
-    }
+
+    // if (key == 3) {
+    //   props.setSelectedService('Vendor')
+    // }
     // else {
     //   props.setItem(null)
     // }
@@ -39,7 +41,12 @@ const Sidebar = (props) => {
               key: '1',
               icon: <ClockCircleOutlined />,
               label: 'Vendor Financing',
-            }
+            },
+               {
+              key: '2',
+              icon: <UserOutlined />,
+              label: 'Profile',
+            },
           ]} />
 
 

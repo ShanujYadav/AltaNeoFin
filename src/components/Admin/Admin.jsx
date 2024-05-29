@@ -1,7 +1,5 @@
 import React from 'react'
-import Banner from '../Dashboard/Banner'
 import Header from './Header'
-import Navbar from '../Navbar/Navbar'
 import AdminSidebar from './AdminSidebar'
 import AdminDasdboard from './AdminDasdboard'
 

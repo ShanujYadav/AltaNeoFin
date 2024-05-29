@@ -1,22 +1,22 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import banner from '../../assets/vector/FinanceGrowth.avif'
+import Rmbox from './Rmbox'
+
+let baseUrl = import.meta.env.VITE_SOME_KEY
+
+
 
 const RightContent = () => {
+  
   return (
-    <div class="bg-white rounded-lg grid grid-row-2 divide-x p-4 sm:p-6 xl:p-8">
+    <div class="bg-white rounded-lg grid grid-row-2 sm:p-2">
       <div className=''>
-        dcdjdn
+        <img src={banner} alt="" />
       </div>
-
       <div>
-      </div>
-
-
-      <div className=''>
-        <hr />
-        dkckm
+        <Rmbox />
       </div>
     </div>
-
 
     // <div class="bg-white shadow rounded-lg p-4 sm:p-6 xl:p-8">
     //   <div class="mb-4 flex items-center justify-between">

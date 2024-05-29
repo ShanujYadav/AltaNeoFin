@@ -1,7 +1,10 @@
 import React from 'react'
+import RightContent from '../RightContent'
 
 const InvoiceDescounting = () => {
     return (
+        <div class="w-full grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 gap-3">
+
             <div class="bg-white shadow rounded-lg p-4 sm:p-6 xl:p-8  2xl:col-span-2 ">
                 <div class="flex items-center justify-between mb-4">
                     <div class="flex-shrink-0">
@@ -16,6 +19,8 @@ const InvoiceDescounting = () => {
                     </div>
                 </div>
                 <div id="main-chart"></div>
+            </div>
+            <RightContent/>
             </div>
             )
 }
