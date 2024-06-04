@@ -8,13 +8,12 @@ import 'react-responsive-modal/styles.css';
 import { Modal } from 'react-responsive-modal';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useHistory } from 'react-router-dom';
-import { red } from '@mui/material/colors';
 import RightContent from '../RightContent';
+import { getLocation } from '../../../store/libs/metaData';
 
 let baseUrl = import.meta.env.VITE_SOME_KEY
 
-
-const VendorFinancingForm = () => {
+const VendorFinancingForm = (props) => {
   const history = useHistory()
   const dispatch = useDispatch()
   const profileDetails = useSelector((state) => state.profile)
@@ -51,6 +50,7 @@ const VendorFinancingForm = () => {
     copyOfAgreement: false,
   })
 
+
   const [data, setData] = useState({
     annualTurnover: '',
     panNo: "",
@@ -67,8 +67,8 @@ const VendorFinancingForm = () => {
     businessAge: '',
     businessPinCode: '',
     yearlySales: "",
+    msmeCft: "",
   })
-
 
   const onChangeHandelar = (value, name) => {
     setShowError(false)
@@ -93,7 +93,14 @@ const VendorFinancingForm = () => {
     setCopyOfAgreementFile(file)
   }
 
+
+
+
+
+
   const onFetchDetails = async () => {
+    setStep(2)
+    return
     if (!data.annualTurnover) {
       setShowError({ ...showError, annualTurnover: true })
       return
@@ -117,7 +124,7 @@ const VendorFinancingForm = () => {
         fullName: data.name,
         email: data.email,
       }
-      console.log('body----',body)
+      console.log('body----', body)
       const response = await fetch(`${baseUrl}/saveUserDetails?uuid=${uuid}`, {
         method: 'POST',
         body: JSON.stringify(body),
@@ -136,6 +143,9 @@ const VendorFinancingForm = () => {
   }
 
   const onSubmitThirdForm = async () => {
+    setStep(4)
+    console.log('data--',data)
+    return
     if (!data.gstRegistered) {
       setShowError({ ...showError, gstRegistered: true })
       return
@@ -190,9 +200,9 @@ const VendorFinancingForm = () => {
   }
 
 
-
-
   const onClickSubmit = async (e) => {
+    setOpenSuccessModal(true)
+    return
     if (!bankStatement) {
       setShowError({ ...showError, bankStatement: true })
       return
@@ -479,6 +489,7 @@ const VendorFinancingForm = () => {
                       />
                     </div>
                   </div>
+
                   <div>
                     <label for="first-name" class="block text-sm font-semibold leading-6 text-black">YEARLY SALES</label>
                     <div class="mt-2.5">
@@ -492,8 +503,22 @@ const VendorFinancingForm = () => {
                       />
                     </div>
                   </div>
-                </div>
+                  
+                  <div>
+                    <label for="first-name" class="block text-sm font-semibold leading-6 text-black">UDYAM/MSME CERTIFICATE (Optional)</label>
+                    <div class="mt-2.5">
+                      <input
+                        type="file"
+                        placeholder='Enter Yearly Sales'
+                        className="form-control text-gray-600 shadow-sm placeholder:text-gray-400"
+                        value={data.msmeCft}
+                        onChange={(e) => setData({...data,msmeCft:e.target.value})}
+                        name="yearlySales"
+                      />
+                    </div>
+                  </div>
 
+                </div>
                 <div class="flex flex-row space-x-auto mt-5 items-center justify-between min-w-screen sm:mt-10">
                   <div class="flex flex-col text-end">
                     <button

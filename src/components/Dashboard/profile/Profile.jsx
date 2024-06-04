@@ -1,11 +1,57 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { getProfileData } from '../../../store/action/ProfileAction'
 
 const Profile = () => {
+    const dispatch = useDispatch()
+    const profileDetails = useSelector((state) => state.profile.userInfo)
+    // const userId = profileDetails.uuid
+    const name = profileDetails.name
+    const userId = 12345
+
+    const [profileData, setprofileData] = useState({
+        phone: '',
+        name: '',
+        panCard: '',
+        gender: '',
+        DOB: '',
+        pinCode: '',
+        email: '',
+        gstRegistered: '',
+        gstNumber: '',
+        businessType: '',
+        businessAge: '',
+        businessPinCode: '',
+        yearlySales: '',
+    })
+
+    useEffect(() => {
+            dispatch(getProfileData(userId))
+            var gstStatus = profileData.gstRegistered ? 'Yes' : 'No'
+            setprofileData({
+                ...profileData,
+                phone: profileDetails.phone,
+                name: profileDetails.name,
+                panCard: profileDetails.panCard,
+                gender: profileDetails.gender,
+                DOB: profileDetails.DOB,
+                pinCode: profileDetails.pinCode,
+                email: profileDetails.email,
+                gstRegistered: gstStatus,
+                gstNumber: profileDetails.gstNumber,
+                businessType: profileDetails.businessType,
+                businessAge: profileDetails.businessAge,
+                businessPinCode: profileDetails.businessPinCode,
+                yearlySales: profileDetails.yearlySales,
+            })
+    }, [])
+
+
     return (
         <div class="flex flex-col h-screen ">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-2">
                 <div class="bg-white p-4 rounded-md">
-                    <h2 class="block text-sm uppercase leading-6 text-black pb-2"><b>Personal </b> Details</h2>
+                    <h2 class="block text-sm text-muted leading-6 text-black pb-2"><b className='text-blue-500'>PERSONAL </b> Details</h2>
                     <div class="bg-gradient-to-r from-cyan-300 to-cyan-500 h-px mb-6"></div>
                     <div class="max-w-2xl">
                         <div class="grid grid-cols-2 gap-x-10 gap-y-10 mx-4 sm:grid-cols-3">
@@ -16,71 +62,71 @@ const Profile = () => {
                                 />
                             </div>
                             <div className='py-3'>
-                                <label for="pan-card" class="block font-semibold text-sm leading-6 text-black">AgentId</label>
-                                <h6 className='text-gray-600 text-sm'>123456</h6>
+                                <label for="pan-card" class="block font-semibold text-sm leading-6 text-black">UserId</label>
+                                <h6 className='text-gray-600 text-sm'>{userId}</h6>
                             </div>
                             <div className='py-3'>
                                 <label for="pan-card" class="block font-semibold text-sm leading-6 text-black">Name</label>
-                                <h6 className='text-gray-600 text-sm'>Shanuj Yadav</h6>
+                                <h6 className='text-gray-600 text-sm'>{profileData.name}</h6>
                             </div>
                             <div className='py-3'>
                                 <label for="pan-card" class="block font-semibold text-sm leading-6 text-black">Phone</label>
-                                <h6 className='text-gray-600 text-sm'>9528492010</h6>
+                                <h6 className='text-gray-600 text-sm'>{profileData.phone}</h6>
                             </div>
 
                             <div className=''>
                                 <label for="pan-card" class="block font-semibold text-sm leading-6 text-black">Pan Card</label>
-                                <h6 className='text-gray-600 text-sm'>BJZPY8553R</h6>
+                                <h6 className='text-gray-600 text-sm'>{profileData.panCard}</h6>
                             </div>
                             <div className=''>
                                 <label for="pan-card" class="block font-semibold text-sm leading-6 text-black">Gendar</label>
-                                <h6 className='text-gray-600 text-sm'>Male</h6>
+                                <h6 className='text-gray-600 text-sm'>{profileData.gender}</h6>
                             </div>
                             <div className=''>
                                 <label for="pan-card" class="block font-semibold text-sm leading-6 text-black">DOB</label>
-                                <h6 className='text-gray-600 text-sm'>15/01/2004</h6>
+                                <h6 className='text-gray-600 text-sm'>{profileData.DOB}</h6>
                             </div>
                             <div className=''>
                                 <label for="pan-card" class="block font-semibold text-sm leading-6 text-black">Pin Code</label>
-                                <h6 className='text-gray-600 text-sm'>262122</h6>
+                                <h6 className='text-gray-600 text-sm'>{profileData.pinCode}</h6>
                             </div>
                             <div className=''>
                                 <label for="pan-card" class="block font-semibold text-sm leading-6 text-black">Email</label>
-                                <h6 className='text-gray-600 text-sm'>shanujyadav@gmail.com</h6>
+                                <h6 className='text-gray-600 text-sm'>{profileData.email}</h6>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="bg-white p-4 rounded-md ">
-                    <h2 class="block text-sm uppercase leading-6 text-black pb-2"><b>Business </b>Details</h2>
+                    <h2 class="block text-sm leading-6 text-muted pb-2"><b className='text-blue-500'>BUSINESS </b> Details</h2>
                     <div class="bg-gradient-to-r from-cyan-300 to-cyan-500 h-px mb-6"></div>
                     <div class="max-w-2xl">
                         <div class="grid grid-cols-2 gap-x-10 gap-y-10 mx-4 sm:grid-cols-3">
                             <div className='py-3'>
                                 <label for="pan-card" class="block font-semibold text-sm leading-6 text-black">Gst Registered</label>
-                                <h6 className='text-gray-600 text-sm'>987456123</h6>
+                                <h6 className='text-gray-600 text-sm'>{profileData.gstRegistered}</h6>
                             </div>
                             <div className='py-3'>
                                 <label for="pan-card" class="block font-semibold text-sm leading-6 text-black">Gst Number</label>
-                                <h6 className='text-gray-600 text-sm'>987456123</h6>
+                                <h6 className='text-gray-600 text-sm'>{profileData.gstNumber}</h6>
                             </div>
                             <div className='py-3'>
                                 <label for="pan-card" class="block font-semibold text-sm leading-6 text-black">Business Type</label>
-                                <h6 className='text-gray-600 text-sm'>pvt ltd.</h6>
+                                <h6 className='text-gray-600 text-sm'>{profileData.businessType}</h6>
                             </div>
                             <div className='py-3'>
                                 <label for="pan-card" class="block font-semibold text-sm leading-6 text-black">Business Age</label>
-                                <h6 className='text-gray-600 text-sm'>5 yr</h6>
+                                <h6 className='text-gray-600 text-sm'>{profileData.businessAge}</h6>
                             </div>
 
                             <div className=''>
                                 <label for="pan-card" class="block font-semibold text-sm leading-6 text-black">Business PinCode</label>
-                                <h6 className='text-gray-600 text-sm'>262122</h6>
+                                <h6 className='text-gray-600 text-sm'>{profileData.businessPinCode}</h6>
                             </div>
                             <div className=''>
                                 <label for="pan-card" class="block font-semibold text-sm leading-6 text-black">Yearly Sales</label>
-                                <h6 className='text-gray-600 text-sm'>5cr</h6>
+                                <h6 className='text-gray-600 text-sm'>{profileData.yearlySales}</h6>
                             </div>
                         </div>
                     </div>

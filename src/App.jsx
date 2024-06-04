@@ -22,42 +22,45 @@ import RefundPolicy from './components/Refund/RefundPolicy';
 import Terms from './components/Terms/Terms';
 import Bot from './components/Bot/bot';
 import Blogs from './components/Blogs/Blogs';
-import Dashboard from './components/Dashboard/Dashboard';
 import subBlog from './components/Blogs/subBlog';
 import TeamPage from './components/Team/TeamPage';
 import Admin from './components/Admin/Admin';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Faqs from './components/faq\'s/Faqs';
+import { DashboardContextProvider } from './components/Dashboard/DashoardContext';
+import Dashboard from './components/Dashboard/Dashboard';
 
 
 const App = () => {
+  
   return (
     <Router>
-        <Switch>
-          {/* Routes for pages without Navbar */}
-          <Route path={['/login', '/register']} component={Login} />
-          {/* <Route path={['/Dashboard']} component={Navigation} /> */}
-          <Route path='/Dashboard' component={Dashboard} />
-          <Route path={['/admin']} component={Admin} />
-           
-          {/* Routes for pages with Navbar */}
-          <Route>
-            <Navbar />
-            <Switch>
-              <Route exact path="/" component={Home} />
-              <Route exact path='/Invoice-Discounting' component={InvoiceDiscountingPage} />
-              <Route exact path='/Export-Credits' component={ExportCredits} />
-              <Route exact path='/Vendor-Financing' component={VendorFinancing} />
-              <Route exact path='/Credit-Card' component={CreditCard} />
-              <Route exact path='/Privacypolicy' component={Privacypolicy} />
-              <Route exact path='/Refundpolicy' component={RefundPolicy} />
-              <Route exact path='/Terms' component={Terms} />
-              <Route exact path='/Blogs' component={Blogs} />
-              {/* <Route exact path='/blog/:id' component={subBlog} /> */}
-              <Route exact path='/TeamPage' component={TeamPage} />
-            </Switch>
-          </Route>
-        </Switch>
+      <Switch>
+        {/* Routes for pages without Navbar */}
+        <Route path={['/login', '/register']} component={Login} />
+        {/* <Route path='/Dashboard' component={Dashboard} /> */}
+        <Route path="/dashboard/*" render={Dashboard} />
+
+        <Route path={['/admin']} component={Admin} />
+
+        {/* Routes for pages with Navbar */}
+        <Route>
+          <Navbar />
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route exact path='/Invoice-Discounting' component={InvoiceDiscountingPage} />
+            <Route exact path='/Export-Credits' component={ExportCredits} />
+            <Route exact path='/Vendor-Financing' component={VendorFinancing} />
+            <Route exact path='/Credit-Card' component={CreditCard} />
+            <Route exact path='/Privacypolicy' component={Privacypolicy} />
+            <Route exact path='/Refundpolicy' component={RefundPolicy} />
+            <Route exact path='/Terms' component={Terms} />
+            <Route exact path='/Blogs' component={Blogs} />
+            {/* <Route exact path='/blog/:id' component={subBlog} /> */}
+            <Route exact path='/TeamPage' component={TeamPage} />
+          </Switch>
+        </Route>
+      </Switch>
     </Router>
   );
 };

@@ -3,7 +3,7 @@ import styles from './login.module.css';
 import VideoContainer from './VideoContainer';
 import { useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom';
-import { getLogin } from '../../store/action/ProfileAction';
+import { getLogin } from '../../store/slice/ProfileSlice';
 
 let baseUrl = import.meta.env.VITE_SOME_KEY
 

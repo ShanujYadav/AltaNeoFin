@@ -1,59 +1,63 @@
-import React from 'react';
-import { UserOutlined, OrderedListOutlined, ClockCircleOutlined } from '@ant-design/icons';
+import React, { useEffect, useState } from 'react';
+import { UserOutlined, OrderedListOutlined, HomeOutlined, ClockCircleOutlined } from '@ant-design/icons';
 import { Menu } from 'antd';
+import { useDispatch } from 'react-redux';
+import { getactiveWindow } from '../../store/slice/DashboardSlice';
+import { useHistory } from 'react-router-dom';
 
 
 
 const Sidebar = (props) => {
-  
-  const onSelectType = (key) => {
-    if (key == 1) {
-      props.setSelectedService('Vendor Financing')
-    }
-    if (key == 2) {
-      props.setSelectedService('Profile')
-    }
+  const dispatch = useDispatch()
+  const history=useHistory()
+  const [selectedKey, setSelectedKey] = useState(window.location.pathname)
 
-    // if (key == 3) {
-    //   props.setSelectedService('Vendor')
-    // }
-    // else {
-    //   props.setItem(null)
-    // }
+  const handleMenuClick = ({ key }) => {
+    console.log('key----',key)
+
+    
+    setSelectedKey(key)
+    history.push(key)
+    console.log('selected--',selectedKey)
+
+    // dispatch(getactiveWindow(key))
+    // setSelectedKey(key);
   }
 
+  // const onSelectType = (key) => {
+  //   console.log(key)
+  //   if (key == 1) {
+  //     dispatch(getactiveWindow('Home'))
+  //   }
+  //   if (key == 2) {
+  //     dispatch(getactiveWindow('Vendor Financing'))
+  //   }
+  //   if (key == 3) {
+  //     dispatch(getactiveWindow('Profile'))
+  //   }
+  // }
+  
   return (
     <aside id="logo-sidebar" aria-label="Sidebar" className='fixed min-h-[80vh] top-0 left-0 z-40 w-64 h-screen pt-20 transition-transform -translate-x-full bg-white border-r border-gray-200 sm:translate-x-0' >
       <div className='h-full px-3 pb-4 overflow-y-auto bg-white'>
-        <ul className="space-y-2 font-medium">
-          <Menu theme="light" mode="inline" defaultSelectedKeys={['1']} className="menu-bar" onClick={({ key }) => onSelectType(key)} items={[
-            // {
-            //   key: '1',
-            //   icon: <UserOutlined />,
-            //   label: 'Invoice Discounting',
-            // },
-            // {
-            //   key: '2',
-            //   icon: <OrderedListOutlined />,
-            //   label: 'Bonds',
-            // },
+        {/* <button  onClick={() => changeSelectedKey('vendorFinancing')}>ksddnb</button> */}
+          <Menu theme="light" mode="inline" defaultSelectedKeys={[selectedKey]} className="menu-bar" onClick={handleMenuClick} items={[
             {
-              key: '1',
+              key: '/dashboard/home',
+              icon: <HomeOutlined />,
+              label: 'Home',
+            }, 
+            {
+              key: '/dashboard/vendorFinancing',
               icon: <ClockCircleOutlined />,
               label: 'Vendor Financing',
             },
-               {
-              key: '2',
+            {
+              key: '/dashboard/profile',
               icon: <UserOutlined />,
               label: 'Profile',
             },
           ]} />
-
-
-
-
-
-
 
 
           {/* 
@@ -137,7 +141,6 @@ const Sidebar = (props) => {
               <span class="ml-3 flex-1 whitespace-nowrap">Sign In</span>
             </a>
           </li> */}
-        </ul>
       </div>
     </aside>
   );
