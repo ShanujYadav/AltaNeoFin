@@ -11,6 +11,9 @@ import shanuj from '../../assets/img/shanuj.png'
 import himanshu from '../../assets/img/himanshu.png'
 import ayushi from '../../assets/img/ayushi.png'
 import prerna from '../../assets/img/prerna.png'
+import sanskruti from '../../assets/img/sanskruti.png'
+import somesh from '../../assets/img/somesh.png'
+
 
 
 const TeamPage = () => {
@@ -63,9 +66,22 @@ const TeamPage = () => {
       role: 'Software Intern',
       photo: himanshu,
       description: 'As an intern, i have the opportunity to gain valuable skills, practical experience, and industry exposure that will serve as a solid foundation for my career as a software developer.'
+    },
+    {
+      name: 'Sanskruti Gosh',
+      role: 'Accounts Intern',
+      photo: sanskruti,
+      description: 'I am thrilled to join the team as an Accounts Intern. I have completed my degree in Bachelors in Commerce (Hons) from University of Delhi, where I have developed a strong foundation in financial accounting, management accounting, and financial data management. My passion for numbers and keen attention to detail have driven me to seek practical experience in the field of accounting. I am excited about the opportunity to apply my academic knowledge and analytical skills to real-world scenarios, and I look forward to contributing to the teams success while gaining valuable insights and experience.'
+    },
+    {
+      name: 'Somesh Chandel',
+      role: 'Credit Analyst',
+      photo: somesh,
+      description: 'With an overall experience of 5 years, including 2 years dedicated to the wholesale banking sector, he excels in credit assessment for MSME enterprises requiring working capital and supply chain finance.'
     }
   ]
-  
+
+
   return (
     <div className="team-container">
       {teamMembers.map((member, index) => (

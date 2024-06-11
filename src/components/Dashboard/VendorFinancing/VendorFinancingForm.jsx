@@ -96,8 +96,6 @@ const VendorFinancingForm = (props) => {
 
 
 
-
-
   const onFetchDetails = async () => {
     setStep(2)
     return

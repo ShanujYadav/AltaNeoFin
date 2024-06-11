@@ -14,7 +14,6 @@ const Sidebar = (props) => {
 
   const handleMenuClick = ({ key }) => {
     console.log('key----',key)
-
     
     setSelectedKey(key)
     history.push(key)

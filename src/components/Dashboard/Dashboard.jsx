@@ -55,9 +55,9 @@ export default function Dashboard() {
             </main>
             </div>
             </div>
-          </DashboardContextProvider>
-        </>
-        );
+    </DashboardContextProvider>
+    </>
+    );
 }
 
 
