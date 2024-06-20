@@ -34,7 +34,7 @@ const Team = () => {
             </div>
             <div className="p-6 overflow-scroll ">
               <h6 className="block font-sans text-base antialiased font-semibold leading-relaxed tracking-normal text-blue-800 uppercase">
-                Meenkashi
+                Meenakshi
               </h6>
               <h4 className="block mb-2 font-sans text-sm antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
                 CEO

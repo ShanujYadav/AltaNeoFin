@@ -3,12 +3,14 @@ import { createAsyncThunk } from "@reduxjs/toolkit"
 const baseUrl = import.meta.env.VITE_SOME_KEY
 
 export const getProfileData = createAsyncThunk("getLogin", async (userId) => {
+
+    
     // const response = await fetch(`${baseUrl}/customerProfile/?uuid=${userId}`, {
     //     method: 'GET',
     //     headers: { 'Content-type': 'application/json' }
     // })
     // let res = await response.json()
-    
+
     let res = {
         "yearlySales": 1000000.0,
         "mobileNumber": "9587581686",

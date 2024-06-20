@@ -56,7 +56,5 @@ export const profileSlice = createSlice({
     }
 })
 
-
-
 export const { increment, decrement, getLogin } = profileSlice.actions
 export default profileSlice.reducer
