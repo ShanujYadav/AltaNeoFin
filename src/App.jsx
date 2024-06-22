@@ -22,13 +22,13 @@ import RefundPolicy from './components/Refund/RefundPolicy';
 import Terms from './components/Terms/Terms';
 import Bot from './components/Bot/bot';
 import Blogs from './components/Blogs/Blogs';
-import subBlog from './components/Blogs/subBlog';
 import TeamPage from './components/Team/TeamPage';
 import Admin from './components/Admin/Admin';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Faqs from './components/faq\'s/Faqs';
 import { DashboardContextProvider } from './components/Dashboard/DashoardContext';
 import Dashboard from './components/Dashboard/Dashboard';
+import DetailedBlog from './components/Blogs/DetailedBlog';
 
 
 const App = () => {
@@ -56,6 +56,7 @@ const App = () => {
             <Route exact path='/Refundpolicy' component={RefundPolicy} />
             <Route exact path='/Terms' component={Terms} />
             <Route exact path='/Blogs' component={Blogs} />
+            <Route exact path='/DetaildBlog' component={DetailedBlog} />
             {/* <Route exact path='/blog/:id' component={subBlog} /> */}
             <Route exact path='/TeamPage' component={TeamPage} />
           </Switch>

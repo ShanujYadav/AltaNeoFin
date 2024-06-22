@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Accordion, Container } from 'react-bootstrap';
+import { Accordion, Container } from 'react-bootstrap'
 
 const Faqs = () => {
 

@@ -7,6 +7,7 @@ import ceo from '../../assets/img/ceoImg.png';
 import director from '../../assets/img/directorImg.png';
 import cta from '../../assets/img/ctaImg.png';
 
+
 const Team = () => {
   const settings = {
     dots: true,
@@ -18,8 +19,8 @@ const Team = () => {
     autoplaySpeed: 9000,
     pauseOnHover: window.innerWidth <= 768, 
     pauseOnFocus: window.innerWidth <= 768, 
-  };
-
+  }
+  
   return (
     <Slider {...settings} className='w-full overflow-hidden box-border sm:px-2'>
       <div className='px-3'>
@@ -40,7 +41,7 @@ const Team = () => {
                 CEO
               </h4>
               <hr />
-              <p className="block mb-8 font-sans text-base antialiased font-normal leading-relaxed text-gray-700 overflow-scroll">
+              <p className="block mb-8 font-sans text-base antialiased font-normal leading-relaxed text-gray-700 overflow-scroll text-justify">
                 I'm delighted to introduce you to Altaneo, where innovation meets efficiency in the realm of supply chain finance. As the CEO, I'm immensely proud of the transformative solutions we offer to businesses worldwide, redefining how they manage their financial operations within intricate supply chains.
                 <br />
                 <br />
@@ -74,7 +75,7 @@ const Team = () => {
                 CTA
               </h4>
               <hr />
-              <p className="block mb-8 font-sans text-base antialiased font-normal leading-relaxed text-gray-700 overflow-scroll">
+              <p className="block mb-8 font-sans text-base antialiased font-normal leading-relaxed text-gray-700 overflow-scroll text-justify">
                 As the Chief Technology Advisor of Altaneo, it is my pleasure to extend a warm welcome to you. Here, at the forefront of supply chain lending fintech, we are dedicated to revolutionizing the way businesses navigate financial complexities within their supply chains.
                 <br />
                 <br />
@@ -112,7 +113,7 @@ const Team = () => {
                 Director
               </h4>
               <hr />
-              <p className="block mb-8 font-sans text-base antialiased font-normal leading-relaxed text-gray-700 overflow-scroll">
+              <p className="block mb-8 font-sans text-base antialiased font-normal leading-relaxed text-gray-700 overflow-scroll text-justify">
                 As the Director of Altaneo, I'm thrilled to extend a warm welcome to you, introducing fintech poised to redefine the landscape of financial services. At Altaneo, we're not just in the business of lending; we're in the business of empowering dreams, fuelling growth, and fostering financial inclusion.
                 <br />
                 <br />
