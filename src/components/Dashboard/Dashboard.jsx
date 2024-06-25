@@ -14,8 +14,8 @@ export default function Dashboard() {
   let currentWindow=pathName.slice(11,50)
 
 
-  // console.log(currentWindow);
-  
+
+// console.log(currentWindow)
 //   let agentId = queryParams.get("agentId")
 //   console.log('location----', location.pathname)
 //   // let uuid = profileDetails.userInfo.uuid

@@ -3,13 +3,13 @@ import { blogData } from './data'
 import { useHistory } from 'react-router-dom'
 
 const Blogs = () => {
-   const history=useHistory()
+   const history = useHistory()
 
    const onClickReadMore = (id) => {
       history.push(`/DetaildBlog?id=${id}`)
    }
 
-   const onClickOpenMore=(id)=>{
+   const onClickOpenMore = (id) => {
       history.push(`/details?idk=${id}`)
    }
 
@@ -20,7 +20,8 @@ const Blogs = () => {
                {blogData.map((data, index) => {
                   return (
                      <div class="p-4 md:w-1/3">
-                        <div class="h-full rounded-xl shadow-cla-blue bg-gradient-to-r from-indigo-50 to-blue-50 overflow-hidden">
+                        {/* <div class="h-full rounded-xl shadow-cla-blue bg-gradient-to-r from-indigo-50 to-blue-50 overflow-hidden"> */}
+                        <div class="h-full rounded-xl shadow-cla-blue bg-white overflow-hidden">
                            <img class="lg:h-48 md:h-36 w-full object-cover object-center scale-110 transition-all duration-400 hover:scale-100"
                               src={data.img} alt="blog" />
                            <div class="p-6">
@@ -42,4 +43,4 @@ const Blogs = () => {
       </section>
    )
 }
-export default Blogs;``
+export default Blogs; ``

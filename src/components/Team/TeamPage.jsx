@@ -7,7 +7,7 @@ import ctaImg from '../../assets/img/ctaImg.png'
 import dirImg from '../../assets/img/directorImg.png'
 
 import dhiren from '../../assets/img/dhiren.png'
-import shanuj from '../../assets/img/shanuj.png'
+import shanuj from '../../assets/img/shanuj.jpg'
 import himanshu from '../../assets/img/himanshu.png'
 import ayushi from '../../assets/img/ayushi.png'
 import prerna from '../../assets/img/prerna.png'
@@ -17,13 +17,12 @@ import somesh from '../../assets/img/somesh.png'
 
 
 const TeamPage = () => {
-  
   const teamMembers = [
     {
       name: 'Meenakshi Pawar',
       role: 'Founder & CEO ',
       photo: ceoImg,
-      description :'With a robust academic background and extensive professional experience, Meenakshi brings a wealth of knowledge and expertise to our organization. She embarked on their academic journey at Miranda House, Delhi University, where they laid a strong foundation in Mathematics and Science. Further honing their skills, they attended London Business School, an institution renowned for shaping global business leaders.In their professional career, she has demonstrated remarkable leadership and strategic acumen. They have previously served as a Team Lead at the State Bank of India, where they managed and executed high-impact financial projects, driving growth and innovation.'
+      description: 'With a robust academic background and extensive professional experience, Meenakshi brings a wealth of knowledge and expertise to our organization. She embarked on their academic journey at Miranda House, Delhi University, where they laid a strong foundation in Mathematics and Science. Further honing their skills, they attended London Business School, an institution renowned for shaping global business leaders.In their professional career, she has demonstrated remarkable leadership and strategic acumen. They have previously served as a Team Lead at the State Bank of India, where they managed and executed high-impact financial projects, driving growth and innovation.'
     },
     {
       name: 'Jyotika B.',
@@ -35,7 +34,7 @@ const TeamPage = () => {
       name: 'Sonia',
       role: 'Director',
       photo: dirImg,
-      description:'As the Director of Altaneo, Im thrilled to extend a warm welcome to you, introducing fintech poised to redefine the landscape of financial services. At Altaneo, we are not just in the business of lending we arre in the business of empowering dreams, fuelling growth, and fostering financial inclusion.'
+      description: 'As the Director of Altaneo, Im thrilled to extend a warm welcome to you, introducing fintech poised to redefine the landscape of financial services. At Altaneo, we are not just in the business of lending we arre in the business of empowering dreams, fuelling growth, and fostering financial inclusion.'
     },
     {
       name: 'Dhiren Madhukar',
@@ -82,22 +81,29 @@ const TeamPage = () => {
   ]
 
 
+
   return (
     <div className="team-container">
-      {teamMembers.map((member, index) => (
-        <div key={index} className="team-member">
-          <div className="team-member-photo">
-            <img src={member.photo} alt={member.name} />
-          </div>
-          <div className="team-member-details">
-            <h3 className='text-bold text-2xl'>{member.name}</h3>
-            <p className='text-white text-lg'>{member.role}</p>
-            <span className='text-justify'>{member.description}</span>
-          </div>
-        </div>
-      ))}
+      <ul role="list" class="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3">
+        {teamMembers.map((item, index) => (
+          <li key={index} class="col-span-1 flex flex-col divide-y divide-gray-200 rounded-lg bg-white text-center shadow">
+            <div class="flex flex-1 mb-0 flex-col w-full md:w-80 h-96 p-4">
+              <img class="mx-auto mb-1 h-48 w-48 flex-shrink-0 border-black rounded-full" src={item.photo} alt="" />
+              <h3 class="mt-2 text-sm font-medium text-gray-900">{item.name}</h3>
+              <dl class="mt-1 flex flex-grow flex-col justify-between">
+                <dd class="mt-0">
+                  <span class="inline-flex items-center rounded-full bg-blue-400 px-2 py-1 text-xs font-medium text-white ring-1 ring-inset ring-green-600/20">{item.role}</span>
+                </dd>
+                <hr class="mt-2" />
+                <dd class="mt-1 flex-grow overflow-y-auto h-32 text-justify">
+                  {item.description}
+                </dd>
+              </dl>
+            </div>
+          </li>
+        ))}
+      </ul>
     </div>
-
   );
 }
 

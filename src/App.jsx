@@ -29,6 +29,7 @@ import Faqs from './components/faq\'s/Faqs';
 import { DashboardContextProvider } from './components/Dashboard/DashoardContext';
 import Dashboard from './components/Dashboard/Dashboard';
 import DetailedBlog from './components/Blogs/DetailedBlog';
+import SiCalculator from './components/calculator/SiCalculator';
 
 
 const App = () => {
@@ -48,6 +49,7 @@ const App = () => {
           <Navbar />
           <Switch>
             <Route exact path="/" component={Home} />
+            <Route exact path="/simple-intrest-caclucator" component={SiCalculator} />
             <Route exact path='/Invoice-Discounting' component={InvoiceDiscountingPage} />
             <Route exact path='/Export-Credits' component={ExportCredits} />
             <Route exact path='/Vendor-Financing' component={VendorFinancing} />
