@@ -10,25 +10,24 @@ import Sidebar from "./Sidebar";
 
 export default function Dashboard() {
   const queryParams = new URLSearchParams(location)
-  let pathName=window.location.pathname
-  let currentWindow=pathName.slice(11,50)
+  let pathName = window.location.pathname
+  let currentWindow = pathName.slice(11, 50)
 
 
 
-// console.log(currentWindow)
-//   let agentId = queryParams.get("agentId")
-//   console.log('location----', location.pathname)
-//   // let uuid = profileDetails.userInfo.uuid
-//   let uuid = 123456
+  // console.log(currentWindow)
+  //   let agentId = queryParams.get("agentId")
+  //   console.log('location----', location.pathname)
+  //   // let uuid = profileDetails.userInfo.uuid
+  //   let uuid = 123456
 
-//   //   useEffect(() => {
-//   //     console.log('agentId----',agentId)
-//   //     console.log('uuid----',uuid)
-//   //     if(agentId!=uuid){
-//   //       history.push('/')
-//   //     }
-//   //  }, [])
-
+  //   //   useEffect(() => {
+  //   //     console.log('agentId----',agentId)
+  //   //     console.log('uuid----',uuid)
+  //   //     if(agentId!=uuid){
+  //   //       history.push('/')
+  //   //     }
+  //   //  }, [])
 
 
 
@@ -37,27 +36,27 @@ export default function Dashboard() {
     <DashboardContextProvider>
       <DashboardNav />
       <div class="flex overflow-hidden bg-white pt-16">
-        <Sidebar/>
+        <Sidebar />
         <div id="main-content" class="h-full w-full bg-gray-50 relative overflow-y-auto lg:ml-64">
-          <main >
-            <div class="w-full text-end">
+          <main>
+            {/* <div class="w-full text-end">
               <a href="/" className='cursor-pointer hover:text-blue-500 text-sm text-gray-500'>Home</a>
               <span className='mx-1'>/</span>
-              <span className='text-gray-500 text-sm pr-3'>{currentWindow}</span>
-            </div>
-            <div class="px-3 pt-2">
+              <span className='text-gray-600 text-sm pr-3'>{currentWindow}</span>
+            </div> */}
+            <div>
               <Switch>
                 <Route path="/dashboard/home" component={DashboardHome} />
                 <Route path="/dashboard/profile" component={Profile} />
                 <Route path="/dashboard/vendorFinancing" component={VendorFinancingForm} />
               </Switch>
             </div>
-            </main>
-            </div>
-            </div>
+          </main>
+        </div>
+      </div>
     </DashboardContextProvider>
-    </>
-    );
+  </>
+  );
 }
 
 

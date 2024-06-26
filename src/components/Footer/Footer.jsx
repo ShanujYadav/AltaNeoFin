@@ -133,7 +133,7 @@ const Footer = () => {
                     <a href="#" class="text-sm leading-6 text-gray-400 hover:text-blue-900">Expert Team</a>
                   </li>
                   <li>
-                    <a href="#" class="text-sm leading-6 text-gray-400 hover:text-blue-900">Latest News</a>
+                    <a href="/simple-intrest-caclucator" class="text-sm leading-6 text-gray-400 hover:text-blue-900">Calculator</a>
                   </li>
                 </ul>
               </div>

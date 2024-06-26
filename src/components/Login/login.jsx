@@ -11,6 +11,7 @@ const Login = () => {
   const history = useHistory()
   const dispatch = useDispatch()
   const [showOtpInput, setShowOtpInput] = useState(false);
+
   const [data, setData] = useState({
     mobile: '',
     otp: '',
@@ -21,7 +22,6 @@ const Login = () => {
     otp: false,
     warning: false,
   })
-
 
   const onChangeMobile = (e) => {
     setShowError({ ...showError, mobile: false,warning:false })

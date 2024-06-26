@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import './Rmbox.css';
-
 let baseUrl = import.meta.env.VITE_SOME_KEY
 
 const Rmbox = () => {
@@ -13,241 +12,63 @@ const Rmbox = () => {
     isOnline: false,
   })
 
-  
-  useEffect(() => {
-    (async function () {
-      try {
-        const response = await fetch(`${baseUrl}/api/relationship-managers/1`, {
-          method: 'GET',
-          headers: { 'Content-type': 'application/json' }
-        })
-        const res = await response.json()
-        console.log('res----', res)
-        setrmData({
-          ...rmData,
-          name: res.name,
-          contactLink: res.contactLink,
-          meetingLink: res.meetingLink,
-          message: res.message,
-          isOnline: res.online,
-        })
-      } catch (e) {
-        console.log(e)
-      }
-    })()
-  }, [])
 
- 
 
+
+
+  // useEffect(() => {
+  //   (async function () {
+  //     try {
+  //       const response = await fetch(`${baseUrl}/api/relationship-managers/1`, {
+  //         method: 'GET',
+  //         headers: { 'Content-type': 'application/json' }
+  //       })
+  //       const res = await response.json()
+  //       console.log('res----', res)
+  //       setrmData({
+  //         ...rmData,
+  //         name: res.name,
+  //         contactLink: res.contactLink,
+  //         meetingLink: res.meetingLink,
+  //         message: res.message,
+  //         isOnline: res.online,
+  //       })
+  //     } catch (e) {
+  //       console.log(e)
+  //     }
+  //   })()
+  // }, [])
+
+
+
+  const onClickWapp = () => {
+    console.log('wapp clicked------');
+  }
+
+  const onClickMeet = () => {
+    console.log('wapp clicked------');
+  }
   return (
-    <div>
-      <h5 className='leading-6 text-black text-lg py-4'>
-        We have a dedicated Relationship Manager assigned for all your queries and doubts, during business hours.
-      </h5>
-      <div className='grid grid-flow-col mt-2'>
-        <div className='mx-2 col-span-1'>
-          <img src={rmData.img}
-            alt="Avatar"
-            className="rounded-circle  h-10 w-10"
-          />
-        </div>
-        <div className='col-span-4'>
-          <h6 className='font-semibold'>{rmData.name}</h6>
-          <small className='text-sm'>{rmData.message}</small>
-        </div>
-      </div>
-      <div className='mt-4 pl-3 grid-cols-2 grid xl:grid-cols-2'>
-        <a
-          href={rmData.contactLink}
-          target="_blank"
-          rel="noopener noreferrer">
-          <button
-            type="button"
-            class="text-white bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-sm px-4 md:px-2 py-2.5 text-center me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
-          >What's App
-          </button>
-        </a>
-        <a
-          href={rmData.meetingLink}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <button
-            type="button"
-            class="text-white bg-blue-600 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-4 py-2.5 text-center me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-          >Schedule Meet
-          </button>
-        </a>
+    <div class="flex flex-col sm:items-center sm:space-x-2 mt-4 sm:mt-0 space-y-2 sm:space-y-0">
+      <p class="text-gray-500 text-base sm:mb-0 mb-2">Ask your queries and doubts on</p>
+      <div class="flex flex-col sm:flex-row sm:space-x-2 space-y-2 sm:space-y-0">
+        <button class="flex items-center bg-green-500 text-white px-2 py-1 rounded-md"
+          onClick={onClickWapp}>
+          <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 0C5.371 0 0 5.371 0 12s5.371 12 12 12 12-5.371 12-12S18.629 0 12 0zm.225 17.025l-5.68-5.68 1.502-1.502 4.179 4.179 7.697-7.697 1.502 1.502-9.2 9.198z" />
+          </svg>
+          On WhatsApp
+        </button>
+        <button class="flex items-center bg-blue-500 text-white px-2 py-1 rounded-md"
+          onClick={onClickMeet}>
+          <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2a10 10 0 00-3.55 19.383c.562.104.768-.242.768-.539v-1.968c-3.117.678-3.772-1.505-3.772-1.505-.511-1.299-1.246-1.644-1.246-1.644-1.019-.696.078-.683.078-.683 1.125.08 1.719 1.156 1.719 1.156 1.003 1.718 2.631 1.222 3.272.934.102-.727.393-1.222.716-1.504-2.486-.28-5.103-1.243-5.103-5.537 0-1.223.437-2.222 1.156-3.007-.12-.282-.502-1.419.102-2.96 0 0 .945-.301 3.094 1.148a10.765 10.765 0 012.813-.383 10.782 10.782 0 012.813.383c2.149-1.449 3.094-1.148 3.094-1.148.605 1.541.222 2.678.102 2.96.72.785 1.156 1.784 1.156 3.007 0 4.307-2.623 5.252-5.117 5.524.405.348.764 1.034.764 2.086v3.097c0 .301.206.646.77.539A10 10 0 0012 2z" />
+          </svg>
+          Schedule a Meeting
+        </button>
       </div>
     </div>
   )
 }
 
-export default Rmbox;
-
-// const RelationshipManager = () => {
-//   const [relationshipManager, setRelationshipManager] = useState(null);
-
-//   useEffect(() => {
-//     // Fetch data from your API endpoint using Axios
-//     axios.get('http://localhost:8080/api/relationshipManagers/5')
-//       .then(response => {
-//         setRelationshipManager(response.data);
-//       })
-//       .catch(error => {
-//         console.error('Error fetching relationship manager data:', error);
-//       });
-//   }, []);
-
-//   return (
-//     <div>
-//       {relationshipManager && (
-//         <Rmbox
-//           contactLink={relationshipManager.contactLink}
-//           image={relationshipManager.image}
-//           isOnline={relationshipManager.isOnline} 
-//           meetingLink={relationshipManager.meetingLink}
-//           message={relationshipManager.message}
-//           name={relationshipManager.name}
-//         />
-//       )}
-//     </div>
-//   );
-// };
-
-
-
-
-
-   {/* <table class="overflow-auto">
-              <thead>
-                <tr>
-                  <th class="px-6 py-3 border-b-2 border-gray-300 text-left leading-4 text-blue-500 tracking-wider">ID</th>
-                  <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-blue-500 tracking-wider">Fullname</th>
-                  <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-blue-500 tracking-wider">Email</th>
-                  <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-blue-500 tracking-wider">Phone</th>
-                </tr>
-              </thead>
-              <tbody class="bg-white">
-                <tr>
-                  <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-500">
-                    <div class="flex items-center">
-                      <div>
-                        <div class="text-sm leading-5 text-gray-800">#1</div>
-                      </div>
-                    </div>
-                  </td>
-                  <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-500">
-                    <div class="text-sm leading-5 text-blue-900">Damilare Anjorin</div>
-                  </td>
-                  <td class="px-6 py-4 whitespace-no-wrap border-b text-blue-900 border-gray-500 text-sm leading-5">damilareanjorin1@gmail.com</td>
-                  <td class="px-6 py-4 whitespace-no-wrap border-b text-blue-900 border-gray-500 text-sm leading-5">+2348106420637</td>
-                  <td class="px-6 py-4 whitespace-no-wrap border-b text-blue-900 border-gray-500 text-sm leading-5">
-                    <span class="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
-                      <span aria-hidden class="absolute inset-0 bg-green-200 opacity-50 rounded-full"></span>
-                      <span class="relative text-xs">active</span>
-                    </span>
-                  </td>
-                  <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-500 text-blue-900 text-sm leading-5">September 12</td>
-                  <td class="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-500 text-sm leading-5">
-                    <button class="px-5 py-2 border-blue-500 border text-blue-500 rounded transition duration-300 hover:bg-blue-700 hover:text-white focus:outline-none">View Details</button>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-500">
-                    <div class="flex items-center">
-                      <div>
-                        <div class="text-sm leading-5 text-gray-800">#1</div>
-                      </div>
-                    </div>
-                  </td>
-                  <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-500">
-                    <div class="text-sm leading-5 text-blue-900">Damilare Anjorin</div>
-                  </td>
-                  <td class="px-6 py-4 whitespace-no-wrap border-b text-blue-900 border-gray-500 text-sm leading-5">damilareanjorin1@gmail.com</td>
-                  <td class="px-6 py-4 whitespace-no-wrap border-b text-blue-900 border-gray-500 text-sm leading-5">+2348106420637</td>
-                  <td class="px-6 py-4 whitespace-no-wrap border-b text-blue-900 border-gray-500 text-sm leading-5">
-                    <span class="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
-                      <span aria-hidden class="absolute inset-0 bg-green-200 opacity-50 rounded-full"></span>
-                      <span class="relative text-xs">active</span>
-                    </span>
-                  </td>
-                  <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-500 text-blue-900 text-sm leading-5">September 12</td>
-                  <td class="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-500 text-sm leading-5">
-                    <button class="px-5 py-2 border-blue-500 border text-blue-500 rounded transition duration-300 hover:bg-blue-700 hover:text-white focus:outline-none">View Details</button>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-500">
-                    <div class="flex items-center">
-                      <div>
-                        <div class="text-sm leading-5 text-gray-800">#1</div>
-                      </div>
-                    </div>
-                  </td>
-                  <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-500">
-                    <div class="text-sm leading-5 text-blue-900">Damilare Anjorin</div>
-                  </td>
-                  <td class="px-6 py-4 whitespace-no-wrap border-b text-blue-900 border-gray-500 text-sm leading-5">damilareanjorin1@gmail.com</td>
-                  <td class="px-6 py-4 whitespace-no-wrap border-b text-blue-900 border-gray-500 text-sm leading-5">+2348106420637</td>
-                  <td class="px-6 py-4 whitespace-no-wrap border-b text-blue-900 border-gray-500 text-sm leading-5">
-                    <span class="relative inline-block px-3 py-1 font-semibold text-red-900 leading-tight">
-                      <span aria-hidden class="absolute inset-0 bg-red-200 opacity-50 rounded-full"></span>
-                      <span class="relative text-xs">not active</span>
-                    </span>
-                  </td>
-                  <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-500 text-blue-900 text-sm leading-5">September 12</td>
-                  <td class="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-500 text-sm leading-5">
-                    <button class="px-5 py-2 border-blue-500 border text-blue-500 rounded transition duration-300 hover:bg-blue-700 hover:text-white focus:outline-none">View Details</button>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-500">
-                    <div class="flex items-center">
-                      <div>
-                        <div class="text-sm leading-5 text-gray-800">#1</div>
-                      </div>
-                    </div>
-                  </td>
-                  <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-500">
-                    <div class="text-sm leading-5 text-blue-900">Damilare Anjorin</div>
-                  </td>
-                  <td class="px-6 py-4 whitespace-no-wrap border-b text-blue-900 border-gray-500 text-sm leading-5">damilareanjorin1@gmail.com</td>
-                  <td class="px-6 py-4 whitespace-no-wrap border-b text-blue-900 border-gray-500 text-sm leading-5">+2348106420637</td>
-                  <td class="px-6 py-4 whitespace-no-wrap border-b text-blue-900 border-gray-500 text-sm leading-5">
-                    <span class="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
-                      <span aria-hidden class="absolute inset-0 bg-green-200 opacity-50 rounded-full"></span>
-                      <span class="relative text-xs">active</span>
-                    </span>
-                  </td>
-                  <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-500 text-blue-900 text-sm leading-5">September 12</td>
-                  <td class="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-500 text-sm leading-5">
-                    <button class="px-5 py-2 border-blue-500 border text-blue-500 rounded transition duration-300 hover:bg-blue-700 hover:text-white focus:outline-none">View Details</button>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-500">
-                    <div class="flex items-center">
-                      <div>
-                        <div class="text-sm leading-5 text-gray-800">#1</div>
-                      </div>
-                    </div>
-                  </td>
-                  <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-500">
-                    <div class="text-sm leading-5 text-blue-900">Damilare Anjorin</div>
-                  </td>
-                  <td class="px-6 py-4 whitespace-no-wrap border-b text-blue-900 border-gray-500 text-sm leading-5">damilareanjorin1@gmail.com</td>
-                  <td class="px-6 py-4 whitespace-no-wrap border-b text-blue-900 border-gray-500 text-sm leading-5">+2348106420637</td>
-                  <td class="px-6 py-4 whitespace-no-wrap border-b text-blue-900 border-gray-500 text-sm leading-5">
-                    <span class="relative inline-block px-3 py-1 font-semibold text-orange-900 leading-tight">
-                      <span aria-hidden class="absolute inset-0 bg-orange-200 opacity-50 rounded-full"></span>
-                      <span class="relative text-xs">disabled</span>
-                    </span>
-                  </td>
-                  <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-500 text-blue-900 text-sm leading-5">September 12</td>
-                  <td class="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-500 text-sm leading-5">
-                    <button class="px-5 py-2 border-blue-500 border text-blue-500 rounded transition duration-300 hover:bg-blue-700 hover:text-white focus:outline-none">View Details</button>
-                  </td>
-                </tr>
-              </tbody>
-            </table> */}
+export default Rmbox

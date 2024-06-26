@@ -4,81 +4,107 @@ import { useDispatch } from 'react-redux';
 import { getactiveWindow } from '../../../store/slice/DashboardSlice';
 import { useHistory } from 'react-router-dom';
 import { FaRegFile } from "react-icons/fa";
-
+import Rmbox from '../Rmbox';
+import { IoMdAdd } from "react-icons/io";
 
 const DashboardHome = () => {
     const dispatch = useDispatch()
     const history = useHistory()
     const [status, setStatus] = useState('')
 
-    const onClickAnotherLoan = () => {
-        history.push('/dashboard/vendorFinancing')
-    }
+    // const onClickAnotherLoan = () => {
+    //     history.push('/dashboard/vendorFinancing')
+    // }
+
     return (
-        <div class="w-full grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 gap-3">
-            <div class="bg-white min-h-[80vh] shadow rounded-lg p-4 sm:p-6 xl:p-8 2xl:col-span-2">  
-                <div onClick={onClickAnotherLoan}
-                    className="relative w-4/12 h-40 flex flex-col items-center cursor-pointer justify-center rounded-[10px] border-[1px] border-gray-200 bg-blue-500 bg-clip-border shadow-md shadow-[#F3F3F3] dark:border-[#ffffff33] dark:bg-navy-800 dark:text-white dark:shadow-none mb-12">
-                    <div className="flex flex-col items-center">
-                        <FaRegFile className="h-16 w-16 text-dark" />
-                        <p className="text-lg font-bold mb-2 text-white">Apply for a<br></br> New Loan</p>
+        <div class="max-w-4xl lg:max-w-full mx-auto bg-gray-100 p-8 rounded-md shadow-md">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6">
+                <div>
+                    <h1 class="text-3xl font-bold text-gray-800">Active loans</h1>
+                    <p class="text-gray-500 text-base">List of your loans are here</p>
+                </div>
+                <Rmbox />
+            </div>
+            <hr class="border-gray-800" />
+            <div class="bg-gray-100 p-4 ">
+                <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+                    <div class="flex justify-start w-full md:w-auto">
+                        <button class="bg-blue-800 text-white px-2 py-2 rounded flex items-center"
+                            onClick={() => history.push('/dashboard/vendorFinancing')}>
+                            <IoMdAdd color="white" size={18} />
+                            Apply for a new loan</button>
+                    </div>
+                    <div class="flex items-center justify-end w-full md:w-auto">
+                        <span class="text-gray-600 mr-2">Filter by status</span>
+                        <select class="bg-gray-100 rounded px-2 py-1">
+                            <option value="all">All</option>
+                            <option value="Approved">Approved</option>
+                            <option value="Pending">Pending</option>
+                            <option value="Rejected">Rejected</option>
+                        </select>
                     </div>
                 </div>
-
-                <div className="text-2xl font-bold mb-2">Active Loans</div>
-                <div class="relative h-35 flex flex-grow flex-row items-center rounded-[10px] border-[1px]  bg-blue-100 bg-clip-border shadow-md shadow-[#F3F3F3] dark:border-[#ffffff33] dark:bg-navy-800 dark:text-white dark:shadow-none ">
-
-                    <div class="ml-[18px] h-[90px] w-full flex-row items-center overflow-auto">
-                        <table class="w-full">
-                            <thead>
-                                <tr>
-                                    <th class="px-2 py-2 text-left leading-4 text-black-500 tracking-wider">User ID</th>
-                                    <th class="px-2 py-2 text-left text-sm leading-4 text-black-500 tracking-wider">Phone</th>
-                                    <th class="px-2 py-2 text-left text-sm leading-4 text-black-500 tracking-wider">Date</th>
-                                    <th class="px-2 py-2 text-left text-sm leading-4 text-black-500 tracking-wider">Status</th>
-                                </tr>
-                            </thead>
-                            <tbody class="">
-                                <tr>
-                                    <td class="px-2 py-2 ">
-                                        <div class="flex items-center">
-                                            <div>
-                                                <div class="text-sm leading-5 text-black">123456</div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="px-2 py-2 whitespace-no-wrap ">
-                                        <div class="text-sm leading-5 text-black">+106420637</div>
-                                    </td>
-                                    <td class="px-2 py-2 whitespace-no-wrap   text-black text-sm leading-5">
-                                        September 12
-                                    </td>
-                                    <td class="px-2 py-2 whitespace-no-wrap  text-blue-900  text-sm leading-5">
-                                        {status == 'success' ? (
-                                            <span class="relative inline-block px-3 py-1 leading-tight">
-                                                <span aria-hidden class="absolute inset-0 bg-green-600  rounded-full"></span>
-                                                <span class="relative text-xs text-white">Success</span>
-                                            </span>
-                                        ) : status == 'fail' ? (
-                                            <span class="relative inline-block px-3 py-1 leading-tight">
-                                                <span aria-hidden class="absolute inset-0 bg-red-500 rounded-full"></span>
-                                                <span class="relative text-xs text-white">Decline</span>
-                                            </span>
-                                        ) : (
-                                            <span class="relative inline-block px-3 py-1 leading-tight">
-                                                <span aria-hidden class="absolute inset-0 bg-blue-500 rounded-full"></span>
-                                                <span class="relative text-xs text-white">Pending</span>
-                                            </span>
-                                        )}
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                <div class="mt-6">
+                    <ul class="flex flex-col md:flex-row md:space-x-4 space-y-2 md:space-y-0 border-b">
+                        <li class="mr-1 md:mr-0">
+                            <a class="block py-2 px-4 text-blue-600 border-b-2 border-blue-600 md:border-none md:border-b-2 md:border-transparent hover:border-blue-600" href="#">All Loans (9)</a>
+                        </li>
+                        <li class="mr-1 md:mr-0">
+                            <a class="block py-2 px-4 text-gray-600 hover:text-blue-600 border-b-2 border-transparent md:border-none md:border-b-2 md:border-transparent hover:border-blue-600" href="#">Pending Loans (3)</a>
+                        </li>
+                        <li class="mr-1 md:mr-0">
+                            <a class="block py-2 px-4 text-gray-600 hover:text-blue-600 border-b-2 border-transparent md:border-none md:border-b-2 md:border-transparent hover:border-blue-600" href="#">Approved Loans (2)</a>
+                        </li>
+                    </ul>
                 </div>
             </div>
-            <RightContent />
-        </div >
+            <div class="overflow-x-auto">
+                <table class="min-w-full bg-gray-100">
+                    <thead>
+                        <tr>
+                            <th class="py-2 px-4 border-b">Flow</th>
+                            <th class="py-2 px-4 border-b">Application name</th>
+                            <th class="py-2 px-4 border-b">Owner</th>
+                            <th class="py-2 px-4 border-b">Loan Info</th>
+                            <th class="py-2 px-4 border-b">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="bg-gray-100">
+                            <td class="py-2 px-4 border-b">
+                                <input type="checkbox" class="mr-2" />
+                                <span class="bg-blue-100 text-blue-800 py-1 px-2 rounded"># 0001</span>
+                            </td>
+                            <td class="py-2 px-4 border-b">Omkar</td>
+                            <td class="py-2 px-4 border-b">Rohan Kumar</td>
+                            <td class="py-2 px-4 border-b">
+                                <div>Bangalore</div>
+                                <div class="text-sm text-gray-500">Refinance</div>
+                            </td>
+                            <td class="py-2 px-4 border-b">
+                                <span class="text-green-700 bg-green-200 py-1 px-3 rounded-full">Approved</span>
+                            </td>
+                        </tr>
+                        <tr class="bg-gray-100">
+                            <td class="py-2 px-4 border-b">
+                                <input type="checkbox" class="mr-2" />
+                                <span class="bg-blue-100 text-blue-800 py-1 px-2 rounded"># 0002</span>
+                            </td>
+                            <td class="py-2 px-4 border-b">Yashraj Sharma</td>
+                            <td class="py-2 px-4 border-b">Roy Yusef</td>
+                            <td class="py-2 px-4 border-b">
+                                <div>Delhi</div>
+                                <div class="text-sm text-gray-500">Refinance</div>
+                            </td>
+                            <td class="py-2 px-4 border-b">
+                                <span class="text-yellow-700 bg-yellow-200 py-1 px-3 rounded-full">Pending</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
     )
 }
 
