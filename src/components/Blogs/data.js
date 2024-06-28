@@ -11,24 +11,28 @@ export const blogData = [
     id: 1,
     title: 'Supply Chain Finance - A Catalyst for Business Growth.',
     img: blog1,
+    route: 'supplyChainFinance',
     oneLine: "In today's fast-paced business environment, managing cash flow and maintaining ...'",
   },
   {
     id: 2,
     title: 'The Future of Supply Chain Finance',
     img: blog2,
-    oneLine: "In today's rapidly evolving business landscape, supply chain finance has become a vital tool for companies looking to optimise their cash flow and improve supplier ...",
+    route: 'futureOfSupplyChain',
+    oneLine: "In today's rapidly evolving business landscape, supply chain finance has become a vital tool for ...",
   },
-  {
-    id: 3,
-    title: 'Machine Learning Techniques in Supply Chain Finance',
-    img: blog3,
-    oneLine: 'In the dynamic world of supply chain finance, businesses are constantly seeking ...',
-  },
-  {
-    id: 4,
-    title: 'Invoice Discounting- A Lifeline for Cash Flow Management',
-    img: blog4,
-    oneLine: "In today’s era managing cash flow is a challenge for all businesses. One effective ...",
-  }
+  // {
+  //   id: 3,
+  //   title: 'Machine Learning Techniques in Supply Chain Finance',
+  //   img: blog3,
+  //   route: 'machineLearning',
+  //   oneLine: 'In the dynamic world of supply chain finance, businesses are constantly seeking ...',
+  // },
+  // {
+  //   id: 4,
+  //   title: 'Invoice Discounting- A Lifeline for Cash Flow Management',
+  //   img: blog4,
+  //   route: 'invoiceDiscounting',
+  //   oneLine: "In today’s era managing cash flow is a challenge for all businesses. One effective ...",
+  // }
 ]

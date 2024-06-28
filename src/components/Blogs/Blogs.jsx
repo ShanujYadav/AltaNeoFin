@@ -1,17 +1,15 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { blogData } from './data'
 import { useHistory } from 'react-router-dom'
 import Footer from '../Footer/Footer'
 
+
+
 const Blogs = () => {
    const history = useHistory()
 
-   const onClickReadMore = (id) => {
-      history.push(`/DetaildBlog?id=${id}`)
-   }
-
-   const onClickOpenMore = (id) => {
-      history.push(`/details?idk=${id}`)
+   const onClickReadMore = (route) => {
+      history.push(`/blogs/${route}`)
    }
 
    return (
@@ -20,28 +18,35 @@ const Blogs = () => {
             <div class="flex flex-wrap -m-4">
                {blogData.map((data, index) => {
                   return (
-                     <div class="p-4 md:w-1/3">
-                        {/* <div class="h-full rounded-xl shadow-cla-blue bg-gradient-to-r from-indigo-50 to-blue-50 overflow-hidden"> */}
-                        <div class="h-full rounded-xl shadow-cla-blue bg-white overflow-hidden">
-                           <img class="lg:h-48 md:h-36 w-full object-cover object-center scale-110 transition-all duration-400 hover:scale-100"
-                              src={data.img} alt="blog" />
-                           <div class="p-6">
-                              {/* <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">CATEGORY-1</h2> */}
+                     <div key={index} class="p-4 md:w-1/3">
+                        <div class="h-full flex flex-col rounded-xl shadow-cla-blue bg-white overflow-hidden">
+                           <img
+                              class="lg:h-48 md:h-36 w-full object-cover object-center scale-110 transition-all duration-400 hover:scale-100"
+                              src={data.img}
+                              alt="blog"
+                           />
+                           <div class="p-6 flex flex-col flex-grow">
                               <h1 class="title-font leading-relaxed text-xl font-medium text-black mb-3">{data.title}</h1>
                               <p class="leading-relaxed text-sm mb-3 text-gray-600">{data.oneLine}</p>
-                              <div class="flex items-center flex-wrap ">
+                              <div class="mt-auto mb-1">
                                  <button
-                                    onClick={() => onClickReadMore(data.id)}
-                                    class="bg-gradient-to-r from-cyan-400 to-blue-400 hover:scale-105 drop-shadow-md  shadow-cla-blue px-4 py-1 rounded-lg">Read more</button>
+                                    onClick={() => onClickReadMore(data.route)}
+                                    class="w-full bg-blue-500 text-white rounded-full px-4 py-2 hover:bg-blue-700 focus:outline-none focus:shadow-outline-blue active:bg-blue-800">
+                                    Read More
+                                 </button>
                               </div>
                            </div>
                         </div>
                      </div>
-                  )})}
+
+                  )
+               })}
+
             </div>
          </div>
          <Footer />
       </section>
    )
+
 }
 export default Blogs; ``

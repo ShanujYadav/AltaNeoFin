@@ -7,7 +7,7 @@ import menu_icon from '../../assets/menu-icon.png';
 
 const Navbar = ({ onWorkingCapitalClick }) => {
 
-  const [sticky, setSticky] = useState(false) 
+  const [sticky, setSticky] = useState(false)
 
   const [dropdownVisible, setDropdownVisible] = useState(false);
 
@@ -37,7 +37,6 @@ const Navbar = ({ onWorkingCapitalClick }) => {
   }
 
   return (
-
     <div className='container' style={{}}>
       <nav className={` ${sticky ? 'dark-nav' : ''}`}>
         <a href="/">
@@ -47,8 +46,8 @@ const Navbar = ({ onWorkingCapitalClick }) => {
           <li
             onMouseEnter={handleSMEsHover}
             onMouseLeave={handleSMEsLeave}
-            className={`dropdown-trigger ${dropdownVisible ? 'active' : ''}`}
-          >
+            className={`dropdown-trigger ${dropdownVisible ? 'active' : ''}`}>
+
             <ScrollLink to="/hero" smooth={true} offset={0} duration={500}>
               Products
             </ScrollLink>
@@ -76,21 +75,24 @@ const Navbar = ({ onWorkingCapitalClick }) => {
             </ScrollLink>
           </li>
           <li>
+            <a href="/simple-intrest-caclucator">
+              Calculator
+            </a>
+          </li>
+          <li>
             <a href="/TeamPage">
               Team
             </a>
           </li>
           <li>
-            <a href="/Blogs">
+            <a href="/blogs">
               Blogs
             </a>
           </li>
           <li>
-
             <ScrollLink to="contact" smooth={true} offset={0} duration={500}>
               Contact Us
             </ScrollLink>
-
           </li>
           <li>
             <div className="btn-square mb-3">

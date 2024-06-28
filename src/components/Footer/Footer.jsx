@@ -5,7 +5,7 @@ import { Link as ScrollLink } from 'react-scroll';
 import CookieConsent from 'react-cookie-consent';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFacebookF, faTwitter, faYoutube, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
+import { faFacebookF, faTwitter, faYoutube, faLinkedinIn, faInstagram } from '@fortawesome/free-brands-svg-icons';
 
 
 
@@ -65,8 +65,8 @@ const Footer = () => {
     document.cookie = `${q8}=${ans8}`
     document.cookie = `${q9}=${ans9}`
     document.cookie = `${q10}=${ans10}`
-
   }
+
 
   return (<>
     <footer class="bg-gradient-to-r from-blue-950 to-black" aria-labelledby="footer-heading">
@@ -86,28 +86,32 @@ const Footer = () => {
               <a target="_blank" href="https://youtube.com/@altaneofin?si=oYQH2WO4iXDAqLeK" class="text-white hover:text-gray-500">
                 <FontAwesomeIcon icon={faYoutube} />
               </a>
-
               <a target="_blank" href="https://www.linkedin.com/company/altaneofin/" class="text-white hover:text-gray-500">
                 <FontAwesomeIcon icon={faLinkedinIn} />
               </a>
+              <a target="_blank" href="https://www.instagram.com/altaneo_fin/" class="text-white hover:text-gray-500">
+                <FontAwesomeIcon icon={faInstagram} />
+              </a>
             </div>
           </div>
+
+
           <div class="mt-16 grid grid-cols-2 gap-8 xl:col-span-2 xl:mt-0">
             <div class="md:grid md:grid-cols-2 md:gap-8">
               <div>
                 <h2 class="font-bold leading-6 text-white">Useful Links</h2>
                 <ul role="list" class="mt-6 space-y-4">
                   <li>
-                    <a href="/Invoice-Discounting" class="text-sm leading-6 text-gray-400 hover:text-blue-900">Invoice Discounting</a>
+                    <a href="/products/invoiceDiscounting" class="text-sm leading-6 text-gray-400 hover:text-blue-900">Invoice Discounting</a>
                   </li>
                   <li>
-                    <a href="/Export-Credits" class="text-sm leading-6 text-gray-400 hover:text-blue-900">Export Credits</a>
+                    <a href="/products/exportCredits" class="text-sm leading-6 text-gray-400 hover:text-blue-900">Export Credits</a>
                   </li>
                   <li>
-                    <a href="/Vendor-Financing" class="text-sm leading-6 text-gray-400 hover:text-blue-900">Vendor financing</a>
+                    <a href="/products/vendorFinancing" class="text-sm leading-6 text-gray-400 hover:text-blue-900">Vendor financing</a>
                   </li>
                   <li>
-                    <a href="/simple-intrest-caclucator" class="text-sm leading-6 text-gray-400 hover:text-blue-900">Corp. Credit Cards</a>
+                    <a href="/products/creditCard" class="text-sm leading-6 text-gray-400 hover:text-blue-900">Corp. Credit Cards</a>
                   </li>
                 </ul>
               </div>
@@ -121,10 +125,10 @@ const Footer = () => {
                     <a href="#" class="text-sm leading-6 text-gray-400 hover:text-blue-900">Contact</a>
                   </li>
                   <li>
-                    <a href="#" class="text-sm leading-6 text-gray-400 hover:text-blue-900">About Us</a>
+                    <a href="/blogs" class="text-sm leading-6 text-gray-400 hover:text-blue-900">Blogs</a>
                   </li>
                   <li>
-                    <a href="#" class="text-sm leading-6 text-gray-400 hover:text-blue-900">Expert Team</a>
+                    <a href="/TeamPage" class="text-sm leading-6 text-gray-400 hover:text-blue-900">Expert Team</a>
                   </li>
                   <li>
                     <a href="/simple-intrest-caclucator" class="text-sm leading-6 text-gray-400 hover:text-blue-900">Calculator</a>
@@ -147,9 +151,6 @@ const Footer = () => {
                   </li>
                   <li>
                     <a href="/Refundpolicy" class="text-sm leading-6 text-gray-400 hover:text-blue-900">Refund</a>
-                  </li>
-                  <li>
-                    <a href="#" class="text-sm leading-6 text-gray-400 hover:text-blue-900">Contact</a>
                   </li>
                 </ul>
               </div>
