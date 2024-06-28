@@ -2,13 +2,47 @@ import React from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-// import './Team.css';
 import ceo from '../../assets/img/ceoImg.png';
 import director from '../../assets/img/directorImg.png';
 import cta from '../../assets/img/ctaImg.png';
 
 
 const Team = () => {
+
+
+
+
+  
+  const currentRatio = (currentAsset, currentLaibility) => {
+    return currentAsset / currentLaibility
+  }
+
+  const quickRatio = (currentAsset, inventory, expences, currentLaibility) => {
+    return (currentAsset - inventory - expences) / currentLaibility
+  }
+
+  const returnOnAssets = (netIncome, avgTotalAssets) => {
+    return (netIncome / avgTotalAssets) * 100
+  }
+
+  const returnOnEquity = (netIncome, totalEquity) => {
+    return (netIncome / totalEquity) * 100
+  }
+
+  const debtToEquityRatio = (totalDebt, totalEquity) => {
+    return totalDebt / totalEquity
+  }
+
+
+
+
+
+
+
+
+
+
+
   const settings = {
     dots: true,
     infinite: true,
@@ -17,10 +51,9 @@ const Team = () => {
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 9000,
-    pauseOnHover: window.innerWidth <= 768, 
-    pauseOnFocus: window.innerWidth <= 768, 
+    pauseOnHover: window.innerWidth <= 768,
+    pauseOnFocus: window.innerWidth <= 768,
   }
-  
   return (
     <Slider {...settings} className='w-full overflow-hidden box-border sm:px-2'>
       <div className='px-3'>

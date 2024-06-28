@@ -10,10 +10,10 @@ const DetailedBlog = () => {
     const id = urlParams.get('id')
 
     return (
-        <div class="w-full mt-5 grid grid-cols-1 gap-4 p-4 sm:grid-cols-12 ">
+        <div class="w-full mt-5 grid grid-cols-1 gap-4 p-4 sm:grid-cols-12">
             {id == 1 ?
                 <>
-                    <div class="col-span-1 flex items-stretch sm:col-span-8">
+                    <div class="col-span-1 flex h-full w-full items-stretch sm:col-span-8 overflow-y-scroll">
                         <div class="rounded-xl shadow-cla-blue bg-white overflow-hidden w-full">
                             <div className='h-48 lg:h-96'>
                                 <img
@@ -98,6 +98,7 @@ const DetailedBlog = () => {
                             </div>
                         </div>
                     </div>
+                    
                     <div class="col-span-1 rounded-lg p-4 sm:col-span-4">
                         <div className=''>
                             <h1 class="my-3 text-2xl md:text-2xl lg:text-3xl font-semibold leading-none text-start ">Table of Contents</h1>

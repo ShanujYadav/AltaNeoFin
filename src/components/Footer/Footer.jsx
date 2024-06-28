@@ -3,16 +3,13 @@ import './Footer.css';
 import logo from '../../assets/logo.png';
 import { Link as ScrollLink } from 'react-scroll';
 import CookieConsent from 'react-cookie-consent';
-import { Container, Row, Col, Stack } from "react-bootstrap";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFacebookF, faTwitter, faGooglePlusG, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
+import { faFacebookF, faTwitter, faYoutube, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
 
 
 
 const Footer = () => {
-  useEffect(() => {
-  }, [])
 
 
   const onAcceptCookiee = () => {
@@ -80,20 +77,17 @@ const Footer = () => {
             <img class="h-8" src={logo} alt="Company name" />
             <p class="text-sm leading-6 text-gray-400">Empowering Growth Through Seamless Financial Solutions</p>
             <div class="flex space-x-6">
-              <a href="#" class="text-white hover:text-gray-500">
-                <span class="sr-only">Facebook</span>
+              <a target="_blank" href="https://www.facebook.com/share/1x5SMtKzBUShnod2/?mibextid=LQQJ4d" class="text-white hover:text-gray-500">
                 <FontAwesomeIcon icon={faFacebookF} />
               </a>
-              <a href="#" class="text-white hover:text-blue-4    00">
-                <span class="sr-only">X</span>
+              <a target="_blank" href="https://x.com/AltaneoFin" class="text-white hover:text-blue-4    00">
                 <FontAwesomeIcon icon={faTwitter} />
               </a>
-              <a href="#" class="text-white hover:text-gray-500">
-                <span class="sr-only">GitHub</span>
-                <FontAwesomeIcon icon={faGooglePlusG} />
+              <a target="_blank" href="https://youtube.com/@altaneofin?si=oYQH2WO4iXDAqLeK" class="text-white hover:text-gray-500">
+                <FontAwesomeIcon icon={faYoutube} />
               </a>
-              <a href="#" class="text-white hover:text-gray-500">
-                <span class="sr-only">YouTube</span>
+
+              <a target="_blank" href="https://www.linkedin.com/company/altaneofin/" class="text-white hover:text-gray-500">
                 <FontAwesomeIcon icon={faLinkedinIn} />
               </a>
             </div>
@@ -182,7 +176,6 @@ const Footer = () => {
         <div class="mt-16 border-t border-gray-900/10 pt-8 sm:mt-20 lg:mt-24">
           <p class="text-sm leading-5 text-gray-400">Copywrite &copy; 2024 All rights reserved <a href="" class='text-blue-400'> Altaneo</a></p>
         </div>
-
         <CookieConsent
           debug={true}
           location="bottom"
@@ -199,233 +192,6 @@ const Footer = () => {
     </footer>
   </>
   )
-
-  // return (
-  //   <>
-
-  //     <footer >
-  //       <div className='content'>
-  //         <div className="footer-content-wrapper">
-  //           <div className="footer-col large-25 small-50 tiny-100 ta-l flt">
-  //             <div className="footer-logo">
-  //               <a href="/"><img src={logo} className="img-fluid" alt="logo" /></a>
-  //             </div>
-  //             <div className="footer-text">
-  //               <p>Empowering Growth Through Seamless <br />Financial Solutions</p>
-  //               <span >Follow us</span>
-  //             </div>
-  //             <div className="footer-social-icon">
-  //               <a href="#"><FontAwesomeIcon icon={faFacebookF} /></a>
-  //               <a href="#"><FontAwesomeIcon icon={faTwitter} /></a>
-  //               <a href="#"><FontAwesomeIcon icon={faGooglePlusG} /></a>
-  //               <a href="#"><FontAwesomeIcon icon={faLinkedinIn} /></a>
-  //             </div>
-  //           </div>
-  //           <div className="footer-col large-25 small-50 tiny-100 ta-l flt">
-  //             <div className='footer-widget-heading'>
-  //               <h3>Useful Links</h3>
-  //               <a href="/Invoice-Discounting">Invoice Discounting</a>
-  //               <a href="/Export-Credits">Export Credits</a>
-  //               <a href="/Vendor-Financing">Vendor financing</a>
-  //               <a href="">Corp. Credit Cards</a>
-  //             </div>
-  //           </div>
-  //           <div className="footer-col large-25 small-50 tiny-100 ta-l flt">
-  //             <div className='footer-widget-heading'>
-  //               <h3 className='mb-5'></h3>
-  //               <a href="#">Vendor</a>
-  //               <a href="#">Contact</a>
-  //               <a href="#">About Us</a>
-  //               <a href="#">Expert Team</a>
-  //               <a href="#">Latest News</a>
-  //             </div>
-  //           </div>
-  //           <div className="footer-col large-25 small-50 tiny-100 ta-l flt">
-  //             <div className='footer-widget-heading'>
-  //               <h3>Legal</h3>
-  //               <h6>Nodal Officer:-</h6>
-  //               <h6>Somesh Chandel</h6>
-  //               <h6>+91 9817741345</h6>
-  //               <h6><a href="mailto:Email@gmail.com">info@altaneofin.in</a></h6>
-
-  //             </div>
-  //           </div>
-  //         </div>
-  //       </div>
-
-
-  //       <CookieConsent
-  //         debug={true}
-  //         location="bottom"
-  //         buttonText="I Accept"
-  //         onAccept={onAcceptCookiee}
-  //         cookieName="myAwesomeCookieName2"
-  //         style={{ background: "#000", textAlign: 'left', paddingLeft: 60 }}
-  //         buttonStyle={{ color: "#000", background: '#fff', fontSize: "16px", marginRight: 120, paddingInline: 10 }}
-  //         expires={365}
-  //       >
-  //         This website uses cookies to ensure you get the best experience on our website.
-  //       </CookieConsent>
-
-  //       {/*       
-  //       <div className="copyright-area">
-  //       <div className="container">
-  //         <div className="row">
-  //           <div className="copyright-area-left-col col-xl-6 col-lg-6 text-center text-lg-left">
-  //             <div className="copyright-text">
-  //               <p>Copyright &copy; 2024, All Right Reserved <a href=""> Altaneo</a></p>
-  //             </div>
-  //           </div>
-  //           <div className="col-xl-6 col-lg-6 d-none d-lg-block text-right">
-  //             <div className="footer-menu">
-  //               <ul>
-  //                 <li><a href="#">Home</a></li>
-  //                 <li><a href="/Terms">Terms</a></li>
-  //                 <li><a href="/Privacypolicy">Privacy</a></li>
-  //                 <li><a href="/Refundpolicy">Refund</a></li>
-  //                 <li> <ScrollLink to="contact" smooth={true} offset={0} duration={300}>
-  //                   Contact
-  //                 </ScrollLink></li>
-  //               </ul>
-  //             </div>
-  //           </div>
-  //         </div>
-  //       </div>
-  //     </div> */}
-  //     </footer>
-  //   </>
-
-  //   // <footer className="footer-section">
-  //   //   <div className="container">
-  //   //     <div className="footer-content pt-5 pb-5">
-  //   //       <div className="row">
-  //   //         <div className="col-3">
-  //   //           <div className="footer-widget">
-  //   //             <div className="footer-logo">
-  //   //               <a href="/"><img src={logo} className="img-fluid" alt="logo" /></a>
-  //   //             </div>
-  //   //             <div className="footer-text">
-  //   //               <p>Empowering Growth Through Seamless <br />Financial Solutions</p>
-  //   //             </div>
-  //   //             <div className="footer-social-icon">
-  //   //               <span>Follow us</span>
-  //   //               {/* Add social media icons */}
-  //   //               <a href="#"><FontAwesomeIcon icon={faFacebookF} /></a>
-  //   //               <a href="#"><FontAwesomeIcon icon={faTwitter} /></a>
-  //   //               <a href="#"><FontAwesomeIcon icon={faGooglePlusG} /></a>
-  //   //               <a href="#"><FontAwesomeIcon icon={faLinkedinIn} /></a>
-  //   //             </div>
-  //   //           </div>
-  //   //         </div>
-
-  //   //         <div className="col-3">
-  //   //           <div className="footer-widget text-end">
-  //   //             <div className="footer-widget-heading">
-  //   //               <h3 style={{ marginLeft: 37 }}>Useful Links</h3>
-  //   //             </div>
-  //   //             <div className="footer-text mb-25">
-  //   //               <ul>
-  //   //                 <li><a href="/Invoice-Discounting">Invoice Discounting</a></li>
-  //   //                 <li><a href="/Export-Credits">Export Credits</a></li>
-  //   //                 <li><a href="/Vendor-Financing">Vendor financing</a></li>
-  //   //                 <li><a href="/Credit-card">Corp. Credit Cards</a></li>
-  //   //               </ul>
-  //   //             </div>
-  //   //           </div>
-  //   //         </div>
-  //   //         <div className="col-3 text-mid">
-  //   //           <div className="footer-widget text-end">
-  //   //             <div className="footer-widget-heading">
-  //   //               <h3></h3>
-  //   //             </div>
-  //   //             <div className="footer-text mb-25">
-  //   //               <ul>
-  //   //                 <li><a href="/">Vendor</a></li>
-  //   //                 <li><a href="#">Contact Us</a></li>
-  //   //                 <li><a href="#">About us</a></li>
-  //   //                 <li><a href="#">Expert Team</a></li>
-  //   //                 <li><a href="#">Latest News</a></li>
-  //   //               </ul>
-  //   //             </div>
-  //   //           </div>
-  //   //         </div>
-  //   //         {/* <div className="col-6">
-  //   //           <div className="footer-widget">
-  //   //             <div className="footer-widget-heading">
-  //   //               <div className='right-footer'>
-  //   //                 <h3>Useful links</h3>
-  //   //                 <ul >
-  //   //                   <li><a href="/Invoice-Discounting">Invoice Discounting</a></li>
-  //   //                   <li><a href="/">Vendor</a></li>
-  //   //                   <li><a href="/Export-Credits">Export Credits</a></li>
-  //   //                   <li><a href="#">Contact Us</a></li>
-  //   //                   <li><a href="/Vendor-Financing">Vendor financing</a></li>
-  //   //                   <li><a href="#">About us</a></li>
-  //   //                   <li><a href="/Credit-card">Corp. Credit Cards</a></li>
-  //   //                   <li><a href="#">Expert Team</a></li>
-  //   //                   <li></li>
-  //   //                   <li><a href="#">Latest News</a></li>
-  //   //                 </ul>
-  //   //               </div>
-  //   //             </div>
-  //   //           </div>
-  //   //         </div> */}
-  //   //         <div className="col-3">
-  //   //           <div className="footer-widget text-end">
-  //   //             <div className="footer-widget-heading">
-  //   //               <h3>Legal</h3>
-  //   //             </div>
-  //   //             <div className="footer-text mb-25">
-  //   //               <p>Nodal Officer:-</p>
-  //   //               <p>Somesh Chandel</p>
-  //   //               <p>+91 9817741345</p>
-  //   //               <p><a href="mailto:Email@gmail.com">info@altaneofin.in</a></p>
-  //   //             </div>
-  //   //           </div>
-  //   //         </div>
-  //   //       </div>
-  //   //     </div>
-  //   //   </div>
-
-  //   //   <div className="copyright-area" style={{ height: 50 }}>
-  //   //     <div className="container">
-  //   //       <div className="row">
-  //   //         <div className="col-xl-6 col-lg-6 text-center text-lg-left">
-  //   //           <div className="copyright-text">
-  //   //             <p>Copyright &copy; 2024, All Right Reserved <a href=""> Altaneo</a></p>
-  //   //           </div>
-  //   //         </div>
-  //   //         <div className="col-xl-6 col-lg-6 d-none d-lg-block text-right">
-  //   //           <div className="footer-menu">
-  //   //             <ul>
-  //   //               <li><a href="#">Home</a></li>
-  //   //               <li><a href="/Terms">Terms</a></li>
-
-  //   //               <li><a href="/Privacypolicy">Privacy</a></li>
-  //   //               <li><a href="/Refundpolicy">Refund</a></li>
-  //   //               <li> <ScrollLink to="contact" smooth={true} offset={0} duration={300}>
-  //   //                 Contact
-  //   //               </ScrollLink></li>
-  //   //             </ul>
-  //   //           </div>
-  //   //         </div>
-  //   //       </div>
-  //   //     </div>
-  //   //   </div>
-  //   //     <CookieConsent
-  //   //       debug={true}
-  //   //       location="bottom"
-  //   //       buttonText="I Accept"
-  //   //       onAccept={onAcceptCookiee}
-  //   //       cookieName="myAwesomeCookieName2"
-  //   //       style={{ background: "#000", textAlign: 'left', paddingLeft: 60 }}
-  //   //       buttonStyle={{ color: "#000", background: '#fff', fontSize: "16px", marginRight: 120, paddingInline: 10 }}
-  //   //       expires={365}
-  //   //     >
-  //   //       This website uses cookies to ensure you get the best experience on our website.
-  //   //     </CookieConsent>
-  //   // </footer>
-  // );
 }
 
 export default Footer;

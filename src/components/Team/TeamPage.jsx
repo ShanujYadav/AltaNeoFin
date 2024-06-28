@@ -37,6 +37,12 @@ const TeamPage = () => {
       description: 'As the Director of Altaneo, Im thrilled to extend a warm welcome to you, introducing fintech poised to redefine the landscape of financial services. At Altaneo, we are not just in the business of lending we arre in the business of empowering dreams, fuelling growth, and fostering financial inclusion.'
     },
     {
+      name: 'Somesh Chandel',
+      role: 'Credit Analyst',
+      photo: somesh,
+      description: 'With an overall experience of 5 years, including 2 years dedicated to the wholesale banking sector, he excels in credit assessment for MSME enterprises requiring working capital and supply chain finance.'
+    },
+    {
       name: 'Dhiren Madhukar',
       role: 'Software Developer',
       photo: dhiren,
@@ -46,7 +52,7 @@ const TeamPage = () => {
       name: 'Shanuj Yadav',
       role: 'Jr.Software Developer',
       photo: shanuj,
-      description: 'Excellent in building user interfaces using React, a popular JavaScript library for building interactive UI components. You leverage React component-based architecture to create reusable and modular UI elements, enhancing code maintainability and scalability.'
+      description: 'Excellent in building user interfaces using React and Redux js, a popular JavaScript library for building interactive UI components. You leverage React component-based architecture to create reusable and modular UI elements, enhancing code maintainability and scalability.'
     },
     {
       name: 'Ayushi Bansal',
@@ -72,12 +78,7 @@ const TeamPage = () => {
       photo: sanskruti,
       description: 'I am thrilled to join the team as an Accounts Intern. I have completed my degree in Bachelors in Commerce (Hons) from University of Delhi, where I have developed a strong foundation in financial accounting, management accounting, and financial data management. My passion for numbers and keen attention to detail have driven me to seek practical experience in the field of accounting. I am excited about the opportunity to apply my academic knowledge and analytical skills to real-world scenarios, and I look forward to contributing to the teams success while gaining valuable insights and experience.'
     },
-    {
-      name: 'Somesh Chandel',
-      role: 'Credit Analyst',
-      photo: somesh,
-      description: 'With an overall experience of 5 years, including 2 years dedicated to the wholesale banking sector, he excels in credit assessment for MSME enterprises requiring working capital and supply chain finance.'
-    }
+    
   ]
 
 
@@ -89,7 +90,7 @@ const TeamPage = () => {
           <li key={index} class="col-span-1 flex flex-col divide-y divide-gray-200 rounded-lg bg-white text-center shadow">
             <div class="flex flex-1 mb-0 flex-col w-full md:w-80 h-96 p-4">
               <img class="mx-auto mb-1 h-48 w-48 flex-shrink-0 border-black rounded-full" src={item.photo} alt="" />
-              <h3 class="mt-2 text-sm font-medium text-gray-900">{item.name}</h3>
+              <h3 class="mt-2 text-md font-semibold text-gray-900">{item.name}</h3>
               <dl class="mt-1 flex flex-grow flex-col justify-between">
                 <dd class="mt-0">
                   <span class="inline-flex items-center rounded-full bg-blue-400 px-2 py-1 text-xs font-medium text-white ring-1 ring-inset ring-green-600/20">{item.role}</span>

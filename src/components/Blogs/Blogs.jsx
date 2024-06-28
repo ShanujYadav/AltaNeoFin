@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { blogData } from './data'
 import { useHistory } from 'react-router-dom'
+import Footer from '../Footer/Footer'
 
 const Blogs = () => {
    const history = useHistory()
@@ -36,10 +37,10 @@ const Blogs = () => {
                            </div>
                         </div>
                      </div>
-                  )
-               })}
+                  )})}
             </div>
          </div>
+         <Footer />
       </section>
    )
 }

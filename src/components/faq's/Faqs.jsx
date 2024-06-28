@@ -56,6 +56,7 @@ const Faqs = () => {
         }
     ]
 
+    
     return (
         <div className=''>
             <div className='d-flex justify-content-center'>

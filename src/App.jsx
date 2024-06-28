@@ -4,17 +4,11 @@ import Navbar from './components/Navbar/Navbar';
 import Hero from './components/Hero/Hero';
 import About from './components/About/About';
 import Solutions from './components/Solutions/Solutions';
-import Title from './components/Title/Title';
-import Numbers from './components/Customerbasenumber/Numbers';
 import Testimonials from './components/Testimonials/Testimonials';
 import Touch from './components/Touch/Touch';
 import Footer from './components/Footer/Footer';
 import Partners from './components/Partners/Partners';
 import Team from './components/Team/Team';
-import InvoiceDiscountingPage from './components/Invoice-Discounting/InvoiceDiscountingPage';
-import ExportCredits from './components/ExportCredits/ExportCredits';
-import VendorFinancing from './components/VendorFinancing/VendorFinancing';
-import CreditCard from './components/CreditCard/CreditCard';
 import Investors from './components/Investors/Investors';
 import Login from './components/Login/login';
 import Privacypolicy from './components/PrivacyPolicy/Privacypolicy';
@@ -26,10 +20,14 @@ import TeamPage from './components/Team/TeamPage';
 import Admin from './components/Admin/Admin';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Faqs from './components/faq\'s/Faqs';
-import { DashboardContextProvider } from './components/Dashboard/DashoardContext';
 import Dashboard from './components/Dashboard/Dashboard';
 import DetailedBlog from './components/Blogs/DetailedBlog';
 import SiCalculator from './components/calculator/SiCalculator';
+import InvoiceDiscountingPage from './components/products/invoiceDiscounting/InvoiceDiscountingPage';
+import VendorFinancingPage from './components/products/vendorFinancing/VendorFinancingPage';
+import ExportCreditPage from './components/products/exportCredit/ExportCreditPage';
+import CreditCardPage from './components/products/creditCard/CreditCardPage';
+import SupplyChainFinanceBlog from './components/Blogs/blogPages/SupplyChainFinanceBlog';
 
 
 const App = () => {
@@ -49,15 +47,19 @@ const App = () => {
           <Navbar />
           <Switch>
             <Route exact path="/" component={Home} />
+            
+            <Route exact path='/products/invoiceDiscounting' component={InvoiceDiscountingPage} />
+            <Route exact path='/products/vendorFinancing' component={VendorFinancingPage} />
+            <Route exact path='/products/exportCredits' component={ExportCreditPage} />
+            <Route exact path='/products/creditCard' component={CreditCardPage} />
+            
+            <Route exact path='/Blogs' component={Blogs} />
+            <Route exact path='/Blogs/supplyChainFinance' component={SupplyChainFinanceBlog} />
+
             <Route exact path="/simple-intrest-caclucator" component={SiCalculator} />
-            <Route exact path='/Invoice-Discounting' component={InvoiceDiscountingPage} />
-            <Route exact path='/Export-Credits' component={ExportCredits} />
-            <Route exact path='/Vendor-Financing' component={VendorFinancing} />
-            <Route exact path='/Credit-Card' component={CreditCard} />
             <Route exact path='/Privacypolicy' component={Privacypolicy} />
             <Route exact path='/Refundpolicy' component={RefundPolicy} />
             <Route exact path='/Terms' component={Terms} />
-            <Route exact path='/Blogs' component={Blogs} />
             <Route exact path='/DetaildBlog' component={DetailedBlog} />
             {/* <Route exact path='/blog/:id' component={subBlog} /> */}
             <Route exact path='/TeamPage' component={TeamPage} />

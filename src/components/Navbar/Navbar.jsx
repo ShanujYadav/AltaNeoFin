@@ -53,19 +53,19 @@ const Navbar = ({ onWorkingCapitalClick }) => {
               Products
             </ScrollLink>
             <div className={`dropdown-content ${dropdownVisible ? 'show' : ''}`}>
-              <a href="/Invoice-Discounting">
+              <a href="/products/invoiceDiscounting">
                 Invoice Discounting
               </a>
               <br />
-              <a href="/Export-Credits">
+              <a href="/products/exportCredits">
                 Export Credits
               </a>
               <br />
-              <a href="/Vendor-Financing">
+              <a href="/products/vendorFinancing">
                 Vendor Financing
               </a>
               <br />
-              <a href="/Credit-Card">
+              <a href="/products/creditCard">
                 Credit Cards
               </a>
             </div>

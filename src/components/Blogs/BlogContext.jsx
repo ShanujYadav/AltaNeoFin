@@ -1,40 +1,32 @@
-// import React, { createContext } from 'react'
+import React from 'react'
 
+const BlogContext = () => {
 
-// export const BlogContext = createContext()
+  return (
+     
+    <div>BlogContext</div>
+  )
+}
 
-// const BlogContext = () => {
-
-//     const [data, setData] = useState({
-//         gateway: "",
-//         amount: "",
-//     })
-
-//     return (
-//         <BlogContext.Provider value={[data, setData]}>
-//             {props.children}
-//         </BlogContext.Provider>
-//     )
-// }
-// export default BlogContext
+export default BlogContext
 
 
 // import React, { useState, createContext } from "react";
-// import { useSelector } from "react-redux";
-
-// export const EmpContext = createContext()
-
-// export const EmpContextProvider = (props) => {
-//   const profileDetails = useSelector((state) => state.profile.empInfo)
-
-//   const [data, setData] = useState({
-//     gateway: "",
-//     amount: "",
-//   })
-
-//   return (
-//     <EmpContext.Provider value={[data, setData, profileDetails]}>
-//       {props.children}
-//     </EmpContext.Provider>
-//   );
+// export const DashboardContext = createContext()
+// export const DashboardContextProvider = ({children}) => {
+//     // let Billers = useSelector((state) => state.biller.broadband.broadbandBillers.datList)
+//     let Billers = []
+    
+//     const [data, setData] = useState({
+//         biller: "",
+//         billPeriod: "",
+//         receipt: false,
+//         option: [],
+//         billParam: "",
+//     })
+//     return (
+//         <DashboardContext.Provider value={[data, setData, Billers]}>
+//             {children}
+//         </DashboardContext.Provider>
+//     );
 // };
