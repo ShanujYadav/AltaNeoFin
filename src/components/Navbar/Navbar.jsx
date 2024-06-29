@@ -4,8 +4,7 @@ import logo from '../../assets/logo.png';
 import { Link as ScrollLink } from 'react-scroll';
 import menu_icon from '../../assets/menu-icon.png';
 
-
-const Navbar = ({ onWorkingCapitalClick }) => {
+const Navbar = () => {
 
   const [sticky, setSticky] = useState(false)
 
@@ -19,17 +18,17 @@ const Navbar = ({ onWorkingCapitalClick }) => {
     window.addEventListener('scroll', handleScroll);
 
     return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [])
 
   const handleSMEsHover = () => {
     setDropdownVisible(true);
-  };
+  }
 
   const handleSMEsLeave = () => {
     setDropdownVisible(false);
-  };
+  }
 
   const [mobileMenu, setMobileMenu] = useState(false);
   const toggleMenu = () => {

@@ -29,7 +29,7 @@ const SupplyChainFinanceBlog = () => {
 
               <ol class="mt-2 text-gray-600 list-inside dark:text-gray-600 text-[18px] text-justify space-y-2">
                 <li>
-                  <span class="font-medium text-gray-900 dark:text-white">1. Improved Cash Flow Management-</span> By extending payment terms, buyers can retain cash longer which improves liquidity and <a href="/blogs/workingCapital" className='text-blue-600'>working capital</a> of the business.
+                  <span class="font-medium text-gray-900 dark:text-white">1.Improved Cash Flow Management-</span> By extending payment terms, buyers can retain cash longer which improves liquidity and <a href="/blogs/workingCapital" className='text-blue-600'>working capital</a> of the business.
                 </li>
                 <li>
                   <span class="font-medium leading-tight text-gray-900 dark:text-white">2.Strengthened Supplier Relationships- </span>Providing early payment options to suppliers fosters trust and loyalty, enhancing long-term business relationships.
@@ -41,7 +41,6 @@ const SupplyChainFinanceBlog = () => {
                   <span class="font-medium text-gray-900 dark:text-white">4.Operational Efficiency- </span>Automating the supply chain financing process reduces administrative burdens, streamlines operations, and lowers costs.                          .
                 </li>
               </ol>
-
               <h1 class="mt-4 mb-1 text-2xl md:text-2xl lg:text-3xl font-semibold leading-none text-start">Benefits of Supply Chain Finance for <span className='text-blue-600'>Suppliers</span></h1>
               <ol class="mt-2 text-gray-600 list-inside dark:text-gray-600 text-[18px] text-justify space-y-2">
                 <li>

@@ -2,26 +2,26 @@ import React, { useEffect, useState } from 'react';
 import { UserOutlined, OrderedListOutlined, HomeOutlined, ClockCircleOutlined } from '@ant-design/icons';
 import { Menu } from 'antd';
 import { useDispatch } from 'react-redux';
-import { getactiveWindow } from '../../store/slice/DashboardSlice';
+import { getactiveWindow } from '../../store/slice/DashboardSlice'
 import { useHistory } from 'react-router-dom';
 
 
 
-const Sidebar = (props) => {
+const Sidebar = () => {
   const dispatch = useDispatch()
-  const history=useHistory()
+  const history = useHistory()
   const [selectedKey, setSelectedKey] = useState(window.location.pathname)
 
+
+
   const handleMenuClick = ({ key }) => {
-    console.log('key----',key)
-    
     setSelectedKey(key)
     history.push(key)
-    console.log('selected--',selectedKey)
-
     // dispatch(getactiveWindow(key))
     // setSelectedKey(key);
   }
+
+
 
   // const onSelectType = (key) => {
   //   console.log(key)
@@ -35,31 +35,33 @@ const Sidebar = (props) => {
   //     dispatch(getactiveWindow('Profile'))
   //   }
   // }
-  
+
+
+
   return (
     <aside id="logo-sidebar" aria-label="Sidebar" className='fixed min-h-[80vh] top-0 left-0 z-40 w-64 h-screen pt-20 transition-transform -translate-x-full bg-white border-r border-gray-200 sm:translate-x-0' >
       <div className='h-full px-3 pb-4 overflow-y-auto bg-white'>
         {/* <button  onClick={() => changeSelectedKey('vendorFinancing')}>ksddnb</button> */}
-          <Menu theme="light" mode="inline" defaultSelectedKeys={[selectedKey]} className="menu-bar" onClick={handleMenuClick} items={[
-            {
-              key: '/dashboard/home',
-              icon: <HomeOutlined />,
-              label: 'Home',
-            }, 
-            {
-              key: '/dashboard/vendorFinancing',
-              icon: <ClockCircleOutlined />,
-              label: 'Vendor Financing',
-            },
-            {
-              key: '/dashboard/profile',
-              icon: <UserOutlined />,
-              label: 'Profile',
-            },
-          ]} />
+        <Menu theme="light" mode="inline" defaultSelectedKeys={[selectedKey]} className="menu-bar" onClick={handleMenuClick} items={[
+          {
+            key: '/dashboard/home',
+            icon: <HomeOutlined />,
+            label: 'Home',
+          },
+          {
+            key: '/dashboard/vendorFinancing',
+            icon: <ClockCircleOutlined />,
+            label: 'Vendor Financing',
+          },
+          {
+            key: '/dashboard/profile',
+            icon: <UserOutlined />,
+            label: 'Profile',
+          },
+        ]} />
 
 
-          {/* 
+        {/* 
           <li>
             <a href="#" class="text-base text-gray-900 font-normal rounded-lg hover:bg-gray-100 flex items-center p-2 group ">
               <svg class="w-6 h-6 text-gray-500 flex-shrink-0 group-hover:text-gray-900 transition duration-75" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -91,7 +93,7 @@ const Sidebar = (props) => {
 
 
 
-          {/* <li>
+        {/* <li>
             <form action="#" method="GET" class="lg:hidden">
               <label for="mobile-search" class="sr-only">Search</label>
               <div class="relative">

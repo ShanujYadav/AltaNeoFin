@@ -2,8 +2,9 @@ import React from 'react'
 import blog4 from '../../../../public/assets/img/blog-4.png'
 
 
-
 const InvoiceDiscountingBlog = () => {
+
+
   return (
     <div className='w-full mt-5 grid grid-cols-1 gap-4 p-4 sm:grid-cols-12'>
       <div class="col-span-1 flex items-stretch sm:col-span-8">
@@ -12,7 +13,7 @@ const InvoiceDiscountingBlog = () => {
             <img
               src={blog4}
               alt="blog-2-img"
-              className='h-full w-full' />
+              className='h-full w-full'/>
           </div>
           <div class="p-6">
             <h1 class="mt-2 mb-1 text-3xl md:text-3xl lg:text-4xl font-bold leading-none text-start">

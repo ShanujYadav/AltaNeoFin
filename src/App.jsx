@@ -27,8 +27,6 @@ import VendorFinancingPage from './components/products/vendorFinancing/VendorFin
 import ExportCreditPage from './components/products/exportCredit/ExportCreditPage';
 import CreditCardPage from './components/products/creditCard/CreditCardPage';
 import SupplyChainFinanceBlog from './components/Blogs/blogPages/SupplyChainFinanceBlog';
-
-
 import InvoiceDiscountingBlog from './components/Blogs/blogPages/InvoiceDiscountingBlog';
 import FutureOfSCFBlog from './components/Blogs/blogPages/FutureOfSCFBlog';
 import MachineLearningBlog from './components/Blogs/blogPages/MachineLearningBlog';
@@ -59,7 +57,6 @@ const App = () => {
             <Route exact path='/products/exportCredits' component={ExportCreditPage} />
             <Route exact path='/products/creditCard' component={CreditCardPage} />
             
-
             <Route exact path='/blogs' component={Blogs} />
             <Route exact path='/blogs/supplyChainFinance' component={SupplyChainFinanceBlog} />
             <Route exact path='/blogs/invoiceDiscounting' component={InvoiceDiscountingBlog} />
@@ -67,7 +64,6 @@ const App = () => {
             <Route exact path='/blogs/machineLearning' component={MachineLearningBlog} />
             <Route exact path='/blogs/workingCapital' component={WorkingCapitalBlog} />
             <Route exact path='/blogs/blockChainTechnology' component={BlockChainTechBlog} />
-
 
             <Route exact path="/simple-intrest-caclucator" component={SiCalculator} />
             <Route exact path='/Privacypolicy' component={Privacypolicy} />
@@ -80,7 +76,7 @@ const App = () => {
       </Switch>
     </Router>
   );
-};
+}
 
 const Home = () => {
   const Title = ({ subTitle, title }) => {
