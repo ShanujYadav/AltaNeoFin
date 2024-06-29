@@ -23,8 +23,7 @@ const Blogs = () => {
                            <img
                               class="lg:h-48 md:h-36 w-full object-cover object-center scale-110 transition-all duration-400 hover:scale-100"
                               src={data.img}
-                              alt="blog"
-                           />
+                              alt="blog"/>
                            <div class="p-6 flex flex-col flex-grow">
                               <h1 class="title-font leading-relaxed text-xl font-medium text-black mb-3">{data.title}</h1>
                               <p class="leading-relaxed text-sm mb-3 text-gray-600">{data.oneLine}</p>
