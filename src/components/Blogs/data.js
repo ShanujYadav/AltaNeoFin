@@ -20,14 +20,13 @@ export const blogData = [
     route: 'futureOfSupplyChain',
     oneLine: "In today's rapidly evolving business landscape, supply chain finance has become a vital tool for ...",
   },
-
-  // {
-  //   id: 3, 
-  //   title: 'Machine Learning Techniques in Supply Chain Finance',
-  //   img: blog3,
-  //   route: 'machineLearning',
-  //   oneLine: 'In the dynamic world of supply chain finance, businesses are constantly seeking ...',
-  // },
+  {
+    id: 3, 
+    title: 'Machine Learning Techniques in Supply Chain Finance',
+    img: blog3,
+    route: 'machineLearning',
+    oneLine: 'In the dynamic world of supply chain finance, businesses are constantly seeking ...',
+  },
 
   // {
   //   id: 4,

@@ -32,6 +32,9 @@ import FutureOfSCFBlog from './components/Blogs/blogPages/FutureOfSCFBlog';
 import MachineLearningBlog from './components/Blogs/blogPages/MachineLearningBlog';
 import WorkingCapitalBlog from './components/Blogs/blogPages/WorkingCapitalBlog';
 import BlockChainTechBlog from './components/Blogs/blogPages/BlockChainTechBlog';
+import DynamicDiscountingBlog from './components/Blogs/blogPages/DynamicDiscountingBlog';
+import InventoryManagementBlog from './components/Blogs/blogPages/InventoryManagementBlog';
+import CreditRiskAssessmentBlog from './components/Blogs/blogPages/CreditRiskAssessmentBlog';
 
 
 const App = () => {
@@ -64,6 +67,10 @@ const App = () => {
             <Route exact path='/blogs/machineLearning' component={MachineLearningBlog} />
             <Route exact path='/blogs/workingCapital' component={WorkingCapitalBlog} />
             <Route exact path='/blogs/blockChainTechnology' component={BlockChainTechBlog} />
+            <Route exact path='/blogs/dynamicDiscounting' component={DynamicDiscountingBlog} />
+            <Route exact path='/blogs/inventoryManagement' component={InventoryManagementBlog} />
+            <Route exact path='/blogs/creditRiskAssessment' component={CreditRiskAssessmentBlog} />
+
 
             <Route exact path="/simple-intrest-caclucator" component={SiCalculator} />
             <Route exact path='/Privacypolicy' component={Privacypolicy} />

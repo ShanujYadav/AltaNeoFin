@@ -4,9 +4,9 @@ import blog1 from '../../../../public/assets/img/blog-1.png'
 const SupplyChainFinanceBlog = () => {
 
   return (
-    <>
-      <div className='w-full mt-5 grid grid-cols-1 gap-4 p-4 sm:grid-cols-12'>
-        <div class="col-span-1 flex h-full w-full items-stretch sm:col-span-8 overflow-y-scroll">
+      <div class=" flex min-h-screen sm:grid-cols-1 md:grid-cols-2 mt-16">
+
+        <div class="lg:w-3/4 bg-gray-100 overflow-y-scroll max-h-screen w-full md:col-span-1">
           <div class="rounded-xl shadow-cla-blue bg-white overflow-hidden w-full">
             <div className='h-48 lg:h-96'>
               <img
@@ -58,20 +58,20 @@ const SupplyChainFinanceBlog = () => {
               </ol>
               <h1 class="mt-4 mb-1 text-2xl md:text-2xl lg:text-3xl font-semibold leading-none text-start"><a href="/" className='text-blue-600'>AltaneoFin</a> - A Supply Chain Financing Solution Provider </h1>
               <p class="leading-tight	 mb-3 text-[18px] text-gray-600 text-justify">
-              <a href="/" className='text-blue-600'>AltaneoFin</a>, a forward thinking fintech company, leverages advanced technology and a deep understanding of the financial landscape to provide seamless Supply Chain Financing solutions. Here’s how AltaneoFin can assist buyers in implementing effective supply chain financing services-
+                <a href="/" className='text-blue-600'>AltaneoFin</a>, a forward thinking fintech company, leverages advanced technology and a deep understanding of the financial landscape to provide seamless Supply Chain Financing solutions. Here’s how AltaneoFin can assist buyers in implementing effective supply chain financing services-
               </p>
 
               <h1 class="mt-4 mb-1 text-xl md:text-2xl lg:text-2xl font-semibold leading-none text-start">1.Tailored Supply Chain Financing Solutions</h1>
               <p class="leading-tight	 mb-3 text-[18px] text-gray-600 text-justify">
-              <a href="/" className='text-blue-600'>AltaneoFin</a> offers customised programs related to supply chain financing that cater to the specific needs of businesses. By understanding the unique dynamics of each buyer-supplier relationship, AltaneoFin designs solutions that maximise or increase the benefits of all the parties which are involved in the contract.
+                <a href="/" className='text-blue-600'>AltaneoFin</a> offers customised programs related to supply chain financing that cater to the specific needs of businesses. By understanding the unique dynamics of each buyer-supplier relationship, AltaneoFin designs solutions that maximise or increase the benefits of all the parties which are involved in the contract.
               </p>
               <h1 class="mt-4 mb-1 text-xl md:text-2xl lg:text-2xl font-semibold leading-none text-start">2.Advanced Technology Platform</h1>
               <p class="leading-tight	 mb-3 text-[18px] text-gray-600 text-justify">
-              <a href="/" className='text-blue-600'>AltaneoFin</a>'s technology platform integrates seamlessly with existing ERP systems, facilitating smooth and automated transactions. This technology-driven approach ensures efficiency, transparency, and security throughout the supply chain management process.
+                <a href="/" className='text-blue-600'>AltaneoFin</a>'s technology platform integrates seamlessly with existing ERP systems, facilitating smooth and automated transactions. This technology-driven approach ensures efficiency, transparency, and security throughout the supply chain management process.
               </p>
               <h1 class="mt-4 mb-1 text-xl md:text-2xl lg:text-2xl font-semibold leading-none text-start">3. Competitive Financing Rates</h1>
               <p class="leading-tight	 mb-3 text-[18px] text-gray-600 text-justify">
-              <a href="/" className='text-blue-600'>AltaneoFin</a> provides competitive financing rates, ensuring that suppliers receive the best possible terms. This not only benefits suppliers but also strengthens the entire supply chain system.
+                <a href="/" className='text-blue-600'>AltaneoFin</a> provides competitive financing rates, ensuring that suppliers receive the best possible terms. This not only benefits suppliers but also strengthens the entire supply chain system.
               </p>
               <h1 class="mt-4 mb-1 text-xl md:text-2xl lg:text-2xl font-semibold leading-none text-start">4.Expert Advisory Services</h1>
               <p class="leading-tight	 mb-3 text-[18px] text-gray-600 text-justify">
@@ -89,30 +89,27 @@ const SupplyChainFinanceBlog = () => {
           </div>
         </div>
 
-        <div class="col-span-1 rounded-lg p-4 sm:col-span-4">
-          <div className=''>
-            <h1 class="my-3 text-2xl md:text-2xl lg:text-3xl font-semibold leading-none text-start ">Table of Contents</h1>
-            <hr />
-            <ol class="mt-2 text-gray-600 list-inside dark:text-gray-600 text-[20px] text-justify space-y-2">
-              <li>
-                <span class="font-semibold leading-relaxed text-gray-700">1. What is Supply Chain Finance.</span>
-              </li>
-              <li>
-                <span class="font-medium leading-relaxed text-gray-700 ">2. Benefits of Supply Chain Finance for Suppliers
-                </span>
-              </li>
-              <li>
-                <span class="font-medium leading-relaxed text-gray-700 ">3. How AltaneoFin Supports Buyers with SCF
-                </span> 
-              </li>
-              <li>
-                <span class="font-medium leading-relaxed text-gray-700 ">4. Conclusion</span>
-              </li>
-            </ol>
-          </div>
+        <div class="sticky top-0 w-1/4 mx-4 hidden sm:block">
+          <h1 class="my-3 text-2xl md:text-2xl lg:text-3xl font-semibold leading-none text-start ">Table of Contents</h1>
+          <hr />
+          <ol class="mt-2 text-gray-600 list-inside dark:text-gray-600 text-[20px] text-justify space-y-2">
+            <li>
+              <span class="font-semibold leading-relaxed text-gray-700">1. What is Supply Chain Finance.</span>
+            </li>
+            <li>
+              <span class="font-medium leading-relaxed text-gray-700 ">2. Benefits of Supply Chain Finance for Suppliers
+              </span>
+            </li>
+            <li>
+              <span class="font-medium leading-relaxed text-gray-700 ">3. How AltaneoFin Supports Buyers with SCF
+              </span>
+            </li>
+            <li>
+              <span class="font-medium leading-relaxed text-gray-700 ">4. Conclusion</span>
+            </li>
+          </ol>
         </div>
       </div>
-    </>
   )
 }
 export default SupplyChainFinanceBlog

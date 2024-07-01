@@ -131,7 +131,6 @@ const RightContent = () => {
     //     </div>
     //   </div>
     // </div>
-
   )
 }
 

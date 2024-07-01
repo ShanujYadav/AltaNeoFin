@@ -3,9 +3,10 @@ import blog2 from '../../../../public/assets/img/blog-2.png'
 
 const FutureOfSCFBlog = () => {
   return (
-    <div className='w-full mt-5 grid grid-cols-1 gap-4 p-4 sm:grid-cols-12'>
-      <div class="col-span-1 flex items-stretch sm:col-span-8">
-        <div class="h-full rounded-xl shadow-cla-blue bg-white overflow-hidden w-full">
+    <div class=" flex min-h-screen sm:grid-cols-1 md:grid-cols-2 mt-16">
+      
+      <div class="lg:w-3/4 bg-gray-100 overflow-y-scroll max-h-screen w-full md:col-span-1">
+        <div class="h-full rounded-xl w-full">
           <div className='h-48 lg:h-96'>
             <img
               src={blog2}
@@ -16,7 +17,6 @@ const FutureOfSCFBlog = () => {
             <h1 class="mt-2 mb-1 text-3xl md:text-3xl lg:text-4xl font-bold leading-none text-start">The Future of Supply Chain Finance</h1>
             <p class="leading-tight mb-3 text-[18px] text-gray-600 text-justify">
               In today's rapidly evolving business landscape, <a href="/blogs/supplyChainFinance" className='text-blue-600'>supply chain finance</a> has become a vital tool for companies looking to optimise their cash flow and improve supplier relationships. As technology advances and market dynamics shift, the future of <a href="/blogs/supplyChainFinance" className='text-blue-600'>supply chain finance</a> is set to witness significant changes. Here are the key trends to watch in the coming years.</p>
-
             {/*---------------- first Heading----------- */}
             <h1 class="mt-4 mb-1 text-2xl md:text-2xl lg:text-3xl font-semibold leading-none text-justify">1. Digital Transformation and Blockchain Integration</h1>
             <h1 class="mt-2 mb-1 text-xl md:text-xl lg:text-2xl font-semibold leading-none text-start">Digital Transformation-
@@ -32,7 +32,7 @@ const FutureOfSCFBlog = () => {
             </h1>
             <ul class="list-disc mt-2 text-gray-600 list-inside dark:text-gray-600 text-[18px] text-justify space-y-2">
               <li className='leading-tight mb-3 text-[18px] text-gray-600 text-justify'>
-              <a href="/blogs/blockChainTechnology" className='text-blue-600'>Blockchain Technology</a> promises to revolutionise <a href="/blogs/supplyChainFinance" className='text-blue-600'>supply chain finance</a> by enhancing transparency and security.
+                <a href="/blogs/blockChainTechnology" className='text-blue-600'>Blockchain Technology</a> promises to revolutionise <a href="/blogs/supplyChainFinance" className='text-blue-600'>supply chain finance</a> by enhancing transparency and security.
               </li>
               <li className='leading-tight mb-3 text-[18px] text-gray-600 text-justify'>
                 Smart contracts, which automatically execute transactions when predefined conditions are met, can reduce the time and cost associated with manual processes.
@@ -49,7 +49,7 @@ const FutureOfSCFBlog = () => {
             </h1>
             <ul class="list-disc mt-2 text-gray-600 list-inside dark:text-gray-600 text-[18px] text-justify space-y-2">
               <li className='leading-tight mb-3 text-[18px] text-gray-600 text-justify'>
-              <a href="/blogs/machineLearning" className='text-blue-600'>AI and machine learning</a> are enabling predictive analytics in <a href="/blogs/supplyChainFinance" className='text-blue-600'>supply chain finance</a>, allowing companies to forecast demand, assess risk, and make informed decisions.
+                <a href="/blogs/machineLearning" className='text-blue-600'>AI and machine learning</a> are enabling predictive analytics in <a href="/blogs/supplyChainFinance" className='text-blue-600'>supply chain finance</a>, allowing companies to forecast demand, assess risk, and make informed decisions.
               </li>
               <li className='leading-tight mb-3 text-[18px] text-gray-600 text-justify'>
                 By analysing historical data and identifying patterns, AI can predict potential disruptions and suggest proactive measures.
@@ -145,6 +145,7 @@ const FutureOfSCFBlog = () => {
                 Initiatives aimed at promoting diversity, equity, and inclusion in supply chain financing will gain momentum, helping to create a more equitable business environment.
               </li>
             </ul>
+
             {/*---------------- Six Heading----------- */}
             <h1 class="mt-4 mb-1 text-2xl md:text-2xl lg:text-3xl font-semibold leading-none text-justify">
               6. Regulatory Changes and Compliance
@@ -176,48 +177,46 @@ const FutureOfSCFBlog = () => {
         </div>
       </div>
 
-      <div class="col-span-1 rounded-lg p-4 sm:col-span-4">
-        <div className=''>
-          <h1 class="my-3 text-2xl md:text-2xl lg:text-3xl font-semibold leading-none text-start ">Table of Contents</h1>
-          <hr />
-          <ol class="mt-2 text-gray-600 text-[20px] text-justify space-y-1">
-            <li>
-              <span class="font-medium leading-relaxed text-gray-600">
-                1. Digital Transformation and Blockchain Integration
-              </span>
-            </li>
-            <li>
-              <span class="font-medium leading-relaxed text-gray-700 ">
-                2. Artificial Intelligence and Machine Learning
-              </span>
-            </li>
-            <li>
-              <span class="font-medium leading-relaxed text-gray-700 ">
-                3. Sustainability and Green Financing
-              </span>
-            </li>
-            <li>
-              <span class="font-medium leading-relaxed text-gray-700 ">
-                4. Enhanced Collaboration and Ecosystem Integration
-              </span>
-            </li>
-            <li>
-              <span class="font-medium leading-relaxed text-gray-700 ">
-                5. Focus on SMEs and Inclusive Financing
-              </span>
-            </li>
-            <li>
-              <span class="font-medium leading-relaxed text-gray-700 ">
-                6. Regulatory Changes and Compliance
-              </span>
-            </li>
-            <li>
-              <span class="font-medium leading-relaxed text-gray-700 ">
-                Conclusion
-              </span>
-            </li>
-          </ol>
-        </div>
+      <div class="sticky top-0 w-1/4 mx-4 hidden sm:block">
+        <h1 class="mt-3 text-2xl md:text-2xl lg:text-3xl font-semibold leading-none text-start ">Table of Contents</h1>
+        <hr />
+        <ol class="mt-2 text-gray-600 text-[20px] text-justify space-y-1">
+          <li>
+            <span class="font-medium leading-relaxed text-gray-600">
+              1. Digital Transformation and Blockchain Integration
+            </span>
+          </li>
+          <li>
+            <span class="font-medium leading-relaxed text-gray-700 ">
+              2. Artificial Intelligence and Machine Learning
+            </span>
+          </li>
+          <li>
+            <span class="font-medium leading-relaxed text-gray-700 ">
+              3. Sustainability and Green Financing
+            </span>
+          </li>
+          <li>
+            <span class="font-medium leading-relaxed text-gray-700 ">
+              4. Enhanced Collaboration and Ecosystem Integration
+            </span>
+          </li>
+          <li>
+            <span class="font-medium leading-relaxed text-gray-700 ">
+              5. Focus on SMEs and Inclusive Financing
+            </span>
+          </li>
+          <li>
+            <span class="font-medium leading-relaxed text-gray-700 ">
+              6. Regulatory Changes and Compliance
+            </span>
+          </li>
+          <li>
+            <span class="font-medium leading-relaxed text-gray-700 ">
+              Conclusion
+            </span>
+          </li>
+        </ol>
       </div>
     </div>
   )

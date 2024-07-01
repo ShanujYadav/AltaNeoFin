@@ -4,6 +4,7 @@ import VideoContainer from './VideoContainer';
 import { useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom';
 import { getLogin } from '../../store/slice/ProfileSlice';
+import { toast } from 'react-toastify';
 
 let baseUrl = import.meta.env.VITE_SOME_KEY
 
@@ -35,8 +36,12 @@ const Login = () => {
     setData({ ...data, otp: enteredOtp })
   }
 
+  
   const onSendOTP = async (e) => {
     e.preventDefault()
+    toast.error('All Fields Are Required !')
+    return
+
     if (data.mobile.length < 10) {
       setShowError({ ...showError, mobile: true })
     }
