@@ -11,15 +11,15 @@ import Partners from './components/Partners/Partners';
 import Team from './components/Team/Team';
 import Investors from './components/Investors/Investors';
 import Login from './components/Login/login';
-import Privacypolicy from './components/PrivacyPolicy/Privacypolicy';
+import Privacypolicy from './components/others/PrivacyPolicy/Privacypolicy';
 import RefundPolicy from './components/Refund/RefundPolicy';
-import Terms from './components/Terms/Terms';
+import Terms from './components/others/Terms/Terms';
 import Bot from './components/Bot/bot';
 import Blogs from './components/Blogs/Blogs';
 import TeamPage from './components/Team/TeamPage';
 import Admin from './components/Admin/Admin';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Faqs from './components/faq\'s/Faqs';
+import Faqs from './components/faq\'s/Faqs'
 import Dashboard from './components/Dashboard/Dashboard';
 import SiCalculator from './components/calculator/SiCalculator';
 import InvoiceDiscountingPage from './components/products/invoiceDiscounting/InvoiceDiscountingPage';
@@ -73,7 +73,7 @@ const App = () => {
 
 
             <Route exact path="/simple-intrest-caclucator" component={SiCalculator} />
-            <Route exact path='/Privacypolicy' component={Privacypolicy} />
+            <Route exact path='/privacyPolicy' component={Privacypolicy} />
             <Route exact path='/Refundpolicy' component={RefundPolicy} />
             <Route exact path='/Terms' component={Terms} />
             {/* <Route exact path='/blog/:id' component={subBlog} /> */}
@@ -98,7 +98,7 @@ const Home = () => {
   return (<>
     <Hero />
     <div className=''>
-      <Title subTitle='Our COMMITMENTS' title='What We Offer' />
+      <Title subTitle='' title='' />
       <Solutions />
       <About />
       <Title subTitle='Leading Investors ' title='Valued From leading brands' />
@@ -109,7 +109,7 @@ const Home = () => {
       <Testimonials />
       <Title subTitle='Business Partners' title='Altaneofied' />
       <Partners />
-      <Title subTitle='Contact Us' title='Get in Touch' />
+      <Title subTitle='Contact Us' title='' />
       <Touch />
       <Faqs />
       <Footer />

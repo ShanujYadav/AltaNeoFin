@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './Footer.css';
-import logo from '../../assets/logo.png';
+import logo from '../../../public/assets/img/infinityLogo.png';
+
 import { Link as ScrollLink } from 'react-scroll';
 import CookieConsent from 'react-cookie-consent';
 
@@ -10,7 +11,6 @@ import { faFacebookF, faTwitter, faYoutube, faLinkedinIn, faInstagram } from '@f
 
 
 const Footer = () => {
-
 
   const onAcceptCookiee = () => {
     let testimonials = 'CA Gaurav Dhaneja, CA Deepak Goal, Yogesh Singhla'
@@ -67,14 +67,13 @@ const Footer = () => {
     document.cookie = `${q10}=${ans10}`
   }
 
-
   return (<>
     <footer class="bg-gradient-to-r from-blue-950 to-black" aria-labelledby="footer-heading">
       <h2 id="footer-heading" class="sr-only">Footer</h2>
       <div class="mx-auto max-w-7xl px-6 pb-8 pt-16 sm:pt-24 lg:px-8 lg:pt-32">
         <div class="xl:grid xl:grid-cols-3 xl:gap-8">
           <div class="space-y-8">
-            <img class="h-8" src={logo} alt="Company name" />
+            <img src={logo} alt="AltaNeo" height={100} width={200}/>
             <p class="text-sm leading-6 text-gray-400">Empowering Growth Through Seamless Financial Solutions</p>
             <div class="flex space-x-6">
               <a target="_blank" href="https://www.facebook.com/share/1x5SMtKzBUShnod2/?mibextid=LQQJ4d" class="text-white hover:text-gray-500">
@@ -147,7 +146,7 @@ const Footer = () => {
                     <a href="/Terms" class="text-sm leading-6 text-gray-400 hover:text-blue-900">Terms</a>
                   </li>
                   <li>
-                    <a href="/Privacypolicy" class="text-sm leading-6 text-gray-400 hover:text-blue-900">Privacy Policy</a>
+                    <a href="/privacyPolicy" class="text-sm leading-6 text-gray-400 hover:text-blue-900">Privacy Policy</a>
                   </li>
                   <li>
                     <a href="/Refundpolicy" class="text-sm leading-6 text-gray-400 hover:text-blue-900">Refund</a>
