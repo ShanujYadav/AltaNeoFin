@@ -5,7 +5,7 @@ import Hero from './components/Hero/Hero';
 import About from './components/About/About';
 import Solutions from './components/Solutions/Solutions';
 import Testimonials from './components/Testimonials/Testimonials';
-import Touch from './components/Touch/Touch';
+import Touch from './components/ContectUs/ContectUs';
 import Footer from './components/Footer/Footer';
 import Partners from './components/Partners/Partners';
 import Team from './components/Team/Team';
@@ -35,10 +35,11 @@ import BlockChainTechBlog from './components/Blogs/blogPages/BlockChainTechBlog'
 import DynamicDiscountingBlog from './components/Blogs/blogPages/DynamicDiscountingBlog';
 import InventoryManagementBlog from './components/Blogs/blogPages/InventoryManagementBlog';
 import CreditRiskAssessmentBlog from './components/Blogs/blogPages/CreditRiskAssessmentBlog';
+import ContectUs from './components/ContectUs/ContectUs';
 
 
 const App = () => {
-  
+
   return (
     <Router>
       <Switch>
@@ -54,12 +55,12 @@ const App = () => {
           <Navbar />
           <Switch>
             <Route exact path="/" component={Home} />
-            
+
             <Route exact path='/products/invoiceDiscounting' component={InvoiceDiscountingPage} />
             <Route exact path='/products/vendorFinancing' component={VendorFinancingPage} />
             <Route exact path='/products/exportCredits' component={ExportCreditPage} />
             <Route exact path='/products/creditCard' component={CreditCardPage} />
-            
+
             <Route exact path='/blogs' component={Blogs} />
             <Route exact path='/blogs/supplyChainFinance' component={SupplyChainFinanceBlog} />
             <Route exact path='/blogs/invoiceDiscounting' component={InvoiceDiscountingBlog} />
@@ -101,7 +102,7 @@ const Home = () => {
       <Title subTitle='' title='' />
       <Solutions />
       <About />
-      <Title subTitle='Leading Investors ' title='Valued From leading brands' />
+      <Title subTitle='Valued From leading brands' title='Leading Investors' />
       <Investors />
       <Title subTitle='Meet our team' title='Team' />
       <Team />
@@ -109,13 +110,13 @@ const Home = () => {
       <Testimonials />
       <Title subTitle='Business Partners' title='Altaneofied' />
       <Partners />
-      <Title subTitle='Contact Us' title='' />
-      <Touch />
+      <Title subTitle='' title='' />
+      <ContectUs />
       <Faqs />
       <Footer />
       <Bot />
     </div>
   </>
-  )
-}
-export default App;
+  )}
+
+export default App

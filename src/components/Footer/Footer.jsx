@@ -12,9 +12,13 @@ import { faFacebookF, faTwitter, faYoutube, faLinkedinIn, faInstagram } from '@f
 
 const Footer = () => {
 
+
+
+
+
   const onAcceptCookiee = () => {
     let testimonials = 'CA Gaurav Dhaneja, CA Deepak Goal, Yogesh Singhla'
-    let team = 'Joytika, Sonali,meenakshi'
+    let team = 'Meenakshi,Joytika,Sonali'
     let businessPartners = 'axis bank, kotak Mahindra bank, cisco'
     let Investor = 'axis bank, kotak Mahindra bank ,yes bank  ICICI bank,HDFC bank'
     let Useful = 'Invoice Discounting,Export Credits,Vendor Financing,Corp. Credit Cards'
@@ -73,7 +77,7 @@ const Footer = () => {
       <div class="mx-auto max-w-7xl px-6 pb-8 pt-16 sm:pt-24 lg:px-8 lg:pt-32">
         <div class="xl:grid xl:grid-cols-3 xl:gap-8">
           <div class="space-y-8">
-            <img src={logo} alt="AltaNeo" height={100} width={200}/>
+            <img src={logo} alt="AltaNeo" height={100} width={200} />
             <p class="text-sm leading-6 text-gray-400">Empowering Growth Through Seamless Financial Solutions</p>
             <div class="flex space-x-6">
               <a target="_blank" href="https://www.facebook.com/share/1x5SMtKzBUShnod2/?mibextid=LQQJ4d" class="text-white hover:text-gray-500">
@@ -93,7 +97,6 @@ const Footer = () => {
               </a>
             </div>
           </div>
-
 
           <div class="mt-16 grid grid-cols-2 gap-8 xl:col-span-2 xl:mt-0">
             <div class="md:grid md:grid-cols-2 md:gap-8">
@@ -174,8 +177,9 @@ const Footer = () => {
           </div>
         </div>
         <div class="mt-16 border-t border-gray-900/10 pt-8 sm:mt-20 lg:mt-24">
-          <p class="text-sm leading-5 text-gray-400">Copywrite &copy; 2024 All rights reserved <a href="" class='text-blue-400'> Altaneo</a></p>
+          <p class="text-sm leading-5 text-gray-400">Copyright &copy; 2024 All rights reserved <a href="" class='text-blue-400'> Altaneo</a></p>
         </div>
+        
         <CookieConsent
           debug={true}
           location="bottom"

@@ -5,7 +5,7 @@ import Footer from '../../Footer/Footer';
 import Title from '../../Title/Title';
 import Partner from '../../Partners/Partners';
 import Numbers from '../../Customerbasenumber/Numbers';
-import Touch from '../../Touch/Touch';
+import Touch from '../../ContectUs/ContectUs';
 import VendorServices from '../../Services/VendorServices';
 import Bot from '../../Bot/bot';
 

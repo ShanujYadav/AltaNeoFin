@@ -8,10 +8,6 @@ import cta from '../../assets/img/ctaImg.png';
 
 
 const Team = () => {
-
-
-
-
   
   const currentRatio = (currentAsset, currentLaibility) => {
     return currentAsset / currentLaibility
@@ -54,6 +50,7 @@ const Team = () => {
     pauseOnHover: window.innerWidth <= 768,
     pauseOnFocus: window.innerWidth <= 768,
   }
+
   return (
     <Slider {...settings} className='w-full overflow-hidden box-border sm:px-2'>
       <div className='px-3'>

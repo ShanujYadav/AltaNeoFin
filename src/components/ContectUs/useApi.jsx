@@ -23,4 +23,4 @@ const useApi = () => {
   return { isLoading, error, sendRequest };
 };
 
-export default useApi;
+export default useApi
