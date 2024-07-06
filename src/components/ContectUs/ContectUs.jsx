@@ -11,15 +11,13 @@ const ContectUs = () => {
     email: '',
     message: ''
   })
+  
   const [isLoading,setIsLoading]=useState(false)
-
-
-
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
+  }
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log('Form Data:', formData);
@@ -33,11 +31,11 @@ const ContectUs = () => {
       console.log(response.data);
       setFormData({
         name: '',
-        phone: '',
+        phone: '', 
         email: '',
         message: ''
-      });
-      setFormKey(Date.now());
+      })
+      setFormKey(Date.now())
     } catch (error) {
       console.error('Error:', error);
     }

@@ -6,17 +6,15 @@ const Terms = () => {
   return (
     <div>
       <Navbar />
-
       <div class="grid min-h-[140px] w-full place-items-center overflow-x-scroll rounded-lg p-6 lg:overflow-visible mt-5">
-        <div role="alert" class="relative text-center min-h-[120px] w-full text-base font-regular px-4 py-4 rounded-lg bg-blue-500 text-white flex items-center justify-center">
-          <h1 class="font-bold text-black text-4xl">Terms</h1>
+        <div role="alert" class="relative text-center min-h-[120px] w-full text-base font-regular px-4 py-4 rounded-lg bg-blue-200 text-white flex items-center justify-center">
+          <h1 class="font-bold text-black text-4xl font-serif">Terms</h1>
         </div>
       </div>
       <p className='text-sm px-6'>This privacy policy sets out the information practices we follow, including the type of
         information collected, how the information is collected, how the information is used, and
         with whom it is shared.
       </p>
-
       <div class="grid w-full place-items-center overflow-x-scroll rounded-lg p-6 lg:overflow-visible">
         <div role="alert" class="relative w-full text-base font-regular px-4 py-4 rounded-lg">
           <h2 className='mt-3 text-2xl	 font-semibold'>Defination</h2>

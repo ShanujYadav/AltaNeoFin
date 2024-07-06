@@ -1,55 +1,50 @@
-import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import React from 'react';
 import Navbar from './components/Navbar/Navbar';
 import Hero from './components/Hero/Hero';
 import About from './components/About/About';
 import Solutions from './components/Solutions/Solutions';
 import Testimonials from './components/Testimonials/Testimonials';
-import Touch from './components/ContectUs/ContectUs';
 import Footer from './components/Footer/Footer';
 import Partners from './components/Partners/Partners';
-import Team from './components/Team/Team';
 import Investors from './components/Investors/Investors';
-import Login from './components/Login/login';
-import Privacypolicy from './components/others/PrivacyPolicy/Privacypolicy';
-import RefundPolicy from './components/Refund/RefundPolicy';
-import Terms from './components/others/Terms/Terms';
-import Bot from './components/Bot/bot';
-import Blogs from './components/Blogs/Blogs';
-import TeamPage from './components/Team/TeamPage';
-import Admin from './components/Admin/Admin';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import Team from './components/Team/Team'
+import Login from './components/Login/login'
+import RefundPolicy from './components/policies/RefundPolicy/RefundPolicy'
+import Bot from './components/Bot/bot'
+import Blogs from './components/Blogs/Blogs'
+import TeamPage from './components/Team/TeamPage'
+import Admin from './components/Admin/Admin'
+import 'bootstrap/dist/css/bootstrap.min.css'
 import Faqs from './components/faq\'s/Faqs'
-import Dashboard from './components/Dashboard/Dashboard';
-import SiCalculator from './components/calculator/SiCalculator';
-import InvoiceDiscountingPage from './components/products/invoiceDiscounting/InvoiceDiscountingPage';
-import VendorFinancingPage from './components/products/vendorFinancing/VendorFinancingPage';
-import ExportCreditPage from './components/products/exportCredit/ExportCreditPage';
-import CreditCardPage from './components/products/creditCard/CreditCardPage';
-import SupplyChainFinanceBlog from './components/Blogs/blogPages/SupplyChainFinanceBlog';
-import InvoiceDiscountingBlog from './components/Blogs/blogPages/InvoiceDiscountingBlog';
-import FutureOfSCFBlog from './components/Blogs/blogPages/FutureOfSCFBlog';
-import MachineLearningBlog from './components/Blogs/blogPages/MachineLearningBlog';
-import WorkingCapitalBlog from './components/Blogs/blogPages/WorkingCapitalBlog';
-import BlockChainTechBlog from './components/Blogs/blogPages/BlockChainTechBlog';
-import DynamicDiscountingBlog from './components/Blogs/blogPages/DynamicDiscountingBlog';
-import InventoryManagementBlog from './components/Blogs/blogPages/InventoryManagementBlog';
-import CreditRiskAssessmentBlog from './components/Blogs/blogPages/CreditRiskAssessmentBlog';
-import ContectUs from './components/ContectUs/ContectUs';
-
+import Dashboard from './components/Dashboard/Dashboard'
+import SiCalculator from './components/calculator/SiCalculator'
+import InvoiceDiscountingPage from './components/products/invoiceDiscounting/InvoiceDiscountingPage'
+import VendorFinancingPage from './components/products/vendorFinancing/VendorFinancingPage'
+import ExportCreditPage from './components/products/exportCredit/ExportCreditPage'
+import CreditCardPage from './components/products/creditCard/CreditCardPage'
+import SupplyChainFinanceBlog from './components/Blogs/blogPages/SupplyChainFinanceBlog'
+import InvoiceDiscountingBlog from './components/Blogs/blogPages/InvoiceDiscountingBlog'
+import FutureOfSCFBlog from './components/Blogs/blogPages/FutureOfSCFBlog'
+import MachineLearningBlog from './components/Blogs/blogPages/MachineLearningBlog'
+import WorkingCapitalBlog from './components/Blogs/blogPages/WorkingCapitalBlog'
+import BlockChainTechBlog from './components/Blogs/blogPages/BlockChainTechBlog'
+import DynamicDiscountingBlog from './components/Blogs/blogPages/DynamicDiscountingBlog'
+import InventoryManagementBlog from './components/Blogs/blogPages/InventoryManagementBlog'
+import CreditRiskAssessmentBlog from './components/Blogs/blogPages/CreditRiskAssessmentBlog'
+import ContectUs from './components/ContectUs/ContectUs'
+import Terms from './components/policies/Terms/Terms'
+import Privacypolicy from './components/policies/PrivacyPolicy/Privacypolicy'
 
 const App = () => {
-
   return (
     <Router>
       <Switch>
         {/* Routes for pages without Navbar */}
         <Route path={['/login', '/register']} component={Login} />
-        {/* <Route path='/Dashboard' component={Dashboard} /> */}
+        {/* <Route path='/Dashboard' component={Dashboard} />*/}
         <Route path="/dashboard/*" render={Dashboard} />
-
         <Route path={['/admin']} component={Admin} />
-
         {/* Routes for pages with Navbar */}
         <Route>
           <Navbar />
@@ -60,7 +55,7 @@ const App = () => {
             <Route exact path='/products/vendorFinancing' component={VendorFinancingPage} />
             <Route exact path='/products/exportCredits' component={ExportCreditPage} />
             <Route exact path='/products/creditCard' component={CreditCardPage} />
-
+            
             <Route exact path='/blogs' component={Blogs} />
             <Route exact path='/blogs/supplyChainFinance' component={SupplyChainFinanceBlog} />
             <Route exact path='/blogs/invoiceDiscounting' component={InvoiceDiscountingBlog} />
@@ -75,7 +70,7 @@ const App = () => {
 
             <Route exact path="/simple-intrest-caclucator" component={SiCalculator} />
             <Route exact path='/privacyPolicy' component={Privacypolicy} />
-            <Route exact path='/Refundpolicy' component={RefundPolicy} />
+            <Route exact path='/refundPolicy' component={RefundPolicy} />
             <Route exact path='/Terms' component={Terms} />
             {/* <Route exact path='/blog/:id' component={subBlog} /> */}
             <Route exact path='/TeamPage' component={TeamPage} />
@@ -117,6 +112,6 @@ const Home = () => {
       <Bot />
     </div>
   </>
-  )}
-
+  )
+}
 export default App

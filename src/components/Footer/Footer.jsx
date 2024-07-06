@@ -152,7 +152,7 @@ const Footer = () => {
                     <a href="/privacyPolicy" class="text-sm leading-6 text-gray-400 hover:text-blue-900">Privacy Policy</a>
                   </li>
                   <li>
-                    <a href="/Refundpolicy" class="text-sm leading-6 text-gray-400 hover:text-blue-900">Refund</a>
+                    <a href="/refundPolicy" class="text-sm leading-6 text-gray-400 hover:text-blue-900">Refund</a>
                   </li>
                 </ul>
               </div>
@@ -179,7 +179,7 @@ const Footer = () => {
         <div class="mt-16 border-t border-gray-900/10 pt-8 sm:mt-20 lg:mt-24">
           <p class="text-sm leading-5 text-gray-400">Copyright &copy; 2024 All rights reserved <a href="" class='text-blue-400'> Altaneo</a></p>
         </div>
-        
+
         <CookieConsent
           debug={true}
           location="bottom"

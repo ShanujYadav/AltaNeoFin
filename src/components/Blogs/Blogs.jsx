@@ -1,11 +1,45 @@
 import React from 'react'
-import { blogData } from './data'
 import { useHistory } from 'react-router-dom'
 import Footer from '../Footer/Footer'
+import blog1 from '../../../public/assets/img/blog-1.png'
+import blog2 from '../../../public/assets/img/blog-2.png'
+import blog3 from '../../../public/assets/img/blog-3.png'
+import blog4 from '../../../public/assets/img/blog-4.png'
 
 
 
 const Blogs = () => {
+   const blogData = [
+      {
+         id: 1,
+         title: 'Supply Chain Finance - A Catalyst for Business Growth.',
+         img: blog1,
+         route: 'supplyChainFinance',
+         oneLine: "In today's fast-paced business environment, managing cash flow and maintaining ...'",
+      },
+      {
+         id: 2,
+         title: 'The Future of Supply Chain Finance',
+         img: blog2,
+         route: 'futureOfSupplyChain',
+         oneLine: "In today's rapidly evolving business landscape, supply chain finance has become a vital tool for ...",
+      },
+      {
+         id: 3,
+         title: 'Machine Learning Techniques in Supply Chain Finance',
+         img: blog3,
+         route: 'machineLearning',
+         oneLine: 'In the dynamic world of supply chain finance, businesses are constantly seeking ...',
+      },
+      // {
+      //   id: 4,
+      //   title: 'Invoice Discounting- A Lifeline for Cash Flow Management',
+      //   img: blog4,
+      //   route: 'invoiceDiscounting',
+      //   oneLine: "In today’s era managing cash flow is a challenge for all businesses. One effective ...",
+      // }  
+
+   ]
    const history = useHistory()
 
    const onClickReadMore = (route) => {
@@ -23,7 +57,7 @@ const Blogs = () => {
                            <img
                               class="lg:h-48 md:h-36 w-full object-cover object-center scale-110 transition-all duration-400 hover:scale-100"
                               src={data.img}
-                              alt="blog"/>
+                              alt="blog" />
                            <div class="p-6 flex flex-col flex-grow">
                               <h1 class="title-font leading-relaxed text-xl font-medium text-black mb-3">{data.title}</h1>
                               <p class="leading-relaxed text-sm mb-3 text-gray-600">{data.oneLine}</p>

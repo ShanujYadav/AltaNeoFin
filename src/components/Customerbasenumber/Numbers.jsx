@@ -19,9 +19,9 @@ const Numbers = () => {
     return () => {
       numberRefs.forEach(({ element, observer }) => {
         observer.unobserve(element);
-      });
-    };
-  }, []);
+      })
+    }
+  }, [])
 
   const handleIntersect = (entries) => {
     entries.forEach((entry) => {
