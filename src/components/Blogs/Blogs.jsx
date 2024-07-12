@@ -2,9 +2,12 @@ import React from 'react'
 import { useHistory } from 'react-router-dom'
 import Footer from '../Footer/Footer'
 import blog1 from '../../../public/assets/img/blog-1.png'
-import blog2 from '../../../public/assets/img/blog-2.png'
+import blog2 from '../../../public/assets/img/futureOfSupplyChain.png'
 import blog3 from '../../../public/assets/img/blog-3.png'
 import blog4 from '../../../public/assets/img/blog-4.png'
+import blog6 from '../../../public/assets/img/blog-6.png'
+import blog7 from '../../../public/assets/img/blog-7.png'
+
 
 
 
@@ -31,15 +34,37 @@ const Blogs = () => {
          route: 'machineLearning',
          oneLine: 'In the dynamic world of supply chain finance, businesses are constantly seeking ...',
       },
-      // {
-      //   id: 4,
-      //   title: 'Invoice Discounting- A Lifeline for Cash Flow Management',
-      //   img: blog4,
-      //   route: 'invoiceDiscounting',
-      //   oneLine: "In today’s era managing cash flow is a challenge for all businesses. One effective ...",
-      // }  
-
+      {
+        id: 4,
+        title: 'Invoice Discounting- A Lifeline for Cash Flow Management',
+        img: blog4,
+        route: 'invoiceDiscounting',
+        oneLine: "In today’s era managing cash flow is a challenge for all businesses. One effective ...",
+      },
+      {
+        id: 5,
+        title: 'Dynamic Discounting: A Game-Changer for Supply Chain Finance',
+        img: blog4,
+        route: 'dynamicDiscounting',
+        oneLine: "A business needs efficient cash flow management to maintain a competitive edge...",
+      },
+      {
+        id: 6,
+        title: 'Sustainable Supply Chain Finance - Green Financing and ESG Integration',
+        img: blog6,
+        route: 'sustainableSupplyChain',
+        oneLine: "Sustainability is no longer a buzzword in today’s era, it’s a business imperative. In an...",
+      },
+      {
+        id: 7,
+        title: 'Blockchain Technology: Revolutionising Supply Chain Finance',
+        img: blog7,
+        route: 'blockchainTechnology',
+        oneLine: "In the rapidly evolving world of finance and technology, few innovations have...",
+      },
    ]
+
+
    const history = useHistory()
 
    const onClickReadMore = (route) => {

@@ -6,9 +6,9 @@ const InvoiceDiscountingBlog = () => {
 
 
   return (
-    <div className='w-full mt-5 grid grid-cols-1 gap-4 p-4 sm:grid-cols-12'>
-      <div class="col-span-1 flex items-stretch sm:col-span-8">
-        <div class="h-full rounded-xl shadow-cla-blue bg-white overflow-hidden w-full">
+    <div class=" flex min-h-screen sm:grid-cols-1 md:grid-cols-2 mt-16">
+    <div class="lg:w-3/4 bg-gray-100 overflow-y-scroll max-h-screen w-full md:col-span-1">
+      <div class="h-full rounded-xl w-full">
           <div className='h-48 lg:h-96'>
             <img
               src={blog4}
@@ -123,8 +123,9 @@ const InvoiceDiscountingBlog = () => {
           </div>
         </div>
       </div>
-      <div class="col-span-1 rounded-lg p-4 sm:col-span-4">
-        <div className=''>
+
+
+      <div class="sticky top-0 w-1/4 mx-4 hidden sm:block">
           <h1 class="my-3 text-2xl md:text-2xl lg:text-3xl font-semibold leading-none text-start ">Table of Contents</h1>
           <hr />
           <ol class="mt-2 text-gray-600 list-inside dark:text-gray-600 text-[20px] text-justify space-y-2">
@@ -165,7 +166,6 @@ const InvoiceDiscountingBlog = () => {
             </li>
           </ol>
         </div>
-      </div>
     </div>
   )
 }

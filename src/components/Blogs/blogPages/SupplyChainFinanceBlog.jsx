@@ -1,18 +1,28 @@
-import React from 'react'
+
+
+import React ,{useRef,useState} from 'react'
+
 import blog1 from '../../../../public/assets/img/blog-1.png'
 
 const SupplyChainFinanceBlog = () => {
+  const refs = useRef([React.createRef(), React.createRef(), React.createRef()]);
+  const [isMounted, setIsMounted] = useState(false);
+
+
+  const scrollToElement = (index) => {
+    refs.current[index].current.scrollIntoView({ behavior: 'smooth' });
+  }
 
   return (
-      <div class=" flex min-h-screen sm:grid-cols-1 md:grid-cols-2 mt-16">
-
-        <div class="lg:w-3/4 bg-gray-100 overflow-y-scroll max-h-screen w-full md:col-span-1">
-          <div class="rounded-xl shadow-cla-blue bg-white overflow-hidden w-full">
+    <div className='w-full mt-5 grid grid-cols-1 gap-4 p-4 sm:grid-cols-12'>
+      <div class="col-span-1 flex items-center sm:col-span-8">
+        <div class="h-full rounded-xl bg-white lg:items-center lg:px-8 pt-2 overflow-hidden w-full">
+          <div class="h-full max-h-screen overflow-auto">
             <div className='h-48 lg:h-96'>
               <img
                 src={blog1}
                 alt="blog-2-img"
-                className='h-full w-full' />
+                className='h-full w-full'/>
             </div>
             <div class="p-6">
               <h1 class="mt-2 mb-1 text-3xl md:text-3xl lg:text-4xl font-bold leading-none text-start">Supply Chain Finance - A Catalyst for Business Growth.</h1>
@@ -21,8 +31,8 @@ const SupplyChainFinanceBlog = () => {
                 <br />
                 As a leading fintech company, <a href="/" className='text-blue-600'>AltaneoFin</a>  is at the forefront of providing innovative Supply Chain Financing services which helps in transforming the financial landscape for businesses.
               </p>
-              <h1 class="mt-4 mb-1 text-2xl md:text-2xl lg:text-3xl font-semibold leading-none text-start">What is Supply Chain Finance?</h1>
-              <p class="leading-tight	 mb-3 text-[18px] text-gray-600 text-justify">
+              <h1 ref={refs.current[1]} class="mt-4 mb-1 text-2xl md:text-2xl lg:text-3xl font-semibold leading-none text-start">What is Supply Chain Finance?</h1>
+              <p ref={refs.current[2]} class="leading-tight	 mb-3 text-[18px] text-gray-600 text-justify">
                 Supply Chain Finance is an innovative financial practice that optimises <a href="/blogs/workingCapital" className='text-blue-600'>working capital</a> for businesses by facilitating early payments to suppliers while allowing buyers to extend their payment terms. It involves the collaboration of buyers, suppliers, and financial institutions, leveraging technology to streamline transactions and improve cash flow management across the supply chain.
               </p>
               <h1 class="mt-4 mb-1 text-2xl md:text-2xl lg:text-3xl font-semibold leading-none text-start">Benefits of Supply Chain Finance for<span className='text-blue-600'> Buyers</span></h1>
@@ -88,28 +98,31 @@ const SupplyChainFinanceBlog = () => {
             </div>
           </div>
         </div>
-
-        <div class="sticky top-0 w-1/4 mx-4 hidden sm:block">
-          <h1 class="my-3 text-2xl md:text-2xl lg:text-3xl font-semibold leading-none text-start ">Table of Contents</h1>
-          <hr />
-          <ol class="mt-2 text-gray-600 list-inside dark:text-gray-600 text-[20px] text-justify space-y-2">
-            <li>
-              <span class="font-semibold leading-relaxed text-gray-700">1. What is Supply Chain Finance.</span>
-            </li>
-            <li>
-              <span class="font-medium leading-relaxed text-gray-700 ">2. Benefits of Supply Chain Finance for Suppliers
-              </span>
-            </li>
-            <li>
-              <span class="font-medium leading-relaxed text-gray-700 ">3. How AltaneoFin Supports Buyers with SCF
-              </span>
-            </li>
-            <li>
-              <span class="font-medium leading-relaxed text-gray-700 ">4. Conclusion</span>
-            </li>
-          </ol>
-        </div>
       </div>
+
+
+
+      <div class="col-span-1 rounded-lg p-4 sm:col-span-4">
+        <h1 class="my-3 text-2xl md:text-2xl lg:text-3xl font-semibold leading-none text-start ">Table of Contents</h1>
+        <hr />
+        <ol class="mt-2 text-gray-600 list-inside dark:text-gray-600 text-[20px] text-justify space-y-2">
+          <li onClick={() => scrollToElement(1)}>
+            <span class="font-semibold leading-relaxed text-gray-700 hover:text-blue-400">1. What is Supply Chain Finance.</span>
+          </li>
+          <li onClick={() => scrollToElement(2)}>
+            <span class="font-medium leading-relaxed text-gray-700 hover:text-blue-400">2. Benefits of Supply Chain Finance for Suppliers
+            </span>
+          </li>
+          <li onClick={() => scrollToElement(3)}>
+            <span class="font-medium leading-relaxed text-gray-700 hover:text-blue-400">3. How AltaneoFin Supports Buyers with SCF
+            </span>
+          </li>
+          <li onClick={() => scrollToElement(4)}>
+            <span class="font-medium leading-relaxed text-gray-700 hover:text-blue-400">4. Conclusion</span>
+          </li>
+        </ol>
+      </div>
+    </div>
   )
 }
 export default SupplyChainFinanceBlog

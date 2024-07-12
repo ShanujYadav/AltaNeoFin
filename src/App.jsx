@@ -35,8 +35,13 @@ import CreditRiskAssessmentBlog from './components/Blogs/blogPages/CreditRiskAss
 import ContectUs from './components/ContectUs/ContectUs'
 import Terms from './components/policies/Terms/Terms'
 import Privacypolicy from './components/policies/PrivacyPolicy/Privacypolicy'
+import SustainableSupplyChainBlog from './components/Blogs/blogPages/SustainableSupplyChainBlog';
+
+
+
 
 const App = () => {
+  
   return (
     <Router>
       <Switch>
@@ -45,6 +50,8 @@ const App = () => {
         {/* <Route path='/Dashboard' component={Dashboard} />*/}
         <Route path="/dashboard/*" render={Dashboard} />
         <Route path={['/admin']} component={Admin} />
+
+
         {/* Routes for pages with Navbar */}
         <Route>
           <Navbar />
@@ -55,7 +62,7 @@ const App = () => {
             <Route exact path='/products/vendorFinancing' component={VendorFinancingPage} />
             <Route exact path='/products/exportCredits' component={ExportCreditPage} />
             <Route exact path='/products/creditCard' component={CreditCardPage} />
-            
+
             <Route exact path='/blogs' component={Blogs} />
             <Route exact path='/blogs/supplyChainFinance' component={SupplyChainFinanceBlog} />
             <Route exact path='/blogs/invoiceDiscounting' component={InvoiceDiscountingBlog} />
@@ -66,20 +73,23 @@ const App = () => {
             <Route exact path='/blogs/dynamicDiscounting' component={DynamicDiscountingBlog} />
             <Route exact path='/blogs/inventoryManagement' component={InventoryManagementBlog} />
             <Route exact path='/blogs/creditRiskAssessment' component={CreditRiskAssessmentBlog} />
-
+            <Route exact path='/blogs/sustainableSupplyChain' component={SustainableSupplyChainBlog} />
 
             <Route exact path="/simple-intrest-caclucator" component={SiCalculator} />
             <Route exact path='/privacyPolicy' component={Privacypolicy} />
             <Route exact path='/refundPolicy' component={RefundPolicy} />
             <Route exact path='/Terms' component={Terms} />
+            
             {/* <Route exact path='/blog/:id' component={subBlog} /> */}
+
             <Route exact path='/TeamPage' component={TeamPage} />
           </Switch>
         </Route>
       </Switch>
     </Router>
-  );
+  )
 }
+
 
 const Home = () => {
   const Title = ({ subTitle, title }) => {
