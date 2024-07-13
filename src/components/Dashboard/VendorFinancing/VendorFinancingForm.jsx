@@ -208,7 +208,7 @@ const VendorFinancingForm = (props) => {
     if (!bankStatement) {
       setShowError({ ...showError, bankStatement: true })
       return
-    }
+    } 
     if (!auditedFinancials) {
       setShowError({ ...showError, auditedFinancials: true })
       return
@@ -233,6 +233,7 @@ const VendorFinancingForm = (props) => {
         body: formData,
       })
 
+      
       const res = await response.json();
       console.log('res---', res);
       if (res.statusCode === 200) {
