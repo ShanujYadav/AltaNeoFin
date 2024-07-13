@@ -26,310 +26,211 @@ const Profile = () => {
     })
 
     useEffect(() => {
-            dispatch(getProfileData(userId))
-            var gstStatus = profileData.gstRegistered ? 'Yes' : 'No'
-            setprofileData({
-                ...profileData,
-                phone: profileDetails.phone,
-                name: profileDetails.name,
-                panCard: profileDetails.panCard,
-                gender: profileDetails.gender,
-                DOB: profileDetails.DOB,
-                pinCode: profileDetails.pinCode,
-                email: profileDetails.email,
-                gstRegistered: gstStatus,
-                gstNumber: profileDetails.gstNumber,
-                businessType: profileDetails.businessType,
-                businessAge: profileDetails.businessAge,
-                businessPinCode: profileDetails.businessPinCode,
-                yearlySales: profileDetails.yearlySales,
-            })
+        dispatch(getProfileData(userId))
+        var gstStatus = profileData.gstRegistered ? 'Yes' : 'No'
+        setprofileData({
+            ...profileData,
+            phone: profileDetails.phone,
+            name: profileDetails.name,
+            panCard: profileDetails.panCard,
+            gender: profileDetails.gender,
+            DOB: profileDetails.DOB,
+            pinCode: profileDetails.pinCode,
+            email: profileDetails.email,
+            gstRegistered: gstStatus,
+            gstNumber: profileDetails.gstNumber,
+            businessType: profileDetails.businessType,
+            businessAge: profileDetails.businessAge,
+            businessPinCode: profileDetails.businessPinCode,
+            yearlySales: profileDetails.yearlySales,
+        })
     }, [])
 
-    
-    return (
-        <div class="flex flex-col h-screen ">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-2">
-                <div class="bg-white p-4 rounded-md">
-                    <h2 class="block text-sm text-muted leading-6 text-black pb-2"><b className='text-blue-500'>PERSONAL </b> Details</h2>
-                    <div class="bg-gradient-to-r from-cyan-300 to-cyan-500 h-px mb-6"></div>
-                    <div class="max-w-2xl">
-                        <div class="grid grid-cols-2 gap-x-10 gap-y-10 mx-4 sm:grid-cols-3">
-                            <div>
-                                <img src="https://www.w3schools.com/howto/img_avatar.png"
-                                    alt="Avatar"
-                                    className="rounded-circle  h-20 w-20"
-                                />
-                            </div>
-                            <div className='py-3'>
-                                <label for="pan-card" class="block font-semibold text-sm leading-6 text-black">UserId</label>
-                                <h6 className='text-gray-600 text-sm'>{userId}</h6>
-                            </div>
-                            <div className='py-3'>
-                                <label for="pan-card" class="block font-semibold text-sm leading-6 text-black">Name</label>
-                                <h6 className='text-gray-600 text-sm'>{profileData.name}</h6>
-                            </div>
-                            <div className='py-3'>
-                                <label for="pan-card" class="block font-semibold text-sm leading-6 text-black">Phone</label>
-                                <h6 className='text-gray-600 text-sm'>{profileData.phone}</h6>
-                            </div>
 
-                            <div className=''>
-                                <label for="pan-card" class="block font-semibold text-sm leading-6 text-black">Pan Card</label>
-                                <h6 className='text-gray-600 text-sm'>{profileData.panCard}</h6>
-                            </div>
-                            <div className=''>
-                                <label for="pan-card" class="block font-semibold text-sm leading-6 text-black">Gendar</label>
-                                <h6 className='text-gray-600 text-sm'>{profileData.gender}</h6>
-                            </div>
-                            <div className=''>
-                                <label for="pan-card" class="block font-semibold text-sm leading-6 text-black">DOB</label>
-                                <h6 className='text-gray-600 text-sm'>{profileData.DOB}</h6>
-                            </div>
-                            <div className=''>
-                                <label for="pan-card" class="block font-semibold text-sm leading-6 text-black">Pin Code</label>
-                                <h6 className='text-gray-600 text-sm'>{profileData.pinCode}</h6>
-                            </div>
-                            <div className=''>
-                                <label for="pan-card" class="block font-semibold text-sm leading-6 text-black">Email</label>
-                                <h6 className='text-gray-600 text-sm'>{profileData.email}</h6>
-                            </div>
+    return (
+        <div class="max-w-6xl mx-auto p-4 overflow-hidden">
+            <h1 class="text-4xl font-bold ml-8 mb-1">User profile</h1>
+            <div class="bg-gray-100 p-6 rounded-lg flex flex-col lg:flex-row lg:space-x-8 space-y-8 lg:space-y-0">
+                <div class="w-full lg:w-1/2 bg-white p-6 lg:p-12 rounded-3xl shadow h-auto lg:h-[40rem] overflow-hidden">
+                    <div class="flex flex-col sm:flex-row items-start sm:items-center space-y-4 sm:space-y-0 sm:space-x-4 w-full">
+                        <img class="w-24 h-24 lg:w-32 lg:h-32 rounded-full" src="https://via.placeholder.com/150" alt="User Image" />
+                        <div class="flex-1 min-w-0">
+                            <h2 class="text-2xl lg:text-3xl font-bold truncate">Soham Kumar</h2>
+                            <p class="text-gray-600 text-base truncate">Smith.k@gmail.com</p>
+                            <p class="text-gray-600 text-base truncate">+91 XXXXXXXXXX</p>
+                            <p class="bg-blue-100 text-blue-600 rounded px-2 inline-block mt-2 text-base truncate">UserId: 12345</p>
                         </div>
                     </div>
+                    <div class="mt-4 border-t pt-4 space-y-2">
+                        <p class="text-base"><strong>DOB:</strong> June 23 1984</p>
+                        <p class="text-base"><strong>Pan Card:</strong> XXXX XXXX XX52</p>
+                        <p class="text-base"><strong>Pin Code:</strong> 262122</p>
+                    </div>
                 </div>
-
-                <div class="bg-white p-4 rounded-md ">
-                    <h2 class="block text-sm leading-6 text-muted pb-2"><b className='text-blue-500'>BUSINESS </b> Details</h2>
-                    <div class="bg-gradient-to-r from-cyan-300 to-cyan-500 h-px mb-6"></div>
-                    <div class="max-w-2xl">
-                        <div class="grid grid-cols-2 gap-x-10 gap-y-10 mx-4 sm:grid-cols-3">
-                            <div className='py-3'>
-                                <label for="pan-card" class="block font-semibold text-sm leading-6 text-black">Gst Registered</label>
-                                <h6 className='text-gray-600 text-sm'>{profileData.gstRegistered}</h6>
-                            </div>
-                            <div className='py-3'>
-                                <label for="pan-card" class="block font-semibold text-sm leading-6 text-black">Gst Number</label>
-                                <h6 className='text-gray-600 text-sm'>{profileData.gstNumber}</h6>
-                            </div>
-                            <div className='py-3'>
-                                <label for="pan-card" class="block font-semibold text-sm leading-6 text-black">Business Type</label>
-                                <h6 className='text-gray-600 text-sm'>{profileData.businessType}</h6>
-                            </div>
-                            <div className='py-3'>
-                                <label for="pan-card" class="block font-semibold text-sm leading-6 text-black">Business Age</label>
-                                <h6 className='text-gray-600 text-sm'>{profileData.businessAge}</h6>
-                            </div>
-
-                            <div className=''>
-                                <label for="pan-card" class="block font-semibold text-sm leading-6 text-black">Business PinCode</label>
-                                <h6 className='text-gray-600 text-sm'>{profileData.businessPinCode}</h6>
-                            </div>
-                            <div className=''>
-                                <label for="pan-card" class="block font-semibold text-sm leading-6 text-black">Yearly Sales</label>
-                                <h6 className='text-gray-600 text-sm'>{profileData.yearlySales}</h6>
-                            </div>
-                        </div>
+                <div class="w-full lg:w-1/2 bg-white p-6 lg:p-12 rounded-3xl shadow h-  lg:h-[40rem] overflow-hidden">
+                    <h3 class="text-2xl lg:text-3xl font-bold mb-2">Business Info</h3>
+                    <hr class="bg-gray-400 mb-4" />
+                    <div class="space-y-2">
+                        <p class="text-base"><strong>GST Registered:</strong> No</p>
+                        <hr class="bg-gray-400" />
+                        <p class="text-base"><strong>GST Number:</strong> GST123456789</p>
+                        <hr class="bg-gray-400" />
+                        <p class="text-base"><strong>Business Type:</strong> GST123456789</p>
+                        <hr class="bg-gray-400" />
+                        <p class="text-base"><strong>Business Age:</strong> GST123456789</p>
+                        <hr class="bg-gray-400" />
+                        <p class="text-base"><strong>Business PinCode:</strong> 123456</p>
+                        <hr class="bg-gray-400" />
+                        <p class="text-base"><strong>Yearly Sales:</strong> ₹ 4,23,242</p>
+                        <hr class="bg-gray-400" />
                     </div>
                 </div>
             </div>
-
-
-            {/* <table class="w-full table-auto text-sm">
-                        <thead>
-                            <tr class="leading-normal">
-                                <th class="bg-grey-lightest text-sm text-grey-light border-b border-grey-light text-center">
-                                    profileDetails.genderjdnnjn dn
-                                </th>
-                                <th class="px-3 bg-grey-lightest text-sm text-grey-light border-b border-grey-light">
-                                    Phone
-                                </th>
-                                <th class="py-1 px-2 bg-grey-lightest font-bold uppercase text-sm text-grey-light border-b border-grey-light">
-                                    <img src="https://www.w3schools.com/howto/img_avatar.png"
-                                        alt="Avatar"
-                                        className="rounded-circle  h-20 w-20"
-                                    />
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            m jmjj
-                            <tr class="hover:bg-grey-lighter">
-                                <td class="py-2 px-4 border-b border-grey-light">Shanuj Yadav</td>
-                                <td class="py-2 px-4 border-b border-grey-light">Comercio</td>
-                            </tr>
-                            <tr class="hover:bg-grey-lighter">
-                                <td class="py-2 px-4 border-b border-grey-light">
-                                    <img src="https://via.placeholder.com/40" alt="Foto Perfil" class="rounded-full h-10 w-10" />
-                                </td>
-                                <td class="py-2 px-4 border-b border-grey-light">María Gómez</td>
-                                <td class="py-2 px-4 border-b border-grey-light">Usuario</td>
-                            </tr>
-                            <tr class="hover:bg-grey-lighter">
-                                <td class="py-2 px-4 border-b border-grey-light">
-                                    <img src="https://via.placeholder.com/40" alt="Foto Perfil" class="rounded-full h-10 w-10" />
-                                </td>
-                                <td class="py-2 px-4 border-b border-grey-light">Carlos López</td>
-                                <td class="py-2 px-4 border-b border-grey-light">Usuario</td>
-                            </tr>
-                            <tr class="hover:bg-grey-lighter">
-                                <td class="py-2 px-4 border-b border-grey-light">
-                                    <img src="https://via.placeholder.com/40" alt="Foto Perfil" class="rounded-full h-10 w-10" />
-                                </td>
-                                <td class="py-2 px-4 border-b border-grey-light">Laura Torres</td>
-                                <td class="py-2 px-4 border-b border-grey-light">Comercio</td>
-                            </tr>
-                            <tr class="hover:bg-grey-lighter">
-                                <td class="py-2 px-4 border-b border-grey-light">
-                                    <img src="https://via.placeholder.com/40" alt="Foto Perfil" class="rounded-full h-10 w-10" />
-                                </td>
-                                <td class="py-2 px-4 border-b border-grey-light">Ana Ramírez</td>
-                                <td class="py-2 px-4 border-b border-grey-light">Usuario</td>
-                            </tr>
-                            <tr class="hover:bg-grey-lighter">
-                                <td class="py-2 px-4 border-b border-grey-light">
-                                    <img src="https://via.placeholder.com/40" alt="Foto Perfil" class="rounded-full h-10 w-10" />
-                                </td>
-                                <td class="py-2 px-4 border-b border-grey-light">Luis Martínez</td>
-                                <td class="py-2 px-4 border-b border-grey-light">Comercio</td>
-                            </tr>
-                        </tbody>
-                    </table> */}
-
-
-            {/* 
-            <div className="row">
-                <div className="col-md-6 col-12">
-                    <h6 className="lh-base fw-normal">
-                        <b>Personal</b> Details
-                    </h6>
-                    <div className="card p-4" style={{ maxHeight: "60vh", overflow: "scroll" }}>
-                        <div className="row">
-                            <div className="col-6">
-                                <h6 className="font-size-12 mb-2">
-                                    <small className="text-muted">Name</small>
-                                    <br />
-                                    profileDetails.name
-                                </h6>
-                                <div className="d-flex  align-items-center mb-2" style={{ justifyContent: "flex-start" }}>
-                                    <h6 className="font-size-12">
-                                        <small className="text-muted">DOB</small>
-                                        <br />
-                                        profileDetails.dob
-                                    </h6>
-                                    <h6 className="font-size-12 mx-4">
-                                        <small className="text-muted">Gender</small>
-                                        <br />
-                                        profileDetails.gender
-                                    </h6>
-                                </div>
-                            </div>
-                            <div className="col-6 text-center">
-                                <div className="text-center">
-                                    <img
-                                        src="https://www.w3schools.com/howto/img_avatar.png"
-                                        alt="Avatar"
-                                        className="rounded-circle avatar-xl"
-                                    />
-                                </div>
-                            </div>
-                        </div>
-                        <div
-                            className="d-flex  align-items-center my-3 py-3"
-                            style={{
-                                borderTop: "1px dashed #7c7b7b",
-                                borderBottom: "1px dashed #7c7b7b",
-                            }}
-                        >
-                            <i className="fa-solid fa-phone font-size-12 me-4"></i>
-                            <h6 className="font-size-12">+91 profileDetails.mobileNo</h6>
-                        </div>
-
-                        <div className="row mb-3 pb-3" >
-                            <h6 className="font-size-12 mb-2">
-                                <small className="text-muted">Address</small>
-                                <br />
-                                profileDetails.agentAdd
-                            </h6>
-                            <div className="d-flex" style={{ justifyContent: "space-between" }}>
-                                <h6 className="font-size-12 mb-2">
-                                    <small className="text-muted">District</small>
-                                    <br />
-                                    profileDetails.agentDist
-                                </h6>
-
-                                <h6 className="font-size-12 mb-2">
-                                    <small className="text-muted">State</small>
-                                    <br />
-                                    profileDetails.agentState
-                                </h6>
-                                <h6 className="font-size-12 mb-2">
-                                    <small className="text-muted">Pincode</small>
-                                    <br />
-                                    profileDetails.agentPinCode
-                                </h6>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="col-md-6 col-12">
-                    <h6 className="lh-base fw-normal">
-                        <b>Business</b> Details
-                    </h6>
-                    <div className="card p-4" style={{ maxHeight: "60vh", overflow: "scroll" }}>
-                        <h6 className="font-size-12 mb-2">
-                            <small className="text-muted">Business Name</small>
-                            <br />
-                            profileDetails.businessName
-
-                        </h6>
-                        <h6 className="font-size-12 mb-2">
-                            <small className="text-muted">Agent ID</small>
-                            <br />
-                            profileDetails.agentId
-                        </h6>
-                        <h6 className="font-size-12 mb-2">
-                            <small className="text-muted">Terminal ID</small>
-                            <br />
-                            profileDetails.terminal
-                        </h6>
-                        <h6 className="font-size-12 mb-2">
-                            <small className="text-muted">PAN Number</small>
-                            <br />
-                            profileDetails.panNo
-                        </h6>
-                        <div className="pt-3  mt-3" style={{
-                            borderTop: "1px dashed #7c7b7b",
-                        }}>
-                            <h6 className="font-size-12 mb-2">
-                                <small className="text-muted">Address</small>
-                                <br />
-                                profileDetails.businessAdd
-                            </h6>
-                            <div className="d-flex" style={{ justifyContent: "space-between" }}>
-                                <h6 className="font-size-12 mb-2">
-                                    <small className="text-muted">District</small>
-                                    <br />
-                                    profileDetails.businessDist
-                                </h6>
-                                <h6 className="font-size-12 mb-2">
-                                    <small className="text-muted">State</small>
-                                    <br />
-                                    profileDetails.businessState
-                                </h6>
-                                <h6 className="font-size-12 mb-2">
-                                    <small className="text-muted">Pincode</small>
-                                    <br />
-                                    profileDetails.businessPinCode
-                                </h6>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> */}
-
-        </div >
+        </div>
     )
 }
 
 export default Profile
+
+
+
+// import React, { useEffect, useState } from 'react'
+// import { useDispatch, useSelector } from 'react-redux'
+// import { getProfileData } from '../../../store/action/ProfileAction'
+
+// const Profile = () => {
+//     const dispatch = useDispatch()
+//     const profileDetails = useSelector((state) => state.profile.userInfo)
+//     // const userId = profileDetails.uuid
+//     const name = profileDetails.name
+//     const userId = 12345
+
+//     const [profileData, setprofileData] = useState({
+//         phone: '',
+//         name: '',
+//         panCard: '',
+//         gender: '',
+//         DOB: '',
+//         pinCode: '',
+//         email: '',
+//         gstRegistered: '',
+//         gstNumber: '',
+//         businessType: '',
+//         businessAge: '',
+//         businessPinCode: '',
+//         yearlySales: '',
+//     })
+
+//     useEffect(() => {
+//             dispatch(getProfileData(userId))
+//             var gstStatus = profileData.gstRegistered ? 'Yes' : 'No'
+//             setprofileData({
+//                 ...profileData,
+//                 phone: profileDetails.phone,
+//                 name: profileDetails.name,
+//                 panCard: profileDetails.panCard,
+//                 gender: profileDetails.gender,
+//                 DOB: profileDetails.DOB,
+//                 pinCode: profileDetails.pinCode,
+//                 email: profileDetails.email,
+//                 gstRegistered: gstStatus,
+//                 gstNumber: profileDetails.gstNumber,
+//                 businessType: profileDetails.businessType,
+//                 businessAge: profileDetails.businessAge,
+//                 businessPinCode: profileDetails.businessPinCode,
+//                 yearlySales: profileDetails.yearlySales,
+//             })
+//     }, [])
+
+    
+//     return (
+//         <div class="flex flex-col h-screen ">
+//             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-2">
+//                 <div class="bg-white p-4 rounded-md">
+//                     <h2 class="block text-sm text-muted leading-6 text-black pb-2"><b className='text-blue-500'>PERSONAL </b> Details</h2>
+//                     <div class="bg-gradient-to-r from-cyan-300 to-cyan-500 h-px mb-6"></div>
+//                     <div class="max-w-2xl">
+//                         <div class="grid grid-cols-2 gap-x-10 gap-y-10 mx-4 sm:grid-cols-3">
+//                             <div>
+//                                 <img src="https://www.w3schools.com/howto/img_avatar.png"
+//                                     alt="Avatar"
+//                                     className="rounded-circle  h-20 w-20"
+//                                 />
+//                             </div>
+//                             <div className='py-3'>
+//                                 <label for="pan-card" class="block font-semibold text-sm leading-6 text-black">UserId</label>
+//                                 <h6 className='text-gray-600 text-sm'>{userId}</h6>
+//                             </div>
+//                             <div className='py-3'>
+//                                 <label for="pan-card" class="block font-semibold text-sm leading-6 text-black">Name</label>
+//                                 <h6 className='text-gray-600 text-sm'>{profileData.name}</h6>
+//                             </div>
+//                             <div className='py-3'>
+//                                 <label for="pan-card" class="block font-semibold text-sm leading-6 text-black">Phone</label>
+//                                 <h6 className='text-gray-600 text-sm'>{profileData.phone}</h6>
+//                             </div>
+
+//                             <div className=''>
+//                                 <label for="pan-card" class="block font-semibold text-sm leading-6 text-black">Pan Card</label>
+//                                 <h6 className='text-gray-600 text-sm'>{profileData.panCard}</h6>
+//                             </div>
+//                             <div className=''>
+//                                 <label for="pan-card" class="block font-semibold text-sm leading-6 text-black">Gendar</label>
+//                                 <h6 className='text-gray-600 text-sm'>{profileData.gender}</h6>
+//                             </div>
+//                             <div className=''>
+//                                 <label for="pan-card" class="block font-semibold text-sm leading-6 text-black">DOB</label>
+//                                 <h6 className='text-gray-600 text-sm'>{profileData.DOB}</h6>
+//                             </div>
+//                             <div className=''>
+//                                 <label for="pan-card" class="block font-semibold text-sm leading-6 text-black">Pin Code</label>
+//                                 <h6 className='text-gray-600 text-sm'>{profileData.pinCode}</h6>
+//                             </div>
+//                             <div className=''>
+//                                 <label for="pan-card" class="block font-semibold text-sm leading-6 text-black">Email</label>
+//                                 <h6 className='text-gray-600 text-sm'>{profileData.email}</h6>
+//                             </div>
+//                         </div>
+//                     </div>
+//                 </div>
+
+//                 <div class="bg-white p-4 rounded-md ">
+//                     <h2 class="block text-sm leading-6 text-muted pb-2"><b className='text-blue-500'>BUSINESS </b> Details</h2>
+//                     <div class="bg-gradient-to-r from-cyan-300 to-cyan-500 h-px mb-6"></div>
+//                     <div class="max-w-2xl">
+//                         <div class="grid grid-cols-2 gap-x-10 gap-y-10 mx-4 sm:grid-cols-3">
+//                             <div className='py-3'>
+//                                 <label for="pan-card" class="block font-semibold text-sm leading-6 text-black">Gst Registered</label>
+//                                 <h6 className='text-gray-600 text-sm'>{profileData.gstRegistered}</h6>
+//                             </div>
+//                             <div className='py-3'>
+//                                 <label for="pan-card" class="block font-semibold text-sm leading-6 text-black">Gst Number</label>
+//                                 <h6 className='text-gray-600 text-sm'>{profileData.gstNumber}</h6>
+//                             </div>
+//                             <div className='py-3'>
+//                                 <label for="pan-card" class="block font-semibold text-sm leading-6 text-black">Business Type</label>
+//                                 <h6 className='text-gray-600 text-sm'>{profileData.businessType}</h6>
+//                             </div>
+//                             <div className='py-3'>
+//                                 <label for="pan-card" class="block font-semibold text-sm leading-6 text-black">Business Age</label>
+//                                 <h6 className='text-gray-600 text-sm'>{profileData.businessAge}</h6>
+//                             </div>
+
+//                             <div className=''>
+//                                 <label for="pan-card" class="block font-semibold text-sm leading-6 text-black">Business PinCode</label>
+//                                 <h6 className='text-gray-600 text-sm'>{profileData.businessPinCode}</h6>
+//                             </div>
+//                             <div className=''>
+//                                 <label for="pan-card" class="block font-semibold text-sm leading-6 text-black">Yearly Sales</label>
+//                                 <h6 className='text-gray-600 text-sm'>{profileData.yearlySales}</h6>
+//                             </div>
+//                         </div>
+//                     </div>
+//                 </div>
+//             </div>
+
+//         </div >
+//     )
+// }
+
+// export default Profile
