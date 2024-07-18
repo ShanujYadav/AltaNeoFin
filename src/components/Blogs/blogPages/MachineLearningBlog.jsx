@@ -1,5 +1,5 @@
 import React, { useRef} from 'react'
-import blog3 from '../../../../public/assets/img/blog-3.png'
+import blog3 from '../../../../public/assets/img/machineLearning.png'
  
 
 const MachineLearningBlog = () => {
@@ -223,7 +223,7 @@ const MachineLearningBlog = () => {
                                         Improved efficiency in contract analysis and negotiation processes.
                                     </li>
                                 </ul>
-                                <h1 ref={refs.current[8]} class="mt-4 mb-1 text-2xl md:text-2xl lg:text-3xl font-semibold leading-none text-start font-serif">Conclusion</h1>
+                                <h1 ref={refs.current[8]} class="mt-4 mb-1 text-2xl md:text-2xl lg:text-3xl font-semibold leading-none text-start font-serif">The Final Take</h1>
                                 <p class="leading-tight	 my-3 text-[18px] text-gray-600 text-justify font-serif">
                                     Machine learning techniques are revolutionising supply chain finance by providing advanced tools for demand forecasting, risk assessment, inventory optimization, and more. By leveraging ML, businesses can enhance efficiency, reduce costs, and mitigate risks, leading to a more resilient and responsive supply chain.
                                     <br />
@@ -263,13 +263,12 @@ const MachineLearningBlog = () => {
                                 7.Contract and Document Analysis
                         </li>
                         <li onClick={() => scrollToElement(8)} class="font-medium leading-relaxed text-gray-700 cursor-pointer hover:text-blue-400 font-serif">
-                              8. Conclusion
+                              8. The Final Take
                         </li>
                     </ol>
                 </div>
             </div>
         </>
-
     )
 }
 

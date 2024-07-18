@@ -1,9 +1,8 @@
 import React, { useRef } from 'react'
-import blog7 from '../../../../public/assets/img/blog-7.png'
+import blog7 from '../../../../public/assets/img/blockchainTechnology.png'
 
 const BlockChainTechBlog = () => {
   const refs = useRef(Array.from({ length: 10 }, () => React.createRef()))
-
 
   const scrollToElement = (index) => {
     refs.current[index].current.scrollIntoView({ behavior: 'smooth' });
@@ -14,7 +13,6 @@ const BlockChainTechBlog = () => {
       <div className="col-span-1 flex items-center sm:col-span-8 mt-2 pt-4">
         <div className="h-full rounded-xl shadow-cla-blue bg-white lg:items-center lg:px-8 pt-2 overflow-hidden w-full">
           <div className="h-full max-h-screen overflow-auto">
-            
             <div class="h-48 lg:h-96">
               <img src={blog7} alt="blog-6-img" className="w-full h-full object-cover" />
             </div>
@@ -108,7 +106,7 @@ const BlockChainTechBlog = () => {
               </ul>
 
               <h1 ref={refs.current[5]} class="mt-4 mb-1 text-2xl md:text-2xl lg:text-3xl font-semibold leading-none text-start font-serif">
-                Conclusion
+                The Final Take
               </h1>
               <p class="leading-tight mb-3 text-[18px] text-gray-600 text-justify font-serif">
                 Blockchain technology has the potential to revolutionise supply chain finance by enhancing transparency, security, efficiency, and traceability. By addressing long-standing challenges and opening up new opportunities, blockchain can help businesses improve their supply chain operations and achieve greater financial stability. However, successful implementation requires careful consideration of integration, regulatory compliance, scalability, and collaboration. As more businesses recognize the benefits of blockchain, we can expect to see widespread adoption and continued innovation in the supply chain finance industry.
@@ -136,7 +134,7 @@ const BlockChainTechBlog = () => {
               4. Challenges and Considerations
           </li>
           <li onClick={() => scrollToElement(5)} className='font-medium leading-relaxed text-gray-700 font-serif hover:text-blue-600 cursor-pointer'>
-              5. Conclusion
+              5. The Final Take
           </li>
         </ol>
       </div>

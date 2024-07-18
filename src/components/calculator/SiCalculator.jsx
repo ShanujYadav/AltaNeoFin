@@ -17,7 +17,7 @@ const SiCalculator = () => {
         },
         {
             id: "2",
-            qstn: "How to use Altaneofin's simple interest calculator?",
+            qstn: "How to use Altaneo Finance simple interest calculator?",
             ans: "Our Simple interest Calculator can help you to calculate interest charge on a loan or investment based on the original principal amount."
         },
     ]

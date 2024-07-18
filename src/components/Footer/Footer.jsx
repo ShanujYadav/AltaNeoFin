@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './Footer.css';
-import logo from '../../../public/assets/img/infinityLogo.png';
+import logo from '../../../public/assets/logo/AnLogo.png';
 
 import { Link as ScrollLink } from 'react-scroll';
 import CookieConsent from 'react-cookie-consent';
@@ -9,13 +9,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebookF, faTwitter, faYoutube, faLinkedinIn, faInstagram } from '@fortawesome/free-brands-svg-icons';
 
 
-
 const Footer = () => {
-
-
-
-
-
   const onAcceptCookiee = () => {
     let testimonials = 'CA Gaurav Dhaneja, CA Deepak Goal, Yogesh Singhla'
     let team = 'Meenakshi,Joytika,Sonali'
@@ -73,10 +67,11 @@ const Footer = () => {
 
   return (<>
     <footer class="bg-gradient-to-r from-blue-950 to-black" aria-labelledby="footer-heading">
+    {/* <footer class="bg-black" aria-labelledby="footer-heading"> */}
       <h2 id="footer-heading" class="sr-only">Footer</h2>
       <div class="mx-auto max-w-7xl px-6 pb-8 pt-16 sm:pt-24 lg:px-8 lg:pt-32">
         <div class="xl:grid xl:grid-cols-3 xl:gap-8">
-          <div class="space-y-8">
+          <div class="space-y-4">
             <img src={logo} alt="AltaNeo" height={100} width={200} />
             <p class="text-sm leading-6 text-gray-400">Empowering Growth Through Seamless Financial Solutions</p>
             <div class="flex space-x-6">
@@ -90,7 +85,7 @@ const Footer = () => {
                 <FontAwesomeIcon icon={faYoutube} />
               </a>
               <a target="_blank" href="https://www.linkedin.com/company/altaneofin/" class="text-white hover:text-gray-500">
-                <FontAwesomeIcon icon={faLinkedinIn} />
+                <FontAwesomeIcon icon={faLinkedinIn} /> 
               </a>
               <a target="_blank" href="https://www.instagram.com/altaneo_fin/" class="text-white hover:text-gray-500">
                 <FontAwesomeIcon icon={faInstagram} />
@@ -163,7 +158,7 @@ const Footer = () => {
                     <h6 class="text-sm leading-6 text-gray-400">Nodal Officer:-</h6>
                   </li>
                   <li>
-                    <h6 href="#" class="text-sm leading-6 text-gray-400 ">Somesh Chandel</h6>
+                    <h6 href="#" class="text-sm leading-6 text-gray-400 ">Sonia Verma</h6>
                   </li>
                   <li>
                     <h6 class="text-sm leading-6 text-gray-400 ">+91 9817741345</h6>

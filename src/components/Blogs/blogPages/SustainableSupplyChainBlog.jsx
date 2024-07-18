@@ -1,5 +1,5 @@
 import React, { useRef, } from 'react'
-import blog6 from '../../../../public/assets/img/blog-6.png';
+import blog6 from '../../../../public/assets/img/sustainableSCF.png';
 
 const SustainableSupplyChain = () => {
     const refs = useRef(Array.from({ length: 10 }, () => React.createRef()))
@@ -86,11 +86,11 @@ const SustainableSupplyChain = () => {
               </ol>
 
               <h1  className="my-2 text-xl md:text-xl lg:text-2xl font-semibold leading-none text-start font-serif">
-                How AltaneoFin Applies ESG in Their Business
+                How Altaneo Finance Applies ESG in Their Business
               </h1>
 
               <p className="leading-tight mb-3 text-[18px] text-gray-600 text-justify font-serif">
-                At AltaneoFin, we believe that integrating ESG principles into our supply chain finance solutions is crucial for building a sustainable future. Here’s how we apply ESG criteria in our business:
+                At Altaneo Finance, we believe that integrating ESG principles into our supply chain finance solutions is crucial for building a sustainable future. Here’s how we apply ESG criteria in our business:
               </p>
 
               <ul className="list-disc mt-2 text-gray-600 list-inside dark:text-gray-600 text-[18px] font-serif text-justify space-y-2">
@@ -112,20 +112,20 @@ const SustainableSupplyChain = () => {
               </ul>
 
               <h1 className="my-2 text-xl md:text-xl lg:text-2xl font-semibold leading-none text-start font-serif">
-                The Impact of ESG Integration at AltaneoFin
+                The Impact of ESG Integration at Altaneo Finance
               </h1>
 
               <p ref={refs.current[9]} className="leading-tight mb-3 text-[18px] text-gray-600 text-justify font-serif">
-                By integrating ESG principles into our supply chain finance solutions, AltaneoFin is able to create value not just for our business, but for the broader ecosystem in which we operate. Our approach leads to more sustainable supply chains, promotes ethical business practices, and fosters a positive impact on society and the environment.
+                By integrating ESG principles into our supply chain finance solutions, Altaneo Finance is able to create value not just for our business, but for the broader ecosystem in which we operate. Our approach leads to more sustainable supply chains, promotes ethical business practices, and fosters a positive impact on society and the environment.
               </p>
               <h1  className="mt-4 mb-1 text-2xl md:text-2xl lg:text-3xl font-semibold leading-none text-start font-serif">
-                Conclusion
+                The Final Take
               </h1>
               <p  className="leading-tight mb-3 text-[18px] text-gray-600 text-justify font-serif">
                 Sustainable supply chain finance, through green financing and ESG integration, is essential for creating resilient and responsible supply chains. At AltaneoFin, we are committed to leading the charge in this transformative journey, ensuring that our financial solutions support sustainable growth and contribute to a better future. By prioritising environmental stewardship, social responsibility, and governance excellence, we are helping to build a more sustainable and equitable world.
                 <br />
                 <br />
-                For more insights on sustainable supply chain finance and how AltaneoFin is making a difference, follow us on our social media channels and visit our website. Together, we can drive positive change and achieve a sustainable future.
+                For more insights on sustainable supply chain finance and how Altaneo Finance is making a difference, follow us on our social media channels and visit our website. Together, we can drive positive change and achieve a sustainable future.
               </p>
             </div>
           </div>
@@ -167,17 +167,17 @@ const SustainableSupplyChain = () => {
             </li>
             <li onClick={() => scrollToElement(7)}>
               <span className="font-medium leading-relaxed text-gray-700 hover:text-blue-600 cursor-pointer font-serif">
-                7. How AltaneoFin Applies ESG in Their Business
+                7. How Altaneo Finance Applies ESG in Their Business
               </span>
             </li>
             <li onClick={() => scrollToElement(8)}>
               <span className="font-medium leading-relaxed text-gray-700 hover:text-blue-600 cursor-pointer font-serif">
-                8. The Impact of ESG Integration at AltaneoFin
+                8. The Impact of ESG Integration at Altaneo Finance
               </span>
             </li>
             <li onClick={() => scrollToElement(9)}>
               <span className="font-medium leading-relaxed text-gray-700 hover:text-blue-600 cursor-pointer font-serif">
-                9. Conclusion
+                9. The Final Take
               </span>
             </li>
           </ol>

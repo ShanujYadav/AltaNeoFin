@@ -4,21 +4,18 @@ import { FaRegFileLines } from "react-icons/fa6";
 import { TbFileExport } from "react-icons/tb";
 
 
-
 const Solutions = () => {
-  
   return (
-    <section class=" bg-blue-950">
+<section class=" bg-blue-950">
       <div class="py-1 sm:py-16 block lg:py-24 relative bg-opacity-50">
         <h2 className='text-white text-center	font-semibold font-serif text-3xl mt-4 underline'>What We Offer</h2>
         <div class="relative mx-auto h-full px-4 pb-20 md:pb-10 sm:max-w-xl md:max-w-full md:px-24 lg:max-w-screen-xl lg:px-8">
           <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8 relative">
-            <div class="grid grid-cols-1 gap-2 mt-12 sm:grid-cols-3 lg:mt-20">
-
+            <div class="grid grid-cols-1 gap-2 mt-12 sm:grid-cols-3 lg:mt-20 z-0">
               <a href="#"
-                class="transition-all  duration-1000 bg-white hover:bg-blue-600  hover:shadow-xl m-2 p-4 relative z-40 group  ">
+                class="transition-all  duration-1000 bg-white hover:bg-blue-600  hover:shadow-xl m-2 p-4 relative group  ">
                 <div
-                  class=" absolute  bg-blue-600/50 top-0 left-0 w-full h-2 z-30  transition-all duration-200   group-hover:bg-white group-hover:w-1/2  ">
+                  class=" absolute  bg-blue-600/50 top-0 left-0 w-full h-2 transition-all duration-200   group-hover:bg-white group-hover:w-1/2  ">
                 </div>
                 <div class="py-2 px-9 relative">
                   <FaRegFileLines size={70} color='#787FF1' />
@@ -30,9 +27,9 @@ const Solutions = () => {
               </a>
               
               <a href="#"
-                class="transition-all  duration-1000 bg-white hover:bg-blue-500  hover:shadow-xl m-2 p-4 relative z-40 group  ">
+                class="transition-all  duration-1000 bg-white hover:bg-blue-500  hover:shadow-xl m-2 p-4 relative group  ">
                 <div
-                  class=" absolute  bg-blue-500/50 top-0 left-0 w-full h-2 z-30  transition-all duration-200   group-hover:bg-white group-hover:w-1/2  ">
+                  class=" absolute  bg-blue-500/50 top-0 left-0 w-full h-2 transition-all duration-200   group-hover:bg-white group-hover:w-1/2  ">
                 </div>
                 <div class="py-2 px-9 relative">
                   <PiHandshakeLight size={80} color='#787FF1' />
@@ -44,9 +41,9 @@ const Solutions = () => {
               </a>
 
               <a href="#"
-                class="transition-all  duration-1000 bg-white hover:bg-blue-500  hover:shadow-xl m-2 p-4 relative z-40 group  ">
+                class="transition-all  duration-1000 bg-white hover:bg-blue-500  hover:shadow-xl m-2 p-4 relative  group  ">
                 <div
-                  class=" absolute  bg-blue-500/50 top-0 left-0 w-full h-2 z-30  transition-all duration-200   group-hover:bg-white group-hover:w-1/2  ">
+                  class=" absolute  bg-blue-500/50 top-0 left-0 w-full h-2 transition-all duration-200   group-hover:bg-white group-hover:w-1/2  ">
                 </div>
                 <div class="py-2 px-9 relative">
                   <TbFileExport size={80} color='#787FF1' />
@@ -64,5 +61,4 @@ const Solutions = () => {
     </section>
   )
 }
-
 export default Solutions

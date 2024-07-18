@@ -3,7 +3,6 @@ import React from 'react';
 import Navbar from './components/Navbar/Navbar';
 import Hero from './components/Hero/Hero';
 import About from './components/About/About';
-import Solutions from './components/Solutions/Solutions';
 import Testimonials from './components/Testimonials/Testimonials';
 import Footer from './components/Footer/Footer';
 import Partners from './components/Partners/Partners';
@@ -32,16 +31,16 @@ import BlockChainTechBlog from './components/Blogs/blogPages/BlockChainTechBlog'
 import DynamicDiscountingBlog from './components/Blogs/blogPages/DynamicDiscountingBlog'
 import InventoryManagementBlog from './components/Blogs/blogPages/InventoryManagementBlog'
 import CreditRiskAssessmentBlog from './components/Blogs/blogPages/CreditRiskAssessmentBlog'
-import ContectUs from './components/ContectUs/ContectUs'
 import Terms from './components/policies/Terms/Terms'
 import Privacypolicy from './components/policies/PrivacyPolicy/Privacypolicy'
 import SustainableSupplyChainBlog from './components/Blogs/blogPages/SustainableSupplyChainBlog';
 
+import ContactUs from './components/ContectUs/ContactUs';
+import Solutions from './components/solutions/Solutions';
 
 
 
 const App = () => {
-  
   return (
     <Router>
       <Switch>
@@ -105,7 +104,7 @@ const Home = () => {
     <Hero />
     <div className=''>
       <Title subTitle='' title='' />
-      <Solutions />
+      <Solutions/>
       <About />
       <Title subTitle='Valued From leading brands' title='Leading Investors' />
       <Investors />
@@ -116,7 +115,7 @@ const Home = () => {
       <Title subTitle='Business Partners' title='Altaneofied' />
       <Partners />
       <Title subTitle='' title='' />
-      <ContectUs />
+      <ContactUs/>
       <Faqs />
       <Footer />
       <Bot />

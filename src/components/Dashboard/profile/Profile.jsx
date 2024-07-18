@@ -78,7 +78,7 @@ const Profile = () => {
                         <p class="text-base"><strong>Business Type:</strong> GST123456789</p>
                         <hr class="bg-gray-400" />
                         <p class="text-base"><strong>Business Age:</strong> GST123456789</p>
-                        <hr class="bg-gray-400" />
+                        <hr class="bg-gray-400" /> 
                         <p class="text-base"><strong>Business PinCode:</strong> 123456</p>
                         <hr class="bg-gray-400" />
                         <p class="text-base"><strong>Yearly Sales:</strong> ₹ 4,23,242</p>

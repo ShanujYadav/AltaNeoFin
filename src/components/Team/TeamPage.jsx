@@ -37,12 +37,6 @@ const TeamPage = () => {
       description: 'As the Director of Altaneo, Im thrilled to extend a warm welcome to you, introducing fintech poised to redefine the landscape of financial services. At Altaneo, we are not just in the business of lending we arre in the business of empowering dreams, fuelling growth, and fostering financial inclusion.'
     },
     {
-      name: 'Somesh Chandel',
-      role: 'Credit Analyst',
-      photo: somesh,
-      description: 'With an overall experience of 5 years, including 2 years dedicated to the wholesale banking sector, he excels in credit assessment for MSME enterprises requiring working capital and supply chain finance.'
-    },
-    {
       name: 'Dhiren Madhukar',
       role: 'Software Developer',
       photo: dhiren,
