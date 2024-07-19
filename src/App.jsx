@@ -13,7 +13,6 @@ import RefundPolicy from './components/policies/RefundPolicy/RefundPolicy'
 import Bot from './components/Bot/bot'
 import Blogs from './components/Blogs/Blogs'
 import TeamPage from './components/Team/TeamPage'
-import Admin from './components/Admin/Admin'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Faqs from './components/faq\'s/Faqs'
 import Dashboard from './components/Dashboard/Dashboard'
@@ -37,6 +36,8 @@ import SustainableSupplyChainBlog from './components/Blogs/blogPages/Sustainable
 
 import ContactUs from './components/ContectUs/ContactUs';
 import Solutions from './components/solutions/Solutions';
+import GreenFinancingBlog from './components/Blogs/blogPages/GreenFinancingBlog';
+import SmallAndMediumEntBlog from './components/Blogs/blogPages/SmallAndMediumEntBlog';
 
 
 
@@ -48,9 +49,6 @@ const App = () => {
         <Route path={['/login', '/register']} component={Login} />
         {/* <Route path='/Dashboard' component={Dashboard} />*/}
         <Route path="/dashboard/*" render={Dashboard} />
-        <Route path={['/admin']} component={Admin} />
-
-
         {/* Routes for pages with Navbar */}
         <Route>
           <Navbar />
@@ -68,17 +66,20 @@ const App = () => {
             <Route exact path='/blogs/futureOfSupplyChain' component={FutureOfSCFBlog} />
             <Route exact path='/blogs/machineLearning' component={MachineLearningBlog} />
             <Route exact path='/blogs/workingCapital' component={WorkingCapitalBlog} />
+
             <Route exact path='/blogs/blockChainTechnology' component={BlockChainTechBlog} />
             <Route exact path='/blogs/dynamicDiscounting' component={DynamicDiscountingBlog} />
             <Route exact path='/blogs/inventoryManagement' component={InventoryManagementBlog} />
             <Route exact path='/blogs/creditRiskAssessment' component={CreditRiskAssessmentBlog} />
             <Route exact path='/blogs/sustainableSupplyChain' component={SustainableSupplyChainBlog} />
+            <Route exact path='/blogs/greenFinancing' component={GreenFinancingBlog} />
+            <Route exact path='/blogs/smallAndMeduimEnterprise' component={SmallAndMediumEntBlog} />
 
             <Route exact path="/simple-intrest-caclucator" component={SiCalculator} />
             <Route exact path='/privacyPolicy' component={Privacypolicy} />
             <Route exact path='/refundPolicy' component={RefundPolicy} />
             <Route exact path='/Terms' component={Terms} />
-            
+
             {/* <Route exact path='/blog/:id' component={subBlog} /> */}
 
             <Route exact path='/TeamPage' component={TeamPage} />
@@ -104,7 +105,7 @@ const Home = () => {
     <Hero />
     <div className=''>
       <Title subTitle='' title='' />
-      <Solutions/>
+      <Solutions />
       <About />
       <Title subTitle='Valued From leading brands' title='Leading Investors' />
       <Investors />
@@ -115,7 +116,7 @@ const Home = () => {
       <Title subTitle='Business Partners' title='Altaneofied' />
       <Partners />
       <Title subTitle='' title='' />
-      <ContactUs/>
+      <ContactUs />
       <Faqs />
       <Footer />
       <Bot />

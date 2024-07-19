@@ -68,7 +68,7 @@ const SupplyChainFinanceBlog = () => {
                 </li>
               </ol>
 
-              <h1 class="mt-4 mb-1 text-2xl md:text-2xl lg:text-3xl font-semibold leading-none text-start font-serif"><a href="/" className='text-blue-600'>Altaneo Finance</a> - A Supply Chain Financing Solution Provider </h1>
+              <h1 class="mt-4 mb-1 text-2xl md:text-2xl lg:text-3xl font-semibold leading-none text-start font-serif"><a href="/" className='text-blue-600'>Altaneo </a> - A Supply Chain Financing Solution Provider </h1>
               <p class="leading-tight	 mb-3 text-[18px] text-gray-600 text-justify font-serif">
                 <a href="/" className='text-blue-600'>Altaneo Finance</a>, a forward thinking fintech company, leverages advanced technology and a deep understanding of the financial landscape to provide seamless Supply Chain Financing solutions. Here’s how Altaneo Finance can assist buyers in implementing effective supply chain financing services-
               </p>

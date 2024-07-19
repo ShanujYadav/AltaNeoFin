@@ -39,12 +39,12 @@ const ContactUs = () => {
     } catch (error) {
       console.error('Error:', error);
     }
-  };
+  }
 
   return (
     <section class="lg:my-5">
     <div class="py-1  sm:py-16 block lg:py-24 relative bg-opacity-50 z-0" >
-        <h2 className='text-black text-center	font-semibold font-serif text-3xl mt-4 underline'>Conta ct Us</h2>
+        <h2 className='text-black text-center	font-semibold font-serif text-3xl mt-4 underline'>Contact Us</h2>
     <div className="flex flex-col md:flex-row justify-between items-start mt-10 mx-auto max-w-5xl">
         <div className="flex-1 p-6 bg-gray-100 rounded-lg text-gray-700 md:mr-6 mb-6 md:mb-0">
         <h3 className="text-2xl font-semibold flex items-center text-black mb-2 font-serif">

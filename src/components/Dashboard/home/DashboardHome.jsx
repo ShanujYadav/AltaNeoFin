@@ -1,11 +1,10 @@
 import React, { useState } from 'react'
-import RightContent from '../RightContent'
 import { useDispatch } from 'react-redux';
 import { getactiveWindow } from '../../../store/slice/DashboardSlice';
 import { useHistory } from 'react-router-dom';
 import { FaRegFile } from "react-icons/fa";
-import Rmbox from '../Rmbox';
 import { IoMdAdd } from "react-icons/io";
+import RmBox from '../RmBox';
 
 const DashboardHome = () => {
     const dispatch = useDispatch()
@@ -23,7 +22,7 @@ const DashboardHome = () => {
                     <h1 class="text-3xl font-bold text-gray-800">Active loans</h1>
                     <p class="text-gray-500 text-base">List of your loans are here</p>
                 </div>
-                <Rmbox />
+                <RmBox/>
             </div>
             <hr class="border-gray-800" />
             <div class="bg-gray-100 p-4 ">
