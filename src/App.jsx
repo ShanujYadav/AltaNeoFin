@@ -38,6 +38,7 @@ import ContactUs from './components/ContectUs/ContactUs';
 import Solutions from './components/solutions/Solutions';
 import GreenFinancingBlog from './components/Blogs/blogPages/GreenFinancingBlog';
 import SmallAndMediumEntBlog from './components/Blogs/blogPages/SmallAndMediumEntBlog';
+import Vision from './components/vision/Vision';
 
 
 
@@ -55,6 +56,13 @@ const App = () => {
           <Switch>
             <Route exact path="/" component={Home} />
 
+            <Route exact path="/simple-intrest-caclucator" component={SiCalculator} />
+            <Route exact path='/privacyPolicy' component={Privacypolicy} />
+            <Route exact path='/refundPolicy' component={RefundPolicy} />
+            <Route exact path='/terms' component={Terms} />
+            <Route exact path='/vision' component={Vision} />
+
+
             <Route exact path='/products/invoiceDiscounting' component={InvoiceDiscountingPage} />
             <Route exact path='/products/vendorFinancing' component={VendorFinancingPage} />
             <Route exact path='/products/exportCredits' component={ExportCreditPage} />
@@ -66,7 +74,6 @@ const App = () => {
             <Route exact path='/blogs/futureOfSupplyChain' component={FutureOfSCFBlog} />
             <Route exact path='/blogs/machineLearning' component={MachineLearningBlog} />
             <Route exact path='/blogs/workingCapital' component={WorkingCapitalBlog} />
-
             <Route exact path='/blogs/blockChainTechnology' component={BlockChainTechBlog} />
             <Route exact path='/blogs/dynamicDiscounting' component={DynamicDiscountingBlog} />
             <Route exact path='/blogs/inventoryManagement' component={InventoryManagementBlog} />
@@ -75,10 +82,7 @@ const App = () => {
             <Route exact path='/blogs/greenFinancing' component={GreenFinancingBlog} />
             <Route exact path='/blogs/smallAndMeduimEnterprise' component={SmallAndMediumEntBlog} />
 
-            <Route exact path="/simple-intrest-caclucator" component={SiCalculator} />
-            <Route exact path='/privacyPolicy' component={Privacypolicy} />
-            <Route exact path='/refundPolicy' component={RefundPolicy} />
-            <Route exact path='/Terms' component={Terms} />
+
 
             {/* <Route exact path='/blog/:id' component={subBlog} /> */}
 

@@ -3,10 +3,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useHistory } from 'react-router-dom';
 import 'react-datepicker/dist/react-datepicker.css';
-
 import 'react-responsive-modal/styles.css';
 import { Modal } from 'react-responsive-modal';
 import RmBox from '../RmBox';
+import { toast } from 'react-toastify';
+
 
 let baseUrl = import.meta.env.VITE_SOME_KEY;
 
@@ -23,7 +24,8 @@ const VendorFinancingForm = (props) => {
   const [copyOfAgreement, setCopyOfAgreementFile] = useState(null);
   const [auditedFinancials, setAuditedFinancialsFile] = useState(null);
 
-  let uuid = profileDetails.userInfo.uuid;
+  // let uuid = profileDetails.userInfo.uuid;
+  let uuid = 'abc123';
 
   const [showError, setShowError] = useState({
     annualTurnover: false,
@@ -85,19 +87,57 @@ const VendorFinancingForm = (props) => {
   const handleGSTRegistration = (status) => {
     setData({ ...data, gstRegistered: status });
     console.log(data);
-  };
+  }
 
   const onFileChange = (e, setFile) => {
     const file = e.target.files[0];
     setFile(file);
     console.log(file);
-  };
+  }
 
-  const onFetchDetails = async (e) => {
-    e.preventDefault();
-    console.log(data);
-    setStep(2);
-  };
+
+  const onSaveUserDetails = async (e) => {
+    e.preventDefault()
+    console.log('saveUserDetails',data)
+        if (!data.annualTurnover) {
+          toast.error('All Fields Are Required !')
+          return
+        }
+        if (!data.panNo) {
+          toast.error('All Fields Are Required !')
+          return
+        }
+        if (!data.name) {
+          toast.error('All Fields Are Required !')
+          return
+        }
+        if (!data.email) {
+          toast.error('All Fields Are Required !')
+          return
+        }
+        else {
+          let body = {
+            turnover: data.annualTurnover,
+            panCardNumber: data.panNo,
+            fullName: data.name,
+            email: data.email,
+        }
+          console.log('body---', body)
+          const response = await fetch(`${baseUrl}/saveUserDetails?uuid=${uuid}`, {
+            method: 'POST',
+            body: JSON.stringify(body),
+            headers: { 'Content-type': 'application/json' }
+          })
+          const res = await response.json()
+          console.log('res---', res)
+          if (res.statusCode === 200) {
+            setStep(2)
+          }
+        }
+      }
+
+
+
 
   const onSubmitSecondForm = () => {
     console.log("Step 2 Data:", data);
@@ -107,7 +147,8 @@ const VendorFinancingForm = (props) => {
   const onSubmitThirdForm = async () => {
     console.log("Step 3 Data:", data);
     setStep(4);
-  };
+  }
+
 
   const onClickSubmit = async (e) => {
     console.log("Final Submission Data:", data);
@@ -117,45 +158,49 @@ const VendorFinancingForm = (props) => {
     console.log("Copy of Agreement:", copyOfAgreement);
     console.log("Audited Financials:", auditedFinancials);
     setOpenSuccessModal(true);
-  };
+  }
+
+
 
   const onCloseSuccessModal = () => {
     history.push('/');
     setOpen(false);
-  };
+  }
 
   const calculateProgress = () => {
     return (step / 4) * 100;
   };
+
+
   return (
     <>
-      {step == 1 && (
+      {step === 1 && (
         <>
           <div className="max-w-4xl lg:max-w-full mx-auto bg-gray-100 p-8 rounded-md">
-            <ol class="flex items-center w-full text-xs text-gray-900 font-medium sm:text-base ml-4 sm:ml-12">
-              <li class="flex w-full relative text-indigo-600 after:content-[''] after:w-full after:h-0.5 after:bg-indigo-600 after:inline-block after:absolute after:top-3 sm:after:top-5 after:left-4">
-                <div class="block whitespace-nowrap z-10">
-                  <span class="w-6 h-6 bg-gray-100 border-2 border-transparent rounded-full flex justify-center items-center mx-auto mb-3 text-sm text-white sm:w-10 sm:h-10"></span>
+            <ol className="flex items-center w-full z-10 text-xs text-gray-900 font-medium sm:text-base ml-4 sm:ml-12">
+              <li className="flex w-full relative text-indigo-600 after:content-[''] after:w-full after:h-0.5 after:bg-indigo-600 after:inline-block after:absolute after:top-3 sm:after:top-5 after:left-4">
+                <div className="block whitespace-nowrap z-10">
+                  <span className="w-6 h-6 bg-gray-100 border-2 border-transparent rounded-full flex justify-center items-center mx-auto mb-3 text-sm text-white sm:w-10 sm:h-10"></span>
                 </div>
               </li>
-              <li class="flex w-full relative text-gray-900 after:content-[''] after:w-full after:h-0.5 after:bg-gray-200 after:inline-block after:absolute after:top-3 sm:after:top-5 after:left-4">
-                <div class="block whitespace-nowrap z-10">
-                  <span class="w-6 h-6 bg-indigo-50 border-2 border-indigo-600 rounded-full flex justify-center items-center mx-auto mb-3 text-sm text-indigo-600 sm:w-10 sm:h-10">1</span>
+              <li className="flex w-full relative text-gray-900 after:content-[''] after:w-full after:h-0.5 after:bg-gray-200 after:inline-block after:absolute after:top-3 sm:after:top-5 after:left-4">
+                <div className="block whitespace-nowrap z-10">
+                  <span className="w-6 h-6 bg-indigo-50 border-2 border-indigo-600 rounded-full flex justify-center items-center mx-auto mb-3 text-sm text-indigo-600 sm:w-10 sm:h-10">1</span>
                 </div>
               </li>
-              <li class="flex w-full relative text-gray-900 after:content-[''] after:w-full after:h-0.5 after:bg-gray-200 after:inline-block after:absolute after:top-3 sm:after:top-5 after:left-4">
-                <div class="block whitespace-nowrap z-10">
-                  <span class="w-6 h-6 bg-gray-50 border-2 border-gray-200 rounded-full flex justify-center items-center mx-auto mb-3 text-sm sm:w-10 sm:h-10">2</span>
+              <li className="flex w-full relative text-gray-900 after:content-[''] after:w-full after:h-0.5 after:bg-gray-200 after:inline-block after:absolute after:top-3 sm:after:top-5 after:left-4">
+                <div className="block whitespace-nowrap z-10">
+                  <span className="w-6 h-6 bg-gray-50 border-2 border-gray-200 rounded-full flex justify-center items-center mx-auto mb-3 text-sm sm:w-10 sm:h-10">2</span>
                 </div>
               </li>
-              <li class="flex w-full relative text-gray-900 after:content-[''] after:w-full after:h-0.5 after:bg-gray-200 after:inline-block after:absolute after:top-3 sm:after:top-5 after:left-4">
-                <div class="block whitespace-nowrap z-10">
-                  <span class="w-6 h-6 bg-gray-50 border-2 border-gray-200 rounded-full flex justify-center items-center mx-auto mb-3 text-sm sm:w-10 sm:h-10">3</span>
+              <li className="flex w-full relative text-gray-900 after:content-[''] after:w-full after:h-0.5 after:bg-gray-200 after:inline-block after:absolute after:top-3 sm:after:top-5 after:left-4">
+                <div className="block whitespace-nowrap z-10">
+                  <span className="w-6 h-6 bg-gray-50 border-2 border-gray-200 rounded-full flex justify-center items-center mx-auto mb-3 text-sm sm:w-10 sm:h-10">3</span>
                 </div>
               </li>
-              <li class="flex w-full relative text-gray-900">
-                <div class="block whitespace-nowrap z-10">
-                  <span class="w-6 h-6 bg-gray-50 border-2 border-gray-200 rounded-full flex justify-center items-center mx-auto mb-3 text-sm sm:w-10 sm:h-10">4</span>
+              <li className="flex w-full relative text-gray-900">
+                <div className="block whitespace-nowrap z-10">
+                  <span className="w-6 h-6 bg-gray-50 border-2 border-gray-200 rounded-full flex justify-center items-center mx-auto mb-3 text-sm sm:w-10 sm:h-10">4</span>
                 </div>
               </li>
             </ol>
@@ -165,10 +210,10 @@ const VendorFinancingForm = (props) => {
                 <h1 className="text-3xl font-bold text-gray-800">Application for vendor financing</h1>
                 <p className="text-gray-500 text-base">Add your personal information</p>
               </div>
-              <RmBox/>
+            <RmBox/>
             </div>
             <hr className="border-gray-800" />
-            <form onSubmit={onFetchDetails}>
+            <form onSubmit={onSaveUserDetails}>
               <div className="grid grid-cols-1 mt-4 md:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-lg font-medium text-gray-700 mb-1">Applicant Full Name</label>
@@ -178,7 +223,7 @@ const VendorFinancingForm = (props) => {
                     value={data.name}
                     onChange={(e) => onChangeHandler(e.target.value, e.target.name)}
                     placeholder="Enter your name"
-                    className="block w-full rounded-md bg-gray-100 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm p-2"
+                    className="w-1/2 bg-gray-100 py-2 px-3 text-md text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                   />
                   <hr className="border-gray-800" />
                 </div>
@@ -191,7 +236,7 @@ const VendorFinancingForm = (props) => {
                     value={data.email}
                     onChange={(e) => onChangeHandler(e.target.value, e.target.name)}
                     placeholder="Enter your email"
-                    className="block w-full rounded-md bg-gray-100 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm p-2"
+                    className="w-1/2 bg-gray-100 py-2 px-3 text-md text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                   />
                   <hr className="border-gray-800" />
                 </div>
@@ -204,7 +249,7 @@ const VendorFinancingForm = (props) => {
                   value={data.panNo}
                   onChange={(e) => onChangeHandler(e.target.value, e.target.name)}
                   placeholder="XXXX XXXX XXXX"
-                  className="block w-full rounded-md bg-gray-100 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm p-2"
+                  className="w-1/2 bg-gray-100 py-2 px-3 text-md text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 />
                 <hr className="border-gray-800 w-50" />
               </div>
@@ -217,10 +262,10 @@ const VendorFinancingForm = (props) => {
                     '250 Cr to 500 Cr',
                     '500 Cr to 1000 Cr',
                     '1000 Cr +',
-                  ].map((range, index) => (
+                  ].map((range) => (
                     <button
                       type="button"
-                      className={`px-3 py-1 rounded-md ${selectedRange === range ? 'bg-blue-200' : 'bg-gray-100'
+                      className={`px-3 py-1 rounded-md ${selectedRange === range ? 'bg-blue-200 border-blue-500 border' : 'bg-gray-100'
                         } text-gray-700 hover:bg-blue-200 focus:outline-none`}
                       key={range}
                       onClick={() => {
@@ -251,32 +296,32 @@ const VendorFinancingForm = (props) => {
       {step == 2 && (<>
 
         <ol class="flex items-center w-full text-xs text-gray-900 font-medium sm:text-base ml-4 sm:ml-12">
-              <li class="flex w-full relative text-indigo-600 after:content-[''] after:w-full after:h-0.5 after:bg-indigo-600 after:inline-block after:absolute after:top-3 sm:after:top-5 after:left-4">
-                <div class="block whitespace-nowrap z-10">
-                  <span class="w-6 h-6 bg-gray-1000 border-2 border-transparent rounded-full flex justify-center items-center mx-auto mb-3 text-sm text-white sm:w-10 sm:h-10"></span>
-                </div>
-              </li>
-              <li class="flex w-full relative text-gray-900 after:content-[''] after:w-full after:h-0.5 after:bg-indigo-600 after:inline-block after:absolute after:top-3 sm:after:top-5 after:left-4">
-                <div class="block whitespace-nowrap z-10">
-                  <span class="w-6 h-6 bg-indigo-600 border-2 border-indigo-600 rounded-full flex justify-center items-center mx-auto mb-3 text-sm text-gray-800 sm:w-10 sm:h-10">1</span>
-                </div>
-              </li>
-              <li class="flex w-full relative text-gray-900 after:content-[''] after:w-full after:h-0.5 after:bg-gray-200 after:inline-block after:absolute after:top-3 sm:after:top-5 after:left-4">
-                <div class="block whitespace-nowrap z-10">
-                  <span class="w-6 h-6 bg-indigo-50 border-2 border-indigo-600 rounded-full flex justify-center items-center mx-auto mb-3 text-sm text-indigo-600 sm:w-10 sm:h-10">2</span>
-                </div>
-              </li>
-              <li class="flex w-full relative text-gray-900 after:content-[''] after:w-full after:h-0.5 after:bg-gray-200 after:inline-block after:absolute after:top-3 sm:after:top-5 after:left-4">
-                <div class="block whitespace-nowrap z-10">
-                  <span class="w-6 h-6 bg-gray-50 border-2 border-gray-200 rounded-full flex justify-center items-center mx-auto mb-3 text-sm sm:w-10 sm:h-10">3</span>
-                </div>
-              </li>
-              <li class="flex w-full relative text-gray-900">
-                <div class="block whitespace-nowrap z-10">
-                  <span class="w-6 h-6 bg-gray-50 border-2 border-gray-200 rounded-full flex justify-center items-center mx-auto mb-3 text-sm sm:w-10 sm:h-10">4</span>
-                </div>
-              </li>
-            </ol>
+          <li class="flex w-full relative text-indigo-600 after:content-[''] after:w-full after:h-0.5 after:bg-indigo-600 after:inline-block after:absolute after:top-3 sm:after:top-5 after:left-4">
+            <div class="block whitespace-nowrap z-10">
+              <span class="w-6 h-6 bg-gray-1000 border-2 border-transparent rounded-full flex justify-center items-center mx-auto mb-3 text-sm text-white sm:w-10 sm:h-10"></span>
+            </div>
+          </li>
+          <li class="flex w-full relative text-gray-900 after:content-[''] after:w-full after:h-0.5 after:bg-indigo-600 after:inline-block after:absolute after:top-3 sm:after:top-5 after:left-4">
+            <div class="block whitespace-nowrap z-10">
+              <span class="w-6 h-6 bg-indigo-600 border-2 border-indigo-600 rounded-full flex justify-center items-center mx-auto mb-3 text-sm text-gray-800 sm:w-10 sm:h-10">1</span>
+            </div>
+          </li>
+          <li class="flex w-full relative text-gray-900 after:content-[''] after:w-full after:h-0.5 after:bg-gray-200 after:inline-block after:absolute after:top-3 sm:after:top-5 after:left-4">
+            <div class="block whitespace-nowrap z-10">
+              <span class="w-6 h-6 bg-indigo-50 border-2 border-indigo-600 rounded-full flex justify-center items-center mx-auto mb-3 text-sm text-indigo-600 sm:w-10 sm:h-10">2</span>
+            </div>
+          </li>
+          <li class="flex w-full relative text-gray-900 after:content-[''] after:w-full after:h-0.5 after:bg-gray-200 after:inline-block after:absolute after:top-3 sm:after:top-5 after:left-4">
+            <div class="block whitespace-nowrap z-10">
+              <span class="w-6 h-6 bg-gray-50 border-2 border-gray-200 rounded-full flex justify-center items-center mx-auto mb-3 text-sm sm:w-10 sm:h-10">3</span>
+            </div>
+          </li>
+          <li class="flex w-full relative text-gray-900">
+            <div class="block whitespace-nowrap z-10">
+              <span class="w-6 h-6 bg-gray-50 border-2 border-gray-200 rounded-full flex justify-center items-center mx-auto mb-3 text-sm sm:w-10 sm:h-10">4</span>
+            </div>
+          </li>
+        </ol>
 
 
         <div class="max-w-4xl lg:max-w-full mx-auto bg-gray-100 p-8 rounded-md ">
@@ -337,21 +382,21 @@ const VendorFinancingForm = (props) => {
             <div className="mt-4">
               <label className="block text-sm font-medium text-gray-700 mb-1">PIN Code</label>
               <input
-                type="text"
+                type="number"
                 value={data.pinCode}
                 onChange={onPinCodeChange}
                 placeholder="3492029"
-                className="block w-full rounded-md bg-gray-100 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm p-2"
+                className="w-1/2 bg-gray-100 text-md py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               />
               <hr class="border-gray-800 w-50" />
             </div>
             <div className="flex flex-col sm:flex-row justify-between mt-8">
               <button
                 type="button"
-                
+
                 className="w-full sm:w-auto mb-0 mt-14 sm:mb-0 px-4 py-2 rounded-md bg-gray-100 text-gray-700 hover:bg-yellow-300 focus:outline-none"
               >
-      
+
               </button>
               <button
                 type="submit"
@@ -367,39 +412,39 @@ const VendorFinancingForm = (props) => {
       )}
 
       {step === 3 && (
-        
 
-        
-        <div className="max-w-4xl lg:max-w-full mx-auto bg-gray-100 p-2 rounded-md">
+
+
+        <div className="max-w-4xl lg:max-w-full mx-auto bg-gray-100 p-2  rounded-md">
           <ol class="flex items-center w-full text-xs text-gray-900 font-medium sm:text-base ml-4 sm:ml-12">
-              <li class="flex w-full relative text-indigo-600 after:content-[''] after:w-full after:h-0.5 after:bg-indigo-600 after:inline-block after:absolute after:top-3 sm:after:top-5 after:left-4">
-                <div class="block whitespace-nowrap z-10">
-                  <span class="w-6 h-6 bg-gray-100 border-2 border-transparent rounded-full flex justify-center items-center mx-auto mb-3 text-sm text-white sm:w-10 sm:h-10"></span>
-                </div>
-              </li>
-              <li class="flex w-full relative text-gray-900 after:content-[''] after:w-full after:h-0.5 after:bg-indigo-600 after:inline-block after:absolute after:top-3 sm:after:top-5 after:left-4">
-                <div class="block whitespace-nowrap z-10">
-                  <span class="w-6 h-6 bg-indigo-600 border-2 border-indigo-600 rounded-full flex justify-center items-center mx-auto mb-3 text-sm text-gray-800 sm:w-10 sm:h-10">1</span>
-                </div>
-              </li>
-              <li class="flex w-full relative text-gray-900 after:content-[''] after:w-full after:h-0.5 after:bg-indigo-600 after:inline-block after:absolute after:top-3 sm:after:top-5 after:left-4">
-                <div class="block whitespace-nowrap z-10">
-                  <span class="w-6 h-6 bg-indigo-600 border-2 border-gray-200 rounded-full flex justify-center items-center mx-auto mb-3 text-sm sm:w-10 sm:h-10">2</span>
-                </div>
-              </li>
-              <li class="flex w-full relative text-gray-900 after:content-[''] after:w-full after:h-0.5 after:bg-gray-200 after:inline-block after:absolute after:top-3 sm:after:top-5 after:left-4">
-                <div class="block whitespace-nowrap z-10">
-                  <span class="w-6 h-6 bg-indigo-50 border-2 border-indigo-600 rounded-full flex justify-center items-center mx-auto text-indigo-600 mb-3 text-sm sm:w-10 sm:h-10">3</span>
-                </div>
-              </li>
-              <li class="flex w-full relative text-gray-900">
-                <div class="block whitespace-nowrap z-10">
-                  <span class="w-6 h-6 bg-gray-50 border-2 border-gray-200 rounded-full flex justify-center items-center mx-auto mb-3 text-sm sm:w-10 sm:h-10">4</span>
-                </div>
-              </li>
-            </ol>
+            <li class="flex w-full relative text-indigo-600 after:content-[''] after:w-full after:h-0.5 after:bg-indigo-600 after:inline-block after:absolute after:top-3 sm:after:top-5 after:left-4">
+              <div class="block whitespace-nowrap z-10">
+                <span class="w-6 h-6 bg-gray-100 border-2 border-transparent rounded-full flex justify-center items-center mx-auto mb-3 text-sm text-white sm:w-10 sm:h-10"></span>
+              </div>
+            </li>
+            <li class="flex w-full relative text-gray-900 after:content-[''] after:w-full after:h-0.5 after:bg-indigo-600 after:inline-block after:absolute after:top-3 sm:after:top-5 after:left-4">
+              <div class="block whitespace-nowrap z-10">
+                <span class="w-6 h-6 bg-indigo-600 border-2 border-indigo-600 rounded-full flex justify-center items-center mx-auto mb-3 text-sm text-gray-800 sm:w-10 sm:h-10">1</span>
+              </div>
+            </li>
+            <li class="flex w-full relative text-gray-900 after:content-[''] after:w-full after:h-0.5 after:bg-indigo-600 after:inline-block after:absolute after:top-3 sm:after:top-5 after:left-4">
+              <div class="block whitespace-nowrap z-10">
+                <span class="w-6 h-6 bg-indigo-600 border-2 border-gray-200 rounded-full flex justify-center items-center mx-auto mb-3 text-sm sm:w-10 sm:h-10">2</span>
+              </div>
+            </li>
+            <li class="flex w-full relative text-gray-900 after:content-[''] after:w-full after:h-0.5 after:bg-gray-200 after:inline-block after:absolute after:top-3 sm:after:top-5 after:left-4">
+              <div class="block whitespace-nowrap z-10">
+                <span class="w-6 h-6 bg-indigo-50 border-2 border-indigo-600 rounded-full flex justify-center items-center mx-auto text-indigo-600 mb-3 text-sm sm:w-10 sm:h-10">3</span>
+              </div>
+            </li>
+            <li class="flex w-full relative text-gray-900">
+              <div class="block whitespace-nowrap z-10">
+                <span class="w-6 h-6 bg-gray-50 border-2 border-gray-200 rounded-full flex justify-center items-center mx-auto mb-3 text-sm sm:w-10 sm:h-10">4</span>
+              </div>
+            </li>
+          </ol>
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-2">
-            <div>
+            <div className='pl-4'>
               <h1 className="text-3xl font-bold text-gray-800">Application for vendor financing</h1>
               <p className="text-gray-500 text-base">Add your business information</p>
             </div>
@@ -447,7 +492,7 @@ const VendorFinancingForm = (props) => {
                 <label className="block text-gray-700 text-sm font-bold mb-2">Business Type</label>
                 <input
                   type="text"
-                  className="w-full bg-gray-100 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                  className="w-full text-md bg-gray-100 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                   placeholder="Business Type"
                   value={data.businessType}
                   onChange={(e) => onChangeHandler(e.target.value, 'businessType')}
@@ -457,9 +502,9 @@ const VendorFinancingForm = (props) => {
               <div className="mt-6">
                 <label className="block text-gray-700 text-sm font-bold mb-2">Business PIN Code</label>
                 <input
-                  type="text"
+                  type="number"
                   placeholder="Business PIN Code"
-                  className="w-full bg-gray-100 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                  className="w-1/2 bg-gray-100 text-md py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                   value={data.businessPinCode}
                   onChange={(e) => onChangeHandler(e.target.value, 'businessPinCode')}
                 />
@@ -480,7 +525,7 @@ const VendorFinancingForm = (props) => {
                 <input
                   type="text"
                   placeholder="GST Registration Number"
-                  className="w-full py-2 px-3 bg-gray-100 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                  className="w-full py-2 px-3 text-md bg-gray-100 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                   value={data.gstNo}
                   onChange={(e) => onChangeHandler(e.target.value, 'gstNo')}
                 />
@@ -491,7 +536,7 @@ const VendorFinancingForm = (props) => {
                 <input
                   type="number"
                   placeholder="Business Age"
-                  className="w-full bg-gray-100 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                  className="w-1/2 bg-gray-100 text-md py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                   value={data.businessAge}
                   onChange={(e) => onChangeHandler(e.target.value, 'businessAge')}
                 />
@@ -502,7 +547,7 @@ const VendorFinancingForm = (props) => {
                 <input
                   type="number"
                   placeholder="Yearly Sales"
-                  className="w-full bg-gray-100 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                  className="w-1/2 bg-gray-100 text-md py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                   value={data.yearlySales}
                   onChange={(e) => onChangeHandler(e.target.value, 'yearlySales')}
                 />
@@ -514,10 +559,10 @@ const VendorFinancingForm = (props) => {
           <div className="flex flex-col sm:flex-row justify-between mt-0 mb-20">
             <button
               type="button"
-              
+
               className="w-full sm:w-auto mb-0 mt-14 sm:mb-0 px-4 py-2 rounded-md bg-gray-100 text-gray-700 hover:bg-yellow-300 focus:outline-none"
             >
-              ]
+              
             </button>
             <button
               type="submit"
@@ -533,32 +578,32 @@ const VendorFinancingForm = (props) => {
       {step === 4 && (
         <div className="max-w-4xl lg:max-w-full mx-auto bg-gray-100 p-8 rounded-md">
           <ol class="flex items-center w-full text-xs text-gray-900 font-medium sm:text-base ml-4 sm:ml-12">
-              <li class="flex w-full relative text-indigo-600 after:content-[''] after:w-full after:h-0.5 after:bg-indigo-600 after:inline-block after:absolute after:top-3 sm:after:top-5 after:left-4">
-                <div class="block whitespace-nowrap z-10">
-                  <span class="w-6 h-6 bg-gray-100 border-1 border-transparent rounded-full flex justify-center items-center mx-auto mb-3 text-sm text-white sm:w-10 sm:h-10"></span>
-                </div>
-              </li>
-              <li class="flex w-full relative text-gray-900 after:content-[''] after:w-full after:h-0.5 after:bg-indigo-600 after:inline-block after:absolute after:top-3 sm:after:top-5 after:left-4">
-                <div class="block whitespace-nowrap z-10">
-                  <span class="w-6 h-6 bg-indigo-600 border-2 border-indigo-600 rounded-full flex justify-center items-center mx-auto mb-3 text-sm text-gray-800 sm:w-10 sm:h-10">1</span>
-                </div>
-              </li>
-              <li class="flex w-full relative text-gray-900 after:content-[''] after:w-full after:h-0.5 after:bg-indigo-600 after:inline-block after:absolute after:top-3 sm:after:top-5 after:left-4">
-                <div class="block whitespace-nowrap z-10">
-                  <span class="w-6 h-6 bg-indigo-600 border-2 border-gray-200 rounded-full flex justify-center items-center mx-auto mb-3 text-sm sm:w-10 sm:h-10">2</span>
-                </div>
-              </li>
-              <li class="flex w-full relative text-gray-900 after:content-[''] after:w-full after:h-0.5 after:bg-indigo-600 after:inline-block after:absolute after:top-3 sm:after:top-5 after:left-4">
-                <div class="block whitespace-nowrap z-10">
-                  <span class="w-6 h-6 bg-indigo-600 border-2 border-gray-200 rounded-full flex justify-center items-center mx-auto mb-3 text-sm sm:w-10 sm:h-10">3</span>
-                </div>
-              </li>
-              <li class="flex w-full relative text-gray-900">
-                <div class="block whitespace-nowrap z-10">
-                  <span class="w-6 h-6 bg-indigo-50 border-2 border-indigo-600 rounded-full flex justify-center items-center mx-auto mb-3 text-indigo-600 text-sm sm:w-10 sm:h-10">4</span>
-                </div>
-              </li>
-            </ol>
+            <li class="flex w-full relative text-indigo-600 after:content-[''] after:w-full after:h-0.5 after:bg-indigo-600 after:inline-block after:absolute after:top-3 sm:after:top-5 after:left-4">
+              <div class="block whitespace-nowrap z-10">
+                <span class="w-6 h-6 bg-gray-100 border-1 border-transparent rounded-full flex justify-center items-center mx-auto mb-3 text-sm text-white sm:w-10 sm:h-10"></span>
+              </div>
+            </li>
+            <li class="flex w-full relative text-gray-900 after:content-[''] after:w-full after:h-0.5 after:bg-indigo-600 after:inline-block after:absolute after:top-3 sm:after:top-5 after:left-4">
+              <div class="block whitespace-nowrap z-10">
+                <span class="w-6 h-6 bg-indigo-600 border-2 border-indigo-600 rounded-full flex justify-center items-center mx-auto mb-3 text-sm text-gray-800 sm:w-10 sm:h-10">1</span>
+              </div>
+            </li>
+            <li class="flex w-full relative text-gray-900 after:content-[''] after:w-full after:h-0.5 after:bg-indigo-600 after:inline-block after:absolute after:top-3 sm:after:top-5 after:left-4">
+              <div class="block whitespace-nowrap z-10">
+                <span class="w-6 h-6 bg-indigo-600 border-2 border-gray-200 rounded-full flex justify-center items-center mx-auto mb-3 text-sm sm:w-10 sm:h-10">2</span>
+              </div>
+            </li>
+            <li class="flex w-full relative text-gray-900 after:content-[''] after:w-full after:h-0.5 after:bg-indigo-600 after:inline-block after:absolute after:top-3 sm:after:top-5 after:left-4">
+              <div class="block whitespace-nowrap z-10">
+                <span class="w-6 h-6 bg-indigo-600 border-2 border-gray-200 rounded-full flex justify-center items-center mx-auto mb-3 text-sm sm:w-10 sm:h-10">3</span>
+              </div>
+            </li>
+            <li class="flex w-full relative text-gray-900">
+              <div class="block whitespace-nowrap z-10">
+                <span class="w-6 h-6 bg-indigo-50 border-2 border-indigo-600 rounded-full flex justify-center items-center mx-auto mb-3 text-indigo-600 text-sm sm:w-10 sm:h-10">4</span>
+              </div>
+            </li>
+          </ol>
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6">
             <div>
               <h1 className="text-3xl font-bold text-gray-800">Application for vendor financing</h1>
@@ -621,10 +666,10 @@ const VendorFinancingForm = (props) => {
             <div className="flex flex-col sm:flex-row justify-between mt-8">
               <button
                 type="button"
-                
+
                 className="w-full sm:w-auto mb-0 mt-14 sm:mb-0 px-4 py-2 rounded-md bg-gray-100 text-gray-700 hover:bg-yellow-300 focus:outline-none"
               >
-                
+
               </button>
               <button
                 type="button"
@@ -658,6 +703,9 @@ const VendorFinancingForm = (props) => {
           </div>
         </Modal>
       </div>
+
+
+
     </>
   )
 }

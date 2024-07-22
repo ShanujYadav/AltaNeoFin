@@ -69,9 +69,9 @@ const Navbar = () => {
             </div>
           </li>
           <li>
-            <ScrollLink to="about" smooth={true} offset={0} duration={500}>
+            <a href="/vision">
               Vision
-            </ScrollLink>
+            </a>
           </li>
           <li>
             <a href="/simple-intrest-caclucator">
