@@ -58,7 +58,7 @@ const Login = () => {
       }
     }
   }
-
+  
   const onVerifyOTP = async (e) => {
     e.preventDefault()
     if (data.otp.length < 6) {
@@ -209,6 +209,7 @@ const Login = () => {
     //     )}
     //   </div>
     // </div>
+
   );
 };
 

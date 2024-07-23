@@ -24,8 +24,8 @@ const VendorFinancingForm = (props) => {
   const [copyOfAgreement, setCopyOfAgreementFile] = useState(null);
   const [auditedFinancials, setAuditedFinancialsFile] = useState(null);
 
-  // let uuid = profileDetails.userInfo.uuid;
-  let uuid = 'abc123';
+  let uuid = profileDetails.userInfo.uuid;
+  // let uuid = 'abc123';
 
   const [showError, setShowError] = useState({
     annualTurnover: false,
@@ -96,46 +96,49 @@ const VendorFinancingForm = (props) => {
   }
 
 
-  const onSaveUserDetails = async (e) => {
+const onSaveUserDetails = async (e) => {
     e.preventDefault()
     console.log('saveUserDetails',data)
-        if (!data.annualTurnover) {
-          toast.error('All Fields Are Required !')
-          return
+    try{
+      if (!data.annualTurnover) {
+        toast.error('All Fields Are Required !')
+        return
+      }
+      if (!data.panNo) {
+        toast.error('All Fields Are Required !')
+        return
+      }
+      if (!data.name) {
+        toast.error('All Fields Are Required !')
+        return
+      }
+      if (!data.email) {
+        toast.error('All Fields Are Required !')
+        return
+      }
+      else {
+        let body = {
+          turnover: data.annualTurnover,
+          panCardNumber: data.panNo,
+          fullName: data.name,
+          email: data.email,
         }
-        if (!data.panNo) {
-          toast.error('All Fields Are Required !')
-          return
-        }
-        if (!data.name) {
-          toast.error('All Fields Are Required !')
-          return
-        }
-        if (!data.email) {
-          toast.error('All Fields Are Required !')
-          return
-        }
-        else {
-          let body = {
-            turnover: data.annualTurnover,
-            panCardNumber: data.panNo,
-            fullName: data.name,
-            email: data.email,
-        }
-          console.log('body---', body)
-          const response = await fetch(`${baseUrl}/saveUserDetails?uuid=${uuid}`, {
-            method: 'POST',
-            body: JSON.stringify(body),
-            headers: { 'Content-type': 'application/json' }
-          })
-          const res = await response.json()
-          console.log('res---', res)
-          if (res.statusCode === 200) {
-            setStep(2)
-          }
+        const response = await fetch(`${baseUrl}/saveUserDetails?uuid=${uuid}`,{
+          method: 'POST',
+          body: JSON.stringify(body),
+          headers: { 'Content-type': 'application/json' }
+        })
+        const res = await response.json()
+        console.log('res---', res)
+        if (res.statusCode === 200) {
+          setStep(2)
         }
       }
-
+    }
+    catch(e){
+      console.error(e)
+    }
+}
 
 
 
@@ -144,10 +147,34 @@ const VendorFinancingForm = (props) => {
     setStep(3);
   };
 
+
+
   const onSubmitThirdForm = async () => {
-    console.log("Step 3 Data:", data);
-    setStep(4);
-  }
+try {
+  const response = await fetch(`${baseUrl}/createBusinessVerification?uuid=${uuid}`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      gstRegistered: data.gstRegistered,
+      businessType: data.businessType,
+      businessPinCode: data.businessPinCode,
+      udyamCertification: data.udyamCertification, 
+      gstNo: data.gstNo,
+      businessAge: data.businessAge,
+      yearlySales: data.yearlySales,
+    })})
+    const res = await response.json()
+    console.log('third form data---',res)
+    
+    if(res.ststus==200){
+      setStep(4)
+    }
+} catch (e) {
+  console.log(e)
+}
+}
 
 
   const onClickSubmit = async (e) => {
