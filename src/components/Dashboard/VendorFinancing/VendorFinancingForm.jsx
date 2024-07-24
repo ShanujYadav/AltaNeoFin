@@ -11,21 +11,23 @@ import { toast } from 'react-toastify';
 
 let baseUrl = import.meta.env.VITE_SOME_KEY;
 
-const VendorFinancingForm = (props) => {
+const VendorFinancingForm = () => {
   const history = useHistory();
   const dispatch = useDispatch();
   const profileDetails = useSelector((state) => state.profile);
   const [openSuccessModal, setOpenSuccessModal] = useState(false);
-  const [step, setStep] = useState(1);
-  const [date, setDate] = useState(Date.now());
+  const [step, setStep] = useState(1)
+  const [date, setDate] = useState('');
 
   const [bankStatement, setBankStatementFile] = useState(null);
   const [purchaseOrder, setPurchaseOrderFile] = useState(null);
   const [copyOfAgreement, setCopyOfAgreementFile] = useState(null);
   const [auditedFinancials, setAuditedFinancialsFile] = useState(null);
+  const [selectedRange, setSelectedRange] = useState(null);
 
-  let uuid = profileDetails.userInfo.uuid;
-  // let uuid = 'abc123';
+  // let uuid = profileDetails.userInfo.uuid  
+  let uuid = 'abc123'
+
 
   const [showError, setShowError] = useState({
     annualTurnover: false,
@@ -45,16 +47,18 @@ const VendorFinancingForm = (props) => {
     auditedFinancials: false,
     purchaseOrder: false,
     copyOfAgreement: false,
-  });
+  })
 
   const [data, setData] = useState({
     annualTurnover: '',
     panNo: '',
     name: '',
     email: '',
+
     dob: date,
     gender: '',
     pinCode: '',
+
     gstRegistered: '',
     gstNo: '',
     businessType: '',
@@ -62,31 +66,41 @@ const VendorFinancingForm = (props) => {
     businessPinCode: '',
     yearlySales: '',
     msmeCft: '',
-  });
+  })
 
-  const [selectedRange, setSelectedRange] = useState(null);
+
+  const [saveData,setSaveData]=useState({
+    pinCode: '',
+    dob: '',
+    gender: ''
+  })
+
 
   const onChangeHandler = (value, name) => {
-    setShowError({ ...showError, [name]: false });
+    setShowError({ ...showError, [name]: false })
     setData({ ...data, [name]: value });
-  };
+  }
+
 
   const onDateChange = (e) => {
-    setDate(e.target.value);
-    setData({ ...data, dob: e.target.value });
-  };
+    let originalDate=e.target.value
+    let [year, month, day] = originalDate.split("-")
+    let convertedDate = `${day}-${month}-${year}`
+    setDate(e.target.value)
+    setData({ ...data, dob:convertedDate});
+  }
+
 
   const handleGenderSelection = (gender) => {
     setData({ ...data, gender: gender });
-  };
+  }
 
   const onPinCodeChange = (e) => {
     setData({ ...data, pinCode: e.target.value });
-  };
+  }
 
   const handleGSTRegistration = (status) => {
-    setData({ ...data, gstRegistered: status });
-    console.log(data);
+    setData({ ...data, gstRegistered: status })
   }
 
   const onFileChange = (e, setFile) => {
@@ -100,57 +114,79 @@ const onSaveUserDetails = async (e) => {
     e.preventDefault()
     console.log('saveUserDetails',data)
     try{
-      if (!data.annualTurnover) {
-        toast.error('All Fields Are Required !')
-        return
-      }
-      if (!data.panNo) {
-        toast.error('All Fields Are Required !')
-        return
-      }
-      if (!data.name) {
-        toast.error('All Fields Are Required !')
-        return
-      }
-      if (!data.email) {
+      if (!data.annualTurnover || !data.panNo || !data.name || !data.email) {
         toast.error('All Fields Are Required !')
         return
       }
       else {
+        let name=data.name
         let body = {
           turnover: data.annualTurnover,
           panCardNumber: data.panNo,
-          fullName: data.name,
+          fullName: name.toUpperCase(),
           email: data.email,
         }
         const response = await fetch(`${baseUrl}/saveUserDetails?uuid=${uuid}`,{
           method: 'POST',
           body: JSON.stringify(body),
-          headers: { 'Content-type': 'application/json' }
+          headers: { 'Content-type': 'application/json'}
         })
         const res = await response.json()
-        console.log('res---', res)
-        if (res.statusCode === 200) {
+        console.log('First Form---', res)
+
+        if (res.statuscode === 200){
+          setSaveData({...saveData,
+            pinCode:res.pincode,
+            dob:res.dateOfBirth,
+            gender:res.gender,
+          })
           setStep(2)
         }
-      }
-    }
+        if (res.statuscode === 400){
+          toast.error(res.nameMismatchStatus)
+          return
+        }
+        else{
+          console.log('resp not 200--',res)
+        }
+      }}
     catch(e){
       console.error(e)
     }
 }
 
 
+  const onSubmitSecondForm = (e) => {
+    e.preventDefault()
+    console.log(data.gender,data.dob,data.pinCode)
+    console.log('saveData---',saveData)
+    try{
+      if (!data.gender || !data.dob  || !data.pinCode) {
+        toast.error('All Fields Are Required !')
+        return
+      }
+      if(data.gender==saveData.gender && data.dob==saveData.dob && data.pinCode==saveData.pinCode){
+        setStep(3)
+      }
+      else{
+        toast.error('Details Are Mis-match')
+      }
+    }
+      catch(e){
+        console.log(e)
+      }
+  }
 
-  const onSubmitSecondForm = () => {
-    console.log("Step 2 Data:", data);
-    setStep(3);
-  };
 
 
 
-  const onSubmitThirdForm = async () => {
-try {
+
+  const onSubmitThirdForm = async (e) => {
+    e.preventDefault()
+    console.log(data)
+  try {
+    let yearlySales=Number(data.yearlySales)
+ let businessAge=Number(data.businessAge)
   const response = await fetch(`${baseUrl}/createBusinessVerification?uuid=${uuid}`, {
     method: 'POST',
     headers: {
@@ -160,16 +196,17 @@ try {
       gstRegistered: data.gstRegistered,
       businessType: data.businessType,
       businessPinCode: data.businessPinCode,
-      udyamCertification: data.udyamCertification, 
-      gstNo: data.gstNo,
-      businessAge: data.businessAge,
-      yearlySales: data.yearlySales,
+      gstNumber: data.gstNo,
+      businessAge: businessAge,
+      yearlySales: yearlySales,
     })})
     const res = await response.json()
     console.log('third form data---',res)
-    
-    if(res.ststus==200){
+    if(res.statusCode==200){
       setStep(4)
+    }
+    else{
+      toast.error(res.error)
     }
 } catch (e) {
   console.log(e)
@@ -178,27 +215,51 @@ try {
 
 
   const onClickSubmit = async (e) => {
-    console.log("Final Submission Data:", data);
-    console.log("Uploaded Files:");
-    console.log("Bank Statement:", bankStatement);
-    console.log("Purchase Order:", purchaseOrder);
-    console.log("Copy of Agreement:", copyOfAgreement);
-    console.log("Audited Financials:", auditedFinancials);
-    setOpenSuccessModal(true);
+    if (!bankStatement || !auditedFinancials || !copyOfAgreement || !purchaseOrder ) {
+      toast.error('Fill All fields !')
+      return
+    }
+    else {
+      const formData = new FormData()
+      formData.append('copyOfAgreement', copyOfAgreement)
+      formData.append('purchaseOrder', purchaseOrder)
+      formData.append('auditedFinancials', auditedFinancials)
+      formData.append('bankStatement', bankStatement)
+      console.log([...formData])
+      console.log('formData---',formData)
+      const response = await fetch(`${baseUrl}/documents/upload?uuid=${uuid}`, {
+        method: "POST",
+        body: formData,
+        headers: {
+          // 'Content-Type': 'multipart/form-data',
+        },
+      })
+      const res = await response.json();
+      console.log('res---', res);
+      if (res.statusCode === 200) {
+        setOpenSuccessModal(true)
+      }
+    }
   }
+
+
+  // const onClickSubmit = async (e) => {
+  //   console.log("Final Submission Data:", data)
+  //   console.log("Bank Statement:", bankStatement)
+  //   console.log("Purchase Order:", purchaseOrder)
+  //   console.log("Copy of Agreement:", copyOfAgreement)
+  //   console.log("Audited Financials:", auditedFinancials)
+  //   setOpenSuccessModal(true);
+  // }
 
 
 
   const onCloseSuccessModal = () => {
-    history.push('/');
+    history.push('/')
     setOpen(false);
   }
 
-  const calculateProgress = () => {
-    return (step / 4) * 100;
-  };
-
-
+  
   return (
     <>
       {step === 1 && (
@@ -249,8 +310,8 @@ try {
                     name="name"
                     value={data.name}
                     onChange={(e) => onChangeHandler(e.target.value, e.target.name)}
-                    placeholder="Enter your name"
-                    className="w-1/2 bg-gray-100 py-2 px-3 text-md text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    placeholder="Enter your name as per Pan Card"
+                    className="w-1/2 uppercase bg-gray-100 py-2 px-3 text-md text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                   />
                   <hr className="border-gray-800" />
                 </div>
@@ -321,7 +382,6 @@ try {
       )}
 
       {step == 2 && (<>
-
         <ol class="flex items-center w-full text-xs text-gray-900 font-medium sm:text-base ml-4 sm:ml-12">
           <li class="flex w-full relative text-indigo-600 after:content-[''] after:w-full after:h-0.5 after:bg-indigo-600 after:inline-block after:absolute after:top-3 sm:after:top-5 after:left-4">
             <div class="block whitespace-nowrap z-10">
@@ -349,14 +409,13 @@ try {
             </div>
           </li>
         </ol>
-
-
         <div class="max-w-4xl lg:max-w-full mx-auto bg-gray-100 p-8 rounded-md ">
           <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6">
             <div>
               <h1 class="text-3xl font-bold text-gray-800">Application for vendor financing</h1>
               <p class="text-gray-500 text-base">Add your personal information</p>
             </div>
+
             <div class="flex flex-col sm:items-center sm:space-x-2 mt-4 sm:mt-0 space-y-2 sm:space-y-0">
               <p class="text-gray-500 text-base sm:mb-0 mb-2">Ask your queries and doubts on</p>
               <div class="flex flex-col sm:flex-row sm:space-x-2 space-y-2 sm:space-y-0">
@@ -374,6 +433,7 @@ try {
                 </button>
               </div>
             </div>
+
           </div>
           <hr class="border-gray-800" />
           <form>
@@ -398,12 +458,11 @@ try {
                       className={`px-4 py-2 rounded-md focus:outline-none ${data.gender === gender ? 'bg-blue-200 text-gray-700' : 'bg-gray-100 text-gray-700 hover:bg-blue-200'
                         }`}
                       onClick={() => handleGenderSelection(gender)}
-                    >
+                      >
                       {gender}
                     </button>
                   ))}
                 </div>
-
               </div>
             </div>
             <div className="mt-4">
@@ -412,7 +471,7 @@ try {
                 type="number"
                 value={data.pinCode}
                 onChange={onPinCodeChange}
-                placeholder="3492029"
+                placeholder="PinCode"
                 className="w-1/2 bg-gray-100 text-md py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               />
               <hr class="border-gray-800 w-50" />
@@ -439,9 +498,6 @@ try {
       )}
 
       {step === 3 && (
-
-
-
         <div className="max-w-4xl lg:max-w-full mx-auto bg-gray-100 p-2  rounded-md">
           <ol class="flex items-center w-full text-xs text-gray-900 font-medium sm:text-base ml-4 sm:ml-12">
             <li class="flex w-full relative text-indigo-600 after:content-[''] after:w-full after:h-0.5 after:bg-indigo-600 after:inline-block after:absolute after:top-3 sm:after:top-5 after:left-4">
@@ -475,23 +531,7 @@ try {
               <h1 className="text-3xl font-bold text-gray-800">Application for vendor financing</h1>
               <p className="text-gray-500 text-base">Add your business information</p>
             </div>
-            <div className="flex flex-col sm:items-center sm:space-x-2 mt-4 sm:mt-0 space-y-2 sm:space-y-0">
-              <p className="text-gray-500 text-base sm:mb-0 mb-2">Ask your queries and doubts on</p>
-              <div className="flex flex-col sm:flex-row sm:space-x-2 space-y-2 sm:space-y-0">
-                <button className="flex items-center bg-green-500 text-white px-2 py-1 rounded-md">
-                  <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 0C5.371 0 0 5.371 0 12s5.371 12 12 12 12-5.371 12-12S18.629 0 12 0zm.225 17.025l-5.68-5.68 1.502-1.502 4.179 4.179 7.697-7.697 1.502 1.502-9.2 9.198z" />
-                  </svg>
-                  On WhatsApp
-                </button>
-                <button className="flex items-center bg-blue-500 text-white px-2 py-1 rounded-md">
-                  <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 2a10 10 0 00-3.55 19.383c.562.104.768-.242.768-.539v-1.968c-3.117.678-3.772-1.505-3.772-1.505-.511-1.299-1.246-1.644-1.246-1.644-1.019-.696.078-.683.078-.683 1.125.08 1.719 1.156 1.719 1.156 1.003 1.718 2.631 1.222 3.272.934.102-.727.393-1.222.716-1.504-2.486-.28-5.103-1.243-5.103-5.537 0-1.223.437-2.222 1.156-3.007-.12-.282-.502-1.419.102-2.96 0 0 .945-.301 3.094 1.148a10.765 10.765 0 012.813-.383 10.782 10.782 0 012.813.383c2.149-1.449 3.094-1.148 3.094-1.148.605 1.541.222 2.678.102 2.96.72.785 1.156 1.784 1.156 3.007 0 4.307-2.623 5.252-5.117 5.524.405.348.764 1.034.764 2.086v3.097c0 .301.206.646.77.539A10 10 0 0012 2z" />
-                  </svg>
-                  Schedule a Meeting
-                </button>
-              </div>
-            </div>
+            <RmBox/>
           </div>
           <hr className="border-gray-800" />
           <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
@@ -501,21 +541,21 @@ try {
                 <div className="flex space-x-4">
                   <button
                     type="button"
-                    className={`px-4 py-2 rounded ${data.gstRegistered === 'yes' ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-700'}`}
-                    onClick={() => handleGSTRegistration('yes')}
+                    className={`px-4 py-2 rounded ${data.gstRegistered === true ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-700'}`}
+                    onClick={() => handleGSTRegistration(true)}
                   >
                     Yes
                   </button>
                   <button
                     type="button"
-                    className={`px-4 py-2 rounded ${data.gstRegistered === 'no' ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-700'}`}
-                    onClick={() => handleGSTRegistration('no')}
+                    className={`px-4 py-2 rounded ${data.gstRegistered === false ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-700'}`}
+                    onClick={() => handleGSTRegistration(false)}
                   >
                     No
                   </button>
                 </div>
               </div>
-              <div className="mt-6">
+              {/* <div className="mt-6">
                 <label className="block text-gray-700 text-sm font-bold mb-2">Business Type</label>
                 <input
                   type="text"
@@ -525,7 +565,22 @@ try {
                   onChange={(e) => onChangeHandler(e.target.value, 'businessType')}
                 />
                 <hr className="border-gray-800 w-50" />
+              </div> */}
+
+              <div className="mt-6">
+                <label className="block text-gray-700 text-sm font-bold mb-2">Business Type</label>
+                <select
+                  className="w-1/2 text-md bg-gray-100 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                  value={data.businessType}
+                  onChange={(e) => onChangeHandler(e.target.value, 'businessType')}
+                >
+                  <option value="">Select Business Type</option>
+                  <option value="Retail">Retail</option>
+                  <option value="Private">Private</option>
+                </select>
+                <hr className="border-gray-800 w-50" />
               </div>
+
               <div className="mt-6">
                 <label className="block text-gray-700 text-sm font-bold mb-2">Business PIN Code</label>
                 <input
@@ -537,14 +592,14 @@ try {
                 />
                 <hr className="border-gray-800 w-50" />
               </div>
-              <div className="mt-6">
+              {/* <div className="mt-6">
                 <label className="block text-gray-700 text-sm font-bold mb-2">UDYAM / MSME Certification (Optional)</label>
                 <input
                   type="file"
                   className="w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                   onChange={(e) => onFileChange(e, setBankStatementFile)}
                 />
-              </div>
+              </div> */}
             </div>
             <div className="flex-1 bg-gray-100 p-4">
               <div className="w-full mb-4">
@@ -562,7 +617,7 @@ try {
                 <label className="block text-gray-700 text-sm font-bold mb-2">Business Age</label>
                 <input
                   type="number"
-                  placeholder="Business Age"
+                  placeholder="Enter Business Age in Number"
                   className="w-1/2 bg-gray-100 text-md py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                   value={data.businessAge}
                   onChange={(e) => onChangeHandler(e.target.value, 'businessAge')}
@@ -573,7 +628,7 @@ try {
                 <label className="block text-gray-700 text-sm font-bold mb-2">Yearly Sales</label>
                 <input
                   type="number"
-                  placeholder="Yearly Sales"
+                  placeholder="Enter Yearly Sales in Number"
                   className="w-1/2 bg-gray-100 text-md py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                   value={data.yearlySales}
                   onChange={(e) => onChangeHandler(e.target.value, 'yearlySales')}
@@ -582,14 +637,12 @@ try {
               </div>
             </div>
           </div>
-
           <div className="flex flex-col sm:flex-row justify-between mt-0 mb-20">
             <button
               type="button"
 
               className="w-full sm:w-auto mb-0 mt-14 sm:mb-0 px-4 py-2 rounded-md bg-gray-100 text-gray-700 hover:bg-yellow-300 focus:outline-none"
             >
-              
             </button>
             <button
               type="submit"
@@ -601,6 +654,10 @@ try {
           </div>
         </div>
       )}
+
+
+
+
 
       {step === 4 && (
         <div className="max-w-4xl lg:max-w-full mx-auto bg-gray-100 p-8 rounded-md">
@@ -636,23 +693,7 @@ try {
               <h1 className="text-3xl font-bold text-gray-800">Application for vendor financing</h1>
               <p className="text-gray-500 text-base">Add your business information</p>
             </div>
-            <div className="flex flex-col sm:items-center sm:space-x-2 mt-4 sm:mt-0 space-y-2 sm:space-y-0">
-              <p className="text-gray-500 text-base sm:mb-0 mb-2">Ask your queries and doubts on</p>
-              <div className="flex flex-col sm:flex-row sm:space-x-2 space-y-2 sm:space-y-0">
-                <button className="flex items-center bg-green-500 text-white px-2 py-1 rounded-md">
-                  <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 0C5.371 0 0 5.371 0 12s5.371 12 12 12 12-5.371 12-12S18.629 0 12 0zm.225 17.025l-5.68-5.68 1.502-1.502 4.179 4.179 7.697-7.697 1.502 1.502-9.2 9.198z" />
-                  </svg>
-                  On WhatsApp
-                </button>
-                <button className="flex items-center bg-blue-500 text-white px-2 py-1 rounded-md">
-                  <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 2a10 10 0 00-3.55 19.383c.562.104.768-.242.768-.539v-1.968c-3.117.678-3.772-1.505-3.772-1.505-.511-1.299-1.246-1.644-1.246-1.644-1.019-.696.078-.683.078-.683 1.125.08 1.719 1.156 1.719 1.156 1.003 1.718 2.631 1.222 3.272.934.102-.727.393-1.222.716-1.504-2.486-.28-5.103-1.243-5.103-5.537 0-1.223.437-2.222 1.156-3.007-.12-.282-.502-1.419.102-2.96 0 0 .945-.301 3.094 1.148a10.765 10.765 0 012.813-.383 10.782 10.782 0 012.813.383c2.149-1.449 3.094-1.148 3.094-1.148.605 1.541.222 2.678.102 2.96.72.785 1.156 1.784 1.156 3.007 0 4.307-2.623 5.252-5.117 5.524.405.348.764 1.034.764 2.086v3.097c0 .301.206.646.77.539A10 10 0 0012 2z" />
-                  </svg>
-                  Schedule a Meeting
-                </button>
-              </div>
-            </div>
+            <RmBox/>
           </div>
           <hr className="border-gray-800" />
           <div className="container mx-auto p-4">
@@ -1845,7 +1886,6 @@ export default VendorFinancingForm
 //             <Rmbox/>
 //           </div>
 //           <hr class="border-gray-800" />
-
 //           <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
 //             <div className="flex-1 bg-gray-100 p-4">
 //               <div>
@@ -1889,7 +1929,6 @@ export default VendorFinancingForm
 //                   type="text"
 //                   placeholder="GST Registration Number"
 //                   className="w-full py-2 px-3 bg-gray-100 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                  
 //                 />
 //                 <hr className="border-gray-800 w-50" />
 //               </div>
@@ -1899,7 +1938,6 @@ export default VendorFinancingForm
 //                   type="number"
 //                   placeholder="Business Age"
 //                   className="w-full bg-gray-100 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                  
 //                 />
 //                 <hr className="border-gray-800 w-50" />
 //               </div>
