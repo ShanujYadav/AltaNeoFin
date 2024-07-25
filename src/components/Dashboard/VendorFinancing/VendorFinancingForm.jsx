@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useHistory } from 'react-router-dom';
@@ -8,17 +8,19 @@ import { Modal } from 'react-responsive-modal';
 import RmBox from '../RmBox';
 import { toast } from 'react-toastify';
 
-
-let baseUrl = import.meta.env.VITE_SOME_KEY;
+const todayDate = new Date()
+let baseUrl = import.meta.env.VITE_SOME_KEY
 
 const VendorFinancingForm = () => {
+  const phone = sessionStorage.getItem('phone')
+
   const history = useHistory();
   const dispatch = useDispatch();
-  const profileDetails = useSelector((state) => state.profile);
-  const [openSuccessModal, setOpenSuccessModal] = useState(false);
+  const profileDetails = useSelector((state) => state.profile)
   const [step, setStep] = useState(1)
-  const [date, setDate] = useState('');
 
+  const [openSuccessModal, setOpenSuccessModal] = useState(false);
+  const [date, setDate] = useState('')
   const [bankStatement, setBankStatementFile] = useState(null);
   const [purchaseOrder, setPurchaseOrderFile] = useState(null);
   const [copyOfAgreement, setCopyOfAgreementFile] = useState(null);
@@ -27,6 +29,14 @@ const VendorFinancingForm = () => {
 
   // let uuid = profileDetails.userInfo.uuid  
   let uuid = 'abc123'
+
+
+  // useEffect(() => {
+  //   if (!uuid || !phone ) {
+  //     history.push('/')
+  //     toast.error('Not a Valid User')
+  //   }
+  // }, [])
 
 
   const [showError, setShowError] = useState({
@@ -68,21 +78,18 @@ const VendorFinancingForm = () => {
     msmeCft: '',
   })
 
-
   const [saveData,setSaveData]=useState({
     pinCode: '',
     dob: '',
     gender: ''
   })
 
-
   const onChangeHandler = (value, name) => {
     setShowError({ ...showError, [name]: false })
-    setData({ ...data, [name]: value });
+    setData({ ...data, [name]: value })
   }
 
-
-  const onDateChange = (e) => {
+  const onChangeDate = (e) => {
     let originalDate=e.target.value
     let [year, month, day] = originalDate.split("-")
     let convertedDate = `${day}-${month}-${year}`
@@ -90,18 +97,15 @@ const VendorFinancingForm = () => {
     setData({ ...data, dob:convertedDate});
   }
 
-
-  const handleGenderSelection = (gender) => {
-    setData({ ...data, gender: gender });
+  const takeOnlyNumbers = (value,name,max) => {
+    const enteredValue = value.replace(/\D/g, '').slice(0, max)
+    setData({ ...data, [name]: enteredValue })
   }
 
-  const onPinCodeChange = (e) => {
-    setData({ ...data, pinCode: e.target.value });
+  const onChangeGSTNumber=(value)=>{
+    setData({...data,gstNo:value })
   }
 
-  const handleGSTRegistration = (status) => {
-    setData({ ...data, gstRegistered: status })
-  }
 
   const onFileChange = (e, setFile) => {
     const file = e.target.files[0];
@@ -112,7 +116,6 @@ const VendorFinancingForm = () => {
 
 const onSaveUserDetails = async (e) => {
     e.preventDefault()
-    console.log('saveUserDetails',data)
     try{
       if (!data.annualTurnover || !data.panNo || !data.name || !data.email) {
         toast.error('All Fields Are Required !')
@@ -123,17 +126,18 @@ const onSaveUserDetails = async (e) => {
         let body = {
           turnover: data.annualTurnover,
           panCardNumber: data.panNo,
-          fullName: name.toUpperCase(),
+          fullName: name.toUpperCase().trim(),
           email: data.email,
         }
+
+        console.log('body---',body)
         const response = await fetch(`${baseUrl}/saveUserDetails?uuid=${uuid}`,{
           method: 'POST',
           body: JSON.stringify(body),
           headers: { 'Content-type': 'application/json'}
         })
         const res = await response.json()
-        console.log('First Form---', res)
-
+        console.log('First res---', res)
         if (res.statuscode === 200){
           setSaveData({...saveData,
             pinCode:res.pincode,
@@ -169,7 +173,7 @@ const onSaveUserDetails = async (e) => {
         setStep(3)
       }
       else{
-        toast.error('Details Are Mis-match')
+        toast.error('Information does not align with PAN card.')
       }
     }
       catch(e){
@@ -177,31 +181,31 @@ const onSaveUserDetails = async (e) => {
       }
   }
 
-
-
-
-
   const onSubmitThirdForm = async (e) => {
     e.preventDefault()
-    console.log(data)
+    if(!data.gstRegistered || !data.businessType || !data.businessPinCode || !data.gstNo || !data.businessAge || !data.yearlySales){
+      toast.error('Please Fill All Fields !')
+      return
+    }
   try {
     let yearlySales=Number(data.yearlySales)
- let businessAge=Number(data.businessAge)
-  const response = await fetch(`${baseUrl}/createBusinessVerification?uuid=${uuid}`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
+    let businessAge=Number(data.businessAge)
+    let body={
       gstRegistered: data.gstRegistered,
       businessType: data.businessType,
       businessPinCode: data.businessPinCode,
       gstNumber: data.gstNo,
       businessAge: businessAge,
       yearlySales: yearlySales,
-    })})
+    }
+    console.log("body----",body)
+    const response = await fetch(`${baseUrl}/createBusinessVerification?uuid=${uuid}`, {
+    method: 'POST',
+    body: JSON.stringify(body),
+    headers: {'Content-Type': 'application/json'}
+  })
     const res = await response.json()
-    console.log('third form data---',res)
+    console.log('third form res---',res)
     if(res.statusCode==200){
       setStep(4)
     }
@@ -226,33 +230,20 @@ const onSaveUserDetails = async (e) => {
       formData.append('auditedFinancials', auditedFinancials)
       formData.append('bankStatement', bankStatement)
       console.log([...formData])
-      console.log('formData---',formData)
+      console.log('body---',formData)
       const response = await fetch(`${baseUrl}/documents/upload?uuid=${uuid}`, {
         method: "POST",
         body: formData,
-        headers: {
-          // 'Content-Type': 'multipart/form-data',
-        },
+        headers: {// 'Content-Type': 'multipart/form-data'
+          }
       })
       const res = await response.json();
-      console.log('res---', res);
+      console.log('res---', res)
       if (res.statusCode === 200) {
         setOpenSuccessModal(true)
       }
     }
   }
-
-
-  // const onClickSubmit = async (e) => {
-  //   console.log("Final Submission Data:", data)
-  //   console.log("Bank Statement:", bankStatement)
-  //   console.log("Purchase Order:", purchaseOrder)
-  //   console.log("Copy of Agreement:", copyOfAgreement)
-  //   console.log("Audited Financials:", auditedFinancials)
-  //   setOpenSuccessModal(true);
-  // }
-
-
 
   const onCloseSuccessModal = () => {
     history.push('/')
@@ -433,7 +424,6 @@ const onSaveUserDetails = async (e) => {
                 </button>
               </div>
             </div>
-
           </div>
           <hr class="border-gray-800" />
           <form>
@@ -443,7 +433,7 @@ const onSaveUserDetails = async (e) => {
                 <input
                   type="date"
                   value={date}
-                  onChange={onDateChange}
+                  onChange={onChangeDate}
                   className="block w-90 rounded-md bg-gray-100 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm p-2"
                 />
                 <hr class="border-gray-800" />
@@ -457,8 +447,8 @@ const onSaveUserDetails = async (e) => {
                       type="button"
                       className={`px-4 py-2 rounded-md focus:outline-none ${data.gender === gender ? 'bg-blue-200 text-gray-700' : 'bg-gray-100 text-gray-700 hover:bg-blue-200'
                         }`}
-                      onClick={() => handleGenderSelection(gender)}
-                      >
+                      onClick={() => setData({ ...data, gender: gender })
+                    }>
                       {gender}
                     </button>
                   ))}
@@ -468,9 +458,10 @@ const onSaveUserDetails = async (e) => {
             <div className="mt-4">
               <label className="block text-sm font-medium text-gray-700 mb-1">PIN Code</label>
               <input
-                type="number"
+                type="tel"
                 value={data.pinCode}
-                onChange={onPinCodeChange}
+                name="pinCode"
+                onChange={(e) => takeOnlyNumbers(e.target.value, e.target.name,6)}
                 placeholder="PinCode"
                 className="w-1/2 bg-gray-100 text-md py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               />
@@ -542,37 +533,26 @@ const onSaveUserDetails = async (e) => {
                   <button
                     type="button"
                     className={`px-4 py-2 rounded ${data.gstRegistered === true ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-700'}`}
-                    onClick={() => handleGSTRegistration(true)}
+                    onClick={() => setData({ ...data, gstRegistered:true})}
                   >
                     Yes
                   </button>
                   <button
                     type="button"
                     className={`px-4 py-2 rounded ${data.gstRegistered === false ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-700'}`}
-                    onClick={() => handleGSTRegistration(false)}
+                    onClick={() => setData({ ...data, gstRegistered:false})}
                   >
                     No
                   </button>
                 </div>
               </div>
-              {/* <div className="mt-6">
-                <label className="block text-gray-700 text-sm font-bold mb-2">Business Type</label>
-                <input
-                  type="text"
-                  className="w-full text-md bg-gray-100 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                  placeholder="Business Type"
-                  value={data.businessType}
-                  onChange={(e) => onChangeHandler(e.target.value, 'businessType')}
-                />
-                <hr className="border-gray-800 w-50" />
-              </div> */}
-
               <div className="mt-6">
                 <label className="block text-gray-700 text-sm font-bold mb-2">Business Type</label>
                 <select
                   className="w-1/2 text-md bg-gray-100 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                   value={data.businessType}
-                  onChange={(e) => onChangeHandler(e.target.value, 'businessType')}
+                  name='businessType'
+                  onChange={(e) => onChangeHandler(e.target.value, e.target.name)}
                 >
                   <option value="">Select Business Type</option>
                   <option value="Retail">Retail</option>
@@ -584,11 +564,12 @@ const onSaveUserDetails = async (e) => {
               <div className="mt-6">
                 <label className="block text-gray-700 text-sm font-bold mb-2">Business PIN Code</label>
                 <input
-                  type="number"
+                  type="tel"
                   placeholder="Business PIN Code"
                   className="w-1/2 bg-gray-100 text-md py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                   value={data.businessPinCode}
-                  onChange={(e) => onChangeHandler(e.target.value, 'businessPinCode')}
+                  name="businessPinCode"
+                  onChange={(e) => takeOnlyNumbers(e.target.value, e.target.name,6)}
                 />
                 <hr className="border-gray-800 w-50" />
               </div>
@@ -609,29 +590,31 @@ const onSaveUserDetails = async (e) => {
                   placeholder="GST Registration Number"
                   className="w-full py-2 px-3 text-md bg-gray-100 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                   value={data.gstNo}
-                  onChange={(e) => onChangeHandler(e.target.value, 'gstNo')}
+                  onChange={(e) => onChangeGSTNumber(e.target.value)}
                 />
                 <hr className="border-gray-800 w-50" />
               </div>
               <div className="mt-6">
                 <label className="block text-gray-700 text-sm font-bold mb-2">Business Age</label>
                 <input
-                  type="number"
+                  type="tel"
                   placeholder="Enter Business Age in Number"
                   className="w-1/2 bg-gray-100 text-md py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                   value={data.businessAge}
-                  onChange={(e) => onChangeHandler(e.target.value, 'businessAge')}
+                  name="businessAge"
+                  onChange={(e) => takeOnlyNumbers(e.target.value, e.target.name,3)}
                 />
                 <hr className="border-gray-800 w-50" />
               </div>
               <div className="mt-6">
                 <label className="block text-gray-700 text-sm font-bold mb-2">Yearly Sales</label>
                 <input
-                  type="number"
+                  type="tel"
                   placeholder="Enter Yearly Sales in Number"
                   className="w-1/2 bg-gray-100 text-md py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                   value={data.yearlySales}
-                  onChange={(e) => onChangeHandler(e.target.value, 'yearlySales')}
+                  name="yearlySales"
+                  onChange={(e) => takeOnlyNumbers(e.target.value, e.target.name,10)}
                 />
                 <hr className="border-gray-800 w-50" />
               </div>
@@ -640,7 +623,6 @@ const onSaveUserDetails = async (e) => {
           <div className="flex flex-col sm:flex-row justify-between mt-0 mb-20">
             <button
               type="button"
-
               className="w-full sm:w-auto mb-0 mt-14 sm:mb-0 px-4 py-2 rounded-md bg-gray-100 text-gray-700 hover:bg-yellow-300 focus:outline-none"
             >
             </button>
@@ -654,9 +636,6 @@ const onSaveUserDetails = async (e) => {
           </div>
         </div>
       )}
-
-
-
 
 
       {step === 4 && (
@@ -771,17 +750,11 @@ const onSaveUserDetails = async (e) => {
           </div>
         </Modal>
       </div>
-
-
-
     </>
   )
 }
 
 export default VendorFinancingForm
-
-
-
 
 
 

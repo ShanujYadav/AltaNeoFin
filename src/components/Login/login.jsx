@@ -13,11 +13,12 @@ const Login = () => {
   const dispatch = useDispatch()
   const [showOtpInput, setShowOtpInput] = useState(false);
 
+
   const [data, setData] = useState({
     mobile: '',
     otp: '',
   })
-  
+
 
   const [showError, setShowError] = useState({
     mobile: false,
@@ -26,60 +27,96 @@ const Login = () => {
   })
 
   const onChangeMobile = (e) => {
-    setShowError({ ...showError, mobile: false,warning:false })
+    setShowError({ ...showError, mobile: false, warning: false })
     const enteredMobile = e.target.value.replace(/\D/g, '').slice(0, 10)
     setData({ ...data, mobile: enteredMobile })
   }
 
   const onChangeOTP = (e) => {
-    setShowError({ ...showError, otp: false, warning:false})
+    setShowError({ ...showError, otp: false, warning: false })
     const enteredOtp = e.target.value.replace(/\D/g, '').slice(0, 6)
     setData({ ...data, otp: enteredOtp })
   }
 
-  
+
   const onSendOTP = async (e) => {
     e.preventDefault()
-    toast.error('All Fields Are Required !')
-    return
-    if (data.mobile.length < 10) {
-      setShowError({ ...showError, mobile: true })
+    if (!data.mobile || data.mobile.length < 10) {
+      toast.error('Enter a Valid Phone Number')
+      return
     }
-    else {
+    try {
       let phone = '+91 ' + data.mobile
+      console.log('phone---', phone)
       const response = await fetch(`${baseUrl}/sendOtp?mobileNumber=${phone}`, {
         method: 'GET',
-        headers: { 'Content-type': 'application/json'}
+        headers: { 'Content-type': 'application/json' }
       })
       const res = await response.json()
-      console.log('res---', res)
+      console.log('sendOtp res---', res)
       if (res.statusCode === 200) {
         setShowOtpInput(true)
       }
+      else{
+        toast.error(res.error)
+      }
+    }
+    catch (e) {
+      console.log(e);
     }
   }
-  
+
+
+
   const onVerifyOTP = async (e) => {
     e.preventDefault()
-    if (data.otp.length < 6) {
-      setShowError({ ...showError, otp: true })
-    } else {
+    if (!data.otp || data.otp.length < 6) {
+      toast.error('Enter a Valid OTP')
+      return
+    }
+    try {
       const OTP = data.otp
       const response = await fetch(`${baseUrl}/verifyOtp?otp=${OTP}`, {
         method: 'POST',
         headers: { 'Content-type': 'application/json' }
       })
       const res = await response.json()
-      if (res.statusCode === 200) {
-        dispatch(getLogin(res))
-        // history.push("/Dashboard")
-        let id=res.uuid
-        history.push(`/Dashboard/?agentId=${id}`)
+      if (res.statuscode == 200) {
+        // sessionStorage.setItem("phone", "Smith")
+        //     // sessionStorage.setItem("uuid", "Smith")
+
+        //     dispatch(getLogin(res))
+        //     // history.push("/dashboard/home")
+        //     // history.push(`/Dashboard/?agentId=${id}`)
+        //   }
       }
       else{
-        setShowError({ ...showError, warning: true })
+        toast.error(res.error)
       }
+    } catch (e) {
+      console.log(e)
     }
+
+
+    //  else {
+    //   const OTP = data.otp
+    //   const response = await fetch(`${baseUrl}/verifyOtp?otp=${OTP}`, {
+    //     method: 'POST',
+    //     headers: { 'Content-type': 'application/json' }
+    //   })
+    //   const res = await response.json()
+    //   if (res.statusCode === 200) {
+    //     // sessionStorage.setItem("phone", "Smith")
+    //     // sessionStorage.setItem("uuid", "Smith")
+
+    //     dispatch(getLogin(res))
+    //     // history.push("/dashboard/home")
+    //     // history.push(`/Dashboard/?agentId=${id}`)
+    //   }
+    //   else {
+    //     setShowError({ ...showError, warning: true })
+    //   }
+    // }
   }
 
   return (
@@ -168,7 +205,7 @@ const Login = () => {
 
     // <div className={styles.loginContainer}>
     //   <VideoContainer />
-      
+
     //   <div className={styles.loginFormContainer}>
     //     <h2 className='font-semibold text-3xl'>Login To Be Altaneofied</h2>
     //     {/* <div className={styles.loginTypeButtons}>
