@@ -13,6 +13,8 @@ let baseUrl = import.meta.env.VITE_SOME_KEY
 
 const VendorFinancingForm = () => {
   const phone = sessionStorage.getItem('phone')
+  const uuid = sessionStorage.getItem('uuid')
+  // let uuid = 'abc123'
 
   const history = useHistory();
   const dispatch = useDispatch();
@@ -27,16 +29,14 @@ const VendorFinancingForm = () => {
   const [auditedFinancials, setAuditedFinancialsFile] = useState(null);
   const [selectedRange, setSelectedRange] = useState(null);
 
-  // let uuid = profileDetails.userInfo.uuid  
-  let uuid = 'abc123'
 
 
-  // useEffect(() => {
-  //   if (!uuid || !phone ) {
-  //     history.push('/')
-  //     toast.error('Not a Valid User')
-  //   }
-  // }, [])
+  useEffect(() => {
+    if (!uuid || !phone ) {
+      history.push('/')
+      toast.error('Not a Valid User')
+    }
+  }, [])
 
 
   const [showError, setShowError] = useState({
@@ -145,6 +145,7 @@ const onSaveUserDetails = async (e) => {
             gender:res.gender,
           })
           setStep(2)
+          return
         }
         if (res.statuscode === 400){
           toast.error(res.nameMismatchStatus)

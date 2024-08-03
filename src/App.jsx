@@ -39,6 +39,8 @@ import Solutions from './components/solutions/Solutions';
 import GreenFinancingBlog from './components/Blogs/blogPages/GreenFinancingBlog';
 import SmallAndMediumEntBlog from './components/Blogs/blogPages/SmallAndMediumEntBlog';
 import Vision from './components/vision/Vision';
+import ContactUsPage from './components/ContectUs/ContactUsPage';
+import AboutUsPage from './components/About/AboutUsPage';
 
 
 
@@ -55,13 +57,14 @@ const App = () => {
           <Navbar />
           <Switch>
             <Route exact path="/" component={Home} />
-
             <Route exact path="/simple-intrest-caclucator" component={SiCalculator} />
             <Route exact path='/privacyPolicy' component={Privacypolicy} />
             <Route exact path='/refundPolicy' component={RefundPolicy} />
             <Route exact path='/terms' component={Terms} />
             <Route exact path='/vision' component={Vision} />
-
+            <Route exact path='/contactUs' component={ContactUsPage} />
+            <Route exact path='/aboutUs' component={AboutUsPage} />
+            {/* <Route exact path='/services' component={AboutUsPage} /> */}
 
             <Route exact path='/products/invoiceDiscounting' component={InvoiceDiscountingPage} />
             <Route exact path='/products/vendorFinancing' component={VendorFinancingPage} />

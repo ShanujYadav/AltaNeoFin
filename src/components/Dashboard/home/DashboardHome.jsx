@@ -1,20 +1,26 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux';
-import { getactiveWindow } from '../../../store/slice/DashboardSlice';
 import { useHistory } from 'react-router-dom';
-import { FaRegFile } from "react-icons/fa";
 import { IoMdAdd } from "react-icons/io";
 import RmBox from '../RmBox';
+import { toast } from 'react-toastify';
+
 
 const DashboardHome = () => {
     const dispatch = useDispatch()
     const history = useHistory()
-    const [status, setStatus] = useState('')
 
-    // const onClickAnotherLoan = () => {
-    //     history.push('/dashboard/vendorFinancing')
-    // }
+    const phone = sessionStorage.getItem('phone')
+    const uuid = sessionStorage.getItem('uuid')
 
+
+    useEffect(() => {
+        if (!uuid || !phone) {
+            history.push('/')
+            toast.error('Not a Valid User')
+        }
+    }, [])
+    
     return (
         <div class="max-w-4xl lg:max-w-full mx-auto bg-gray-100 p-8 rounded-md shadow-md">
             <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6">
@@ -22,7 +28,7 @@ const DashboardHome = () => {
                     <h1 class="text-3xl font-bold text-gray-800">Active loans</h1>
                     <p class="text-gray-500 text-base">List of your loans are here</p>
                 </div>
-                <RmBox/>
+                <RmBox />
             </div>
             <hr class="border-gray-800" />
             <div class="bg-gray-100 p-4 ">

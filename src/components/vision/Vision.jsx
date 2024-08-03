@@ -5,6 +5,8 @@ import { SiTicktick } from "react-icons/si";
 import { FaRegLightbulb } from "react-icons/fa6"
 import { FaBookOpen } from "react-icons/fa";
 import { FaHandHolding } from "react-icons/fa";
+import vision from '../../../public/assets/img/Vision.png'
+
 
 const Vision = () => {
   let visionArray = [
@@ -44,8 +46,25 @@ const Vision = () => {
     <>
       <section class="text-gray-400 bg-white body-font">
         <div class="container px-5 py-24 mx-auto">
-          <h1 class="text-4xl font-bold title-font text-center text-black mb-20 underline font-serif">Our Vision
-          </h1>
+          <h1 class="text-4xl font-bold title-font text-center text-black mb-20 underline font-serif">Our Vision</h1>
+
+          {/* <div className="bg-white rounded-lg shadow-sm flex flex-col md:flex-row pb-24 max-w-full">
+            <div className="p-8 mb-4 w-full md:w-2/3">
+              <p className="text-gray-600 mt-4">
+                At AltaNeo, our vision is to transform the financial landscape by leveraging cutting-edge technology to create inclusive, transparent, and efficient financial solutions.
+                We aim to democratize access to financial services, empowering individuals and businesses to achieve their financial goals with confidence and ease.
+              </p>
+            </div>
+            <div className="relative w-full md:w-1/3 h-64 md:h-auto">
+              <img
+                src={vision}
+                alt="River"
+                className="w-full h-full object-cover"
+              />
+            </div>
+          </div> */}
+
+
           <div class="flex flex-wrap sm:-m-4 -mx-4 -mb-10 -mt-4 md:space-y-0 space-y-6">
             {visionArray.map((data, index) => {
               return (

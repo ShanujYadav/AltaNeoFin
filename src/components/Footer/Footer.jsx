@@ -119,7 +119,7 @@ const Footer = () => {
                     <a href="#" class="text-sm leading-6 text-gray-400 hover:text-blue-900">Vendor</a>
                   </li>
                   <li>
-                    <a href="#" class="text-sm leading-6 text-gray-400 hover:text-blue-900">Contact</a>
+                    <a href="/contactUs" class="text-sm leading-6 text-gray-400 hover:text-blue-900">Contact</a>
                   </li>
                   <li>
                     <a href="/blogs" class="text-sm leading-6 text-gray-400 hover:text-blue-900">Blogs</a>

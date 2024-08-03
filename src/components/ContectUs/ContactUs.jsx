@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
-import { BiMessageDetail } from "react-icons/bi";
 import { IoMailSharp } from "react-icons/io5";
 import { FaPhoneAlt } from "react-icons/fa";
 import { MdLocationPin } from "react-icons/md";
+import Captcha from './Captcha';
 
 
 const ContactUs = () => {
+  const [isCaptchaCorrect, setIsCaptchaCorrect] = useState(false)
+  const [showCaptchaError, setShowCapctaError] = useState(false)
+
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
@@ -13,22 +16,30 @@ const ContactUs = () => {
     message: ''
   })
 
-  const [isLoading, setIsLoading] = useState(false)
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   }
 
+  const onChangeCaptcha=(value)=>{
+    setIsCaptchaCorrect(value)
+    setShowCapctaError(false)
+  }
+
+
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    console.log('Form Data:', formData);
+    e.preventDefault()
+    if (!isCaptchaCorrect) {
+      setShowCapctaError(true)
+      return
+    }
+    
     try {
       const response = await sendRequest({
         method: 'POST',
         url: 'http://localhost:8080/submitContactForm',
         data: formData
-      });
-
+      })
       console.log(response.data);
       setFormData({
         name: '',
@@ -38,19 +49,18 @@ const ContactUs = () => {
       })
       setFormKey(Date.now())
     } catch (error) {
-      console.error('Error:', error);
+      console.error('Error:', error)
     }
   }
 
   return (
-    <section class="lg:my-5">
-      <div class="py-1  sm:py-16 block lg:py-24 relative bg-opacity-50 z-0" >
-        <h2 className='text-black text-center	font-semibold font-serif text-3xl mt-4 underline'>Contact Us</h2>
+    <section className="lg:my-5">
+      <div className="py-1 sm:py-16 block lg:py-24 relative bg-opacity-50 z-0">
+        <h2 className="text-black text-center font-semibold font-serif text-3xl mt-4 underline">Contact Us</h2>
         <div className="flex flex-col md:flex-row justify-between items-start mt-10 mx-auto max-w-5xl">
           <div className="flex-1 p-6 bg-gray-100 rounded-lg text-gray-700 md:mr-6 mb-6 md:mb-0">
             <h3 className="text-2xl font-semibold flex items-center text-black mb-2 font-serif">
               Send us a message
-              <BiMessageDetail className='mx-2' color='gray'/>
             </h3>
             <p className="mt-1 text-base text-gray-600 mb-6">
               Zero paper work.<br />
@@ -134,13 +144,19 @@ const ContactUs = () => {
                   className="mt-1 p-2 w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                 ></textarea>
               </div>
+
+              <Captcha onChange={onChangeCaptcha} />
               <div className="flex justify-end">
+                {showCaptchaError ? (
+                  <small className="text-red-500 mt-2">CAPTCHA is incorrect.</small>
+                ) : (
+                  <>
+                  </>
+                )}
                 <button
                   type="submit"
-                  className="inline-flex items-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                  disabled={isLoading}
-                >
-                  {isLoading ? 'Sending...' : 'Send'}
+                  className="inline-flex items-center py-2 px-4 mt-4 md:mt-0 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                >Send
                 </button>
               </div>
             </form>

@@ -3,7 +3,7 @@ import './Navbar.css';
 import logo from '../../assets/logo.png';
 import { Link as ScrollLink } from 'react-scroll';
 import menu_icon from '../../assets/menu-icon.png';
-
+import { TiThMenu } from "react-icons/ti"
 const Navbar = () => {
 
   const [sticky, setSticky] = useState(false)
@@ -89,9 +89,9 @@ const Navbar = () => {
             </a>
           </li>
           <li>
-            <ScrollLink to="contact" smooth={true} offset={0} duration={500}>
+          <a href="/contactUs">
               Contact Us
-            </ScrollLink>
+            </a>
           </li>
           <li>
             <div className="btn-square mb-3">
@@ -101,7 +101,7 @@ const Navbar = () => {
             </div>
           </li>
         </ul>
-        <img src={menu_icon} alt="" className='menu-icon' onClick={toggleMenu} />
+        <TiThMenu color='white' size={30} className='menu-icon' onClick={toggleMenu} alt="Menu Icon" />
       </nav>
     </div>
   );
