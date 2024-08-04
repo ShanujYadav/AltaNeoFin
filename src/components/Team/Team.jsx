@@ -8,36 +8,6 @@ import cta from '../../assets/img/ctaImg.png';
 
 
 const Team = () => {
-  
-  const currentRatio = (currentAsset, currentLaibility) => {
-    return currentAsset / currentLaibility
-  }
-
-  const quickRatio = (currentAsset, inventory, expences, currentLaibility) => {
-    return (currentAsset - inventory - expences) / currentLaibility
-  }
-
-  const returnOnAssets = (netIncome, avgTotalAssets) => {
-    return (netIncome / avgTotalAssets) * 100
-  }
-
-  const returnOnEquity = (netIncome, totalEquity) => {
-    return (netIncome / totalEquity) * 100
-  }
-
-  const debtToEquityRatio = (totalDebt, totalEquity) => {
-    return totalDebt / totalEquity
-  }
-
-
-
-
-
-
-
-
-
-
 
   const settings = {
     dots: true,
@@ -68,7 +38,7 @@ const Team = () => {
                 Meenakshi
               </h6>
               <h4 className="block mb-2 font-sans text-sm antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
-                CEO
+              Chairperson and MD
               </h4>
               <hr />
               <p className="block mb-8 font-sans text-base antialiased font-normal leading-relaxed text-gray-700 overflow-scroll text-justify">

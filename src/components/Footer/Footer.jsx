@@ -116,19 +116,19 @@ const Footer = () => {
                 <h3 class="text-sm font-bold leading-6 text-white"></h3>
                 <ul role="list" class="mt-6 space-y-4">
                   <li>
-                    <a href="#" class="text-sm leading-6 text-gray-400 hover:text-blue-900">Vendor</a>
+                    <a href="/contactUs" class="text-sm leading-6 text-gray-400 hover:text-blue-900">Contact Us</a>
                   </li>
                   <li>
-                    <a href="/contactUs" class="text-sm leading-6 text-gray-400 hover:text-blue-900">Contact</a>
+                    <a href="/aboutUs" class="text-sm leading-6 text-gray-400 hover:text-blue-900">About Us</a>
                   </li>
                   <li>
                     <a href="/blogs" class="text-sm leading-6 text-gray-400 hover:text-blue-900">Blogs</a>
                   </li>
                   <li>
-                    <a href="/TeamPage" class="text-sm leading-6 text-gray-400 hover:text-blue-900">Expert Team</a>
+                    <a href="/team" class="text-sm leading-6 text-gray-400 hover:text-blue-900">Team</a>
                   </li>
                   <li>
-                    <a href="/simple-intrest-caclucator" class="text-sm leading-6 text-gray-400 hover:text-blue-900">Calculator</a>
+                    <a href="/siCaclucator" class="text-sm leading-6 text-gray-400 hover:text-blue-900">Calculator</a>
                   </li>
                 </ul>
               </div>
@@ -138,7 +138,7 @@ const Footer = () => {
                 <h3 class="font-bold leading-6 text-white">Others</h3>
                 <ul role="list" class="mt-6 space-y-4">
                   <li>
-                    <a href="/" class="text-sm leading-6 text-gray-400 hover:text-blue-900">Home</a>
+                    <a href="/products" class="text-sm leading-6 text-gray-400 hover:text-blue-900">Products</a>
                   </li>
                   <li>
                     <a href="/terms" class="text-sm leading-6 text-gray-400 hover:text-blue-900">Terms</a>
@@ -147,7 +147,7 @@ const Footer = () => {
                     <a href="/privacyPolicy" class="text-sm leading-6 text-gray-400 hover:text-blue-900">Privacy Policy</a>
                   </li>
                   <li>
-                    <a href="/refundPolicy" class="text-sm leading-6 text-gray-400 hover:text-blue-900">Refund</a>
+                    <a href="/refundPolicy" class="text-sm leading-6 text-gray-400 hover:text-blue-900">Refund Policy</a>
                   </li>
                 </ul>
               </div>

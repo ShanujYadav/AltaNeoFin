@@ -35,12 +35,14 @@ import Privacypolicy from './components/policies/PrivacyPolicy/Privacypolicy'
 import SustainableSupplyChainBlog from './components/Blogs/blogPages/SustainableSupplyChainBlog';
 
 import ContactUs from './components/ContectUs/ContactUs';
-import Solutions from './components/solutions/Solutions';
 import GreenFinancingBlog from './components/Blogs/blogPages/GreenFinancingBlog';
 import SmallAndMediumEntBlog from './components/Blogs/blogPages/SmallAndMediumEntBlog';
 import Vision from './components/vision/Vision';
 import ContactUsPage from './components/ContectUs/ContactUsPage';
 import AboutUsPage from './components/About/AboutUsPage';
+import ProductPage from './components/products/ProductPage';
+import Products from './components/products/Products';
+import CareerPage from './components/careers/CareerPage';
 
 
 
@@ -57,15 +59,18 @@ const App = () => {
           <Navbar />
           <Switch>
             <Route exact path="/" component={Home} />
-            <Route exact path="/simple-intrest-caclucator" component={SiCalculator} />
+            <Route exact path="/siCaclucator" component={SiCalculator} />
             <Route exact path='/privacyPolicy' component={Privacypolicy} />
             <Route exact path='/refundPolicy' component={RefundPolicy} />
             <Route exact path='/terms' component={Terms} />
             <Route exact path='/vision' component={Vision} />
             <Route exact path='/contactUs' component={ContactUsPage} />
             <Route exact path='/aboutUs' component={AboutUsPage} />
-            {/* <Route exact path='/services' component={AboutUsPage} /> */}
+            <Route exact path='/careers' component={CareerPage} />
+            <Route exact path='/team' component={TeamPage} />
 
+
+            <Route exact path='/products' component={ProductPage} />
             <Route exact path='/products/invoiceDiscounting' component={InvoiceDiscountingPage} />
             <Route exact path='/products/vendorFinancing' component={VendorFinancingPage} />
             <Route exact path='/products/exportCredits' component={ExportCreditPage} />
@@ -85,11 +90,6 @@ const App = () => {
             <Route exact path='/blogs/greenFinancing' component={GreenFinancingBlog} />
             <Route exact path='/blogs/smallAndMeduimEnterprise' component={SmallAndMediumEntBlog} />
 
-
-
-            {/* <Route exact path='/blog/:id' component={subBlog} /> */}
-
-            <Route exact path='/TeamPage' component={TeamPage} />
           </Switch>
         </Route>
       </Switch>
@@ -112,7 +112,7 @@ const Home = () => {
     <Hero />
     <div className=''>
       <Title subTitle='' title='' />
-      <Solutions />
+      <Products />
       <About />
       <Title subTitle='Valued From leading brands' title='Leading Investors' />
       <Investors />

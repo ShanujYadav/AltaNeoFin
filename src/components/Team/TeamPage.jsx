@@ -12,7 +12,8 @@ import himanshu from '../../assets/img/himanshu.png'
 import ayushi from '../../assets/img/ayushi.png'
 import prerna from '../../assets/img/prerna.png'
 import sanskruti from '../../assets/img/sanskruti.png'
-import somesh from '../../assets/img/somesh.png'
+import Topbar from '../common/Topbar';
+import Footer from '../Footer/Footer';
 
 
 
@@ -20,7 +21,7 @@ const TeamPage = () => {
   const teamMembers = [
     {
       name: 'Meenakshi Pawar',
-      role: 'Founder & CEO ',
+      role: 'Chairperson and MD',
       photo: ceoImg,
       description: 'With a robust academic background and extensive professional experience, Meenakshi brings a wealth of knowledge and expertise to our organization. She embarked on their academic journey at Miranda House, Delhi University, where they laid a strong foundation in Mathematics and Science. Further honing their skills, they attended London Business School, an institution renowned for shaping global business leaders.In their professional career, she has demonstrated remarkable leadership and strategic acumen. They have previously served as a Team Lead at the State Bank of India, where they managed and executed high-impact financial projects, driving growth and innovation.'
     },
@@ -67,39 +68,45 @@ const TeamPage = () => {
       description: 'As an intern, i have the opportunity to gain valuable skills, practical experience, and industry exposure that will serve as a solid foundation for my career as a software developer.'
     },
     {
-      name: 'Sanskruti Gosh',
+      name: 'Sanskruti Ghosh',
       role: 'Accounts Intern',
       photo: sanskruti,
       description: 'I am thrilled to join the team as an Accounts Intern. I have completed my degree in Bachelors in Commerce (Hons) from University of Delhi, where I have developed a strong foundation in financial accounting, management accounting, and financial data management. My passion for numbers and keen attention to detail have driven me to seek practical experience in the field of accounting. I am excited about the opportunity to apply my academic knowledge and analytical skills to real-world scenarios, and I look forward to contributing to the teams success while gaining valuable insights and experience.'
     },
-    
   ]
 
-
-
   return (
-    <div className="team-container">
-      <ul role="list" class="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3">
-        {teamMembers.map((item, index) => (
-          <li key={index} class="col-span-1 flex flex-col divide-y divide-gray-200 rounded-lg bg-white text-center shadow">
-            <div class="flex flex-1 mb-0 flex-col w-full md:w-80 h-96 p-4">
-              <img class="mx-auto mb-1 h-48 w-48 flex-shrink-0 border-black rounded-full" src={item.photo} alt="" />
-              <h3 class="mt-2 text-md font-semibold text-gray-900">{item.name}</h3>
-              <dl class="mt-1 flex flex-grow flex-col justify-between">
-                <dd class="mt-0">
-                  <span class="inline-flex items-center rounded-full bg-blue-400 px-2 py-1 text-xs font-medium text-white ring-1 ring-inset ring-green-600/20">{item.role}</span>
-                </dd>
-                <hr class="mt-2" />
-                <dd class="mt-1 flex-grow overflow-y-auto h-32 text-justify">
-                  {item.description}
-                </dd>
-              </dl>
-            </div>
-          </li>
-        ))}
-      </ul>
+    <div>
+      <Topbar
+        title='Our Team'
+        desc='Meet our dedicated team of experts committed to driving your success.Together, we bring innovative solutions to enhance your supply chain.'
+        from='Home'
+        to='Team' />
+
+      <div className="team-container my-5">
+        <ul role="list" class="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3">
+          {teamMembers.map((item, index) => (
+            <li key={index} class="col-span-1 flex flex-col divide-y divide-gray-200 rounded-lg bg-white text-center shadow">
+              <div class="flex flex-1 mb-0 flex-col w-full md:w-80 h-96 p-4">
+                <img class="mx-auto mb-1 h-48 w-48 flex-shrink-0 border-black rounded-full" src={item.photo} alt="" />
+                <h3 class="mt-2 text-md font-semibold text-gray-900">{item.name}</h3>
+                <dl class="mt-1 flex flex-grow flex-col justify-between">
+                  <dd class="mt-0">
+                    <span class="inline-flex items-center rounded-full bg-blue-400 px-2 py-1 text-xs font-medium text-white ring-1 ring-inset ring-green-600/20">{item.role}</span>
+                  </dd>
+                  <hr class="mt-2" />
+                  <dd class="mt-1 flex-grow overflow-y-auto h-32 text-justify">
+                    {item.description}
+                  </dd>
+                </dl>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <Footer/>
     </div>
-  );
+  )
 }
 
-export default TeamPage;
+export default TeamPage

@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
-import coverimg from '../../../public/assets/img/cover.png'
 import { FaLocationDot } from "react-icons/fa6";
 import { FaPhoneAlt } from "react-icons/fa";
 import { IoMdMail } from "react-icons/io";
 import Captcha from './Captcha';
 import mapImg from '../../../public/assets/img/mapImg.png'
 import Footer from '../Footer/Footer';
+import Topbar from '../common/Topbar';
 
 
 
@@ -54,17 +54,11 @@ const ContactUsPage = () => {
 
     return (
         <div className='bg-slate-200'>
-            <div className="relative">
-                <img src={coverimg} alt="Image" className="w-full h-80 lg:h-full" />
-                <div className="absolute inset-0 flex flex-col items-center justify-center space-y-4 px-4">
-                    <span className="text-white text-4xl sm:text-5xl md:text-6xl font-bold font-serif">Contact Us</span>
-                    <span className="text-white text-xs sm:text-sm md:text-base lg:text-lg font-bold font-serif text-center">
-                        Our team at Altaneofin is here to help! Reach out to us anytime,
-                        <br className="hidden sm:block" /> and we'll ensure you get the support you need. Contact us today.
-                    </span>
-                    <span className="text-white text-xs font-serif">Home &gt; Contact</span>
-                </div>
-            </div>
+            <Topbar
+                title='Contact Us'
+                desc='  Our team at Altaneofin is here to help! Reach out to us anytime,and we will ensure you get the support you need. Contact us today..'
+                from='Home'
+                to='Contact' />
 
             <div id="services" class="section relative pt-20 pb-8 md:pt-16 md:pb-0">
                 <div class="container xl:max-w-6xl mx-auto px-4">

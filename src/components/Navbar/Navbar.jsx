@@ -2,10 +2,8 @@ import React, { useEffect, useState } from 'react';
 import './Navbar.css';
 import logo from '../../assets/logo.png';
 import { Link as ScrollLink } from 'react-scroll';
-import menu_icon from '../../assets/menu-icon.png';
 import { TiThMenu } from "react-icons/ti"
 const Navbar = () => {
-
   const [sticky, setSticky] = useState(false)
 
   const [dropdownVisible, setDropdownVisible] = useState(false);
@@ -74,37 +72,36 @@ const Navbar = () => {
             </a>
           </li>
           <li>
-            <a href="/simple-intrest-caclucator">
-              Calculator
-            </a>
-          </li>
-          <li>
-            <a href="/TeamPage">
+            <a href="/team">
               Team
             </a>
           </li>
           <li>
-            <a href="/blogs">
+          <a href="/blogs">
               Blogs
             </a>
           </li>
           <li>
-          <a href="/contactUs">
-              Contact Us
+          <a href="/aboutUs">
+              About Us
             </a>
           </li>
           <li>
-            <div className="btn-square mb-3">
-              <button className="btn">
-                <a href="/login" target="_blank" rel="noopener noreferrer">Login</a>
+            <a href="/contactUs">
+              Contact Us
+            </a>
+          </li>
+          <li >
+            <a href="/login" className='' target="_blank">
+              <button class="bg-blue-500 hover:bg-blue-700 text-white font-base mb-3  py-2 px-4 rounded-full">
+                Login
               </button>
-            </div>
+            </a>
           </li>
         </ul>
         <TiThMenu color='white' size={30} className='menu-icon' onClick={toggleMenu} alt="Menu Icon" />
       </nav>
     </div>
-  );
-};
-
-export default Navbar;
+  )
+}
+export default Navbar
