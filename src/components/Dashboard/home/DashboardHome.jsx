@@ -13,14 +13,13 @@ const DashboardHome = () => {
     const phone = sessionStorage.getItem('phone')
     const uuid = sessionStorage.getItem('uuid')
 
-
     useEffect(() => {
         if (!uuid || !phone) {
             history.push('/')
             toast.error('Not a Valid User')
         }
     }, [])
-    
+
     return (
         <div class="max-w-4xl lg:max-w-full mx-auto bg-gray-100 p-8 rounded-md shadow-md">
             <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6">
@@ -39,7 +38,7 @@ const DashboardHome = () => {
                             <IoMdAdd color="white" size={18} />
                             Apply for a new loan</button>
                     </div>
-                    <div class="flex items-center justify-end w-full md:w-auto">
+                    {/* <div class="flex items-center justify-end w-full md:w-auto">
                         <span class="text-gray-600 mr-2">Filter by status</span>
                         <select class="bg-gray-100 rounded px-2 py-1">
                             <option value="all">All</option>
@@ -47,19 +46,19 @@ const DashboardHome = () => {
                             <option value="Pending">Pending</option>
                             <option value="Rejected">Rejected</option>
                         </select>
-                    </div>
+                    </div> */}
                 </div>
                 <div class="mt-6">
                     <ul class="flex flex-col md:flex-row md:space-x-4 space-y-2 md:space-y-0 border-b">
                         <li class="mr-1 md:mr-0">
-                            <a class="block py-2 px-4 text-blue-600 border-b-2 border-blue-600 md:border-none md:border-b-2 md:border-transparent hover:border-blue-600" href="#">All Loans (9)</a>
+                            <a class="block py-2 px-4 text-blue-600 border-b-2 border-blue-600 md:border-none md:border-b-2 md:border-transparent hover:border-blue-600" href="#">All Loans</a>
                         </li>
-                        <li class="mr-1 md:mr-0">
+                        {/* <li class="mr-1 md:mr-0">
                             <a class="block py-2 px-4 text-gray-600 hover:text-blue-600 border-b-2 border-transparent md:border-none md:border-b-2 md:border-transparent hover:border-blue-600" href="#">Pending Loans (3)</a>
                         </li>
                         <li class="mr-1 md:mr-0">
                             <a class="block py-2 px-4 text-gray-600 hover:text-blue-600 border-b-2 border-transparent md:border-none md:border-b-2 md:border-transparent hover:border-blue-600" href="#">Approved Loans (2)</a>
-                        </li>
+                        </li> */}
                     </ul>
                 </div>
             </div>

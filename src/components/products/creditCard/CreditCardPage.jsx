@@ -1,21 +1,33 @@
-import React, { useState } from 'react';
-import Footer from '../../Footer/Footer'
+import React from 'react';
+import Footer from '../../Footer/Footer';
+import { useState } from 'react';
+import { CSSTransition, SwitchTransition } from 'react-transition-group';
+import Partners from '../../Partners/Partners';
+// import Numbers from '../../Customerbasenumber/Numbers';
+import credit from '../../../../public/assets/img/credit.png';
+import ID2 from '../../../../public/assets/img/ID-2.png';
 
 const CreditCardPage = () => {
 
   const [currentSlide, setCurrentSlide] = useState(0)
   const testimonials = [
     {
-      quote: "“Algolia is a breeze to work with. With Algolia, our editorial team has seen significant productivity improvements when building the daily online edition of The Times and weekly edition of The Sunday Times, with search being 300-500 times faster than our prior solution.”",
-      author: "Matt Taylor",
-      position: "Editorial Product Manager @ The Times",
-      logo: "https://via.placeholder.com/100x40?text=THE+TIMES"
+      quote: "“Our experience with Altaneo has been nothing short of fantastic. Their invoice discounting platform is straightforward and transparent, allowing us to access funds quickly and easily. The team is knowledgeable, responsive, and always goes above and beyond to meet our needs. Thanks to them, we've been able to overcome cash flow challenges.”",
+      author: "CA Deepak Goel",
+      position: "Sahil international PNP",
+      // logo: "https://via.placeholder.com/100x40?text=THE+TIMES"
     },
     {
-      quote: "“Algolia is a breeze to work with. With Algolia, our editorial team has seen significant productivity improvements when building the daily online edition of The Times and weekly edition of The Sunday Times, with search being 300-500 times faster than our prior solution.”",
-      author: "Matt Henry",
-      position: "Editorial Product Manager @ The Times",
-      logo: "https://via.placeholder.com/100x40?text=THE+TIMES"
+      quote: "“Altaneo has been instrumental in helping us meet our working capital requirements. I, for one, would definitely recommend all vendors in the textile space who are facing working capital problems to give Altaneo a shot.”",
+      author: "CA Gaurav Dhamija",
+      position: "",
+      // logo: "https://via.placeholder.com/100x40?text=THE+TIMES"
+    },
+    {
+      quote: "“Altaneo has been pivotal in our life sciences venture, providing essential assistance with our working capital needs. Their expertise and support have made a significant impact on our operations, and I wholeheartedly recommend their services to others in the industry facing similar challenges.”",
+      author: "Yogesh Singla",
+      position: "Xieone Lifesciences Limited",
+      // logo: "https://via.placeholder.com/100x40?text=THE+TIMES"
     }
   ]
 
@@ -44,61 +56,73 @@ const CreditCardPage = () => {
         <div className="relative  text-center p-4">
           <p className="text-4xl sm:text-5xl md:text-7xl lg:text-9xl font-bold text-blue-700 tracking-widest">Credit</p>
           <p className="text-4xl sm:text-5xl md:text-7xl lg:text-9xl font-bold tracking-widest">Cards</p>
-          s              </div>
-        <a href="https://youtu.be/1pW_sk-2y40" target="_blank" rel="noopener noreferrer" className="flex flex-col justify-center items-center absolute text-inherit cursor-pointer h-10 w-32 md:h-12 md:w-40 z-10 bottom-10 right-10 sm:bottom-16 sm:right-16 md:bottom-20 md:right-1/4 transition-opacity duration-500 opacity-75 hover:opacity-100">
-          <button className="h-10 w-32 md:h-12 md:w-40 bg-blue-600 shadow-inner text-white rounded transition-all transform hover:translate-y-1">View video</button>
+        </div>
+        <a href='/contactUs' rel="noopener noreferrer" className="flex flex-col justify-center items-center absolute inset-x-0 bottom-10 sm:bottom-16 md:bottom-20 text-inherit cursor-pointer h-10 w-32 md:h-12 md:w-40 transition-opacity duration-500 opacity-75 hover:opacity-100 mx-auto">
+          <button className="h-10 w-32 md:h-12 md:w-40 bg-blue-600 shadow-inner text-white rounded transition-all transform hover:translate-y-1">Contact Us</button>
           <span className="h-10 w-20 md:h-14 md:w-24 bg-blue-900 rounded-full blur-xs border-round border-black opacity-0 -bottom-1/2 absolute transition-opacity"></span>
         </a>
-        <a href="https://x.com/juxtopposed" target="_blank" rel="noopener noreferrer" className="flex flex-col justify-center items-center absolute text-inherit cursor-pointer h-10 w-32 md:h-12 md:w-40 z-10 bottom-10 left-10 sm:bottom-16 sm:left-16 md:bottom-20 md:left-1/4 transition-opacity duration-500 opacity-75 hover:opacity-100">
-          <button className="h-10 w-32 md:h-12 md:w-40 bg-blue-600 shadow-inner text-white rounded transition-all transform hover:translate-y-1">Connect</button>
-          <span className="h-10 w-20 md:h-14 md:w-24 bg-gray-600 rounded-full blur-lg opacity-50 -bottom-1/2 absolute transition-opacity"></span>
-        </a>
+
       </div>
       <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-8xl  text-center mt-6">
-        <h1 className="text-2xl font-bold text-black text-center mb-6">A recognized leader</h1>
+        <h1 className="text-2xl font-bold text-black text-center mb-6">Simplify Your Business Expenses</h1>
         <div className="flex flex-col md:flex-row items-center md:items-start">
           <div className="md:w-1/2">
-            <h2 className="text-xl text-black font-semibold mb-4">The 2024 Gartner® Magic Quadrant™ for Search and Product Discovery</h2>
+            <h2 className="text-xl text-black font-semibold mb-4">              With Altaneo's corporate credit cards, you can enjoy enhanced purchasing power, rewards, and benefits, all while gaining insights and control over your expenses.
+            </h2>
             <p className="text-gray-700 text-base mb-4">
-              Algolia is in the 2024 Gartner® Magic Quadrant™ for Search and Product Discovery positioned furthest for Completeness of Vision. Learn more by downloading a copy of the report.
+              At Altaneo, we understand the importance of simplifying business expenses and managing cash flow efficiently. That's why we offer comprehensive corporate credit card solutions tailored to meet the unique needs of your business.
             </p>
           </div>
           <div className="md:w-1/2 mt-6 md:mt-0 md:ml-8">
-            <img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Flink.springer.com%2Farticle%2F10.1007%2Fs10693-023-00413-7&psig=AOvVaw1jfIZ36fYEOSjVAIg_q9A7&ust=1719299982010000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCMDPmtjZ84YDFQAAAAAdAAAAABAK" alt="Gartner Magic Quadrant" />
+            <img className="w-full h-60 object-cover" src={credit} />
           </div>
         </div>
       </div>
       <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-8xl text-center mt-6">
         <div className="flex flex-col md:flex-row items-center md:items-start">
           <div className="md:w-1/2 mb-8 md:mb-0">
-            <h1 className="text-2xl font-bold text-black mb-2">The one-stop shop for AI search</h1>
-            <p className="text-gray-700 text-base mb-6">Altaneo's AI search suite has unique strengths</p>
+            <h1 className="text-2xl font-bold text-black mb-2">Benefits of Altaneo's Corporate Credit Cards</h1>
+            <p className="text-gray-700 text-base mb-6">AltaNeo's Credit Card's have unique benefit's</p>
             <div className="space-y-4">
               <details className="group">
                 <summary className="flex justify-between items-center w-full py-2 text-left font-semibold text-lg text-gray-800 cursor-pointer">
-                  Easy to use
+                  Enhanced Purchasing Power
                   <span className="text-blue-600 group-open:rotate-180">▾</span>
                 </summary>
-                <p className="text-gray-600 mt-2 text-sm ml-4">Implement our APIs in minutes and gain easy control over rankings.</p>
+                <p className="text-gray-600 mt-2 text-sm ml-4"> Altaneo's corporate credit cards provide your business with increased spending flexibility, allowing you to make necessary purchases without liquidity constraints.</p>
               </details>
               <details className="group">
                 <summary className="flex justify-between items-center w-full py-2 text-left font-semibold text-lg text-gray-800 cursor-pointer">
-                  Fast
+                  Rewards and Benefits
                   <span className="text-blue-600 group-open:rotate-180">▾</span>
                 </summary>
-                <p className="text-gray-600 text-sm mt-2 ml-4">Our search is designed to be fast and efficient, delivering results instantly.</p>
+                <p className="text-gray-600 text-sm mt-2 ml-4">Take advantage of rewards programs and benefits tailored to suit your business needs, including cashback, travel rewards, and discounts on business-related expenses.</p>
               </details>
               <details className="group">
                 <summary className="flex justify-between items-center w-full py-2 text-left font-semibold text-lg text-gray-800 cursor-pointer">
-                  Scalable
+                  Expense Management
                   <span className="text-blue-600 group-open:rotate-180">▾</span>
                 </summary>
-                <p className="text-gray-600 text-sm mt-2 ml-4">Scalable to meet the needs of businesses of all sizes, ensuring performance at scale.</p>
+                <p className="text-gray-600 text-sm mt-2 ml-4">Gain insights and control over your expenses with detailed transaction reporting and expense management tools. Monitor spending patterns, track individual card usage, and streamline expense reimbursement processes.</p>
+              </details>
+              <details className="group">
+                <summary className="flex justify-between items-center w-full py-2 text-left font-semibold text-lg text-gray-800 cursor-pointer">
+                  Improved Cash Flow
+                  <span className="text-blue-600 group-open:rotate-180">▾</span>
+                </summary>
+                <p className="text-gray-600 text-sm mt-2 ml-4">Altaneo's corporate credit cards help improve cash flow by providing access to revolving credit lines. This enables you to manage short-term cash needs and optimize working capital.</p>
+              </details>
+              <details className="group">
+                <summary className="flex justify-between items-center w-full py-2 text-left font-semibold text-lg text-gray-800 cursor-pointer">
+                  Security and Fraud Protection
+                  <span className="text-blue-600 group-open:rotate-180">▾</span>
+                </summary>
+                <p className="text-gray-600 text-sm mt-2 ml-4">Protect your business against unauthorized transactions and fraudulent activity with advanced security features, including fraud monitoring, purchase protection, and liability protection.</p>
               </details>
             </div>
           </div>
           <div className="md:w-1/2">
-            <img src="/mnt/data/Screenshot 2024-06-24 125233.png" alt="AI Search" />
+            <img className='w-full h-96 object-cover' src={ID2} alt="AI Search" />
           </div>
         </div>
       </div>
@@ -112,132 +136,61 @@ const CreditCardPage = () => {
             <p className="text-gray-700 text-base mb-6">Get help from our experts to start fast and run efficiently.</p>
 
           </div>
-          <div className="md:w-1/2 flex flex-col items-center md:items-start relative">
-            <div className="bg-white shadow-lg rounded-lg p-8 text-center max-w-lg mx-auto">
-              <div className="mb-4">
-                <img src={testimonials[currentSlide].logo} alt="The Times Logo" className="mx-auto" />
-              </div>
-              <p className="text-lg italic text-gray-700 mb-6">{testimonials[currentSlide].quote}</p>
-              <p className="text-sm font-semibold text-gray-500">{testimonials[currentSlide].author}</p>
-              <p className="text-xs text-gray-400">{testimonials[currentSlide].position}</p>
-              <div className="flex justify-between mt-6">
-                <button onClick={previousSlide} className="focus:outline-none">
-                  <svg className="h-6 w-6 text-gray-400 hover:text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7"></path>
-                  </svg>
+          <div className="md:w-2/4 flex justify-center items-center">
+            <div className="relative w-full">
+              <SwitchTransition>
+                <CSSTransition
+                  key={currentSlide}
+                  addEndListener={(node, done) => {
+                    node.addEventListener('transitionend', done, false);
+                  }}
+                  classNames={{
+                    enter: 'transition-opacity duration-1000 ease-in-out',
+                    enterActive: 'opacity-100',
+                    exit: 'transition-opacity duration-1000 ease-in-out',
+                    exitActive: 'opacity-0'
+                  }}
+                >
+                  <div className="flex flex-col p-8 items-center text-center">
+                    <blockquote className="text-black mt-12 italic">{testimonials[currentSlide].quote}</blockquote>
+                    <p className="text-black font-bold text-md p-2 mt-4">{testimonials[currentSlide].author}</p>
+                    <p className="text-black  text-sm mb-4">{testimonials[currentSlide].position}</p>
+                    {/* <img src={testimonials[currentSlide].logo} alt="Logo" className="mt-4 w-24 h-auto" /> */}
+                  </div>
+                </CSSTransition>
+              </SwitchTransition>
+              <div className="flex justify-between mt-4">
+                <button className="w-10 h-10 bg-gray-200 text-black rounded-full hover:bg-gray-400 transition-all flex items-center justify-center" onClick={previousSlide}>
+                  &lt;
                 </button>
-                <button onClick={nextSlide} className="focus:outline-none">
-                  <svg className="h-6 w-6 text-gray-400 hover:text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path>
-                  </svg>
+                <button className="w-10 h-10 bg-gray-200 text-black rounded-full hover:bg-gray-400 transition-all flex items-center justify-center" onClick={nextSlide}>
+                  &gt;
                 </button>
               </div>
+
             </div>
           </div>
         </div>
       </div>
-      <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-8xl  text-center mt-6">
+      {/* <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-8xl  text-center mt-6">
         <h2 className="text-2xl text-black font-bold mb-2">Scaling ahead of your needs</h2>
         <p className="text-gray-600  text-base mb-10">
-          Customers depend on Algolia to handle more queries than any other hosted search engine.
         </p>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-0">
-          <div className="flex flex-col items-center mb-4 md:border-r border-gray-300 md:pr-8">
-            <span className="text-3xl font-semibold text-blue-600">1.7+ trillion</span>
-            <span className="text-gray-600">searches every year</span>
-          </div>
-          <div className="flex flex-col items-center md:border-r border-gray-300 md:px-8">
-            <span className="text-3xl font-semibold text-blue-600">99.999%</span>
-            <span className="text-gray-600">uptime SLA available</span>
-          </div>
-          <div className="flex flex-col items-center md:pl-8">
-            <span className="text-3xl font-semibold text-blue-600">17,000+</span>
-            <span className="text-gray-600">customers across 150+ countries</span>
-          </div>
-          <div className="flex flex-col items-center  md:border-r border-gray-300 md:pr-8">
-            <span className="text-3xl font-semibold text-blue-600">30+ billion</span>
-            <span className="text-gray-600">records indexed</span>
-          </div>
-          <div className="flex flex-col items-center md:border-r border-gray-300 md:px-8">
-            <span className="text-3xl font-semibold text-blue-600">100%</span>
-            <span className="text-gray-600">
-              compliant & secure with SAML, SOC3, ISO27001, HIPAA, C5, MACH Alliance
-            </span>
-          </div>
-          <div className="flex flex-col items-center md:pl-8">
-            <span className="text-3xl font-semibold text-blue-600">382%</span>
-            <span className="text-gray-600">ROI according to Forrester Research</span>
-          </div>
-        </div>
+        <Numbers />
         <div className="mt-12">
-
         </div>
-      </div>
+      </div> */}
       <div class="bg-white p-8 rounded-lg shadow-md w-full max-w-8xl text-center mt-6">
         <h1 class="text-2xl md:text-3xl text-black font-bold mb-4">For startups – all the power, none of the headache</h1>
         <p class="text-gray-700 text-base mb-2">Startups, you can get going in minutes and scale for decades. Whatever your future demands, and however much you grow - Algolia has you covered.</p>
         <p class="text-gray-700 text-base mb-8">Eligible startups can begin with $10k of credits from Algolia and $100k from startup partners.</p>
-        <div class="flex justify-center items-center space-x-4 mb-8">
-          <img src="https://via.placeholder.com/100x50?text=Brex" alt="Brex" class="h-10" />
-          <img src="https://via.placeholder.com/100x50?text=Notion" alt="Notion" class="h-10" />
-          <img src="https://via.placeholder.com/100x50?text=Y+Combinator" alt="Y Combinator" class="h-10" />
-          <img src="https://via.placeholder.com/100x50?text=Retool" alt="Retool" class="h-10" />
-          <img src="https://via.placeholder.com/100x50?text=Asana" alt="Asana" class="h-10" />
+        <div class="flex justify-center items-center space-x-4 mb-8 overflow-hidden w-full">
+          <Partners />
         </div>
       </div>
       <Footer />
     </div>
   )
-
-
-
-  // return (
-
-  //   <div>
-
-  //     <div className='credit-card-container'>
-  //       <Title subTitle='Credit Cards' title='Simplify Your Business Expenses' />
-
-  //       {/* Card with credit card content */}
-  //       <div className="credit-card-card" id="card1">
-  //         <div className="card-body">
-  //           <h5 className="card-title">At Altaneo, we understand the importance of simplifying business expenses and managing cash flow efficiently. That's why we offer comprehensive corporate credit card solutions tailored to meet the unique needs of your business.</h5>
-  //           <p className="card-text">
-  //             With Altaneo's corporate credit cards, you can enjoy enhanced purchasing power, rewards, and benefits, all while gaining insights and control over your expenses.
-  //           </p>
-  //         </div>
-  //       </div>
-
-  //       {/* Benefits of Altaneo's Corporate Credit Cards */}
-  //       <div className="credit-card-card" id="card2">
-  //         <div className="card-body">
-  //           <h5 className="card-title">Benefits of Altaneo's Corporate Credit Cards</h5>
-  //           <ul className="card-text">
-  //             <li><strong>Enhanced Purchasing Power:</strong> Altaneo's corporate credit cards provide your business with increased spending flexibility, allowing you to make necessary purchases without liquidity constraints.</li>
-  //             <li><strong>Rewards and Benefits:</strong> Take advantage of rewards programs and benefits tailored to suit your business needs, including cashback, travel rewards, and discounts on business-related expenses.</li>
-  //             <li><strong>Expense Management:</strong> Gain insights and control over your expenses with detailed transaction reporting and expense management tools. Monitor spending patterns, track individual card usage, and streamline expense reimbursement processes.</li>
-  //             <li><strong>Improved Cash Flow:</strong> Altaneo's corporate credit cards help improve cash flow by providing access to revolving credit lines. This enables you to manage short-term cash needs and optimize working capital.</li>
-  //             <li><strong>Security and Fraud Protection:</strong> Protect your business against unauthorized transactions and fraudulent activity with advanced security features, including fraud monitoring, purchase protection, and liability protection.</li>
-  //           </ul>
-  //         </div>
-  //       </div>
-
-  //     </div>
-  //     {/* <Title subTitle='Introducing Altaneo: Revolutionizing Corporate Spending' title='' />
-
-  //     <DualPaneLayout/> */}
-  //     <CreditCardServicebox/>
-  //     <Title subTitle='Businesses Altaneofied' title='Where are you?' />
-  //       <Partner />
-
-  //       <Title subTitle='Committed Numbers ' title='Satisfied Base Customers' />
-  //       <Numbers />
-  //       <Title subTitle='Contact Us' title='Get in Touch' />
-  //       <Touch />
-  //       <Footer />
-  //       <Bot/>
-  //   </div>
-  // );
-};
+}
 
 export default CreditCardPage;

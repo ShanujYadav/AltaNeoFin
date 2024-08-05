@@ -1,10 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import './Footer.css';
 import logo from '../../../public/assets/logo/AnLogo.png';
-
-import { Link as ScrollLink } from 'react-scroll';
 import CookieConsent from 'react-cookie-consent';
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebookF, faTwitter, faYoutube, faLinkedinIn, faInstagram } from '@fortawesome/free-brands-svg-icons';
 

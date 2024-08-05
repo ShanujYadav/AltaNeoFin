@@ -1,19 +1,19 @@
 import React from 'react';
-import Navbar from '../../Navbar/Navbar';
 import Footer from '../../Footer/Footer';
 import Bot from '../../Bot/bot';
+import Topbar from '../../common/Topbar';
 
 
 const RefundPolicy = () => {
   return (
     <div>
-      <Navbar />
-      <div class="grid min-h-[140px] w-full place-items-center overflow-x-scroll rounded-lg p-6 lg:overflow-visible mt-5">
-        <div role="alert" class="relative text-center min-h-[120px] w-full text-base font-regular px-4 py-4 rounded-lg bg-blue-200 text-white flex items-center justify-center">
-          <h1 class="font-bold text-black text-4xl font-serif">Refund Policy</h1>
-        </div>
-      </div>
-
+      <Topbar
+      title='Refund Policy'
+      desc=""
+      from="Home"
+      to="Refund Policy"
+      />
+      
       <div class="grid w-full place-items-center overflow-x-scroll rounded-lg p-6 lg:overflow-visible">
         <div role="alert" class="relative w-full text-base font-regular px-4 py-4 rounded-lg">
           <h2 className='mt-3 text-2xl	 font-semibold'>For Charge Back Transactions:</h2>

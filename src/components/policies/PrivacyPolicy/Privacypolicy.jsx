@@ -1,24 +1,21 @@
 import React from 'react';
-import Navbar from '../../Navbar/Navbar';
 import Footer from '../../Footer/Footer';
-import Title from '../../Title/Title';
 import Bot from '../../Bot/bot'
+import Topbar from '../../common/Topbar';
 
 
 const Privacypolicy = () => {
   return (
     <div>
-      <Navbar />
-      <div class="grid min-h-[140px] w-full place-items-center overflow-x-scroll rounded-lg p-6 lg:overflow-visible mt-5">
-        <div role="alert" class="relative text-center min-h-[120px] w-full text-base font-regular px-4 py-4 rounded-lg bg-blue-200 text-white flex items-center justify-center">
-          <h1 class="font-bold text-black text-4xl font-serif">Privacy Policy</h1> 
-        </div>
-      </div>
-      <p className='text-sm px-6'>This privacy policy sets out the information practices we follow, including the type of
+      <Topbar
+        title="Privacy Policy"
+        desc="This privacy policy sets out the information practices we follow, including the type of
         information collected, how the information is collected, how the information is used, and
-        with whom it is shared.
-      </p>
-
+        with whom it is shared."
+        from="Home"
+        to="Privacy Policy"
+      />
+      
       <div class="grid w-full place-items-center overflow-x-scroll rounded-lg p-6 lg:overflow-visible">
         <div role="alert" class="relative w-full text-base font-regular px-4 py-4 rounded-lg">
           <h2 className='mt-3 text-2xl	 font-semibold'>Definitions</h2>
@@ -83,7 +80,7 @@ const Privacypolicy = () => {
         </div>
       </div>
       <Footer />
-      <Bot /> 
+      <Bot />
     </div>
   )
 }
