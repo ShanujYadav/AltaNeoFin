@@ -2,20 +2,20 @@ import React from 'react';
 import './TeamPage.css';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import ceoImg from '../../assets/img/ceoImg.png'
+
+import ceoImg from '../../../public/assets/img/ceoImg.png'
 import ctaImg from '../../assets/img/ctaImg.png'
 import dirImg from '../../assets/img/directorImg.png'
 
-import dhiren from '../../assets/img/dhiren.png'
-import shanuj from '../../assets/img/shanuj.jpg'
-import himanshu from '../../assets/img/himanshu.png'
-import ayushi from '../../assets/img/ayushi.png'
-import prerna from '../../assets/img/prerna.png'
-import sanskruti from '../../assets/img/sanskruti.png'
+import dhiren from '../../../public/assets/img/dhiren.png'
+import shanuj from '../../../public/assets/img/shanuj.png'
+import himanshu from '../../../public/assets/img/himanshu.png'
+import ayushi from '../../../public/assets/img/ayushi.png'
+import sanskruti from '../../../public/assets/img/sanskruti.png'
+
+
 import Topbar from '../common/Topbar';
 import Footer from '../Footer/Footer';
-
-
 
 const TeamPage = () => {
   const teamMembers = [
@@ -55,12 +55,6 @@ const TeamPage = () => {
       photo: ayushi,
       description: 'A dynamic digital marketing expert with over two years of experience in creating impactful marketing strategies. I have Completed MBA with a dual specialization in Marketing and Finance, equipping with a robust understanding of market analytics and financial insights. I have successfully executed a range of digital campaigns, from social media marketing to content creation and email marketing.'
     },
-    // {
-    //   name: 'Prerna Goyal',
-    //   role: 'Finance Intern',
-    //   photo: prerna,
-    //   description: 'As a Finance Intern, I have the opportunity to learn and grow my career in the finance field. I am pursuing MBA with a dual specialization in the Finance and Marketing domain. My passion for finance, coupled with marketing acumen, positions me well for a promising career in the fintech industry.'
-    // },
     {
       name: 'Himanshu Narwal',
       role: 'Software Intern',
@@ -71,7 +65,7 @@ const TeamPage = () => {
       name: 'Sanskruti Ghosh',
       role: 'Accounts Intern',
       photo: sanskruti,
-      description: 'I am thrilled to join the team as an Accounts Intern. I have completed my degree in Bachelors in Commerce (Hons) from University of Delhi, where I have developed a strong foundation in financial accounting, management accounting, and financial data management. My passion for numbers and keen attention to detail have driven me to seek practical experience in the field of accounting. I am excited about the opportunity to apply my academic knowledge and analytical skills to real-world scenarios, and I look forward to contributing to the teams success while gaining valuable insights and experience.'
+      description: 'I hold a Bachelor degree in Commerce (Hons) from the University of Delhi, where I built a robust foundation in financial accounting, management accounting, and financial data management. My passion for numbers and meticulous attention to detail have motivated me to pursue practical experience in accounting and finance. I am eager to leverage my academic knowledge and analytical skills in real-world applications and look forward to contributing to the teams success while gaining valuable insights and experience.'
     },
   ]
 
