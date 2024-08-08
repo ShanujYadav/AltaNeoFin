@@ -2,7 +2,7 @@ import React from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import ceo from '../../assets/img/ceoImg.png';
+import ceo from '../../../public/assets/img/ceoImg.png'
 import director from '../../assets/img/directorImg.png';
 import cta from '../../assets/img/ctaImg.png';
 
