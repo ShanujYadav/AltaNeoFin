@@ -43,6 +43,8 @@ import AboutUsPage from './components/About/AboutUsPage';
 import ProductPage from './components/products/ProductPage';
 import Products from './components/products/Products';
 import CareerPage from './components/careers/CareerPage';
+import EdQueryPage from './components/products/EDQuery/EdQueryPage';
+import Numbers from './components/common/Numbers';
 
 
 
@@ -75,6 +77,7 @@ const App = () => {
             <Route exact path='/products/vendorFinancing' component={VendorFinancingPage} />
             <Route exact path='/products/exportCredits' component={ExportCreditPage} />
             <Route exact path='/products/creditCard' component={CreditCardPage} />
+            <Route exact path='/products/edQuerySolutions' component={EdQueryPage} />
 
             <Route exact path='/blogs' component={Blogs} />
             <Route exact path='/blogs/supplyChainFinance' component={SupplyChainFinanceBlog} />
@@ -114,6 +117,7 @@ const Home = () => {
       <Title subTitle='' title='' />
       <Products />
       <About />
+      <Numbers/>
       <Title subTitle='Valued From leading brands' title='Leading Investors' />
       <Investors />
       <Title subTitle='Meet our team' title='Team' />
@@ -126,7 +130,7 @@ const Home = () => {
       <ContactUs />
       <Faqs />
       <Footer />
-      <Bot />
+      {/* <Bot /> */}
     </div>
   </>
   )

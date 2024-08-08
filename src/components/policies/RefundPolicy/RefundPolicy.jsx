@@ -9,11 +9,11 @@ const RefundPolicy = () => {
     <div>
       <Topbar
       title='Refund Policy'
-      desc=""
+      desc="At Altaneofin, we prioritise your satisfaction Users must notify Altaneo to claim a chargeback, as refunds are processed solely by Altaneo and not directly by Payment Service Providers."
       from="Home"
       to="Refund Policy"
       />
-      
+
       <div class="grid w-full place-items-center overflow-x-scroll rounded-lg p-6 lg:overflow-visible">
         <div role="alert" class="relative w-full text-base font-regular px-4 py-4 rounded-lg">
           <h2 className='mt-3 text-2xl	 font-semibold'>For Charge Back Transactions:</h2>

@@ -3,6 +3,10 @@ import { IoMailSharp } from "react-icons/io5";
 import { FaPhoneAlt } from "react-icons/fa";
 import { MdLocationPin } from "react-icons/md";
 import Captcha from './Captcha';
+import { toast } from 'react-toastify';
+
+
+let contactUrl = import.meta.env.VITE_CONTACT_URL
 
 
 const ContactUs = () => {
@@ -21,11 +25,12 @@ const ContactUs = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   }
 
-  const onChangeCaptcha=(value)=>{
+  const onChangeCaptcha = (value) => {
+    console.log(value);
+
     setIsCaptchaCorrect(value)
     setShowCapctaError(false)
   }
-
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -33,23 +38,35 @@ const ContactUs = () => {
       setShowCapctaError(true)
       return
     }
-    
+
     try {
-      const response = await sendRequest({
+      let body = {
+        name: formData.name,
+        phone: formData.phone,
+        email: formData.email,
+        message: formData.message
+      }
+      console.log('body---', body)
+      const response = await fetch("http://ec2-3-108-191-244.ap-south-1.compute.amazonaws.com:8080/submitContactForm", {
         method: 'POST',
-        url: 'http://localhost:8080/submitContactForm',
-        data: formData
+        body: JSON.stringify(body),
+        headers: { "Content-type": "application/json" }
       })
-      console.log(response.data);
-      setFormData({
-        name: '',
-        phone: '',
-        email: '',
-        message: ''
-      })
-      setFormKey(Date.now())
+      const res = await response.json()
+      console.log('response-----', res)
+
+      if (res) {
+        setFormData({
+          name: '',
+          phone: '',
+          email: '',
+          message: ''
+        })
+        toast.success('Thank You!')
+        return
+      }
     } catch (error) {
-      console.error('Error:', error)
+      console.error('Err:', error)
     }
   }
 
@@ -88,7 +105,7 @@ const ContactUs = () => {
           </div>
 
           <div className="flex-1 p-6 bg-gray-100 rounded-lg w-full">
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <form className="space-y-4">
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-gray-700">Name</label>
                 <input
@@ -156,6 +173,7 @@ const ContactUs = () => {
                 <button
                   type="submit"
                   className="inline-flex items-center py-2 px-4 mt-4 md:mt-0 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                  onClick={handleSubmit}
                 >Send
                 </button>
               </div>
@@ -164,7 +182,6 @@ const ContactUs = () => {
         </div>
       </div>
     </section>
-  );
-};
-
+  )
+}
 export default ContactUs

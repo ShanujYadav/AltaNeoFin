@@ -19,9 +19,9 @@ useEffect(()=>{
 
   const [data, setData] = useState({
     mobile: '',
-    otp: '',
+    otp: ''
   })
-
+  
   const onChangeMobile = (e) => {
     const enteredMobile = e.target.value.replace(/\D/g, '').slice(0, 10)
     setData({ ...data, mobile: enteredMobile })

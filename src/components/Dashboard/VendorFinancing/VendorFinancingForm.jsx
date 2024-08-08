@@ -7,27 +7,27 @@ import 'react-responsive-modal/styles.css';
 import { Modal } from 'react-responsive-modal';
 import RmBox from '../RmBox';
 import { toast } from 'react-toastify';
-
 const todayDate = new Date()
+
 let baseUrl = import.meta.env.VITE_SOME_KEY
 
 const VendorFinancingForm = () => {
   const phone = sessionStorage.getItem('phone')
   const uuid = sessionStorage.getItem('uuid')
-  // let uuid = 'abc123'
+  // let uuid = '90de43cd-967c-4fa7-a6e0-c08bb7c82793'
 
   const history = useHistory();
   const dispatch = useDispatch();
   const profileDetails = useSelector((state) => state.profile)
   const [step, setStep] = useState(1)
-
-  const [openSuccessModal, setOpenSuccessModal] = useState(false);
+  const [openSuccessModal, setOpenSuccessModal] = useState(true)
   const [date, setDate] = useState('')
   const [bankStatement, setBankStatementFile] = useState(null);
   const [purchaseOrder, setPurchaseOrderFile] = useState(null);
   const [copyOfAgreement, setCopyOfAgreementFile] = useState(null);
   const [auditedFinancials, setAuditedFinancialsFile] = useState(null);
-  const [selectedRange, setSelectedRange] = useState(null);
+  const [selectedRange, setSelectedRange] = useState(null)
+  const [showGstNoDiv, setShowGstNoDiv] = useState(false)
 
 
 
@@ -39,26 +39,6 @@ const VendorFinancingForm = () => {
   }, [])
 
 
-  const [showError, setShowError] = useState({
-    annualTurnover: false,
-    panNo: false,
-    name: false,
-    email: false,
-    dob: false,
-    gender: false,
-    pinCode: false,
-    gstRegistered: false,
-    gstNo: false,
-    businessType: false,
-    businessAge: false,
-    businessPinCode: false,
-    yearlySales: false,
-    bankStatement: false,
-    auditedFinancials: false,
-    purchaseOrder: false,
-    copyOfAgreement: false,
-  })
-
   const [data, setData] = useState({
     annualTurnover: '',
     panNo: '',
@@ -69,13 +49,14 @@ const VendorFinancingForm = () => {
     gender: '',
     pinCode: '',
 
-    gstRegistered: '',
+    gstRegistered: false,
     gstNo: '',
     businessType: '',
     businessAge: '',
     businessPinCode: '',
     yearlySales: '',
     msmeCft: '',
+    buyerName: '',
   })
 
   const [saveData,setSaveData]=useState({
@@ -85,10 +66,18 @@ const VendorFinancingForm = () => {
   })
 
   const onChangeHandler = (value, name) => {
-    setShowError({ ...showError, [name]: false })
     setData({ ...data, [name]: value })
   }
 
+  const  onSelectGstReg=(value)=>{
+    if(value){
+      setShowGstNoDiv(true)
+    }
+    else{
+      setShowGstNoDiv(false)
+    }
+    setData({ ...data, gstRegistered:value})
+  }
   const onChangeDate = (e) => {
     let originalDate=e.target.value
     let [year, month, day] = originalDate.split("-")
@@ -184,9 +173,15 @@ const onSaveUserDetails = async (e) => {
 
   const onSubmitThirdForm = async (e) => {
     e.preventDefault()
-    if(!data.gstRegistered || !data.businessType || !data.businessPinCode || !data.gstNo || !data.businessAge || !data.yearlySales){
+    if(!data.businessType || !data.businessPinCode || !data.businessAge || !data.yearlySales){
       toast.error('Please Fill All Fields !')
       return
+    }
+    if(showGstNoDiv){
+      if(!data.gstNo){
+        toast.error('Please Enter Gst Number')
+        return
+      }
     }
   try {
     let yearlySales=Number(data.yearlySales)
@@ -221,10 +216,11 @@ const onSaveUserDetails = async (e) => {
 
 
   const onClickSubmit = async (e) => {
-    if (!bankStatement || !auditedFinancials || !copyOfAgreement || !purchaseOrder ) {
+    if (!bankStatement || !auditedFinancials || !copyOfAgreement || !purchaseOrder || !data.buyerName) {
       toast.error('Fill All fields !')
       return
     }
+
     else {
       const formData = new FormData()
       formData.append('copyOfAgreement', copyOfAgreement)
@@ -232,8 +228,9 @@ const onSaveUserDetails = async (e) => {
       formData.append('auditedFinancials', auditedFinancials)
       formData.append('bankStatement', bankStatement)
       console.log([...formData])
-      console.log('body---',formData)
-      const response = await fetch(`${baseUrl}/documents/upload?uuid=${uuid}`, {
+      console.log('formData---',formData)
+      console.log('data---',data)
+      const response = await fetch(`${baseUrl}/documents/upload?uuid=${uuid}&buyerName=${data.buyerName}`, {
         method: "POST",
         body: formData,
         headers: {// 'Content-Type': 'multipart/form-data'
@@ -241,7 +238,7 @@ const onSaveUserDetails = async (e) => {
       })
       const res = await response.json();
       console.log('res---', res)
-      if (res.statusCode === 200) {
+      if (res.statusCode === 200){
         setOpenSuccessModal(true)
       }
     }
@@ -249,7 +246,7 @@ const onSaveUserDetails = async (e) => {
 
   const onCloseSuccessModal = () => {
     history.push('/')
-    setOpen(false);
+    setOpen(false)
   }
 
   
@@ -321,6 +318,7 @@ const onSaveUserDetails = async (e) => {
                   />
                   <hr className="border-gray-800" />
                 </div>
+
               </div>
               <div className="mt-4">
                 <label className="block text-lg font-medium text-gray-700 mb-1">PAN Card Number</label>
@@ -408,30 +406,13 @@ const onSaveUserDetails = async (e) => {
               <h1 class="text-3xl font-bold text-gray-800">Application for vendor financing</h1>
               <p class="text-gray-500 text-base">Add your personal information</p>
             </div>
-
-            <div class="flex flex-col sm:items-center sm:space-x-2 mt-4 sm:mt-0 space-y-2 sm:space-y-0">
-              <p class="text-gray-500 text-base sm:mb-0 mb-2">Ask your queries and doubts on</p>
-              <div class="flex flex-col sm:flex-row sm:space-x-2 space-y-2 sm:space-y-0">
-                <button class="flex items-center bg-green-500 text-white px-2 py-1 rounded-md">
-                  <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 0C5.371 0 0 5.371 0 12s5.371 12 12 12 12-5.371 12-12S18.629 0 12 0zm.225 17.025l-5.68-5.68 1.502-1.502 4.179 4.179 7.697-7.697 1.502 1.502-9.2 9.198z" />
-                  </svg>
-                  On WhatsApp
-                </button>
-                <button class="flex items-center bg-blue-500 text-white px-2 py-1 rounded-md">
-                  <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 2a10 10 0 00-3.55 19.383c.562.104.768-.242.768-.539v-1.968c-3.117.678-3.772-1.505-3.772-1.505-.511-1.299-1.246-1.644-1.246-1.644-1.019-.696.078-.683.078-.683 1.125.08 1.719 1.156 1.719 1.156 1.003 1.718 2.631 1.222 3.272.934.102-.727.393-1.222.716-1.504-2.486-.28-5.103-1.243-5.103-5.537 0-1.223.437-2.222 1.156-3.007-.12-.282-.502-1.419.102-2.96 0 0 .945-.301 3.094 1.148a10.765 10.765 0 012.813-.383 10.782 10.782 0 012.813.383c2.149-1.449 3.094-1.148 3.094-1.148.605 1.541.222 2.678.102 2.96.72.785 1.156 1.784 1.156 3.007 0 4.307-2.623 5.252-5.117 5.524.405.348.764 1.034.764 2.086v3.097c0 .301.206.646.77.539A10 10 0 0012 2z" />
-                  </svg>
-                  Schedule a Meeting
-                </button>
-              </div>
-            </div>
+          <RmBox/>
           </div>
           <hr class="border-gray-800" />
           <form>
             <div className="grid grid-cols-1 mt-4 md:grid-cols-2 gap-8">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Date of Birth</label>
+                <label className="block text-sm font-bold text-gray-700 mb-1">Date of Birth</label>
                 <input
                   type="date"
                   value={date}
@@ -441,7 +422,7 @@ const onSaveUserDetails = async (e) => {
                 <hr class="border-gray-800" />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Gender</label>
+                <label className="block text-sm font-bold text-gray-700 mb-1">Gender</label>
                 <div className="flex gap-2 mt-2">
                   {['Male', 'Female'].map((gender, index) => (
                     <button
@@ -458,7 +439,7 @@ const onSaveUserDetails = async (e) => {
               </div>
             </div>
             <div className="mt-4">
-              <label className="block text-sm font-medium text-gray-700 mb-1">PIN Code</label>
+              <label className="block text-sm font-bold text-gray-700 mb-1">PIN Code</label>
               <input
                 type="tel"
                 value={data.pinCode}
@@ -535,14 +516,14 @@ const onSaveUserDetails = async (e) => {
                   <button
                     type="button"
                     className={`px-4 py-2 rounded ${data.gstRegistered === true ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-700'}`}
-                    onClick={() => setData({ ...data, gstRegistered:true})}
+                    onClick={() => onSelectGstReg(true)}
                   >
                     Yes
                   </button>
                   <button
                     type="button"
                     className={`px-4 py-2 rounded ${data.gstRegistered === false ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-700'}`}
-                    onClick={() => setData({ ...data, gstRegistered:false})}
+                    onClick={() => onSelectGstReg(false)}
                   >
                     No
                   </button>
@@ -555,10 +536,12 @@ const onSaveUserDetails = async (e) => {
                   value={data.businessType}
                   name='businessType'
                   onChange={(e) => onChangeHandler(e.target.value, e.target.name)}
-                >
+                  >
                   <option value="">Select Business Type</option>
-                  <option value="Retail">Retail</option>
-                  <option value="Private">Private</option>
+                  <option value="Manufacturing">Manufacturing</option>
+                  <option value="Trading">Trading</option>
+                  <option value="Services">Services</option>
+                  <option value="Others">Others</option>
                 </select>
                 <hr className="border-gray-800 w-50" />
               </div>
@@ -575,6 +558,7 @@ const onSaveUserDetails = async (e) => {
                 />
                 <hr className="border-gray-800 w-50" />
               </div>
+
               {/* <div className="mt-6">
                 <label className="block text-gray-700 text-sm font-bold mb-2">UDYAM / MSME Certification (Optional)</label>
                 <input
@@ -585,17 +569,20 @@ const onSaveUserDetails = async (e) => {
               </div> */}
             </div>
             <div className="flex-1 bg-gray-100 p-4">
+              {showGstNoDiv && (
               <div className="w-full mb-4">
-                <label className="block text-gray-700 text-sm font-bold mb-2">GST Registration Number</label>
-                <input
-                  type="text"
-                  placeholder="GST Registration Number"
-                  className="w-full py-2 px-3 text-md bg-gray-100 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                  value={data.gstNo}
-                  onChange={(e) => onChangeGSTNumber(e.target.value)}
-                />
+              <label className="block text-gray-700 text-sm font-bold mb-2">GST Registration Number</label>
+              <input
+                type="text"
+                placeholder="GST Registration Number"
+                className="w-full py-2 px-3 text-md bg-gray-100 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                value={data.gstNo}
+                onChange={(e) => onChangeGSTNumber(e.target.value)}
+                  />
                 <hr className="border-gray-800 w-50" />
               </div>
+              )}
+          
               <div className="mt-6">
                 <label className="block text-gray-700 text-sm font-bold mb-2">Business Age</label>
                 <input
@@ -639,7 +626,6 @@ const onSaveUserDetails = async (e) => {
         </div>
       )}
 
-
       {step === 4 && (
         <div className="max-w-4xl lg:max-w-full mx-auto bg-gray-100 p-8 rounded-md">
           <ol class="flex items-center w-full text-xs text-gray-900 font-medium sm:text-base ml-4 sm:ml-12">
@@ -678,8 +664,9 @@ const onSaveUserDetails = async (e) => {
           </div>
           <hr className="border-gray-800" />
           <div className="container mx-auto p-4">
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="bg-gray-100 p-4 rounded-lg">
+              <div className="bg-gray-100 p-3 rounded-lg">
                 <label className="block text-gray-700 text-lg font-bold mb-2">Bank Statement (Past 12 months)</label>
                 <input
                   type="file"
@@ -687,7 +674,7 @@ const onSaveUserDetails = async (e) => {
                   onChange={(e) => onFileChange(e, setBankStatementFile)}
                 />
               </div>
-              <div className="bg-gray-100 p-4 rounded-lg">
+              <div className="bg-gray-100 p-3 rounded-lg">
                 <label className="block text-gray-700 text-lg font-bold mb-2">Copy Of Agreement</label>
                 <input
                   type="file"
@@ -695,7 +682,7 @@ const onSaveUserDetails = async (e) => {
                   onChange={(e) => onFileChange(e, setCopyOfAgreementFile)}
                 />
               </div>
-              <div className="bg-gray-100 p-4 rounded-lg">
+              <div className="bg-gray-100 p-3 rounded-lg">
                 <label className="block text-gray-700 text-lg font-bold mb-2">Audited Financials</label>
                 <input
                   type="file"
@@ -703,7 +690,7 @@ const onSaveUserDetails = async (e) => {
                   onChange={(e) => onFileChange(e, setAuditedFinancialsFile)}
                 />
               </div>
-              <div className="bg-gray-100 p-4 rounded-lg">
+              <div className="bg-gray-100 p-3 rounded-lg">
                 <label className="block text-gray-700 text-lg font-bold mb-2">Purchase Order</label>
                 <input
                   type="file"
@@ -711,14 +698,25 @@ const onSaveUserDetails = async (e) => {
                   onChange={(e) => onFileChange(e, setPurchaseOrderFile)}
                 />
               </div>
-            </div>
-            <div className="flex flex-col sm:flex-row justify-between mt-8">
+
+              <div className='px-4'>
+                  <label className="block text-lg font-medium text-gray-700 mb-1">Buyer Name</label>
+                  <input
+                    type="text"
+                    name="buyerName"
+                    value={data.buyerName}
+                    onChange={(e) => onChangeHandler(e.target.value, e.target.name)}
+                    placeholder="Enter your Buyer Name"
+                    className="w-1/2  bg-gray-100 py-2 px-3 text-md text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                  />
+                  <hr className="border-gray-800" />
+                </div>
+
+                <div className="flex flex-col sm:flex-row justify-between mt-8">
               <button
                 type="button"
-
                 className="w-full sm:w-auto mb-0 mt-14 sm:mb-0 px-4 py-2 rounded-md bg-gray-100 text-gray-700 hover:bg-yellow-300 focus:outline-none"
               >
-
               </button>
               <button
                 type="button"
@@ -728,6 +726,9 @@ const onSaveUserDetails = async (e) => {
                 Submit this application form
               </button>
             </div>
+
+            </div>
+       
           </div>
         </div>
       )}
@@ -757,6 +758,11 @@ const onSaveUserDetails = async (e) => {
 }
 
 export default VendorFinancingForm
+
+
+
+
+
 
 
 

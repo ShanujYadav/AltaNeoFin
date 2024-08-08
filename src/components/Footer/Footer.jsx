@@ -2,9 +2,11 @@ import React from 'react';
 import './Footer.css';
 import logo from '../../../public/assets/logo/AnLogo.png';
 import CookieConsent from 'react-cookie-consent';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFacebookF, faTwitter, faYoutube, faLinkedinIn, faInstagram } from '@fortawesome/free-brands-svg-icons';
-
+import { RiTwitterXFill } from "react-icons/ri";
+import { FaFacebookF } from "react-icons/fa";
+import { FaYoutube } from "react-icons/fa6";
+import { FaLinkedinIn } from "react-icons/fa";
+import { GrInstagram } from "react-icons/gr";
 
 const Footer = () => {
   const onAcceptCookiee = () => {
@@ -64,7 +66,7 @@ const Footer = () => {
 
   return (<>
     <footer class="bg-gradient-to-r from-blue-950 to-black" aria-labelledby="footer-heading">
-    {/* <footer class="bg-black" aria-labelledby="footer-heading"> */}
+      {/* <footer class="bg-black" aria-labelledby="footer-heading"> */}
       <h2 id="footer-heading" class="sr-only">Footer</h2>
       <div class="mx-auto max-w-7xl px-6 pb-8 pt-16 sm:pt-24 lg:px-8 lg:pt-32">
         <div class="xl:grid xl:grid-cols-3 xl:gap-8">
@@ -73,19 +75,19 @@ const Footer = () => {
             <p class="text-sm leading-6 text-gray-400">Empowering Growth Through Seamless Financial Solutions</p>
             <div class="flex space-x-6">
               <a target="_blank" href="https://www.facebook.com/share/1x5SMtKzBUShnod2/?mibextid=LQQJ4d" class="text-white hover:text-gray-500">
-                <FontAwesomeIcon icon={faFacebookF} />
+                <FaFacebookF />
               </a>
               <a target="_blank" href="https://x.com/AltaneoFin" class="text-white hover:text-blue-4    00">
-                <FontAwesomeIcon icon={faTwitter} />
+                <RiTwitterXFill />
               </a>
               <a target="_blank" href="https://youtube.com/@altaneofin?si=oYQH2WO4iXDAqLeK" class="text-white hover:text-gray-500">
-                <FontAwesomeIcon icon={faYoutube} />
+                <FaYoutube size={20} />
               </a>
               <a target="_blank" href="https://www.linkedin.com/company/altaneofin/" class="text-white hover:text-gray-500">
-                <FontAwesomeIcon icon={faLinkedinIn} /> 
+                <FaLinkedinIn />
               </a>
               <a target="_blank" href="https://www.instagram.com/altaneo_fin/" class="text-white hover:text-gray-500">
-                <FontAwesomeIcon icon={faInstagram} />
+                <GrInstagram />
               </a>
             </div>
           </div>
@@ -107,6 +109,9 @@ const Footer = () => {
                   <li>
                     <a href="/products/creditCard" class="text-sm leading-6 text-gray-400 hover:text-blue-900">Corp. Credit Cards</a>
                   </li>
+                  <li>
+                    <a href="/products/edQuerySolutions" class="text-sm leading-6 text-gray-400 hover:text-blue-900">Ed Query Soln.</a>
+                  </li>
                 </ul>
               </div>
               <div class="mt-10 md:mt-0">
@@ -126,6 +131,9 @@ const Footer = () => {
                   </li>
                   <li>
                     <a href="/siCaclucator" class="text-sm leading-6 text-gray-400 hover:text-blue-900">Calculator</a>
+                  </li>
+                  <li>
+                    <a href="/careers" class="text-sm leading-6 text-gray-400 hover:text-blue-900">Careers</a>
                   </li>
                 </ul>
               </div>

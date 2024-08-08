@@ -64,6 +64,10 @@ const Navbar = () => {
               <a href="/products/creditCard">
                 Credit Cards
               </a>
+              <br />
+              <a href="/products/edQuerySolutions">
+                ED Query Solutions
+              </a>
             </div>
           </li>
           <li>
@@ -77,12 +81,12 @@ const Navbar = () => {
             </a>
           </li>
           <li>
-          <a href="/blogs">
+            <a href="/blogs">
               Blogs
             </a>
           </li>
           <li>
-          <a href="/aboutUs">
+            <a href="/aboutUs">
               About Us
             </a>
           </li>

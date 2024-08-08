@@ -6,6 +6,8 @@ import Captcha from './Captcha';
 import mapImg from '../../../public/assets/img/mapImg.png'
 import Footer from '../Footer/Footer';
 import Topbar from '../common/Topbar';
+import { RiCoupon3Fill } from 'react-icons/ri';
+import ContactUs from './ContactUs';
 
 
 
@@ -93,8 +95,7 @@ const ContactUsPage = () => {
                 </div>
             </div>
 
-
-            <section className="my-5">
+            {/* <section className="my-5">
                 <div className="py-1 sm:py-16 block lg:py-24 relative bg-opacity-50 z-0">
 
                     <div className="flex flex-col h-[25rem] md:flex-row justify-between items-start mt-10 mx-auto max-w-5xl">
@@ -167,8 +168,9 @@ const ContactUsPage = () => {
                         </div>
                     </div>
                 </div>
-            </section>
+            </section> */}
 
+            <ContactUs />            
             <Footer />
         </div>
     )

@@ -20,6 +20,7 @@ const DashboardHome = () => {
         }
     }, [])
 
+    
     return (
         <div class="max-w-4xl lg:max-w-full mx-auto bg-gray-100 p-8 rounded-md shadow-md">
             <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6">
@@ -49,20 +50,20 @@ const DashboardHome = () => {
                     </div> */}
                 </div>
                 <div class="mt-6">
-                    <ul class="flex flex-col md:flex-row md:space-x-4 space-y-2 md:space-y-0 border-b">
+                    {/* <ul class="flex flex-col md:flex-row md:space-x-4 space-y-2 md:space-y-0 border-b">
                         <li class="mr-1 md:mr-0">
                             <a class="block py-2 px-4 text-blue-600 border-b-2 border-blue-600 md:border-none md:border-b-2 md:border-transparent hover:border-blue-600" href="#">All Loans</a>
                         </li>
-                        {/* <li class="mr-1 md:mr-0">
+                        <li class="mr-1 md:mr-0">
                             <a class="block py-2 px-4 text-gray-600 hover:text-blue-600 border-b-2 border-transparent md:border-none md:border-b-2 md:border-transparent hover:border-blue-600" href="#">Pending Loans (3)</a>
                         </li>
                         <li class="mr-1 md:mr-0">
                             <a class="block py-2 px-4 text-gray-600 hover:text-blue-600 border-b-2 border-transparent md:border-none md:border-b-2 md:border-transparent hover:border-blue-600" href="#">Approved Loans (2)</a>
-                        </li> */}
-                    </ul>
+                        </li>
+                    </ul> */}
                 </div>
             </div>
-            <div class="overflow-x-auto">
+            {/* <div class="overflow-x-auto">
                 <table class="min-w-full bg-gray-100">
                     <thead>
                         <tr>
@@ -106,7 +107,7 @@ const DashboardHome = () => {
                         </tr>
                     </tbody>
                 </table>
-            </div>
+            </div> */}
         </div>
 
     )

@@ -1,28 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import Footer from '../Footer/Footer';
+import Topbar from '../common/Topbar';
 
 const jobs = [
     {
         category: 'Sales',
         roles: [
             {
-                title: 'Business Development Executive',
+                title: 'Search Engine Optimization (2-3 yr)',
                 location: 'Gurugram, Haryana',
                 type: 'Full Time',
-                description: 'Lead Generation using portals like linkedin etc. Outbound sales Developing and executing sales strategies to grow business Maintaining and updating sales and business development documentation Support...'
+                description: 'SEO strategy development, keyword research, on-page and off-page optimization, Google Analytics, content marketing, and link building.'
             },
             {
-                title: 'Business Development Intern',
+                title: 'Tele Sales Representative (0-1 yr)',
                 location: 'Gurugram, Haryana',
                 type: 'Full Time',
-                description: 'Business Development Intern duties and responsibilities: Developing and executing sales plans to meet and exceed monthly and quarterly sales goals Growing business through the development of new l...'
+                description: 'Excellent communication skills, sales skills, customer service, basic computer knowledge, and a positive attitude.'
             },
-            {
-                title: 'Business Development Intern',
-                location: 'Gurugram, Haryana',
-                type: 'Full Time',
-                description: 'Business Development Intern duties and responsibilities: Developing and executing sales plans to meet and exceed monthly and quarterly sales goals Growing business through the development of new l...'
-            }
         ]
     },
 
@@ -54,11 +49,19 @@ const CareerPage = () => {
         setDisplayedJobs(filteredJobs);
     }, [searchTerm, departmentFilter, locationFilter]);
 
+
     return (
+        <> 
+        <Topbar
+        title="Careers" 
+        from="Home"
+        to="Careers"
+        desc="Join us and be a part of an innovative and dynamic team! "
+        />
         <div className="bg-gray-100 min-h-screen">
             <section className="py-10 mt-8">
                 <div className="container mx-auto">
-                    <h2 className="text-3xl font-bold font-serif italic text-center mb-6">Open Positions</h2>
+                    <h2 className="text-5xl font-bold  font-serif text-center mb-6">Current Openings</h2>
 
                     <div className="flex flex-col md:flex-row items-center justify-center mb-6 space-y-4 md:space-y-0 md:space-x-4">
                         <select className="border border-gray-300 p-2 rounded" onChange={(e) => setDepartmentFilter(e.target.value)}>
@@ -89,27 +92,42 @@ const CareerPage = () => {
 
                     {displayedJobs.map((category, idx) => (
                         <div key={idx} className="mb-10">
-                            <h3 className="text-xl font-semibold text-purple-600 ml-2 mb-4">{category.category}</h3>
-                            <div className="space-y-4">
+                            {/* <h3 className="text-xl font-semibold text-purple-600 ml-2 mb-4">{category.category}</h3> */}
+                            <div className="space-y-4 p-6">
                                 {category.roles.map((job, index) => (
-                                    <div key={index} className="bg-white p-6 rounded-lg shadow-md flex flex-col md:flex-row justify-between">
-                                        <div>
-                                            <h4 className="text-lg font-semibold">{job.title}</h4>
-                                            <p className="text-gray-700 text-base mb-2">{job.description}</p>
+                                    <div key={index} className="bg-white p-6 rounded-lg shadow-md">
+                                        <div className="flex flex-col md:flex-row justify-between">
+                                            <div>
+                                                <h4 className="text-lg font-semibold">{job.title}</h4>
+                                                <p className="text-gray-700 text-base mb-2">{job.description}</p>
+                                            </div>
+                                            <div className="text-right mt-4 md:mt-0">
+                                                <p className="text-gray-500 text-base">{job.location}</p>
+                                                <p className="text-gray-500 text-base">{job.type}</p>
+                                            </div>
                                         </div>
-                                        <div className="text-right mt-4 md:mt-0">
-                                            <p className="text-gray-500 text-base">{job.location}</p>
-                                            <p className="text-gray-500 text-base">{job.type}</p>
+                                        <hr className="mb-0 mt-1" />
+                                        <div className="flex justify-end">
+                                            <button
+                                                className="bg-blue-500 text-white font-serif italic text-sm rounded px-4 mt-1 py-2 hover:bg-blue-800"
+                                                onClick={() => window.location.href = 'mailto:hr@altaneofin.in'}
+                                            >
+                                                Apply Now
+                                            </button>
                                         </div>
+
+
                                     </div>
                                 ))}
                             </div>
                         </div>
                     ))}
+
                 </div>
             </section>
             <Footer/>
         </div>
+        </>
     );
 };
 

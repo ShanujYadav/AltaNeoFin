@@ -55,12 +55,12 @@ const TeamPage = () => {
       photo: ayushi,
       description: 'A dynamic digital marketing expert with over two years of experience in creating impactful marketing strategies. I have Completed MBA with a dual specialization in Marketing and Finance, equipping with a robust understanding of market analytics and financial insights. I have successfully executed a range of digital campaigns, from social media marketing to content creation and email marketing.'
     },
-    {
-      name: 'Prerna Goyal',
-      role: 'Finance Intern',
-      photo: prerna,
-      description: 'As a Finance Intern, I have the opportunity to learn and grow my career in the finance field. I am pursuing MBA with a dual specialization in the Finance and Marketing domain. My passion for finance, coupled with marketing acumen, positions me well for a promising career in the fintech industry.'
-    },
+    // {
+    //   name: 'Prerna Goyal',
+    //   role: 'Finance Intern',
+    //   photo: prerna,
+    //   description: 'As a Finance Intern, I have the opportunity to learn and grow my career in the finance field. I am pursuing MBA with a dual specialization in the Finance and Marketing domain. My passion for finance, coupled with marketing acumen, positions me well for a promising career in the fintech industry.'
+    // },
     {
       name: 'Himanshu Narwal',
       role: 'Software Intern',

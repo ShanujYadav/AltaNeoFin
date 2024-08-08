@@ -6,6 +6,8 @@ import creditCard from '../../../public/assets/img/creditCard.png'
 import vendorFinancing from '../../../public/assets/img/vendorFinnacing.avif'
 import invoiceDiscounting from '../../../public/assets/img/invoiceDiscounting.png'
 import exportCredits from '../../../public/assets/img/export.avif'
+import ed from '../../../public/assets/img/Ed.avif'
+
 import Topbar from '../common/Topbar'
 
 
@@ -106,6 +108,30 @@ const ProductPage = () => {
                             </div>
                             <div class="w-full md:w-1/2 px-10 my-10 md:mb-0">
                                 <img alt="..." class="w-full rounded-lg shadow-lg" src={creditCard} />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="w-full max-w-6xl rounded bg-white shadow-xl p-10 mb-14 lg:p-20 mx-auto text-gray-800 relative md:text-left">
+                        <div class="md:flex items-center -mx-10">
+                            <div class="w-full md:w-1/2 px-10 mb-10 md:mb-0">
+                                <img alt="..." class="w-full rounded-lg shadow-lg" src={ed} />
+                            </div>
+                            <div class="w-full md:w-1/2 px-10">
+                                <div class="mb-10">
+                                    <h1 class="font-bold  text-3xl mb-4 font-serif">ED Query Solutions</h1>
+                                    <p class="text-base font-serif text-justify">
+                                        We are pleased to announce a one-stop solution for all your ED (Enforcement Directorate) notice-related matters.
+                                        Our team includes experts with high-level experience, including former commissioners and top bureaucrats who have successfully handled high-profile cases, such as those involving Robert Vadra.
+                                    </p>
+                                </div>
+                                <div>
+                                    <button
+                                        onClick={() => history.push('/products/edQuerySolutions')}
+                                        className="inline-flex items-center py-2 px-4 mt-4 md:mt-0 border border-transparent shadow-sm text-sm font-medium font-serif text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                                    >Know More
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>

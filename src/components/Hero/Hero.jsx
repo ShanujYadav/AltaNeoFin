@@ -19,11 +19,12 @@ const Hero = () => {
       <div className={`hero-text ${showText ? 'fade-in' : ''}`}>
         <h1 className={`typewriter ${showText ? 'fade-in' : ''}`}>Empowering Growth Through Seamless Financial Solutions</h1>
         <p className={`typewriter ${showText ? 'fade-in' : ''}`} style={{ color: 'white' }}>Enabling more than $1 billion working capital annually</p>
-        <a href="/login">
-          <button className={`btn ${showText ? 'scale-in' : ''}`}>Get Started<FaArrowRightLong className='ml-2' />
+
+        <a href="/login" className='' target="_blank">
+          <button className="bg-blue-500 hover:bg-blue-700 text-white font-base mb-3 py-2.5 px-4 rounded-full flex items-center">
+            Get Started <FaArrowRightLong size='22' className='ml-2' />
           </button>
         </a>
-
       </div>
     </div>
   )

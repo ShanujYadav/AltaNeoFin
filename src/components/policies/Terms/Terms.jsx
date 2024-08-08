@@ -7,9 +7,7 @@ const Terms = () => {
     <div>
       <Topbar
         title="Terms"
-        desc="This policy sets out the information practices we follow, including the type of
-        information collected, how the information is collected, how the information is used, and
-        with whom it is shared."
+        desc="Altaneofin reserves the right to modify the terms and conditions at any time, and such changes will be effective immediately upon posting. Please review these terms periodically to stay informed of any updates."
         from="Home"
         to="Terms"
       />

@@ -9,9 +9,7 @@ const Privacypolicy = () => {
     <div>
       <Topbar
         title="Privacy Policy"
-        desc="This privacy policy sets out the information practices we follow, including the type of
-        information collected, how the information is collected, how the information is used, and
-        with whom it is shared."
+        desc="We prioritise the privacy of our’s users personal information. We use data responsibly ensuring compliance with relevant  laws and regulations."
         from="Home"
         to="Privacy Policy"
       />
