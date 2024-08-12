@@ -18,6 +18,12 @@ const jobs = [
                 type: 'Full Time',
                 description: 'Excellent communication skills, sales skills, customer service, basic computer knowledge, and a positive attitude.'
             },
+            {
+                title: 'Web Debeloper (3 - 4 yr)',
+                location: 'Gurugram, Haryana',
+                type: 'Full Time',
+                description: 'We are looking for a talented and enthusiastic Web Developer to become a key part of our innovative team. Proficiency in JavaScript, React.js, UI/UX design, and web development is essential.'
+            }
         ]
     },
 

@@ -154,6 +154,9 @@ const Footer = () => {
                   <li>
                     <a href="/refundPolicy" class="text-sm leading-6 text-gray-400 hover:text-blue-900">Refund Policy</a>
                   </li>
+                  <li>
+                    <a href="https://dlaidoc.s3.ap-south-1.amazonaws.com/DLAI-CODE-OF-CONDUCT+(1).pdf" target='_blank' class="text-sm leading-6 text-gray-400 hover:text-blue-900">DLAI (Code of Conduct)</a>
+                  </li>
                 </ul>
               </div>
               <div class="mt-10 md:mt-0">

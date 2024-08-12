@@ -8,7 +8,6 @@ import cta from '../../assets/img/ctaImg.png';
 
 
 const Team = () => {
-
   const settings = {
     dots: true,
     infinite: true,

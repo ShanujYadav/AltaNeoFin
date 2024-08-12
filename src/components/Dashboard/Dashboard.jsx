@@ -6,6 +6,7 @@ import DashboardHome from "./home/DashboardHome";
 import Profile from "./profile/Profile";
 import VendorFinancingForm from "./VendorFinancing/VendorFinancingForm";
 import DashboardNav from "./DashboardNav";
+import UserDashboard from "./UserDashboard";
 
 export default function Dashboard() {
   return (
@@ -16,6 +17,7 @@ export default function Dashboard() {
           <Route path="/dashboard/home" component={DashboardHome} />
           <Route path="/dashboard/profile" component={Profile} />
           <Route path="/dashboard/vendorFinancing" component={VendorFinancingForm} />
+          <Route path="/dashboard/UserHome" component={UserDashboard} />
         </Switch>
       </DashboardContextProvider>
     </>

@@ -8,6 +8,7 @@ import invoiceDiscounting from '../../../public/assets/img/invoiceDiscounting.pn
 import sustainableSCF from '../../../public/assets/img/sustainableSCF.png'
 import dynamicDiscounting from '../../../public/assets/img/dynamicDiscounting.png'
 import blockchainTechnology from '../../../public/assets/img/blockchainTechnology.png'
+import fintech from '../../../public/assets/img/fintech.png'
 import Topbar from '../common/Topbar'
 
 
@@ -64,6 +65,13 @@ const Blogs = () => {
          route: 'blockchainTechnology',
          oneLine: "In the rapidly evolving world of finance and technology, few innovations have...",
       },
+      {
+         id: 8,
+         title: 'Role Of Fintech',
+         img: fintech,
+         route: 'roleOfFintech',
+         oneLine: "Supply chains are the backbone of global trade, connecting suppliers, manufacturers...",
+      },
    ]
 
 
@@ -71,6 +79,7 @@ const Blogs = () => {
    const onClickReadMore = (route) => {
       history.push(`/blogs/${route}`)
    }
+
 
    return (
       <div>

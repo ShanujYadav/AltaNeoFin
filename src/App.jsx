@@ -45,6 +45,7 @@ import Products from './components/products/Products';
 import CareerPage from './components/careers/CareerPage';
 import EdQueryPage from './components/products/EDQuery/EdQueryPage';
 import Numbers from './components/common/Numbers';
+import RoleofFintechBlog from './components/Blogs/blogPages/RoleOfFintechBlog';
 
 
 
@@ -70,7 +71,7 @@ const App = () => {
             <Route exact path='/aboutUs' component={AboutUsPage} />
             <Route exact path='/careers' component={CareerPage} />
             <Route exact path='/team' component={TeamPage} />
-
+            
 
             <Route exact path='/products' component={ProductPage} />
             <Route exact path='/products/invoiceDiscounting' component={InvoiceDiscountingPage} />
@@ -92,6 +93,7 @@ const App = () => {
             <Route exact path='/blogs/sustainableSupplyChain' component={SustainableSupplyChainBlog} />
             <Route exact path='/blogs/greenFinancing' component={GreenFinancingBlog} />
             <Route exact path='/blogs/smallAndMeduimEnterprise' component={SmallAndMediumEntBlog} />
+            <Route exact path='/blogs/roleOfFintech' component={RoleofFintechBlog}/>
 
           </Switch>
         </Route>
