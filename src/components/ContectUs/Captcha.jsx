@@ -54,5 +54,4 @@ const Captcha = ({ onChange }) => {
   </>
   )
 }
-
 export default Captcha;
