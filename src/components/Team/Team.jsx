@@ -3,7 +3,7 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import ceo from '../../../public/assets/img/ceoImg.png'
-import director from '../../assets/img/directorImg.png';
+import director from '../../../public/assets/img/soniaMam.png';
 import cta from '../../assets/img/ctaImg.png';
 
 
@@ -19,6 +19,7 @@ const Team = () => {
     pauseOnHover: window.innerWidth <= 768,
     pauseOnFocus: window.innerWidth <= 768,
   }
+
 
   return (
     <Slider {...settings} className='w-full overflow-hidden box-border sm:px-2'>

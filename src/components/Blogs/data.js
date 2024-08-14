@@ -24,7 +24,7 @@ const blogData = [
        img: futureOfSupplyChain,
        route: 'futureOfSupplyChain',
        oneLine: "In today's rapidly evolving business landscape, supply chain finance has become a vital tool for ...",
-       author: 'Meenakshi P',
+       author: 'Meenakshi',
        designation: 'Chairperson and MD'
     },
     {
@@ -43,7 +43,7 @@ const blogData = [
        img: invoiceDiscounting,
        route: 'invoiceDiscounting',
        oneLine: "In today’s era managing cash flow is a challenge for all businesses. One effective ...",
-       author: 'Meenakshi P',
+       author: 'Meenakshi',
        designation: 'Chairperson and MD'
 
     },
@@ -83,7 +83,7 @@ const blogData = [
        img: fintech,
        route: 'RoleofFintech',
        oneLine: "Supply chains are the backbone of global trade, connecting suppliers, manufacturers, and...",
-       author: 'Meenakshi P',
+       author: 'Meenakshi',
        designation: 'Chairperson and MD'
     }
  ]

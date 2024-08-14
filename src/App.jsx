@@ -46,9 +46,7 @@ import CareerPage from './components/careers/CareerPage';
 import EdQueryPage from './components/products/EDQuery/EdQueryPage';
 import Numbers from './components/common/Numbers';
 import RoleofFintechBlog from './components/Blogs/blogPages/RoleOfFintechBlog';
-import Altaneo from './components/Blogs/blogAuthor/Altaneo';
-import MeenakshiP from './components/Blogs/blogAuthor/Meenakshi';
-import Jyotika from './components/Blogs/blogAuthor/Jyotika';
+import AuthorProfile from './components/Blogs/blogAuthor/AuthorProfile';
 
 
 
@@ -84,6 +82,8 @@ const App = () => {
             <Route exact path='/products/edQuerySolutions' component={EdQueryPage} />
 
             <Route exact path='/blogs' component={Blogs} />
+            <Route exact path='/blogs/author/*' component={AuthorProfile}/>
+
             <Route exact path='/blogs/supplyChainFinance' component={SupplyChainFinanceBlog} />
             <Route exact path='/blogs/invoiceDiscounting' component={InvoiceDiscountingBlog} />
             <Route exact path='/blogs/futureOfSupplyChain' component={FutureOfSCFBlog} />
@@ -97,10 +97,6 @@ const App = () => {
             <Route exact path='/blogs/greenFinancing' component={GreenFinancingBlog} />
             <Route exact path='/blogs/smallAndMeduimEnterprise' component={SmallAndMediumEntBlog} />
             <Route exact path='/blogs/roleOfFintech' component={RoleofFintechBlog}/>
-
-            <Route exact path='/blogs/author/altaneo' component={Altaneo}/>
-            <Route exact path='/blogs/author/meenakshiP' component={MeenakshiP}/>
-            <Route exact path='/blogs/author/jyotika' component={Jyotika}/>
 
           </Switch>
         </Route>
