@@ -78,6 +78,8 @@ const VendorFinancingForm = () => {
     }
     setData({ ...data, gstRegistered:value})
   }
+
+  
   const onChangeDate = (e) => {
     let originalDate=e.target.value
     let [year, month, day] = originalDate.split("-")

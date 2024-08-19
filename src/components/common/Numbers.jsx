@@ -32,7 +32,7 @@ const Numbers = () => {
               <FaUserCheck size={22} />
             </div>
             <div className='px-6'>
-              <p class="mb-2 text-5xl font-semibold text-gray-900">1K+</p>
+              <p class="mb-2 text-5xl font-semibold text-gray-900">4K+</p>
               <p class="text-sm pl-2 font-normal text-muted text-normal">Followers </p>
             </div>
           </div>
